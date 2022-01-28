@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import MapGL, { Source, Layer } from "react-map-gl";
+import styled from "styled-components";
+import "./App.css";
+import { countries } from "./data/countries";
+import { dataLayer } from "./data_layer";
+
+const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5ZTV2bnMwM2YyMnVvMWx0bzdteXAzIn0.D9lLHLuJiRLEIglPhi-HKg";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [viewport, setViewport] = useState({
+        latitude: 28.767,
+        longitude: 85.251,
+        zoom: 6.5
+    });
+
+
+    return (
+        <>
+            <MapGL
+                {...viewport}
+                width="100vw"
+                height="100vh"
+                style= {{ "position": "absolute" }}
+                onViewportChange={setViewport}
+                mapStyle="mapbox://styles/eadehem/ckyx7o0ag001r14o242ghhzpr"
+                mapboxApiAccessToken={MAPBOX_TOKEN}
+            >
+                <Source type="geojson" data={countries}>
+                    <Layer {...dataLayer} beforeId='settlement-subdivision-label'/>
+                </Source>
+            </MapGL>
+
+        </>
+
+    );
 }
 
 export default App;
