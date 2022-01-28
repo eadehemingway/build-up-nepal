@@ -32,7 +32,7 @@ function MarkerPoint({ data }){
 
 const MarkerStyled = styled.div`
 border-radius: 50%;
-width: 2px;
-height: 2px;
+width: 1px;
+height: 1px;
 border: 1px solid coral;
 `;
