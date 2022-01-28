@@ -12,7 +12,7 @@ function App() {
     const [viewport, setViewport] = useState({
         latitude: 28.767,
         longitude: 85.251,
-        zoom: 6.5
+        zoom: 6.1
     });
 
 
@@ -28,7 +28,7 @@ function App() {
                 mapboxApiAccessToken={MAPBOX_TOKEN}
             >
                 <Source type="geojson" data={countries}>
-                    <Layer {...dataLayer} beforeId='settlement-subdivision-label'/>
+                    <Layer {...dataLayer}/>
                 </Source>
             </MapGL>
 
