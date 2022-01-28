@@ -27,9 +27,10 @@ function App() {
                 mapStyle="mapbox://styles/eadehem/ckyx7o0ag001r14o242ghhzpr"
                 mapboxApiAccessToken={MAPBOX_TOKEN}
             >
-                <Source type="geojson" data={countries}>
+                {/* Add <source and <Layer compoennts if you need to add layers e.g. data */}
+                {/* <Source type="geojson" data={countries}>
                     <Layer {...dataLayer}/>
-                </Source>
+                </Source> */}
             </MapGL>
 
         </>
