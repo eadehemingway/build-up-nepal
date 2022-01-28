@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import MapGL, { Source, Layer } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
-import { nepal_geojson } from "./data/nepal_geojson";
-import { dataLayer } from "./data_layer";
+import { nepal_outline } from "./data/nepal_outline";
 
-const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5ZTV2bnMwM2YyMnVvMWx0bzdteXAzIn0.D9lLHLuJiRLEIglPhi-HKg";
+const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
 
 
 function App() {
@@ -28,9 +27,10 @@ function App() {
                 mapboxApiAccessToken={MAPBOX_TOKEN}
             >
 
-                <Source type="geojson" data={nepal_geojson}>
-                    <Layer {...dataLayer}/>
+                <Source type="geojson" data={nepal_outline} >
+                    <Layer type="line"/>
                 </Source>
+
             </MapGL>
 
         </>
