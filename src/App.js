@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MapGL, { Source, Layer } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
-import { countries } from "./data/countries";
+import { nepal_geojson } from "./data/nepal_geojson";
 import { dataLayer } from "./data_layer";
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5ZTV2bnMwM2YyMnVvMWx0bzdteXAzIn0.D9lLHLuJiRLEIglPhi-HKg";
@@ -24,13 +24,13 @@ function App() {
                 height="100vh"
                 style= {{ "position": "absolute" }}
                 onViewportChange={setViewport}
-                mapStyle="mapbox://styles/eadehem/ckyx7o0ag001r14o242ghhzpr"
+                mapStyle="mapbox://styles/eadehem/ckyyibb6l007y16of204c83uq"
                 mapboxApiAccessToken={MAPBOX_TOKEN}
             >
-                {/* Add <source and <Layer compoennts if you need to add layers e.g. data */}
-                {/* <Source type="geojson" data={countries}>
+
+                <Source type="geojson" data={nepal_geojson}>
                     <Layer {...dataLayer}/>
-                </Source> */}
+                </Source>
             </MapGL>
 
         </>
