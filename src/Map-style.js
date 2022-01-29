@@ -3,10 +3,6 @@ import type { GeoJSONSourceRaw, FillLayer, LineLayer } from "react-map-gl";
 import MAP_STYLE from "./style.json";
 import districs from "./data/province_outlines.json";
 
-const provinces = {
-    type: "geojson",
-    data: districs
-};
 
 const fillLayer = {
     id: "provinces-fill",
@@ -34,7 +30,10 @@ export const MapStyle = {
     ...MAP_STYLE,
     sources: {
         ...MAP_STYLE.sources,
-        "provinces": provinces
+        "provinces": {
+            type: "geojson",
+            data: districs
+        }
     },
     layers: [fillLayer, lineLayer]
 };

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MapGL, { Source, Layer, Marker } from "react-map-gl";
+import {  Marker } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
 import { data } from "./data/data";
@@ -22,7 +22,11 @@ function MarkerPoint({ data , markers_visible }){
     if (!data.Latitude || !data.Longitude || !markers_visible ) return null;
     return (
         <>
-            <Marker latitude={data.Latitude} longitude={data.Longitude}>
+            <Marker
+                latitude={data.Latitude}
+                longitude={data.Longitude}
+                anchor="center"
+            >
                 <MarkerStyled onMouseOver={()=> console.log(data.Description)}/>
             </Marker>
         </>
@@ -32,7 +36,8 @@ function MarkerPoint({ data , markers_visible }){
 
 const MarkerStyled = styled.div`
     border-radius: 50%;
-    width: 1px;
-    height: 1px;
+    background: red;
+    width: 2px;
+    height: 2px;
     border: 1px solid coral;
 `;
