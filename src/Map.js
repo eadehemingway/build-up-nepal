@@ -2,18 +2,28 @@ import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
-import { nepal_outline } from "./data/nepal_outline";
-import { data } from "./data/data";
 import { Markers } from "./Markers";
-import province_outlines from "./data/province_outlines.json";
-import { MapStyle } from "./Map-style";
 import bbox from "@turf/bbox";
 import { ContourLayer } from "./ContourLayer";
 import { PopulationLayer } from "./PopulationLayer";
 import { CountryOutlineLayer } from "./CountryOutlineLayer";
+import MAP_STYLE from "./style.json";
+import districs from "./data/province_outlines.json";
+import { InsetMap } from "./InsetMap";
+
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
 
+
+const minLng = 80;
+const maxLng = 88.1;
+const maxLat = 30.6;
+const minLat = 26.3;
+
+const half_lng = (maxLng - minLng) /2;
+const half_lat = (maxLat - minLat) /2;
+const center_lat = minLat + half_lat;
+const center_lng = minLng + half_lng;
 
 export function Map() {
     const [contour_visible, setContourVisible] = useState(true);
@@ -21,15 +31,16 @@ export function Map() {
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
     const [markers_visible, setMarkerVisible] = useState(true);
-
     const [loaded, setLoaded] = useState(false);
     const mapRef = useRef();
+
     const onClick = (event) => {
         if (!mapRef.current) return;
         const feature = event.features[0];
         if (feature) {
             // calculate the bounding box of the feature
             const [minLng, minLat, maxLng, maxLat] = bbox(feature);
+
             mapRef.current.fitBounds(
                 [
                     [minLng, minLat],
@@ -40,6 +51,15 @@ export function Map() {
         }
     };
 
+    function unZoom(){
+        if (!mapRef.current) return;
+        mapRef.current.fitBounds([
+            [minLng, minLat],
+            [maxLng, maxLat]
+        ],
+        { padding: 40, duration: 3500 }
+        );
+    }
     return (
         <>
             <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
@@ -47,33 +67,38 @@ export function Map() {
             <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
             <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
+            <button onClick={unZoom}>unzoom</button>
             <Overlay loaded={loaded}/>
             <MapGL
                 ref={mapRef}
                 {...map_attributes}
-                onClick={onClick}
                 onLoad={()=> setLoaded(true)}
             >
-
-
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
                 {markers_visible &&  <Markers />}
-
-
-
-
             </MapGL>
+            <InsetMap onClick={onClick}/>
+
         </>
 
     );
 }
 
 const map_attributes = {
-    mapStyle:MapStyle,
-    interactiveLayerIds:["provinces-fill"],
+    mapStyle: {
+        ...MAP_STYLE,
+        sources: {
+            ...MAP_STYLE.sources,
+            "provinces": {
+                type: "geojson",
+                data: districs
+            }
+        },
+
+    },
     mapboxAccessToken:MAPBOX_TOKEN,
     scrollZoom:false,
     doubleClickZoom:false,
@@ -91,9 +116,9 @@ const map_attributes = {
         overflow: "hidden"
     },
     initialViewState:{
-        latitude: 28.767,
-        longitude: 85.251,
-        zoom: 6.1
+        latitude:center_lat,
+        longitude: center_lng,
+        zoom: 6.5
     }
 };
 
