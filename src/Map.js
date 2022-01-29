@@ -8,6 +8,8 @@ import { Markers } from "./Markers";
 import province_outlines from "./data/province_outlines.json";
 import { MapStyle } from "./Map-style";
 import bbox from "@turf/bbox";
+import { ContourVisible } from "./ContourLayer";
+import { PopulationLayer } from "./PopulationLayer";
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
 
@@ -17,13 +19,6 @@ export function Map() {
     const [population_visible, setPopulationVisible] = useState(true);
     const [outline_visible, setOutlineVisible] = useState(true);
     const [markers_visible, setMarkerVisible] = useState(true);
-
-    // useEffect(()=>{
-
-    //     setTimeout(()=>{
-    //         setViewport(viewport_first_house);
-    //     }, 1000);
-    // }, []);
 
 
     const mapRef = useRef();
@@ -51,52 +46,11 @@ export function Map() {
             <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
             <MapGL
                 ref={mapRef}
-                initialViewState={{
-                    latitude: 28.767,
-                    longitude: 85.251,
-                    zoom: 6.1
-                }}
-                style= {{
-                    "position": "absolute",
-                    "border": "5px solid red",
-                    "boxSizing": "border-box",
-                    "top": 20,
-                    right: 0,
-                    left: 0,
-                    overflow: "hidden"
-                }}
-                mapStyle={MapStyle}
-                interactiveLayerIds={["provinces-fill"]}
+                {...map_attributes}
                 onClick={onClick}
-                mapboxAccessToken={MAPBOX_TOKEN}
-                scrollZoom={false}
-                doubleClickZoom={false}
-                dragPan={false}
-                touchZoom={false}
-                touchRotate={false}
-                keyboard={false}
             >
-                <Source id="contour_source" type="raster" url={"mapbox://eadehem.9bmo07eb"} tileSize={256}>
-                    {contour_visible && (
-                        <Layer
-                            id="contour_layer"
-                            type="raster"
-                            source="contour_source"
-                            paint={{ "raster-contrast": 1 , "raster-opacity": 1 }}
-                        />
-
-                    )}
-                </Source>
-                <Source id="population_source" type="raster" url={"mapbox://eadehem.5a0w2g3f"} tileSize={256}>
-                    {population_visible && (
-                        <Layer
-                            id="population_layer"
-                            type="raster"
-                            source="population_source"
-                            paint={{ "raster-contrast": 1 , "raster-opacity": 1 }}
-                        />
-                    )}
-                </Source>
+                <ContourVisible contour_visible={contour_visible}/>
+                <PopulationLayer population_visible={population_visible}/>
                 {outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
                 {markers_visible &&  <Markers />}
 
@@ -106,3 +60,28 @@ export function Map() {
     );
 }
 
+const map_attributes = {
+    mapStyle:MapStyle,
+    interactiveLayerIds:["provinces-fill"],
+    mapboxAccessToken:MAPBOX_TOKEN,
+    scrollZoom:false,
+    doubleClickZoom:false,
+    dragPan:false,
+    touchZoom:false,
+    touchRotate:false,
+    keyboard:false,
+    style:{
+        "position": "absolute",
+        "border": "5px solid red",
+        "boxSizing": "border-box",
+        "top": 20,
+        right: 0,
+        left: 0,
+        overflow: "hidden"
+    },
+    initialViewState:{
+        latitude: 28.767,
+        longitude: 85.251,
+        zoom: 6.1
+    }
+};
