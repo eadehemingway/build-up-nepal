@@ -108,7 +108,6 @@ const map_attributes = {
     keyboard:false,
     style:{
         "position": "absolute",
-        "border": "5px solid red",
         "boxSizing": "border-box",
         "top": 20,
         right: 0,
