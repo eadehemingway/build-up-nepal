@@ -14,6 +14,39 @@ export function InsetMap({ onClick }) {
     const mapRef = useRef();
     // const cursor = getCursor();
     // console.log("cursor:", cursor);
+    useEffect(()=>{
+        if (!mapRef.current) return;
+        let hoveredStateId = null;
+
+        mapRef.current.on("mousemove", "provinces-fill", (e) => {
+            if (e.features.length > 0) {
+                if (hoveredStateId !== null) {
+                    mapRef.current.setFeatureState(
+                        { source: "provinces", id: hoveredStateId },
+                        { hover: false }
+                    );
+                }
+                hoveredStateId = e.features[0].id;
+
+                mapRef.current.setFeatureState(
+                    { source: "provinces", id: hoveredStateId },
+                    { hover: true }
+                );
+            }
+        });
+
+        // When the mouse leaves the state-fill layer, update the feature state of the
+        // previously hovered feature.
+        mapRef.current.on("mouseleave", "provinces-fill", () => {
+            if (hoveredStateId !== null) {
+                mapRef.current.setFeatureState(
+                    { source: "provinces", id: hoveredStateId },
+                    { hover: false }
+                );
+            }
+            hoveredStateId = null;
+        });
+    });
     return (
         <>
             <MapGL
@@ -30,7 +63,7 @@ export function InsetMap({ onClick }) {
                     height: "400px",
                     width: "600px",
                     overflow: "hidden",
-                    cursor: "pointer" // ideally we would do it on the layer not the whole map...
+                    cursor: "pointer" // ideally we would do it on the layer not the whole mapRef.current...
                 }}
             >
                 <Layer

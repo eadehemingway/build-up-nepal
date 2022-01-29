@@ -3,9 +3,6 @@
     "geometries": [
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-one"
-            },
             "coordinates": [
                 [
                     [
@@ -241,9 +238,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-two"
-            },
             "coordinates": [
                 [
                     [
@@ -543,9 +537,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-three"
-            },
             "coordinates": [
                 [
                     [
@@ -805,9 +796,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-four"
-            },
             "coordinates": [
                 [
                     [
@@ -1107,9 +1095,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-five"
-            },
             "coordinates": [
                 [
                     [
@@ -1353,9 +1338,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-six"
-            },
             "coordinates": [
                 [
                     [
@@ -1647,9 +1629,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-seven"
-            },
             "coordinates": [
                 [
                     [
@@ -1925,9 +1904,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-eight"
-            },
             "coordinates": [
                 [
                     [
@@ -2287,9 +2263,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-nine"
-            },
             "coordinates": [
                 [
                     [
@@ -2649,9 +2622,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-ten"
-            },
             "coordinates": [
                 [
                     [
@@ -3055,9 +3025,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-eleven"
-            },
             "coordinates": [
                 [
                     [
@@ -3349,9 +3316,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-twelve"
-            },
             "coordinates": [
                 [
                     [
@@ -3615,9 +3579,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-thirteen"
-            },
             "coordinates": [
                 [
                     [
@@ -3937,9 +3898,6 @@
         },
         {
             "type": "Polygon",
-            "properties": {
-                "id": "test-fourteen"
-            },
             "coordinates": [
                 [
                     [

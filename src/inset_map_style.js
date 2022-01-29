@@ -1,6 +1,6 @@
 
 import MAP_STYLE from "./style.json";
-import provinces from "./data/mini_map.json";
+import provinces from "./data/mini_map_feat.json";
 
 
 const fillLayer = {
@@ -9,10 +9,37 @@ const fillLayer = {
     type: "fill",
     paint: {
         "fill-outline-color": "red",
-        "fill-color": "#fff1E0",
-        "fill-opacity": 1
+        "fill-color": "red",
+        "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            1,
+            0.5
+        ]
     },
 };
+
+
+function geoCollectionToFeatureCollection(geoJson){
+    const geo_arr = geoJson.geometries;
+    const features_arr = geo_arr.map((obj, i)=> {
+        return {
+            type: "Feature",
+            geometry: {
+                ...obj
+            },
+            properties: {
+            },
+            id: i
+        };
+    });
+    const json = {
+        type: "FeatureCollection",
+        features: features_arr
+    };
+    return json;
+}
+
 
 // const lineLayer = {
 //     id: "provinces-outline",
