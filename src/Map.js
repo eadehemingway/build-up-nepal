@@ -56,14 +56,25 @@ export function Map() {
                     longitude: 85.251,
                     zoom: 6.1
                 }}
-                width="100vw"
-                height="100vh"
-                style= {{ "position": "absolute", "border": "5px solid red", "boxSizing": "border-box" }}
+                style= {{
+                    "position": "absolute",
+                    "border": "5px solid red",
+                    "boxSizing": "border-box",
+                    "top": 20,
+                    right: 0,
+                    left: 0,
+                    overflow: "hidden"
+                }}
                 mapStyle={MapStyle}
                 interactiveLayerIds={["provinces-fill"]}
                 onClick={onClick}
                 mapboxAccessToken={MAPBOX_TOKEN}
                 scrollZoom={false}
+                doubleClickZoom={false}
+                dragPan={false}
+                touchZoom={false}
+                touchRotate={false}
+                keyboard={false}
             >
                 <Source id="contour_source" type="raster" url={"mapbox://eadehem.9bmo07eb"} tileSize={256}>
                     {contour_visible && (

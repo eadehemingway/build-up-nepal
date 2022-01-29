@@ -26,6 +26,12 @@ function MarkerPoint({ data  }){
                 latitude={data.Latitude}
                 longitude={data.Longitude}
                 anchor="center"
+                style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    willChange: "transform",
+                }}
             >
                 <MarkerStyled onMouseOver={()=> console.log(data.Description)}/>
             </Marker>
