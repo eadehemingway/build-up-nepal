@@ -23,7 +23,6 @@ function stackData(d) {
         id: v.id,
 
     })).filter(v => v.metric !== null);
-    console.log("stacked:", stacked);
     let metric_total = stacked.reduce((partialSum, a) => partialSum + Number(a.metric), 0);
     stacked.total = metric_total;
     stacked.forEach(function(d, i) {
@@ -35,7 +34,7 @@ function stackData(d) {
         d.height = height;
         d.width = width;
         d.highlighted = false;
-        d.filtered = true;
+        d.filtered = false;
         x += width;
     });
     return stacked;
@@ -46,29 +45,48 @@ export function StackedBars() {
 
     const [carbon_data, setCarbonData] = useState(stackData(data.map(d => ({
         metric: d["CO2 saved"],
-        year: d["Start Year"]
+        year: d["Start Year"],
+        id: d["id"]
     }))));
     const [houses_data, setHousesData] = useState(stackData(data.map(d => ({
         metric: d["Houses built TOTAL"],
-        year: d["Start Year"]
+        year: d["Start Year"],
+        id: d["id"]
     }))));;
     const [jobs_data, setJobsData] = useState(stackData(data.map(d => ({
         metric: d["Total jobs"],
-        year: d["Start Year"]
+        year: d["Start Year"],
+        id: d["id"]
     }))));
+
+    function updateCarbonData(changes) {
+        let updated_data = [...carbon_data].map(function(d) { return ({ ...d, highlighted: false }); });
+        if (changes.highlight.length) {
+            changes.highlight.forEach(c => {
+                updated_data[c].highlighted = true;
+            });
+        }
+        // console.log("updated_data:", updated_data);
+        setCarbonData(updated_data);
+    }
+
+    function updateHousesData(changes) {
+    }
+
+    function updateJobsData(changes) {
+    }
 
     return (
         <StackedBarContainer>
-            <StackedBar data={carbon_data}/>
-            <StackedBar data={houses_data}/>
-            <StackedBar data={jobs_data}/>
+            <StackedBar data={carbon_data} updateData={updateCarbonData}/>
+            {/* <StackedBar data={houses_data} updateData={updateHousesData}/>
+            <StackedBar data={jobs_data} updateData={updateJobsData}/> */}
         </StackedBarContainer>
     );
 }
 
 const StackedBarContainer = styled.div`
     width: 100%;
-    border: 1px solid red;
     position: absolute;
     bottom: 0px;
     left: 0;

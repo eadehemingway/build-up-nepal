@@ -1,6 +1,6 @@
 export const data = [
     {
-        "#": 73,
+        "id": 73,
         "Name": "Construction of School and Healthpost in Jyamrung",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -31,7 +31,7 @@ export const data = [
         "Description": "Construction of the village school with 11 classrooms and a healthpost with living quater together with Tuki Nepal Society Sweden. "
     },
     {
-        "#": 72,
+        "id": 72,
         "Name": "Rebuilding Majhigaun",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -62,7 +62,7 @@ export const data = [
         "Description": "In Majhigaun we are working with Community driven reconstruction. The villagers are building their own homes with Earth Bricks.  We have supported 88 poor families in Majhigaun to rebuild their own homes."
     },
     {
-        "#": 67,
+        "id": 67,
         "Name": "Construction of agriculture collection center",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -93,7 +93,7 @@ export const data = [
         "Description": "Construction of an agriculture collection center in Mucchok, together with IM and Made Nepal along with masons training in CSEB construction. "
     },
     {
-        "#": 70,
+        "id": 70,
         "Name": "Construction of community hall in Kalleri",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -124,7 +124,7 @@ export const data = [
         "Description": "One of our first projects construction of a community hall in Kalleri which also servers as a model building for CSEB interlocking bricks. <br />\nThis project resulted in that a local entrepreneur - Arjun Katiwada started his CSEB enterprise in Kalleri. "
     },
     {
-        "#": 64,
+        "id": 64,
         "Name": "Reconstruction of school building in Dunche",
         "District": "Rasuwa",
         "Province Project": "Province 3 - Bagmati",
@@ -155,7 +155,7 @@ export const data = [
         "Description": "Construction of community school in Jyanglang"
     },
     {
-        "#": 69,
+        "id": 69,
         "Name": "Reconstruction of school and houses for most vulnerable families",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -186,7 +186,7 @@ export const data = [
         "Description": "Together with Ausnepal & Volvo u-fonden we rebuilt the village school in Mulabari and houses for the most vulnerabe families in the village. "
     },
     {
-        "#": 79,
+        "id": 79,
         "Name": "Shangri-La Development association",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -217,7 +217,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 65,
+        "id": 65,
         "Name": "Tibet Relief Fund - reconstruction of school and houses for vulnerable",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -248,7 +248,7 @@ export const data = [
         "Description": "Reconstruction of school, healthpost and houses for vulnerable families in a very remote village"
     },
     {
-        "#": 76,
+        "id": 76,
         "Name": "Raleigh International - Gyalchowk",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -279,7 +279,7 @@ export const data = [
         "Description": "We worked with Raleigh international to reconstruct houses in 3 villages for vulnerable families following the 2015 earthquake"
     },
     {
-        "#": 77,
+        "id": 77,
         "Name": "Raleigh International - Adhikarigaun",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -310,7 +310,7 @@ export const data = [
         "Description": "We worked with Raleigh international to reconstruct houses in 3 villages for vulnerable families following the 2015 earthquake"
     },
     {
-        "#": 78,
+        "id": 78,
         "Name": "Raleigh International Chap",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -341,7 +341,7 @@ export const data = [
         "Description": "We worked with Raleigh international to reconstruct houses in 3 villages for vulnerable families following the 2015 earthquake."
     },
     {
-        "#": 82,
+        "id": 82,
         "Name": "Oxfam rebuilding for poor families Thuladurlung",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -372,7 +372,7 @@ export const data = [
         "Description": "Working as technical partner for OXFAM to rebuild houses for displaced families after the 2015 earthquake."
     },
     {
-        "#": 85,
+        "id": 85,
         "Name": "Oxfam rebuilding for vulnerable families Gyalchowk",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -403,7 +403,7 @@ export const data = [
         "Description": "Working as technical partner for OXFAM to rebuild houses for displaced families after the 2015 earthquake."
     },
     {
-        "#": 87,
+        "id": 87,
         "Name": "Oxfam & Lumanti rebuiling for poor families",
         "District": "Bhaktapur",
         "Province Project": "Province 3 - Bagmati",
@@ -434,7 +434,7 @@ export const data = [
         "Description": "Working as technical partner for OXFAM and Lumanti for reconstruction of a poor community in Sojhe"
     },
     {
-        "#": 92,
+        "id": 92,
         "Name": "Reconstruction of houses for vulnerable families in Lele - Samaritans Purse",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -465,7 +465,7 @@ export const data = [
         "Description": "We worked together with Samaritans Purse to rebuild houses for marginalized families in Lele, Lalitpur."
     },
     {
-        "#": 75,
+        "id": 75,
         "Name": "Reconstruction of the Alachie Kedar school in Lamjung",
         "District": "Lamjung",
         "Province Project": "Province 4 - Gandaki",
@@ -496,7 +496,7 @@ export const data = [
         "Description": "Reconstruction of school destroyed by the earthquake with CSEB interlocking bricks. "
     },
     {
-        "#": 68,
+        "id": 68,
         "Name": "Rebuilding houses in Kot Danda",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -527,7 +527,7 @@ export const data = [
         "Description": "Above Godavari, overlooking the Katmandu valley, lies Kot Danda. A very hospitable & welcoming village where we are working as training partner to rebuild houses in traditional architecture. 8 houses are under construction and we see scope for many more CSEB houses to come up in Kot Danda soon."
     },
     {
-        "#": 66,
+        "id": 66,
         "Name": "Rebuild safe Nepal",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -558,7 +558,7 @@ export const data = [
         "Description": "We work as technical partner to Kathmandu valley based social venture Rebuild Safe Nepal. We have provided machine and the local entrepreneurs will be starting rebuilding houses in the coming weeks!"
     },
     {
-        "#": 86,
+        "id": 86,
         "Name": "OXFAM Integrated settlement in Nigalpani",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -589,7 +589,7 @@ export const data = [
         "Description": "Working as technical partner for OXFAM to rebuild houses for displaced families after the 2015 earthquake."
     },
     {
-        "#": 74,
+        "id": 74,
         "Name": "Construction of 3 schools in Jyamrung",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -620,7 +620,7 @@ export const data = [
         "Description": "Reconstruction of schools together with Hope for smile for Jyamrung, Dhading with CSEB interlocking bricks"
     },
     {
-        "#": 71,
+        "id": 71,
         "Name": "Construction of hospital & community Library",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -651,7 +651,7 @@ export const data = [
         "Description": "Construction of Community Library & Hospital in Thokarpa togeter with the local government & Sweden Nepal Society. <br />\n"
     },
     {
-        "#": 91,
+        "id": 91,
         "Name": "CSEB School construction - Survivors",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -682,7 +682,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 81,
+        "id": 81,
         "Name": "Oxfam integrated settlement Kumalgaun",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -713,7 +713,7 @@ export const data = [
         "Description": "Working as technical partner for OXFAM to rebuild houses for displaced families after the 2015 earthquake."
     },
     {
-        "#": 88,
+        "id": 88,
         "Name": "Oxfam integrated settlement in Melamchi",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -744,7 +744,7 @@ export const data = [
         "Description": "We worked as technical partner for Oxfams integrated settlement in Sindupalchowk, Melamchi"
     },
     {
-        "#": 83,
+        "id": 83,
         "Name": "Oxfam integrated settlement Thakle",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -775,7 +775,7 @@ export const data = [
         "Description": "Integrated settlement for displaced families for Oxfam in Nepal"
     },
     {
-        "#": 89,
+        "id": 89,
         "Name": "Oxfam integrated settlement in Helambu",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -806,7 +806,7 @@ export const data = [
         "Description": "Integrated settlement for displaced families for Oxfam in Nepal"
     },
     {
-        "#": 93,
+        "id": 93,
         "Name": "Oxfam integrated settlement Kharanitar",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -837,7 +837,7 @@ export const data = [
         "Description": "Build up Nepal was responsible for CSEB production in Oxfams integrated settlement in Nuwakot. "
     },
     {
-        "#": 84,
+        "id": 84,
         "Name": "Oxfam integrated settlement Ramati",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -868,7 +868,7 @@ export const data = [
         "Description": "Working as technical partner for OXFAM to rebuild houses for displaced families after the 2015 earthquake."
     },
     {
-        "#": 80,
+        "id": 80,
         "Name": "Oxfam Integrated settlement Baguwa",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -899,7 +899,7 @@ export const data = [
         "Description": "Working as technical partner for OXFAM to rebuild houses for displaced families after the 2015 earthquake."
     },
     {
-        "#": 90,
+        "id": 90,
         "Name": "Low-cost housing for Thokarpa - Local government & Caritas",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -930,7 +930,7 @@ export const data = [
         "Description": "We have been working in Thokarpa together with the local government and Caritas to build low-cost CSEB housing after the earthquake."
     },
     {
-        "#": 286,
+        "id": 286,
         "Name": "Practical action - Supply chain pilot project",
         "District": "Rasuwa",
         "Province Project": "Province 3 - Bagmati",
@@ -961,7 +961,7 @@ export const data = [
         "Description": "We worked together with Practical action to promote CSEB technology in Nuwakot and Rasuwa for reconstruction after the earthquake. "
     },
     {
-        "#": 119,
+        "id": 119,
         "Name": "Karna Bahadur Tamang",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -992,7 +992,7 @@ export const data = [
         "Description": "Karna used to work as contractor in his municipality. he started CSEB factory with the support of Practical Action to help reconstruction of houses affected by earthquake at low cost. After completion of the most of the houses in his locality, he shifted his machine to city area where he is planning to add new machine."
     },
     {
-        "#": 103,
+        "id": 103,
         "Name": "Devaki & Pradip Bhatta",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -1023,7 +1023,7 @@ export const data = [
         "Description": "Devaki used to be a housewife and also working in her farm. She started the business together with her son, Pradip. They started this business to develop their financial as well as help locals to get low cost building materials."
     },
     {
-        "#": 148,
+        "id": 148,
         "Name": "Deepak Adai",
         "District": "Baglung",
         "Province Project": "Province 4 - Gandaki",
@@ -1054,7 +1054,7 @@ export const data = [
         "Description": "Deepak was already working in construction sector and decided to add this machine to start his own enterprise. "
     },
     {
-        "#": 145,
+        "id": 145,
         "Name": "Ishwori Lamsal",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -1085,7 +1085,7 @@ export const data = [
         "Description": "Ishwori is a construction contractor. He got interested in CSEB technology due to the low cost. His enterprise was doing well during the reconstruction and built several schools but since his village was rebuild he stopped construction."
     },
     {
-        "#": 149,
+        "id": 149,
         "Name": "Pradeep Khakurel",
         "District": "Ramechhap",
         "Province Project": "Province 3 - Bagmati",
@@ -1116,7 +1116,7 @@ export const data = [
         "Description": "Pradip is an engineer working in construction field. He learned about this technology after the massive earthquake and started working to rebuild his village. "
     },
     {
-        "#": 143,
+        "id": 143,
         "Name": "Parbat Rana",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -1147,7 +1147,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 141,
+        "id": 141,
         "Name": "Tanu Maya & Simon Tamang",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -1178,7 +1178,7 @@ export const data = [
         "Description": "Simon is a regular contractor working in construction work. After the earthquake, with unavailability and increased prices of Fired Bricks, he started CSEB factory as an alternative material. he got supported from Practical Action at beginning to establish his factory and has been he is doing well since the very beginning."
     },
     {
-        "#": 146,
+        "id": 146,
         "Name": "Pancharaj Gurung",
         "District": "Kaski",
         "Province Project": "Province 4 - Gandaki",
@@ -1209,7 +1209,7 @@ export const data = [
         "Description": "Pancharaj Gurung and his Brother started running this and did very well in the beginning. Pancha was responsible for the marketing and Hem was running the operations.  However after Pancha's wife got a job in France and he wet abroad and Hem decided to open a bakery and have sold the CSEB enterprise. "
     },
     {
-        "#": 22,
+        "id": 22,
         "Name": "Jeevan Adhikari",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -1240,7 +1240,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 14,
+        "id": 14,
         "Name": "Bhabanath Chaulagain",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -1271,7 +1271,7 @@ export const data = [
         "Description": "Bhabanath still runs a grocery shop/ Gas station in Kathmandu and decided to invest in the business together with his partner Navaraj. Navaraj is running the operations and Bhabanath is the investor with very little involvement in day-to-day operations. During the reconstruction period, the business flourished as the demand was huge in the area. As they were the first commercial entrepreneurs in the district, they faced a lot of challenges from the government but due to support from Build up Nepal and Practical action they have been able to build a good business."
     },
     {
-        "#": 234,
+        "id": 234,
         "Name": "Padam Bahadur Bholan",
         "District": "Sindhuli",
         "Province Project": "Province 3 - Bagmati",
@@ -1302,7 +1302,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 287,
+        "id": 287,
         "Name": "School construction for Children of the Mountain",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -1333,7 +1333,7 @@ export const data = [
         "Description": "School construction for Children of the Mountain with 5 classrooms"
     },
     {
-        "#": 263,
+        "id": 263,
         "Name": "RaSuwa Reconstruction commitee",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -1364,7 +1364,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 278,
+        "id": 278,
         "Name": "Communty driven reconstruction in Chandane",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -1395,7 +1395,7 @@ export const data = [
         "Description": "We are supporting the most vulnerable families to rebuild their own homes with CSEB"
     },
     {
-        "#": 144,
+        "id": 144,
         "Name": "Khem Bahadur Gurung",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -1426,7 +1426,7 @@ export const data = [
         "Description": "Khem came back from foreign employment and started this enterprise. After just 5 months, he decided to go back to Qatar and handed the enterprise to a youth group in the village. However this group have not been serious about the business. "
     },
     {
-        "#": 4,
+        "id": 4,
         "Name": "Training and school reconstruction in Jiri",
         "District": "Dolakha",
         "Province Project": "Province 3 - Bagmati",
@@ -1457,7 +1457,7 @@ export const data = [
         "Description": "In beautiful Jiri, Dolakha, we are serving as training partner for Face to Face Nepal. We have set up an Earth Brick press and trained the local community – now producing Earth Bricks and rebuilding the school."
     },
     {
-        "#": 117,
+        "id": 117,
         "Name": "Manoj Thapa",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -1488,7 +1488,7 @@ export const data = [
         "Description": "Manoj Thapa learned about CSEB from a friend who used to work in Practical Action as a partner to Build up Nepal. He decided to focus on commercial Kathmandu and setup a hydraulic CSEB factory in the outskirts of Kathmandu. He has been doing impressive work and built several large city homes until date."
     },
     {
-        "#": 137,
+        "id": 137,
         "Name": "Suman Thapa",
         "District": "Dolakha",
         "Province Project": "Province 3 - Bagmati",
@@ -1519,7 +1519,7 @@ export const data = [
         "Description": "Suman, an engineer by education but a businessman by profession runs a block factory and a hotel in Charikot. After buying a CSEB machine, he and his team have now shifted their focus mainly in CSEB construction after generating a very good demand in the area. Suman and Build up Nepal have managed to get district rates approved in his area from the local government. "
     },
     {
-        "#": 157,
+        "id": 157,
         "Name": "Akshay Angbuhang",
         "District": "Taplejung",
         "Province Project": "Province 1",
@@ -1550,7 +1550,7 @@ export const data = [
         "Description": "Akshay is a respected politician and a businessman who wanted to introduce eco friendly technology in local governement. He was running a hotel, school and Grocery center before starting this business"
     },
     {
-        "#": 96,
+        "id": 96,
         "Name": "Anil Ranabhat",
         "District": "Kaski",
         "Province Project": "Province 4 - Gandaki",
@@ -1581,7 +1581,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 21,
+        "id": 21,
         "Name": "Nara bahadur BK",
         "District": "Sunsari",
         "Province Project": "Province 1",
@@ -1612,7 +1612,7 @@ export const data = [
         "Description": "Nara was Interested in Construction and as well as new technology. He thinks CSEB bricks is better than Hollow concrete blocks and fired bricks, so he started his enterprise with the idea of introducing a new building material. "
     },
     {
-        "#": 113,
+        "id": 113,
         "Name": "Jeevan Devkota",
         "District": "Sindhuli",
         "Province Project": "Province 3 - Bagmati",
@@ -1643,7 +1643,7 @@ export const data = [
         "Description": "Jeevan Devkota was enrolled in the Maoist army when he was just 16 and after almost 10 years of bloody rivalry, the armed struggle was ended and the process of reintegration into the society for these fighters began. After 10 year of reintegration process Jeevan partnered with some of his comrades, bought a Hydraulic machine and started a CSEB business. Jeevan runs the day to day operations and has done really well in a very short time.<br />\n"
     },
     {
-        "#": 112,
+        "id": 112,
         "Name": "Hem Bahadur Gurung",
         "District": "Tanahu",
         "Province Project": "Province 4 - Gandaki",
@@ -1674,7 +1674,7 @@ export const data = [
         "Description": "Hem Gurung came to Build up Nepal with his friend who dragged him from Tanahun. After one year, when he saw his friends business flourishing he contacted us again and got a machine. After initially struggling a lot with marketing, he won a big contract to supply bricks for 22 earthquake damaged schools with help of Build Up Nepal. Since then he has scaled up with another machine and is very well respected member in the contractor association and the secretary of the Interlocking Brick association, Province 4. <br />\n"
     },
     {
-        "#": 100,
+        "id": 100,
         "Name": "Dadhiraj Pudasaini",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -1705,7 +1705,7 @@ export const data = [
         "Description": "Dadhiraj Pudasaini, a teacher by profession partnered with two of his friends to start a agro business but because of unfavourable conditions, had to shut their business. With the same group, they invested in Interlocking bricks and within 6 months returned their investment and added second machine. After a year into production, they added a third machine and are doing really well. His partner who was a alcoholic also says that this business actually saved him from goinng into drinking oblivion and his progress should be taken as an example by others.<br />\n"
     },
     {
-        "#": 243,
+        "id": 243,
         "Name": "Chandika Bhandari",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -1736,7 +1736,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 236,
+        "id": 236,
         "Name": "Sudhir Limbu",
         "District": "Taplejung",
         "Province Project": "Province 1",
@@ -1767,7 +1767,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 161,
+        "id": 161,
         "Name": "Badri Bahadur Dhakal",
         "District": "Tanahu",
         "Province Project": "Province 4 - Gandaki",
@@ -1798,7 +1798,7 @@ export const data = [
         "Description": "Badri Dhakal and his father were already in construction business and decided to start their own CSEB production. Badri after 3 years in Saudi Arabia, returned back and started helping his father with his business and expanded rapidly after earthquake."
     },
     {
-        "#": 135,
+        "id": 135,
         "Name": "Sukra Karki",
         "District": "Baglung",
         "Province Project": "Province 4 - Gandaki",
@@ -1829,7 +1829,7 @@ export const data = [
         "Description": "Sukra Karki, a migrant returnee decided to buy a Hydraulic CSEB machine after consulting his uncle from Pokhara who was already running a CSEB business. "
     },
     {
-        "#": 105,
+        "id": 105,
         "Name": "Dinesh Dahal",
         "District": "Morang",
         "Province Project": "Province 1",
@@ -1860,7 +1860,7 @@ export const data = [
         "Description": "Dinesh was working as a trainer after returning from Israel. After learning about our work tthrough YouTube, Dinesh contacted us with a dream to establish something of his own. His family is now running a CSEB enterprise as well as farming."
     },
     {
-        "#": 242,
+        "id": 242,
         "Name": "Saru Thapa Tamang",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -1891,7 +1891,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 11,
+        "id": 11,
         "Name": "Earth Brick training in Karki Gaun",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -1922,7 +1922,7 @@ export const data = [
         "Description": "In Karki Gaun, Nuwakot the villagers have learned to make their own bricks. We served as the training and machine partner in this village. "
     },
     {
-        "#": 3,
+        "id": 3,
         "Name": "School reconstruciton in Rabi Opi",
         "District": "Kavrepalanchok",
         "Province Project": "Province 3 - Bagmati",
@@ -1953,7 +1953,7 @@ export const data = [
         "Description": "In beautiful Ravi Opi we are working as partner to Shiva Charity. We are setting up CSEB machine and training the local community in Earth Brick production and earthquake resistant construction."
     },
     {
-        "#": 6,
+        "id": 6,
         "Name": "School construction training in Ratankot",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -1984,7 +1984,7 @@ export const data = [
         "Description": "In Ratankot, Sindupalchowk the locals are now building their own school from Earth Bricks. Build up Nepal works as training and technical partner. "
     },
     {
-        "#": 10,
+        "id": 10,
         "Name": "Earth Brick school in Sharamtaly",
         "District": "Kavrepalanchok",
         "Province Project": "Province 3 - Bagmati",
@@ -2015,7 +2015,7 @@ export const data = [
         "Description": "We are working as the local partner for Open Hands to start reconstruction in several villages. Sharamthaly in Kavre is the first project where we work with community driven reconstruction. "
     },
     {
-        "#": 5,
+        "id": 5,
         "Name": "Community reconstruction in Dandagaun",
         "District": "Kathmandu",
         "Province Project": "Province 3 - Bagmati",
@@ -2046,7 +2046,7 @@ export const data = [
         "Description": "In Dandagaun, the community has taken the reconstruction in their own hands. We have set-up a machine and trained and now they are rebuilding their own homes and village."
     },
     {
-        "#": 147,
+        "id": 147,
         "Name": "Ram KC",
         "District": "Rukum",
         "Province Project": "Province 5",
@@ -2077,7 +2077,7 @@ export const data = [
         "Description": "Ram KC was a social worker who invested in the business in the hope that production can be done using local resources creating local job opportunities. His enterprise was severely flooded and he was unable to recover and is now closed."
     },
     {
-        "#": 262,
+        "id": 262,
         "Name": "Dinesh Chapai",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -2108,7 +2108,7 @@ export const data = [
         "Description": "Dinesh, an engineering graduate started CSEB enterprise in partnership with his collegue Saatish. They started taking contracts for schools and other structures all over Nepal. They have been able to do really well in a short span of time"
     },
     {
-        "#": 12,
+        "id": 12,
         "Name": "Arjun Khatiwada",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -2139,7 +2139,7 @@ export const data = [
         "Description": "Arjun got introduced to CSEB when Build up Nepal together with an NGO built a Community Center i his village. He saw an opportunity and started his enterprise to make some extra money as the investment was very low and this could be done in his own land with local materials. Soon the demand went up and decided to make CSEB his primary occupation to support his family. He is planning to ask his son to join him in the business after he is back from foreign employment."
     },
     {
-        "#": 154,
+        "id": 154,
         "Name": "Niruta Dudhraj B.K.",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -2170,7 +2170,7 @@ export const data = [
         "Description": "Niruta is a dynamic women entrepreneur with a background in agriculture. She started CSEB enterprise in 2018 with a view to support her husband who was working in Dubai at the time. She and her partner Amrit did very well to supply to the demand of reconstruction in her village. Now after reconstruction demand is a bit less and they are running the enterprise part time "
     },
     {
-        "#": 8,
+        "id": 8,
         "Name": "Community driven reconstruction in Nalang, Dhading",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -2201,7 +2201,7 @@ export const data = [
         "Description": "Build up Nepal is working as reconstruction partner to Ecological protection forum in Nalang, Dhading. Machines have been set-up and we are currently training the local communities and building model houses."
     },
     {
-        "#": 99,
+        "id": 99,
         "Name": "China Kumari Magrati",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -2232,7 +2232,7 @@ export const data = [
         "Description": "China Kumari Magrati belongs to a disadvantage community and decided to start their CSEB enterpiset as the demand for bricks were huge following the earthquake. China and her Husband decided to partner a local radio host with good marketing skills and flurished helping the community come out of the temporary shelter and into their affordable houses"
     },
     {
-        "#": 239,
+        "id": 239,
         "Name": "Rajkumar Khadka",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -2263,7 +2263,7 @@ export const data = [
         "Description": "Raj is a very energetic young entrepreneur. He met with Build Up Nepal staffs in the field and decided to do more market research to find out the feasibility of the CSEB in his area. He became the one of first entrepreneur to use these bricks in RCC structures for commercial construction."
     },
     {
-        "#": 159,
+        "id": 159,
         "Name": "Parbati Sunar",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -2294,7 +2294,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 19,
+        "id": 19,
         "Name": "Dipendra Wagle",
         "District": "Parsa",
         "Province Project": "Province 2",
@@ -2325,7 +2325,7 @@ export const data = [
         "Description": "Dipendra is a teacher and still teaches grade 8, 9 and 10. He decided to invest in his brother in law's business and soon decided to start a factory at a different location. Dipendra has two daughters and his wife also helps him out in the business doing small procurements and sales"
     },
     {
-        "#": 1,
+        "id": 1,
         "Name": "Reconstruction with Save the Children",
         "District": "Dolakha",
         "Province Project": "Province 3 - Bagmati",
@@ -2356,7 +2356,7 @@ export const data = [
         "Description": "We worked as technical partner for Save the children to provide machines, build model houses and conduct masons training in 5 villages for construction of CSEB houses. "
     },
     {
-        "#": 156,
+        "id": 156,
         "Name": "Santosh Gautam",
         "District": "Taplejung",
         "Province Project": "Province 1",
@@ -2387,7 +2387,7 @@ export const data = [
         "Description": "Santosh heard about CSEB from his friend and together they visited Build up Nepal  to learn more knowledge about this technology. Initially he struggled a lot to get approval from the local government and then COVID lockdown, but are now doing well."
     },
     {
-        "#": 155,
+        "id": 155,
         "Name": "Dhan Bahadur Buda",
         "District": "Bajura",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -2418,7 +2418,7 @@ export const data = [
         "Description": "Dhan Bahadur Buda was the first one to establish in Bajura district and did really well initially. Unfortunately he passed away in 2020 leaving his factory in the able hands of his friends who is supporting Dhan's family in running the business"
     },
     {
-        "#": 2,
+        "id": 2,
         "Name": "Entrepreneurship driven reconstruction",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -2449,7 +2449,7 @@ export const data = [
         "Description": "Together with Practical Action we are starting a growing number of Earth Brick set-ups in Rasuwa & Nuwakot. The project has a unique focus to support entrepreneurs and promote more sustainable construction materials!"
     },
     {
-        "#": 153,
+        "id": 153,
         "Name": "Narayan Acharya",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -2480,7 +2480,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 94,
+        "id": 94,
         "Name": "Amar Bahadur Dangi",
         "District": "Kathmandu",
         "Province Project": "Province 3 - Bagmati",
@@ -2511,7 +2511,7 @@ export const data = [
         "Description": "Amar Bdr Dangi works in the construction field and was looking to build a Ayurvedic Healing center for his son who was returning from India after completing his degree. He started a CSEB business and made the healing center as the first demonstration building in the area. "
     },
     {
-        "#": 15,
+        "id": 15,
         "Name": "Ravi gurung",
         "District": "Kaski",
         "Province Project": "Province 4 - Gandaki",
@@ -2542,7 +2542,7 @@ export const data = [
         "Description": "Ravi Gurung and his wife started this business, after Ravi decided to quit his regular job as a factory worker and concentrate on this enterprise full time. Ravi experienced a lot of problems in the beginning with the machine and demand. After the reconstruction he decided to sell his enterprise. "
     },
     {
-        "#": 244,
+        "id": 244,
         "Name": "Bhimsen Adhikari",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -2573,7 +2573,7 @@ export const data = [
         "Description": "Bhimsen owned a hollow concrete block factory and after seeing the demand for CSEB in the area, decided to start his own CSEB enterprise. However his health is not good and his two sons are working abroad, so he is not sure if he will be able to continue their business for long."
     },
     {
-        "#": 121,
+        "id": 121,
         "Name": "Milan BK",
         "District": "Banke",
         "Province Project": "Province 5",
@@ -2604,7 +2604,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 9,
+        "id": 9,
         "Name": "Rebuilding Health post in Putalikath, Dolhaka",
         "District": "Dolakha",
         "Province Project": "Province 3 - Bagmati",
@@ -2635,7 +2635,7 @@ export const data = [
         "Description": "With help from the NGO Sponsortrek the community in Putalikath is coming together to rebuild a healthpost. While building the healthpost they will be trained in Earth Brick production and earthquake resistant construction."
     },
     {
-        "#": 7,
+        "id": 7,
         "Name": "Construction of village school in Bakrang",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -2666,7 +2666,7 @@ export const data = [
         "Description": "We worked as training partner for Village of Light in the successful reconstruction of the primary school in Bakrang. Village of Light and the local people worked well together and the school was completed in December. The locals have just begun to rebuild their own houses."
     },
     {
-        "#": 235,
+        "id": 235,
         "Name": "Arjun Chhetri",
         "District": "Myagdi",
         "Province Project": "Province 4 - Gandaki",
@@ -2697,7 +2697,7 @@ export const data = [
         "Description": "Arjun was a machine supplier for the construction sector and soon realized the potential for CSEB after seeing one of the plants in Pokhara. "
     },
     {
-        "#": 150,
+        "id": 150,
         "Name": "Binod Pahari",
         "District": "Kavrepalanchok",
         "Province Project": "Province 3 - Bagmati",
@@ -2728,7 +2728,7 @@ export const data = [
         "Description": "Binod was working in construction and got an opportunity to rebuild a whole village with eco-friendly bricks. He is a driven entrepreneur and good as seizing new opportunities. Now that the first village is rebuilt he has moved the machine to another location."
     },
     {
-        "#": 16,
+        "id": 16,
         "Name": "Shyam Sundar Shrestha",
         "District": "Kathmandu",
         "Province Project": "Province 3 - Bagmati",
@@ -2759,7 +2759,7 @@ export const data = [
         "Description": "Shyam has started CSEB factory just after the earthquake with the help of an NGO. As the demand increased, he added new machine from Build up nepal. he has been operation factories at 2 different location and has got 4 machines in total."
     },
     {
-        "#": 107,
+        "id": 107,
         "Name": "Gagan Bahadur Khadka",
         "District": "Jajarkot",
         "Province Project": "Province 6 - Karnali",
@@ -2790,7 +2790,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 13,
+        "id": 13,
         "Name": "Bhairab Pyakurel",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -2821,7 +2821,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 138,
+        "id": 138,
         "Name": "Ganga Rai / Surya Prasad Pokharel",
         "District": "Ilam",
         "Province Project": "Province 1",
@@ -2852,7 +2852,7 @@ export const data = [
         "Description": "Ganga Rai was inspired after seeing interviews with other CSEB entrepreneurs online. He started this enterprise and in addition to his furniture business and is doing very well. \"This technology is Environment friendly, local employment opportunities can be created, with seeing this benefit the Municipality office also gave some support to the enterprise\"<br />\n"
     },
     {
-        "#": 238,
+        "id": 238,
         "Name": "Bachu and Maya Tamang",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -2883,7 +2883,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 132,
+        "id": 132,
         "Name": "Saraswoti BK",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -2914,7 +2914,7 @@ export const data = [
         "Description": "Saraswati and her husband Amrit started this business after the demand for CSEB in the area hiked up and an NGO decided to make 45 houses for the most vulnerable using CSEB. Taking advantage of the market conditions, They invested in the business and got good returns. Amrit is responsible for marketing and Saraswati is looking after the operations. "
     },
     {
-        "#": 20,
+        "id": 20,
         "Name": "Manju Pun",
         "District": "Surkhet",
         "Province Project": "Province 6 - Karnali",
@@ -2945,7 +2945,7 @@ export const data = [
         "Description": "Manju and her husband were running a hardware shop and because of their networking in the construction sector, they saw a good scope for CSEB bricks in the area and established their enterprise. Manju and her husband are full time working to run both the CSEB enterprise and their hardware store. "
     },
     {
-        "#": 241,
+        "id": 241,
         "Name": "Bimal Bahadur Malla",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -2976,7 +2976,7 @@ export const data = [
         "Description": "Bimal Malla Started this business with a lot of hope and enthusiasm after his son returned to the village. His plan was to involve his son Nishan in the business but tragically his son met with a Motor Bike accident and couldn't continue in the business. Most of the money saved by Bimal also went in his sons treatment. After almost 1 year, he wanted to restart the business but again due to lockdown, his plans were severly affected. Right now, he is not running this enterprise and is waiting to get some loans approved so he can take his business forward<br />\n"
     },
     {
-        "#": 128,
+        "id": 128,
         "Name": "Ram Krishna Baskota",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -3007,7 +3007,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 240,
+        "id": 240,
         "Name": "Non-Resident Nepali Association",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -3038,7 +3038,7 @@ export const data = [
         "Description": "We have been working as technical partner for CSEB to NRNA - The Non-Resident Nepali Association to rebuild a community of 573 houses in Laprak."
     },
     {
-        "#": 249,
+        "id": 249,
         "Name": "Modern Model Residential School",
         "District": "Kalikot",
         "Province Project": "Province 6 - Karnali",
@@ -3069,7 +3069,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 279,
+        "id": 279,
         "Name": "Community driven reconstruction in Satbote",
         "District": "Tanahu",
         "Province Project": "Province 4 - Gandaki",
@@ -3100,7 +3100,7 @@ export const data = [
         "Description": "Community driven reconstruction for most vulnerable families in Satbote village."
     },
     {
-        "#": 250,
+        "id": 250,
         "Name": "Miss Nepal Anushka Shrestha",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -3131,7 +3131,7 @@ export const data = [
         "Description": "Rebuilding of remote village together with Miss Nepal - Anushka Shrestha"
     },
     {
-        "#": 251,
+        "id": 251,
         "Name": "Govinda Shrestha",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -3162,7 +3162,7 @@ export const data = [
         "Description": "Sanu Shrestha was mostly involved in the household work and small land farming. She and her husband Govinda decided to start this business after Govinda wanted to start something of his own after working in a local clock factory for over 3 years. This husband wife duo took a loan from a local vendor to start the business and after a lot of initial struggle has been able to turn their business around and do well.   "
     },
     {
-        "#": 42,
+        "id": 42,
         "Name": "Ang Nigma Sherpa",
         "District": "Dolakha",
         "Province Project": "Province 3 - Bagmati",
@@ -3193,7 +3193,7 @@ export const data = [
         "Description": "Ang Nima Sherpa was working as a farmer in Jiri. After the local level elections, he was appointed as the ward member and decided to team up with more members in the ward and start a CSEB enterprise after coming to one of the community meetings arranged by Build Up Nepal. He started really well and are planning to start taking construction contracts in the future."
     },
     {
-        "#": 120,
+        "id": 120,
         "Name": "Menuka Chaudhary",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -3224,7 +3224,7 @@ export const data = [
         "Description": "Menuka, 27 is a young women entrepreneur whose focus was to make her own house and decided to start the business as she saw an opportunity to start a business in her own backyard and make living out of it. Menuka runs this business full time and her husband who is a lawyer also supports her in book keeping and purchasing. They have a small son and therefor Menuka is very happy to be able to run a business nearby her own home. "
     },
     {
-        "#": 106,
+        "id": 106,
         "Name": "Dipak Bhandari",
         "District": "Morang",
         "Province Project": "Province 1",
@@ -3255,7 +3255,7 @@ export const data = [
         "Description": "Dipak Bhandari was running a bio sand filter factory and since the work was very less, he was exploring more options to expand his factory and CSEB interlocking bricks seemed like a good opportunity for him to diversify. He is now operating both enterprises."
     },
     {
-        "#": 164,
+        "id": 164,
         "Name": "Basanta Kumar Rai",
         "District": "Okhaldhunga",
         "Province Project": "Province 1",
@@ -3286,7 +3286,7 @@ export const data = [
         "Description": "Basanta was working as a farmer and after that went to Malaysia for 5 years before returning with a view to start his own enterprise. He partnered with his childhood friend and together they started this business."
     },
     {
-        "#": 43,
+        "id": 43,
         "Name": "Rachana Shrestha",
         "District": "Dolakha",
         "Province Project": "Province 3 - Bagmati",
@@ -3317,7 +3317,7 @@ export const data = [
         "Description": "Rachana was working as a agro-trainer for the farmers in Sailung area of Dolakha. She did have a very good understanding of the market and the need for the new technology that could potentially replace fired bricks in her village since her location was very remote and fired brick are expensive. She and her family decided to do this as a family business with Rachana taking the lead in overall management and her dad and sister actively promoting these in various events/ fairs. Her mom is also actively involved in production side of the business. "
     },
     {
-        "#": 102,
+        "id": 102,
         "Name": "Deepak Hamal",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -3348,7 +3348,7 @@ export const data = [
         "Description": "Deepak was our first commercial entrepreneur and one of the really early adopters of CSEB. He is a driven entrepreneur and have expanded with several machines as well as one hydraulic production unit. Deepak is president of the Interlocking Brick Association in Nepal and have been able to make CSEB very popular in his area. "
     },
     {
-        "#": 54,
+        "id": 54,
         "Name": "Bhim Kumar Gurung",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -3379,7 +3379,7 @@ export const data = [
         "Description": "Bhim started his CSEB enterprise after seeing huge demand for these bricks in the area. He was working in the road construction sector so had the idea of running a construction business. However he decided to sell the business after the COVID lockdown."
     },
     {
-        "#": 131,
+        "id": 131,
         "Name": "Ruken Maharjan",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -3410,7 +3410,7 @@ export const data = [
         "Description": "Ruken Maharjan and three others started this after finding more about CSEB on varous social media groups. All of them were new in the business with no one working prior to this. Unfortunatly the partners do not share a common goal to take the company forward and they have decided to split up or sell the company."
     },
     {
-        "#": 170,
+        "id": 170,
         "Name": "Bishnu Bahadur Thapa",
         "District": "Baglung",
         "Province Project": "Province 4 - Gandaki",
@@ -3441,7 +3441,7 @@ export const data = [
         "Description": "Bishnu Thapa returned from Korea after consultation with friends, decided to start CSEB enterprise. He has a very big demand in the area and says the big advantage is that he can produce bricks with local materials and manpower."
     },
     {
-        "#": 35,
+        "id": 35,
         "Name": "Dambar Bahadur Shrestha",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -3472,7 +3472,7 @@ export const data = [
         "Description": "Dambar Bahadur  Shrestha, 36 was working in the construction sector as a contractor. he sensed an opportunity with CSEB early on. After careful consideration, he started his factory of CSEB interlocking bricks and within 5 months was able to return the investment and add another machine to support the demand."
     },
     {
-        "#": 39,
+        "id": 39,
         "Name": "Dambar Bam/Bhim Chandra",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -3503,7 +3503,7 @@ export const data = [
         "Description": "Dambar still runs a hollow concrete block factory from before and saw the opportunity in CSEB bricks. Since he already had the land and the man power needed it was easy to add CSEB bricks to his existing business."
     },
     {
-        "#": 252,
+        "id": 252,
         "Name": "DZi Foundation Rural school construction",
         "District": "Khotang",
         "Province Project": "Province 1",
@@ -3534,7 +3534,7 @@ export const data = [
         "Description": "Technical partner for DZI for training in CSEB and construction of rural schools"
     },
     {
-        "#": 98,
+        "id": 98,
         "Name": "Buddhi Kumar Tamang",
         "District": "Bara",
         "Province Project": "Province 2",
@@ -3565,7 +3565,7 @@ export const data = [
         "Description": "Buddhi was a construction worker for almost 15 years before partnering with his neighbor to start this enterprise. The plan was that Buddhi will look into the core business (production and construction) and his Partner will bring him clients. Things was going well at first but then his partner left and and Buddhi was left stranded, and not sure if he is able to run the enterprise on his own or if he needs to sell it."
     },
     {
-        "#": 118,
+        "id": 118,
         "Name": "Maya Tamang",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -3596,7 +3596,7 @@ export const data = [
         "Description": "Maya Tamang is young and smart women entrepreneur with a background in farming. She has invested in CSEB interlocking bricks because she believes this is the best construction material to build low-cost houses and has a great market."
     },
     {
-        "#": 129,
+        "id": 129,
         "Name": "Ravi Pratap Yadav",
         "District": "Rupandehi",
         "Province Project": "Province 2",
@@ -3627,7 +3627,7 @@ export const data = [
         "Description": "Ravi found out about CSEB from the socia media and decided to expand his already running construction business. After initially doing well in Butwal, Ravi wants to add another machine in his village in Dang."
     },
     {
-        "#": 134,
+        "id": 134,
         "Name": "Shankar Kumar Shrestha",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -3658,7 +3658,7 @@ export const data = [
         "Description": "Shankar was already running hollow concrete block factory that he started in 2009 after returning from foreign employment. Since he had the infrastructure and the labor team ready, it was an easy decision for to start producing CSEB as well. His wife is a housewife and his son and daughter are still in school but the daughter does the book keeping for the business after school.<br />\n"
     },
     {
-        "#": 23,
+        "id": 23,
         "Name": "Mahendra Pun",
         "District": "Rukum",
         "Province Project": "Province 5",
@@ -3689,7 +3689,7 @@ export const data = [
         "Description": "Mahendra Pun is a social worker and runs his own grocery shop in his locality. He came to know about Build up Nepal through one of his cousin who was already involved in CSEB brick business. Mahendra has a good reach in the local government and is very influential and effective in getting the local government involved in his enterprise. He has the plans to expand his business after getting more involved in constructing the government buildings and other structures around Triveni Gaupalika."
     },
     {
-        "#": 175,
+        "id": 175,
         "Name": "Bijay Subba Sambahamphe",
         "District": "Terhathum",
         "Province Project": "Province 1",
@@ -3720,7 +3720,7 @@ export const data = [
         "Description": "Bijay Subba using Interlocking bricks to make his own house got very inspired and decided to establish his own enterprise. He was running a construction company from before and is also active in politics in his area. "
     },
     {
-        "#": 162,
+        "id": 162,
         "Name": "Bhuvan Kumari Rupakheti",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -3751,7 +3751,7 @@ export const data = [
         "Description": "Bhuvan kumari was looking after the household responsibilities before starting this business. Bhuvan and her husband Pramod spoke about this business and decided that this can be managed alongside the regular household work. After starting, the enterprise did not perform well as the marketing for the product lacked. Bhuvan's husband, Pramod also started promoting these bricks and soon started supporting Bhuvan full time in the business. Together they make a strong team.<br />\n"
     },
     {
-        "#": 52,
+        "id": 52,
         "Name": "Gopal Lamichane",
         "District": "Lamjung",
         "Province Project": "Province 4 - Gandaki",
@@ -3782,7 +3782,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 158,
+        "id": 158,
         "Name": "Sapana Thapa",
         "District": "Lamjung",
         "Province Project": "Province 4 - Gandaki",
@@ -3813,7 +3813,7 @@ export const data = [
         "Description": "Sapna Thapa is a strong independent women who lost her parents at the age of 13. She is working with her business partner Binod Maharjan and is focusing on the need for low cost housing in the area. She is also supporting her siblings education and other expenses. She has a long-term plan to construct homestays with this CSEB once her siblings have completed their education."
     },
     {
-        "#": 45,
+        "id": 45,
         "Name": "Ashok Chaudhary",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -3844,7 +3844,7 @@ export const data = [
         "Description": "Ashok Chaudhary is a returning migrant who worked in Malasiya and Qatar before returning back to Nepal. He started with paper cup and plate making business that was profitable but very unstable. He asked the women in the house to take over the paper utensils business and explored more about CSEB interlocking bricks. He invested in a machine and soon turned into a contractor to carry out more serious construction work. Today he is the most respected CSEB contractor in the area and both making bricks himself and buying from other nearby entrepreneurs.  He returned his investment in less than 3 months and  has expanded geographically into other areas as well. "
     },
     {
-        "#": 160,
+        "id": 160,
         "Name": "Bikash Khatiwada",
         "District": "Kathmandu",
         "Province Project": "Province 3 - Bagmati",
@@ -3875,7 +3875,7 @@ export const data = [
         "Description": "Bikas and his 3 friends started this CSEB enterprise after seeing the demand surge after the earthquake in 2015. They waited for the reconstruction authority to approve the bricks and took advantage of a growing market. They were one of the first commercial entrepreneurs to use CSEB in a Public buildings.<br />\n"
     },
     {
-        "#": 136,
+        "id": 136,
         "Name": "Sukra Khadka",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -3906,7 +3906,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 111,
+        "id": 111,
         "Name": "Hari Bahadur BK",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -3937,7 +3937,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 17,
+        "id": 17,
         "Name": "Muna Dahal",
         "District": "Sankhuwasabha",
         "Province Project": "Province 1",
@@ -3968,7 +3968,7 @@ export const data = [
         "Description": "This husband wife duo bought the machine from one of our previous entrepreneurs. Muna Dahal works in a bank and works part time in the business while Santosh runs the day-to-day operations. They have also made a restaurant in Pokhara area with CSEB and run that on the side. "
     },
     {
-        "#": 50,
+        "id": 50,
         "Name": "Ram Kaji Thapa",
         "District": "Nuwakot",
         "Province Project": "Province 3 - Bagmati",
@@ -3999,7 +3999,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 274,
+        "id": 274,
         "Name": "Leave Noone Behind - Lamjung (Practical Action)",
         "District": "Lamjung",
         "Province Project": "Province 4 - Gandaki",
@@ -4030,7 +4030,7 @@ export const data = [
         "Description": "The Leave Noone behind project is working to rebuild houses for the most vulnerable families in Lamjung. We work as technical partner for Practical action to support the local community to build low-cost houses with CSEB bricks. As part of the project 11 local CSEB enterprises were established. "
     },
     {
-        "#": 275,
+        "id": 275,
         "Name": "Leave noone behind - Makwanpur (Practical action)",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -4061,7 +4061,7 @@ export const data = [
         "Description": "The Leave Noone behind project is working to rebuild houses for the most vulnerable families in Makwanpur. We work as technical partner for Practical action to support the local community to build low-cost houses with CSEB bricks. "
     },
     {
-        "#": 169,
+        "id": 169,
         "Name": "Rita Shrestha",
         "District": "Kathmandu",
         "Province Project": "Province 3 - Bagmati",
@@ -4092,7 +4092,7 @@ export const data = [
         "Description": "Hour construction owned by Rita Shrestha is a construction company. The CSEB enterprise is run by Jenis Maharjan, her brother and his friends. After initial hiccups, they decided to move their enterprise in Bara where the government Janata Aawas program for low-cost housing gave them a really good market."
     },
     {
-        "#": 18,
+        "id": 18,
         "Name": "Guna Ratna Magar",
         "District": "Udayapur",
         "Province Project": "Province 1",
@@ -4123,7 +4123,7 @@ export const data = [
         "Description": "Guna Ratna Magar was unemployed and did try a few different professions before settling on to establish his CSEB enterprise. His older Brother supported him financially to procure the machine and the arrange for the startup fund before handing it over to Guna to run it independently. Guna feels like this is a second opportunity for him to do well after struggling with alcohol abuse. "
     },
     {
-        "#": 237,
+        "id": 237,
         "Name": "Maniklal Moktan",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -4154,7 +4154,7 @@ export const data = [
         "Description": "Maniklal is a local politician in Kailash Rural municipality. He established CSEB factory with the aim to help vulnerable to rebuild their houses at low cost."
     },
     {
-        "#": 53,
+        "id": 53,
         "Name": "Yekendra Bahadur Bogati",
         "District": "Achham",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -4185,7 +4185,7 @@ export const data = [
         "Description": "Yakendra Bahadur Bogati  was working as a government employee and found out about the CSEB enterprise from his network of engineers who were studying and making buildings using CSEB. He started his business on the side of his government job and has plans to expand when his son come of age to run the enterprise. "
     },
     {
-        "#": 115,
+        "id": 115,
         "Name": "Ghanashyam Joshi",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -4216,7 +4216,7 @@ export const data = [
         "Description": "Ghanshyam Returned from Korea and came to know about this business through his friends. He has done really well and with his marketing skills have been able to capture good market in Kailali area. He has also taken a lead in forming of the CSEB interlocking brick association in Province 7<br />\n"
     },
     {
-        "#": 108,
+        "id": 108,
         "Name": "Ganesh Subedi",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -4247,7 +4247,7 @@ export const data = [
         "Description": "Ganesh Subedi, a block factor owner visited one of the community meetings arranged by Build up Nepal and was really impressed by the technology. Since he was already a construction factory owner, it was very easy decision for him to add a machine as he had the infrastructure and the team of labours ready. He did really well in the beginning but slowly started focusing more on his core business to rent out the excavators and other constructon machinaries. He has shut down his CSEB production due to COVID and lack of raw materials and has not been able to recover yet."
     },
     {
-        "#": 37,
+        "id": 37,
         "Name": "Ranjit Pandey",
         "District": "Rupandehi",
         "Province Project": "Province 5",
@@ -4278,7 +4278,7 @@ export const data = [
         "Description": "Ranjit Pandey was already involved in Construction and after the massive earthquake in 2015 he was attracted by this technology. They are a team of 4 friends who started the enterprise together and have been doing very well since. "
     },
     {
-        "#": 163,
+        "id": 163,
         "Name": "Birendra khadka",
         "District": "Achham",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -4309,7 +4309,7 @@ export const data = [
         "Description": "Birendra Khadka was working as an engineer who invested in the machine after getting some good feedback from the clients. He has shut down after COVID lockdown and unable to recover has gone back to work as a ward engineer.<br />\n"
     },
     {
-        "#": 166,
+        "id": 166,
         "Name": "Rit Bahadur Thakuri",
         "District": "Sindhuli",
         "Province Project": "Province 3 - Bagmati",
@@ -4340,7 +4340,7 @@ export const data = [
         "Description": "Rit Bahadur khatri started the business with an intent to hand it over to his son Sagar in the future. Sagar is working as a teacher while also operating the business. They plan to expand the business and add other construction materials like tiles, marbles as well.<br />\n"
     },
     {
-        "#": 277,
+        "id": 277,
         "Name": "Umesh Syangtan / Rohit",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -4371,7 +4371,7 @@ export const data = [
         "Description": "Umesh Syangtan, brother of one of our other CSEB entrepreneurs started his business after consulting his elder brother. He successfully returned his investment in just over 120 days. In January 2020, after having won the US Visa lottery, he sold his business to his friend Rohit who has followed on the good work done by Umesh. "
     },
     {
-        "#": 246,
+        "id": 246,
         "Name": "Som Bahadur Tamang",
         "District": "Ramechhap",
         "Province Project": "Province 3 - Bagmati",
@@ -4402,7 +4402,7 @@ export const data = [
         "Description": "Som Bahadur Tamang was working in timber plant and saw this as a very good alternative for red bricks. He consulted his family about wanting to start his own enterprise and all his family members supported him with the decision."
     },
     {
-        "#": 95,
+        "id": 95,
         "Name": "Amir Kusi",
         "District": "Bhaktapur",
         "Province Project": "Province 3 - Bagmati",
@@ -4433,7 +4433,7 @@ export const data = [
         "Description": "Amir Khusi and his three friends (all youths) started this after getting orientation from Build Up Nepal staffs in one of the training sessions for technical staffs. Amir immediately contacted our office to start this business and quit his job to focus on promoting this technology in urban and sub urban areas of Kathmandu and Bhaktapur."
     },
     {
-        "#": 247,
+        "id": 247,
         "Name": "Sudhir Aryal",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -4464,7 +4464,7 @@ export const data = [
         "Description": "Sudhir returned from Saudi Arabia and established his own Travel agency. After learning about CSEB and he decided to change focus and started a CSEB Brick factory. He started small with a single mould machine and after seeing the scope of this business now he had added another machine. "
     },
     {
-        "#": 124,
+        "id": 124,
         "Name": "Pramila Shrestha",
         "District": "Myagdi",
         "Province Project": "Province 4 - Gandaki",
@@ -4495,7 +4495,7 @@ export const data = [
         "Description": "Pramila wanted to start a small scale factory with low investment and thought CSEB had a big potential in her area. She is a very independent woman who have been able to achieve much in a short time. "
     },
     {
-        "#": 104,
+        "id": 104,
         "Name": "Dil Kumar Rai",
         "District": "Bhojpur",
         "Province Project": "Province 1",
@@ -4526,7 +4526,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 101,
+        "id": 101,
         "Name": "Dal Bahadur Buda",
         "District": "Rolpa",
         "Province Project": "Province 5",
@@ -4557,7 +4557,7 @@ export const data = [
         "Description": "Dal Bahadur Buda was working in the construction field for almost 14 years before investing in this business and is planning to involve both his son and daughter in the business in the coming days to support him in marketing and production"
     },
     {
-        "#": 47,
+        "id": 47,
         "Name": "Naren Rai",
         "District": "Morang",
         "Province Project": "Province 1",
@@ -4588,7 +4588,7 @@ export const data = [
         "Description": "Naren was abroad and wanted to start something in his own country after coming back to Nepal. While away from home, he saw the videos on YouTube and contacted us to book the machine as soon as he returned homNaren was abroad and wanted to start something in his own country after coming back to Nepal. While away from home, he saw the videos on YouTube and contacted us to book the machine as soon as he returned home.<br />\n"
     },
     {
-        "#": 122,
+        "id": 122,
         "Name": "Nakha Bahadur Dhungana",
         "District": "Kavrepalanchok",
         "Province Project": "Province 3 - Bagmati",
@@ -4619,7 +4619,7 @@ export const data = [
         "Description": "Nakha was running a block factory where he was visited by a Build Up Nepal representative. He decided to add CSEB to his existing business. Nakha is very focused on quality of bricks and is running his business with both CSEB and hollow concrete blocks. <br />\n"
     },
     {
-        "#": 110,
+        "id": 110,
         "Name": "Gyanesh Dhami",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -4650,7 +4650,7 @@ export const data = [
         "Description": "Gyanesh Dhami, a sub engineer by profession learned about CSEB from his friends and decided to start this business and have done really well. Gyanesh still works as a government engineer and he gets help from his family to do this business."
     },
     {
-        "#": 245,
+        "id": 245,
         "Name": "Janak Bhandari",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -4681,7 +4681,7 @@ export const data = [
         "Description": "Janak and his friend Roshan started this business after working together for 4 years as electricians. Both of them are young and energetic entrepreneurs with a very good marketing strategy to move forward. "
     },
     {
-        "#": 46,
+        "id": 46,
         "Name": "Kamal Tamang",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -4712,7 +4712,7 @@ export const data = [
         "Description": "After seeing the success of his nephew, Kamal Tamang, who use to drive trucks decided to start Interlocking brick business in Pharphing, a town close to Kathmandu. He is really happy that he doesn’t have to be away from his family and struggle to earn and make ends meet. His CSEB business has allowed him to stay close to the family and make good money at the same time. In the beginning (during the reconstruction) his business expanded exponentially and since has done very well. Today his wife and daughter are also helping him in the enterprise while his son drives the truck. They are soon planning to sell their truck and add another machine somewhere in Kathmandu valley. <br />\n"
     },
     {
-        "#": 151,
+        "id": 151,
         "Name": "Pramod Joshi",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -4743,7 +4743,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 140,
+        "id": 140,
         "Name": "Nabin Darai",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -4774,7 +4774,7 @@ export const data = [
         "Description": "Nabin Darai, a young entrepreneur who was abroad for 5 years before returning and starting this business with his father Prem Darai. Like most father son duo, Prem looks after the production and Nabin does the marketing for the enterprise. Nabin also works in a chicken feed factory as a sales officer, so has to travel a lot and he combines his sales skills to market his bricks at the same time. They have a hydraulic machine and a well-designed factory with PAN mixer, and conveyor belt and can produce very efficiently. "
     },
     {
-        "#": 142,
+        "id": 142,
         "Name": "Yam Bahadur Rokka",
         "District": "Dang Deokhuri",
         "Province Project": "Province 5",
@@ -4805,7 +4805,7 @@ export const data = [
         "Description": "Yam Bahadur Rokka is running a clothing shop and after seeing our videos on Facebook got inspired to start a CSEB enterprise. He says that he wants to do something new, that can also create employment opportunities in his area."
     },
     {
-        "#": 44,
+        "id": 44,
         "Name": "Dambar Thapa",
         "District": "Dailekh",
         "Province Project": "Province 6 - Karnali",
@@ -4836,7 +4836,7 @@ export const data = [
         "Description": "Dambar Thapa, a local politician who wanted to start his construction enterprise decided to go for CSEB as the bricks were ecofriendly and the supply for red bricks being very difficult in his area. He is now full time involved in the business and expects to get the CSEB approved in the district norms very soon in his area."
     },
     {
-        "#": 171,
+        "id": 171,
         "Name": "Punam kumari Paudel",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -4867,7 +4867,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 130,
+        "id": 130,
         "Name": "Ravi Shankar Prasad",
         "District": "Bara",
         "Province Project": "Province 2",
@@ -4898,7 +4898,7 @@ export const data = [
         "Description": "Ravi Shankar Prasad after graduating from the UK came back and took a job with a NGO in kathmandu before returing back to his hometown after his  father had a heart surgery to look after his family business of petrol pump and rice mill. He has expanded CSEB enterprise as he wanted to run a construction enterprise. Ravi's wife is a Dental surgeon and helps him in his business from time to time especially when he is out of town."
     },
     {
-        "#": 133,
+        "id": 133,
         "Name": "Kailash Rai/ Sarita Rai",
         "District": "Khotang",
         "Province Project": "Province 1",
@@ -4929,7 +4929,7 @@ export const data = [
         "Description": "Kailash did very big Investment but strength of the produced bricks were not good, so he decided to take those bricks and give them as donation into various structures. He did not contact Build up Nepal about the problems and decided to close his enterprise. "
     },
     {
-        "#": 152,
+        "id": 152,
         "Name": "Nishant Malla",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -4960,7 +4960,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 38,
+        "id": 38,
         "Name": "Surat Saud",
         "District": "Bajura",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -4991,7 +4991,7 @@ export const data = [
         "Description": "Surat is a young and energetic entrepreneur who has started his enterprise in the remote village of Bajura. Since the red bricks are very expensive and the weather is favorable for Interlocking bricks, he decided to invest in the business. He is very content with the business and says that he has been able to return his investment in 8 months."
     },
     {
-        "#": 125,
+        "id": 125,
         "Name": "Prem Singh Dhami",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -5022,7 +5022,7 @@ export const data = [
         "Description": "Prem Singh Dhami was working as a farmer. He came to know about this business from a friend and after consulting his son and wife, started this business in partnership. Later the partnership broke and Prem is now running the enterprise on his own. "
     },
     {
-        "#": 34,
+        "id": 34,
         "Name": "Yagya Kumari karki",
         "District": "Sarlahi",
         "Province Project": "Province 2",
@@ -5053,7 +5053,7 @@ export const data = [
         "Description": "Yagya Kumari Karki was enjoying the retired life and was doing small household farming before son Lokendra Bahadur Karki wanted her help in staring this business. Yagya looks after the production while Lokendra looks after the marketing. Lokendra works as a high school teacher, so works only part time in the business and Yagya works full time."
     },
     {
-        "#": 48,
+        "id": 48,
         "Name": "Ram Kumar Chaudhary",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -5084,7 +5084,7 @@ export const data = [
         "Description": "Ram Kumar Chaudhary and his son Robin Chaudhary started producing CSEB  with an intent to expand their existing hollow concrete block factory. Ram started the factory in his early thirtys and after almost 10 years in the sector is a very well respected business man in the area. "
     },
     {
-        "#": 123,
+        "id": 123,
         "Name": "Paras and Jayraj Wod/ Mukesh BK",
         "District": "Bajura",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -5115,7 +5115,7 @@ export const data = [
         "Description": "Paras was working as a marketing associate in India and Mukesh was working as a social mobiliser in an NGO in Kailali. Both of them partnered to start this business and with the support from Build Up Nepal, they flourished and were able to do really well. They say that they were able to return their investment in less than 5 months."
     },
     {
-        "#": 41,
+        "id": 41,
         "Name": "Bhime Kumar Danuwar",
         "District": "Sindhuli",
         "Province Project": "Province 3 - Bagmati",
@@ -5146,7 +5146,7 @@ export const data = [
         "Description": "Bhime and Sumiran expanded their partnerships with mobile shops, Grill and steel works, Hardware shops and then into CSEB enterprise. After running successfully for over a year, Sumiran and Bhime parted ways in early 2020 but because of COVID and lockdown restrictions  have not been able to restart their CSEB enterprise. "
     },
     {
-        "#": 97,
+        "id": 97,
         "Name": "Bishnu Kumar Gupta",
         "District": "Siraha",
         "Province Project": "Province 2",
@@ -5177,7 +5177,7 @@ export const data = [
         "Description": "Bishnu Kumar after retiring as a Health assistant started his medicine shop and soon expanded to start his own CSEB production. Bishnu is also involved in politics and plans to contest in the upcoming elections in 2021, but makes his living from the enterprise."
     },
     {
-        "#": 168,
+        "id": 168,
         "Name": "Siddhant Fauzdar",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -5208,7 +5208,7 @@ export const data = [
         "Description": "Siddhant Fauzdar, 34 returned from Qatar in 2014 and started a stationary business in Bardaghat and after investing his profit in a land nearby, he was advised by his friend to start an Interlocking brick factory. Because he was alone and his wife being in a full time job at a bank, he has not been able to fully focus on this business. He still has stock for CSEBs and is planning to sell his company. He approached some of our other entrepreneurs in his local area and he is confident that he will be able to sell this business successfully in the coming days. "
     },
     {
-        "#": 40,
+        "id": 40,
         "Name": "Dipesh Majhi",
         "District": "Sindhuli",
         "Province Project": "Province 3 - Bagmati",
@@ -5239,7 +5239,7 @@ export const data = [
         "Description": "Dipesh's Father Sher Bahadur Majhi worked as a contractor in Kathmandu and wanted to return back to Sindhuli and start his own business. Since he was already in the construction field, it was very easy for him to learn this new technology. Dipesh is also very interested in the business and wanted to support his father after completing his studies. He was supposed to graduate in 2020 and plans to take over the business from his dad, but COVID forced them to close the enterprise and have not been able to recover. <br />\n"
     },
     {
-        "#": 165,
+        "id": 165,
         "Name": "Bal Bdr Gurung",
         "District": "Manang",
         "Province Project": "Province 4 - Gandaki",
@@ -5270,7 +5270,7 @@ export const data = [
         "Description": "Bal  Bahadur Gurung was a hotel owner and wanted to diversify to construction sector. After watching our videos on YouTube, he contacted Build up Nepal and immediately booked a machine. His enterprise got good response was given by the government and as well as it is able to create job opportunities locally.<br />\n"
     },
     {
-        "#": 109,
+        "id": 109,
         "Name": "Ganesh Bahadur Tamang",
         "District": "Lamjung",
         "Province Project": "Province 4 - Gandaki",
@@ -5301,7 +5301,7 @@ export const data = [
         "Description": "Ganesh returned from the foreign employment after 17 years. He and his family first invested in a hotel which did not return the investment, so he expanded to other areas. This is a family run enterprise, where the production is taken care by the wife, and marketing is done by both the brothers. "
     },
     {
-        "#": 36,
+        "id": 36,
         "Name": "Samikchya Acharya Timilsina",
         "District": "Tanahu",
         "Province Project": "Province 4 - Gandaki",
@@ -5332,7 +5332,7 @@ export const data = [
         "Description": "Samikchya was a successful owner of a Grocery shop on the highway. She and her husband added CSEB enterprise next to their shop. Samikchya looks after the production and core business while the husband Ramjee, does marketing and sales<br />\n"
     },
     {
-        "#": 127,
+        "id": 127,
         "Name": "Raj Kumar Thing",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -5363,7 +5363,7 @@ export const data = [
         "Description": "Youth from Janajati community who wanted to start his own enterprise. He was working in Malaysia and contacted us from there with a plan to start his own enterprise. He planned everything from Malaysia itself and started immediately once he returned. Raj is planning to call back his brother as well to make him run the business and start this in more locations."
     },
     {
-        "#": 173,
+        "id": 173,
         "Name": "Bhim Kala Bhandari",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -5394,7 +5394,7 @@ export const data = [
         "Description": "Bhim Kala Bhandari was a housewife and was taking care of four children when Husband Bishnu was away for foreign employment. After returning Bishnu started his own transport business. He consulted Bhim kala who was eager to start the enterprise and together they have created a very good market for CSEB in the area. Bishnu expresses content on the fact that this business has made him a business owner and given his wife a very good reason to indulge in business that can be operated along with household responsibilities."
     },
     {
-        "#": 281,
+        "id": 281,
         "Name": "Construction of houses in badi community",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -5425,7 +5425,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 282,
+        "id": 282,
         "Name": "Yangshilla school",
         "District": "Morang",
         "Province Project": "Province 1",
@@ -5456,7 +5456,7 @@ export const data = [
         "Description": "Construction of school building with 5 classrooms and masons training in Yangshilla."
     },
     {
-        "#": 285,
+        "id": 285,
         "Name": "Construction of orphanage in Pharping",
         "District": "Kathmandu",
         "Province Project": "Province 3 - Bagmati",
@@ -5487,7 +5487,7 @@ export const data = [
         "Description": "Construction of an orphanage in Pharping"
     },
     {
-        "#": 284,
+        "id": 284,
         "Name": "Abigaun School reconstruction",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -5518,7 +5518,7 @@ export const data = [
         "Description": "Reconstruction of the Abigaun school. A very challenging location without road access and materials had to be carried by mules. "
     },
     {
-        "#": 283,
+        "id": 283,
         "Name": "Basnetgaun school",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -5549,7 +5549,7 @@ export const data = [
         "Description": "Construction of the basnetgaun school in Dhading with CSEB. "
     },
     {
-        "#": 187,
+        "id": 187,
         "Name": "Bishnu Acharaya",
         "District": "Dang Deokhuri",
         "Province Project": "Province 5",
@@ -5580,7 +5580,7 @@ export const data = [
         "Description": "Bishnu Acharya is a business man running different  business of land dealing and resorts. He and group  of friends have invested in a large area of land and have lots of structure to be made ni that area. For  that sole purpose and promoting a new technology  they have invested in the CSEB business which  promotes new technology and also provides jobs to  the local tharu people. Their initial plan is to build  with this technology in their own areas and promote it in the area as per the interest in local about the technology.<br />\n"
     },
     {
-        "#": 57,
+        "id": 57,
         "Name": "Susan Limbu",
         "District": "Kathmandu",
         "Province Project": "Province 3 - Bagmati",
@@ -5611,7 +5611,7 @@ export const data = [
         "Description": "4 youths started this enterprise together and are doing really well. They did visit a lot of companies and also went to India before deciding to start their enterprise in support of Build up Nepal."
     },
     {
-        "#": 185,
+        "id": 185,
         "Name": "Suraj Shrestha",
         "District": "Tanahu",
         "Province Project": "Province 4 - Gandaki",
@@ -5642,7 +5642,7 @@ export const data = [
         "Description": "Suraj Shrestha and Ghanshyam Shrestha, two brothers who invested in the business after successfully running block and crushers enterprise in Tanahun. Both of them together have a combined experience of over 45 years in construction business mostly as contractors. They now plan to use that experience to help make more money by using their own bricks in their construction works."
     },
     {
-        "#": 55,
+        "id": 55,
         "Name": "Swostika Panthi",
         "District": "Lamjung",
         "Province Project": "Province 4 - Gandaki",
@@ -5673,7 +5673,7 @@ export const data = [
         "Description": "Swastika Panthi Chiluwal, a reporter by profession wanted to start her interlocking business after sensing a huge opportunity with one of the NGO projects in her area. Swastika is being well supported by her father who looks after the production and has spent 20% in the business as a soft loan to his daughter. She decided to spend big on a hydraulic machine and secure an order of more than 40,000 bricks even before the start of her business. Swastika has been elected as the secretary of the Interlocking brick association of Gandaki province and plans to work closely to ensure that the association is doing well in the future."
     },
     {
-        "#": 226,
+        "id": 226,
         "Name": "Santosh Bohara",
         "District": "Bajhang",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -5704,7 +5704,7 @@ export const data = [
         "Description": "Santosh came back to Nepal post lockdown and was exploring some ideas to establish something of his own. Santosh consulted his friends who were running CSEB factory and decided to invest in the business. He says that the low investment  and good market was the most appealing thing about the business "
     },
     {
-        "#": 204,
+        "id": 204,
         "Name": "Chana Bahadur Gaha",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -5735,7 +5735,7 @@ export const data = [
         "Description": "Chana Bahadur Gaha, 28 returned from Dubai and started looking for alternatives to start his own business. After consulting with his father, both of them decided to travel to Kathmandu to learn more and after a lot of careful consideration, started a CSEB production. They run the enterprise as a family business, Anishs mother and sister are also involved in the enterprise. Anish says that after he has started this, he is very confident that he doesn't wish to go abroad again and wants to establish his business here in Nepal."
     },
     {
-        "#": 216,
+        "id": 216,
         "Name": "Prem Rawal",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -5766,7 +5766,7 @@ export const data = [
         "Description": "Prem Rawal is a young entrepreneur of 33 years. He used to work in farming as well as a part time truck driver. He has multi mold machine. He and his team is excited about CSEB technology, and have plans to expand in coming days."
     },
     {
-        "#": 215,
+        "id": 215,
         "Name": "Raj Kumari Devi",
         "District": "Siraha",
         "Province Project": "Province 2",
@@ -5797,7 +5797,7 @@ export const data = [
         "Description": "Raj Kumari Devi with her sons help has establish a CSEB business in her own locality. They are running the factory smoothly together. Both of them used to work in agriculture in their own farm. They are both really happy about the new business and hope to increase their income significantly."
     },
     {
-        "#": 225,
+        "id": 225,
         "Name": "Jitendra Giri",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -5828,7 +5828,7 @@ export const data = [
         "Description": "Jitendra Giri was running a photo studio before his friends told him about the opportunity with CSEB bricks. He established the factory an started to use the bricks to make his own house and use that as a model to market his enterprise."
     },
     {
-        "#": 207,
+        "id": 207,
         "Name": "Prithivi Bahadur Shahi",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -5859,7 +5859,7 @@ export const data = [
         "Description": "Prithivi Singh Sahi is young, energetic and optimistic entrepreneur. He is 37 years old with a business background. He is running a hardware store from before and since he is already supplying construction material from there he have a lot of contacts to sell his bricks. "
     },
     {
-        "#": 217,
+        "id": 217,
         "Name": "Bal Bdr Shahi",
         "District": "Dailekh",
         "Province Project": "Province 6 - Karnali",
@@ -5890,7 +5890,7 @@ export const data = [
         "Description": "Bhupendra Shahi and Bal Bahadur Shahi are young entrepreneurs from a middle class family. Bhupendra and Bal Bahadur wanted to start their new business so that they can support family with money. They saw several other entrepreneurs doing well in CSEB and decided to start their own production thinking they have scope to manufacture a really efficient new construction material."
     },
     {
-        "#": 218,
+        "id": 218,
         "Name": "Indra Kaji Lama",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -5921,7 +5921,7 @@ export const data = [
         "Description": "Indra kaji Sherpa Lama is a positive optimistic active entrepreneur. The background of entrepreneur is Social Service. He is from medium class family. Indra kaji Sherpa and his team is happy on this CSEB technology, they said it is very easy to produce and to build and they believe this can replace fired bricks in their location.<br />\n"
     },
     {
-        "#": 28,
+        "id": 28,
         "Name": "Sangita Shrestha",
         "District": "Nawalparasi",
         "Province Project": "Province 4 - Gandaki",
@@ -5952,7 +5952,7 @@ export const data = [
         "Description": "Sangita Shrestha runs this business with support from her husband. After initial struggle and the COVID lockdown, both of them were looking for buyers for their business. But after lockdown and the festival season, their business has picked up and they have now decided to keep their business and are working very hard to turn things around. We were able to find a few customers in their locality that helped them, and they have decided to keep running the business."
     },
     {
-        "#": 33,
+        "id": 33,
         "Name": "Bikram Bahadur Silwal",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -5983,7 +5983,7 @@ export const data = [
         "Description": "Tara Silwal and Mohan Shrestha became partners in 2018 for their agro farm business. Both of them decided to expand their business in 2020 and add CSEB to their services. They had to struggle a lot because of COVID lockdown and their trained staffs leaving. But they have been able to turn it around and hire new staffs, trained them again and are doing well."
     },
     {
-        "#": 276,
+        "id": 276,
         "Name": "Rajya Laxmi Shrestha",
         "District": "Bhaktapur",
         "Province Project": "Province 3 - Bagmati",
@@ -6014,7 +6014,7 @@ export const data = [
         "Description": "Rajya Laxmi jee and her brother Rameshwor decided to start this business after Laxmi was free from all the household responsibilities and could focus more on the business after sending her children for higher studies. "
     },
     {
-        "#": 32,
+        "id": 32,
         "Name": "Indra Kshedal",
         "District": "Doti",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -6045,7 +6045,7 @@ export const data = [
         "Description": "Indra Kshedal is a teacher and his partner Tulsi is a part time factory worker. Both have invested in the brick business and are doing really well. They have also supplied the bricks for two women cooperative group on a subsidized rate and supported the local government to build one health post in their area."
     },
     {
-        "#": 29,
+        "id": 29,
         "Name": "Sani Rai",
         "District": "Udayapur",
         "Province Project": "Province 1",
@@ -6076,7 +6076,7 @@ export const data = [
         "Description": "Sani Rai recently returned from migrant work in Malaysia. He first learned about Earth Bricks and build up Nepal via YouTube and Facebook when he was working in Malaysia. Returning to Nepal he was motivated to start an enterprise in his village to help his family and neighbors earn a better income and build better houses at lower cost. Sani is hopeful for the future and helping improving the living standards in his village."
     },
     {
-        "#": 254,
+        "id": 254,
         "Name": "Mohan Je/ Tara Silwal",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -6107,7 +6107,7 @@ export const data = [
         "Description": "Tara Silwal and Mohan Shrestha became partners in 2018 for their agrofarm business. Both of them decided to expand their business in 2020 and add CSEB to their services. Initally struggling because of COVID lockdown and their trained staffs leaving, they have been able to turn it around and hire new staffs, trained them again and are doing well. The expected sales are not up to the mark but they are confident that they can turn it around in the coming days."
     },
     {
-        "#": 256,
+        "id": 256,
         "Name": "ADARA DEVELOPMENT NEPAL",
         "District": "Humla",
         "Province Project": "Province 6 - Karnali",
@@ -6138,7 +6138,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 27,
+        "id": 27,
         "Name": "Niraj Gurung",
         "District": "Morang",
         "Province Project": "Province 1",
@@ -6169,7 +6169,7 @@ export const data = [
         "Description": "Niraj always aspired to be independent and defy limiting norms of what a young Nepali can do.  He recently returned from migrant work abroad.<br />\nNiraj believes that CSEB Bricks is the best building material in rural areas and even urban areas of Nepal. When returning from abroad he wanted to live with his family and needed to be able to earn something in the village.<br />\nHe started his enterprise at the end of January 2020 and is producing well after that. We are impressed by his determination and his detailed research before deciding to start his enterprise.<br />\n"
     },
     {
-        "#": 51,
+        "id": 51,
         "Name": "Khem Ghale",
         "District": "Lamjung",
         "Province Project": "Province 4 - Gandaki",
@@ -6200,7 +6200,7 @@ export const data = [
         "Description": "Khem Ghale is a young and smart entrepreneur. His background is from agriculture and he works in different business for three years. He is happy to have started his CSEB enterprise because he says it is one of the best building material to build house in low-cost and earthquake resistant."
     },
     {
-        "#": 253,
+        "id": 253,
         "Name": "School reconstruction & masons training in Rasuwa",
         "District": "Rasuwa",
         "Province Project": "Province 3 - Bagmati",
@@ -6231,7 +6231,7 @@ export const data = [
         "Description": "Construction of the village school and training of local masons in CSEB construction"
     },
     {
-        "#": 25,
+        "id": 25,
         "Name": "Kopila Thapa Magar",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -6262,7 +6262,7 @@ export const data = [
         "Description": "Kopila comes from a educated family where all her kids are in to higher education. She is what can be described as an serial entrepreneur as she invested first in organic farming, followed by poultry business and then investing in the CSEB enterprise. She faced a lot of struggle initially to convince people and local engineers about the bricks but are doing well now. Her husband also helps in the business with sales and marketing."
     },
     {
-        "#": 248,
+        "id": 248,
         "Name": "Rajan Neupane",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -6293,7 +6293,7 @@ export const data = [
         "Description": "Rajan Neupane, 34 was running a successful construction enterprise before getting involved in the CSEB brick business. He has a block business and crusher enterprise in Bhimphedi, Makwanpur. After being impressed with the finishing of CSEB houses, he enquired about the business and after learning about the support from Build Up Nepal, he was eager to invest in CSEB. He has done very well after starting and soon planning to add expand with a second machine a new area - Bardibas where he has his brother looking after similar construction business."
     },
     {
-        "#": 49,
+        "id": 49,
         "Name": "Sunil Shrestha",
         "District": "Kaski",
         "Province Project": "Province 4 - Gandaki",
@@ -6324,7 +6324,7 @@ export const data = [
         "Description": "Sunil Shrestha partnered with his childhood friend Sabin to start CSEB interlocking business. Sabin, a software engineer by profession invested half the money and Sunil is investing his time and money. They have done really good in their area in a short span of time. Sabin is involved part time while Sunil is the one giving full time in the operation."
     },
     {
-        "#": 174,
+        "id": 174,
         "Name": "Ram Bahadur Baniya",
         "District": "Bajura",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -6355,7 +6355,7 @@ export const data = [
         "Description": "Social worker and politician with very good influence in the district level. After learning about the advantages of CSEB interlocking bricks he decided to start his enterprise with the support from Build up Nepal. After a very good start, his enterprise was hit with flood that destroyed his machine, his stock and all the trained workers left. After almost 4 months, they have recovered well and are starting to produce again.<br />\n"
     },
     {
-        "#": 24,
+        "id": 24,
         "Name": "Kuldip Sharma",
         "District": "Bardiya",
         "Province Project": "Province 5",
@@ -6386,7 +6386,7 @@ export const data = [
         "Description": "Kuldip decided to start his own enterprise with aim of being an independent, helping to create jobs and contribute to preserve environment. He is a motivated youth that felt uninspired in his previous job in local bank. Kuldip is planning to promote the Earth Brick technology around his local area Madhuban-8, Bardiya, helping families build disaster resistant, eco-friendly houses at low cost."
     },
     {
-        "#": 63,
+        "id": 63,
         "Name": "Raju Paudel",
         "District": "Kaski",
         "Province Project": "Province 4 - Gandaki",
@@ -6417,7 +6417,7 @@ export const data = [
         "Description": "Raju Paudel, 44, after a thoughtful consideration and looking at the progress made by Interlocking bricks in Nepal was keen to start his own production. Raju went abroad  as a construction worker first in Malaysia and then in Qatar. Upon returning, he wanted to stay in Nepal and start his own business. He decided to start CSEB business after seeing the success of some of the entrepreneurs in his local area of Pokhara."
     },
     {
-        "#": 59,
+        "id": 59,
         "Name": "Arjun Aauji",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -6448,7 +6448,7 @@ export const data = [
         "Description": "Arjun Auji is a middle class entrepreneur who works as a owner of a block and Pole factory. He previously sold concrete blocks poles nd paving blocks from his business. He wanted to expand his business in CSEB  and believe this technology have a very good market in his area.<br />\n"
     },
     {
-        "#": 176,
+        "id": 176,
         "Name": "Om kumari Chaudhary",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -6479,7 +6479,7 @@ export const data = [
         "Description": "Om kumari Chaudhary is a farmer of 35 years old. She belongs in middle class family. She lives with mother in-law, husband and their two daughters. Om kumara wanted to start a new business in order to support her family and was looking for different opportunities. Finally she found CSEB technology which is expanding rapidly in Western part of Nepal."
     },
     {
-        "#": 126,
+        "id": 126,
         "Name": "Raj Kumar Nepali",
         "District": "Dang Deokhuri",
         "Province Project": "Province 5",
@@ -6510,7 +6510,7 @@ export const data = [
         "Description": "Raj Kumar33 year old Raj Kumar Nepali is young entrepreneur. He started hollow block factory in Gadhawa bazar 7 years ago. He found CSEB technology which is expanding rapidly in Western part of Nepal. During his research, he found CSEB technology is environment friendly, affordable, earthquake resistance, easy workability, durability and decided to expand his existing business into CSEB.  Nepali is young entrepreneur. He started hollow block factory in Gadhawa bazar before 7 years. He wants to expand his business which will relate to construction work, so he starts to work out on new business ideas.  Finally, he found CSEB technology which is expanding rapidly in Western part of Nepal. During her research, he found CSEB technology is environment friendly, affordable, earthquake resistance, easy workability, durability and so on.<br />\n"
     },
     {
-        "#": 56,
+        "id": 56,
         "Name": "Samir Kumar BC",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -6541,7 +6541,7 @@ export const data = [
         "Description": "Samir recently returned to Nepal from working as migrant worker abroad. His family is mainly active in agriculture which barely puts enough food on the table. He has some background within construction and wanted to expand in this area as he saw huge need and demand for new houses in his area. Samir was planning to do something in own country and not go for foreign employment anymore. He came to know about Earth Bricks from social media and his friends and relatives in Nepal. "
     },
     {
-        "#": 26,
+        "id": 26,
         "Name": "Tapendra Shahi",
         "District": "Dailekh",
         "Province Project": "Province 6 - Karnali",
@@ -6572,7 +6572,7 @@ export const data = [
         "Description": "Tapendra is a multi-dynamic guy involved in several sector for earning his living. He started his career as teacher. He also has worked as marketing officer in medical tools supplier company for few years. He started the interlocking brick factory with the aim to help locals to build better house at low cost, create local economic activities and jobs. The demand for bricks is amazingly growing up so he is planning to increase production capacity right after the festivals."
     },
     {
-        "#": 182,
+        "id": 182,
         "Name": "Daan Singh Karki",
         "District": "Baitadi",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -6603,7 +6603,7 @@ export const data = [
         "Description": "Dan singh Karki is a teacher of college. He wants to create job for his villagers so that they can earn money in their own village. So he starts to search local base business. During his research, he found CSEB technology is environment friendly, affordable, earthquake resistance, easy workability, durability and can create local job for many villagers. His research also shows business of CSEB/Interlocking brick will be the best for him to create local job and earn money from it.<br />\n"
     },
     {
-        "#": 31,
+        "id": 31,
         "Name": "Mohan Rana",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -6634,7 +6634,7 @@ export const data = [
         "Description": "Mohan Rana and Bhupendra Rana are young entrepreneurs. Bhupendra is a farmer and has his own Land in Kanj and Mohan is a shop owner of mobile and telecommunication in his village. They believe CSEB is the best and most cost effective method to build in their location and started the business together. "
     },
     {
-        "#": 116,
+        "id": 116,
         "Name": "Manju, Saraswati and Subhadra",
         "District": "Tanahu",
         "Province Project": "Province 4 - Gandaki",
@@ -6665,7 +6665,7 @@ export const data = [
         "Description": "Manju, Saraswati and Subhadra are from the same village in Tanahun and run a women cooperative. They decided to invest their profit in the interlocking brick business. All of them are working in the enterprise and hired two more people to help with more intensive labor. Apart from that, they have their women cooperative staffs who are working as active sales agent for their enterprises."
     },
     {
-        "#": 180,
+        "id": 180,
         "Name": "Binod Lama",
         "District": "Humla",
         "Province Project": "Province 6 - Karnali",
@@ -6696,7 +6696,7 @@ export const data = [
         "Description": "Binod was running a small hotel in Humla, a very remote area. After finding out from his friends about the low investment nature of the business, he decided to establish one unit in his backyard but because of the cost required to operate this, decided to stop production and focus on the hotel business.<br />\n"
     },
     {
-        "#": 61,
+        "id": 61,
         "Name": "Raju Tuladhar",
         "District": "Udayapur",
         "Province Project": "Province 1",
@@ -6727,7 +6727,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 62,
+        "id": 62,
         "Name": "Taranee Prasad Yadav",
         "District": "Saptari",
         "Province Project": "Province 2",
@@ -6758,7 +6758,7 @@ export const data = [
         "Description": "Tarnee Prasad Yadav is young and smart entrepreneur. He was interested to start a CSEB production after seeing that this was an opportunity to build houses fast and at low cost."
     },
     {
-        "#": 60,
+        "id": 60,
         "Name": "Sunil Bhomjan / Raj Kumar Waiba",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -6789,7 +6789,7 @@ export const data = [
         "Description": "Sunil use to run a small factory producing fired bricks and his partner Raj was a tractor driver. Both while exploring more options to start their enterprise, decided to invest in this business with equal stake. They have done well and in a very short time able to recover their investment. "
     },
     {
-        "#": 114,
+        "id": 114,
         "Name": "Khuraj Chaulagain",
         "District": "Kathmandu",
         "Province Project": "Province 3 - Bagmati",
@@ -6820,7 +6820,7 @@ export const data = [
         "Description": "Khurraj Chaulagain is a very promising young entrepreneur. After returning from abroad he established his factory in Kathmandu because of the wide market. Khurraj has been able to expand to new areas in Kathmandu within a very short time and has been able to breaking even within 4 months of setting up and starting his production unit."
     },
     {
-        "#": 255,
+        "id": 255,
         "Name": "Raj Kumar Oli",
         "District": "Salyan",
         "Province Project": "Province 6 - Karnali",
@@ -6851,7 +6851,7 @@ export const data = [
         "Description": "Raj Kumar Oli is an IT Officer at in the local government. He lives in a joint family of 20 members. To have alternate source of income, he started the CSEB factory. He also aim to supply the easy, economic and alternate construction materials in his locality."
     },
     {
-        "#": 58,
+        "id": 58,
         "Name": "Ana Bahadur Khadka",
         "District": "Myagdi",
         "Province Project": "Province 4 - Gandaki",
@@ -6882,7 +6882,7 @@ export const data = [
         "Description": "Ana and his friends visited Build up Nepal and got really excited about CSEB. Before buying the machine they started marketing in their area. After they had generated the demands for these bricks, they were able to get pre bookings from customers and started their production."
     },
     {
-        "#": 30,
+        "id": 30,
         "Name": "Pitambar Sejwal",
         "District": "Arghakhanchi",
         "Province Project": "Province 5",
@@ -6913,7 +6913,7 @@ export const data = [
         "Description": "Pitambar Sejwal, a young entrepreneur who is very active in various social media platforms and is also the youth chairperson of Rotary Club, Sandhikharka decided to start his own CSEB business after sensing an opportunity in the government funded projects announced in 2019. With his presentation skills and influence, he was able to convince the local government to rebuild rebuilt after the hailstorm and landslide with his bricks. He continually works with the local level and other NGOs in the area to rebuilt the houses that are effected by landslide as it is a landslide prone area."
     },
     {
-        "#": 178,
+        "id": 178,
         "Name": "Shankar Silwal",
         "District": "Dhading",
         "Province Project": "Province 3 - Bagmati",
@@ -6944,7 +6944,7 @@ export const data = [
         "Description": "CSEB is a very popular product in construction in Nalang area of Dhading. Inspired with the growth of the technology, Shankar silwal, 37 decided to invest in the CSEB business. <br />\n He hired trained staffs who knew how to build with these bricks and started taking big contracts from the local level. "
     },
     {
-        "#": 257,
+        "id": 257,
         "Name": "Sambhav Nepal",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -6975,7 +6975,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 167,
+        "id": 167,
         "Name": "Narayan Timilsina",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7006,7 +7006,7 @@ export const data = [
         "Description": "Narayan Timilsina was producing Fabrics and exporting. Narayan came to know about the CSEB business from his friends and after searching on YouTube, contacted Build Up Nepal and established the factory. He says because the financial risk was so low, he was motivated to start this business without having any prior knowledge in construction sector."
     },
     {
-        "#": 203,
+        "id": 203,
         "Name": "Raju Shrestha",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -7037,7 +7037,7 @@ export const data = [
         "Description": "Raju Shrestha, 54 got inspired after seeing the progress of another entrepreneur from Kalika Gaupalika. Raju Shrestha is a contractor, politician and also runs a hardware shop in the village. He first met our project representatives in Bharatpur where we invited all the potential entrepreneurs for a quick interaction about the feasibility of the business. He was impressed with the training and were very focused on quality. He has recently added a second machine in a different location and sees a very good future for Interlocking bricks in the coming days."
     },
     {
-        "#": 206,
+        "id": 206,
         "Name": "Madan Kumar Pradhan",
         "District": "Ilam",
         "Province Project": "Province 1",
@@ -7068,7 +7068,7 @@ export const data = [
         "Description": "Madan kumar Pradhan is young and smart entrepreneur. The background of entrepreneur is from transportation sector and has his own sumo taxi and works as driver. He believes the market for CSEB technology will grow as more people can see the new buildings made.<br />\n"
     },
     {
-        "#": 172,
+        "id": 172,
         "Name": "Radha Khatri",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -7099,7 +7099,7 @@ export const data = [
         "Description": "Radha and her husband started this enterprise after seeing the demand for CSEB bricks rise in their area. They enquired about the business and with the help of social media, they reached Build up Nepal and decided to go ahead and start production.<br />\n"
     },
     {
-        "#": 205,
+        "id": 205,
         "Name": "Roshan Luhar",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7130,7 +7130,7 @@ export const data = [
         "Description": "Roshan Luhar is young and smart entrepreneur. He is from the agricultural sector and belongs to a backward community. Roshan and his team is happy on this CSEB technology, they said it is the best material to build houses both cheap and fast."
     },
     {
-        "#": 201,
+        "id": 201,
         "Name": "Dam Singh Tamang",
         "District": "Ramechhap",
         "Province Project": "Province 3 - Bagmati",
@@ -7161,7 +7161,7 @@ export const data = [
         "Description": "Dam Singh Tamang is young and energetic entrepreneur. His main business is traditional farming. He have two other partners whose name are Bire Tamang and Furba Tamang. The three friends belongs to a backward community and decided to start producing CSEB to build low-cost houses in their area. "
     },
     {
-        "#": 210,
+        "id": 210,
         "Name": "Khairu Tamang",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7192,7 +7192,7 @@ export const data = [
         "Description": "Khairu Tamang is an entrepreneur and a local politician. He is the District co-ordination committee chair person of kanchanpur District. He comes from a backward community. Khairu Tamang and his team is working hard and thinks quality is the most important when making bricks."
     },
     {
-        "#": 177,
+        "id": 177,
         "Name": "Dr. Dharma Shrestha",
         "District": "Bardiya",
         "Province Project": "Province 5",
@@ -7223,7 +7223,7 @@ export const data = [
         "Description": "Medical Doctor by profession, Dr. Dharma Shrestha planned to open up a hospital in Jumla using CSEB. He has big plans to invest in the business and trading the locals to help complete his dream project in the area. Upon completion of his hospital, he plans to handover the machine to the locals who can then build their own houses and take the reconstruction forward."
     },
     {
-        "#": 209,
+        "id": 209,
         "Name": "Parmendra Joshi",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7254,7 +7254,7 @@ export const data = [
         "Description": "Parmendra Joshi is a driven entrepreneur with a positive attitude even in challenges. He is also involved in local politics. He started his business after the COVID lockdown and is really excited to try to take over the market from fired bricks."
     },
     {
-        "#": 213,
+        "id": 213,
         "Name": "Gauri Bartaula",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -7285,7 +7285,7 @@ export const data = [
         "Description": "Thirty-three years old, Gaurishankar Bartaula is entrepreneur. He belongs in middle class family. He wants to start his new business to that he can support family with money so he starts to work out on new business ideas.  Finally he found CSEB technology which is expanding rapidly in Western part of Nepal"
     },
     {
-        "#": 214,
+        "id": 214,
         "Name": "Bhabi Lal Kumal",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -7316,7 +7316,7 @@ export const data = [
         "Description": "After losing his job in the COVID lockdown, Bhabi jee and his wife started looking for alternatives for low investment businesses and learnt about CSEB interlocking bricks through internet. Husband and wife, both are graduates and have a natural talent for business. After starting their CSEB enterprise none of them wants to return back to the factory where they were working before and instead want to concentrate on this business going forward."
     },
     {
-        "#": 211,
+        "id": 211,
         "Name": "Sudip Gurung",
         "District": "Gorkha",
         "Province Project": "Province 4 - Gandaki",
@@ -7347,7 +7347,7 @@ export const data = [
         "Description": "Thirty years old, Sudip Gurung works in medical sector. Sudip already had pharmacy in Sano Renchuling but wanted to start a new business to that he can support family with money. He found a big scope for CSEB to build low-cost houses and decided to start his own production. "
     },
     {
-        "#": 208,
+        "id": 208,
         "Name": "Pradip kumar Tharu",
         "District": "Bardiya",
         "Province Project": "Province 5",
@@ -7378,7 +7378,7 @@ export const data = [
         "Description": "Pradip kumar Tharu wanted to start a small business so that he can support family with money and started researching different business ideas. Finally he found CSEB technology which is expanding rapidly in Western part of Nepal and started his enterprise seeing a great demand of low-cost bricks. "
     },
     {
-        "#": 212,
+        "id": 212,
         "Name": "DZI Foundation Rural school construction",
         "District": "Bhojpur",
         "Province Project": "Province 1",
@@ -7409,7 +7409,7 @@ export const data = [
         "Description": "Technical partner for DZI for training in CSEB and construction of rural schools"
     },
     {
-        "#": 181,
+        "id": 181,
         "Name": "Arjun Bahadur Shrestha",
         "District": "Rukum",
         "Province Project": "Province 5",
@@ -7440,7 +7440,7 @@ export const data = [
         "Description": "Arjun Shrestha, 41, before starting CSEB business was running a electric shop in the Rukum Headquarters. Before starting his own enterprise, he visited one of the entrepreneur who was running his enterprise in the same district. After getting a very positive feedback, Arjun decided to add CSEB machine. He is now producing CSEB in addition to his electric business. "
     },
     {
-        "#": 202,
+        "id": 202,
         "Name": "Kamal Panta",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -7471,7 +7471,7 @@ export const data = [
         "Description": "Kamal Panta is energetic entrepreneur of 36 years from a middle class family. Kamal already had a hollow concrete block factory but wants to upgrade his business so that he can support his family with money. He decided to start producing CSEB as he saw a great market for low-cost housing in Nepal."
     },
     {
-        "#": 183,
+        "id": 183,
         "Name": "Prabin Bista",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7502,7 +7502,7 @@ export const data = [
         "Description": "Prabin Bista is a middle-class family person who is basically involved in farming and selling cash crops in village . Owing a huge amount of land he is more over involved in sugarcane industry. After learning about this technology, he was motivated enough to introduce this technology in this village.  He was interested in starting his own business in this technology.  He is very happy on this CSEB technology and motivated to start the new business.<br />\n"
     },
     {
-        "#": 186,
+        "id": 186,
         "Name": "Radha Kumari Thapa",
         "District": "Bajhang",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7533,7 +7533,7 @@ export const data = [
         "Description": "Radha is a young active lady involved in teaching profession. With a aim to have extra income and enhance the availability of building materials, she started CSEB factory in her village. Along with her husband Prakash who is involved in active politics are expanding their CSEB business through their own connection to promote the technology in their village."
     },
     {
-        "#": 196,
+        "id": 196,
         "Name": "Bijaya laxmi Shrestha",
         "District": "Banke",
         "Province Project": "Province 5",
@@ -7564,7 +7564,7 @@ export const data = [
         "Description": "Bijaya is a driven woman entrepreneur who previously worked as accountant and teacher. She decided to start her own business together with her husband. Bijaya got convinced with the interlocking brick and planned to start her enterprise in Nepalgunj. Her target customers are the poor and needy people living in temporary shelters in suburban areas around the city. Her husband has been working in advertising business, so she has good concept of business and planning to include government buildings, urban houses along with the rural construction works."
     },
     {
-        "#": 198,
+        "id": 198,
         "Name": "Mani Ram Dhami",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7595,7 +7595,7 @@ export const data = [
         "Description": "Maniram dhami is a teacher in local private school. He established the CSEB factory with a motive to create employment for his brothers, who returned from gulf country and produce good quality bricks locally. As he is involved in teaching with a lot of local connections he has been really good at convincing the people in his area to start building with CSEB."
     },
     {
-        "#": 200,
+        "id": 200,
         "Name": "Dipendra Chaulagain",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7626,7 +7626,7 @@ export const data = [
         "Description": "Dipendra Chaulagain is a young entreprenuer of 25 years. He used to work as a tractor driver. Along with his uncle as a business partner, he introduced CSEB in his locality where all of the houses are prone to flood with a view to make a change in the locality and and also make a good living for himself and his family. "
     },
     {
-        "#": 189,
+        "id": 189,
         "Name": "Mahendra Tharu",
         "District": "Bardiya",
         "Province Project": "Province 5",
@@ -7657,7 +7657,7 @@ export const data = [
         "Description": "Mahendra Tharu is young and energetic entrepreneur. His main business was farming.  He belongs to a very backward community and decided that CSEB could help people in his area build houses that they could actually afford and give him a good source of income. "
     },
     {
-        "#": 139,
+        "id": 139,
         "Name": "Sushila Thapa",
         "District": "Surkhet",
         "Province Project": "Province 6 - Karnali",
@@ -7688,7 +7688,7 @@ export const data = [
         "Description": "Sushila lives in a low income area and fired bricks are Expensive, Previously houses are built of woods now there is lack of wood. So she decided that CSEB bricks can be best technology for building houses in her location. She started this business with the goal to build a stable income for herself and her family. "
     },
     {
-        "#": 191,
+        "id": 191,
         "Name": "Tara Prasad Pandey",
         "District": "Achham",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7719,7 +7719,7 @@ export const data = [
         "Description": "Ganesh Saud and Tara Pd Pandey togther have established Target ’TG’ Block Udhyog. Ganesh Saud had stayed in japan working there but after the COVID Pandemic he returned to village and wanted to do something for his village and for his community. His partner Tara pd. Pandey is a Sub Engineer working in DLPIU as a technical person. He was already familiar with the technology and they came together to start their CSEB business."
     },
     {
-        "#": 195,
+        "id": 195,
         "Name": "Toya Raj Thakare",
         "District": "Darchula",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7750,7 +7750,7 @@ export const data = [
         "Description": "Toya Raj Thakare is young and energetic entrepreneur. He is belongs to the backward tribal community. He used to work as a farmer and a health worker in the local health post. He got inspired after seeing some houses built by CSEB that looked really great and realized this technology had big scope in his area."
     },
     {
-        "#": 258,
+        "id": 258,
         "Name": "Barun Rokaya",
         "District": "Bajhang",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7781,7 +7781,7 @@ export const data = [
         "Description": "Barun Rokaya is young and smart entrepreneur. He used to work in agriculture before. He think CSEB interlocking brick has great potential in his area due to the low cost and high strength. He started right after the lockdown and have already built several houses."
     },
     {
-        "#": 193,
+        "id": 193,
         "Name": "Navaraj Acharaya",
         "District": "Chitwan",
         "Province Project": "Province 3 - Bagmati",
@@ -7812,7 +7812,7 @@ export const data = [
         "Description": "Navraj Acharya, 49 is a migrant returnee who was running his own wood crafting enterprise in Chitwan when he came across our Build up Nepal. He alread the land and a team ready to get trained, and decided to add a brick making machine and started the business right after the COVID lockdown was opened."
     },
     {
-        "#": 179,
+        "id": 179,
         "Name": "Ram Bahadur Rakaskoti",
         "District": "Baglung",
         "Province Project": "Province 4 - Gandaki",
@@ -7843,7 +7843,7 @@ export const data = [
         "Description": "Ram Raskoti is entrepreneur who belongs in middle class family. He already had shop in Khaular but wanted to start his new business to that he can support family with money. He was inspired with CSEB technology, which becoming popular Western part of Nepal and started his enterprise right after the COVID lockdown opened. "
     },
     {
-        "#": 190,
+        "id": 190,
         "Name": "Tek Bdr Kuwar",
         "District": "Gulmi",
         "Province Project": "Province 5",
@@ -7874,7 +7874,7 @@ export const data = [
         "Description": "42 years old Tek Bahadur Kuwar is a driven entrepreneur from a middle class family. Tek Bahadur already had workshop and truck but wants to start his new business to that he can support family with money so he starts to work out on new business ideas. Finally he found CSEB technology which is expanding rapidly in his area."
     },
     {
-        "#": 197,
+        "id": 197,
         "Name": "Bijay Upreti",
         "District": "Jhapa",
         "Province Project": "Province 1",
@@ -7905,7 +7905,7 @@ export const data = [
         "Description": "Bijaya Upreti is young and smart entrepreneur. He used to work as a journalist for a local newspaper and YouTube channel in Birtamod,Nepal. He decided to start his CSEB business after seeing the success of other entrepreneur's in a nearby location."
     },
     {
-        "#": 184,
+        "id": 184,
         "Name": "Hari Bahadur Bhandari",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -7936,7 +7936,7 @@ export const data = [
         "Description": "Hari Bhandari has a ready mix concrete factory and were supplying concrete on bulk amount. After learning about the CSEB technology and He was interested in starting his own business in this technology. He is very happy on this CSEB technology and motivated to start the new business."
     },
     {
-        "#": 192,
+        "id": 192,
         "Name": "Bhim Saud",
         "District": "Achham",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7967,7 +7967,7 @@ export const data = [
         "Description": "Bhim Saud and Surat Saud are both working for the ward offices and after applying successfully in a local level support program to invest in their enterprise were able to start their enterprise in Accham. Both of them are very well connected and are confident that they can make their business work by engaging more in the government projects. They plan to take up construction contracts after they have learned everything about CSEB"
     },
     {
-        "#": 194,
+        "id": 194,
         "Name": "Tek Bahadur Bista",
         "District": "Dadeldhura",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -7998,7 +7998,7 @@ export const data = [
         "Description": "Tek Bahadur Bista is an Engineer turned Entrepreneur who have established Betal Concrete Udhyog in his area. He had been running his consulting firm and stayed in Mahendranagar for a long time, but after the COVID Pandemic he returned to Dadeldhura to startup a business. As an engineer he was already familiar with the CSEB technology and happy to start an enterprise in his home town. "
     },
     {
-        "#": 188,
+        "id": 188,
         "Name": "Nir bahadur shrestha",
         "District": "Sarlahi",
         "Province Project": "Province 2",
@@ -8029,7 +8029,7 @@ export const data = [
         "Description": "Nir Bahadur Shrestha, 43 is a ward member in one of the municipalities in Sarlahi. An entrepreneur from a rapidly growing city, Nir Bahadur Shrestha wanted to train his own people to make use of CSEB and the opportunity to use them in the government projects. Nir Bahadur Shrestha even though has no previous experience in the construction sector, with his experience as a social worker and entrepreneur is confident that he can yield good results from his investment in the coming days.<br />\n"
     },
     {
-        "#": 259,
+        "id": 259,
         "Name": "Naagarik Aawaz",
         "District": "Lalitpur",
         "Province Project": "Province 3 - Bagmati",
@@ -8060,7 +8060,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 280,
+        "id": 280,
         "Name": "Construction of Muhar basti community for most vulnerable",
         "District": "Bara",
         "Province Project": "Province 2",
@@ -8091,7 +8091,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 292,
+        "id": 292,
         "Name": "Sanjaya Kumar Sharma",
         "District": "Mahottari",
         "Province Project": "",
@@ -8122,7 +8122,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 233,
+        "id": 233,
         "Name": "Ajay Magar",
         "District": "Siraha",
         "Province Project": "Province 2",
@@ -8153,7 +8153,7 @@ export const data = [
         "Description": "Ajay Magar, 28, unmarried young and dynamic entrepreneur who worked as a civil engineer in Khani construction in a Japanese project for school reconstruction and also municipal building. After working for almost 3 years, he decided to start his own company along with his brother Khadak to produce and build with CSEB bricks."
     },
     {
-        "#": 264,
+        "id": 264,
         "Name": "Rajesh Kumar Saha",
         "District": "Siraha",
         "Province Project": "Province 2",
@@ -8184,7 +8184,7 @@ export const data = [
         "Description": "Rajesh Kumar Saha, a sub engineer by profession was running his own construction enterprise and soon after the lockdown decided to start producing these bricks as he thought he could make a lot more earning if he and his team can supply CSEB bricks. He is now starting to take construction contracts for the houses in his area and soon expand to other parts of Terai."
     },
     {
-        "#": 267,
+        "id": 267,
         "Name": "SukuMaya Pulami",
         "District": "Sindhuli",
         "Province Project": "Province 3 - Bagmati",
@@ -8215,7 +8215,7 @@ export const data = [
         "Description": "Sukumaya is being supported by Bhim, her husband who had worked in the construction sector for almost 7 years. Sukumaya was a housewife and this is the first business that she has started and feels she can do really well with the support from her husband and her brother and sister in law."
     },
     {
-        "#": 268,
+        "id": 268,
         "Name": "Sangita Shrestha",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -8246,7 +8246,7 @@ export const data = [
         "Description": "Sangita Shrestha used to be a farmer but wanted to run a construction business. She applied for our program promoting women entrepreneurship. She took a loan from our finance partner Mero Microfinance and started her CSEB enterprise. "
     },
     {
-        "#": 269,
+        "id": 269,
         "Name": "Som Bahadur Gurung",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -8277,7 +8277,7 @@ export const data = [
         "Description": "Som Bdr Gurung, 42 was a farmer since many years. Som has a son & a daughter and his wife is in Romania. Raising a son and a daughter, he says was a hard but worth all the trouble. He started producing CSEB with plans to involve his son in the business once he is a bit older."
     },
     {
-        "#": 270,
+        "id": 270,
         "Name": "Deepak Chaudhary",
         "District": "Bardiya",
         "Province Project": "Province 5",
@@ -8308,7 +8308,7 @@ export const data = [
         "Description": "Deepak Chaudhary used to work abroad but did not like it there. He came home and started a CSEB enterprise with the hope to make a good living for himself and stay with his family. Now his brother is also planning to return from abroad to help him run the enterprise together. "
     },
     {
-        "#": 271,
+        "id": 271,
         "Name": "Surendra Bohora",
         "District": "Dadeldhura",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -8339,7 +8339,7 @@ export const data = [
         "Description": "Surendra came back to Nepal after 3 years abroad with a plan to start his own enterprise. He consulted his friend who was already running a CSEB factory in a different location and decided to do the same. Surendra and wife have recently started their marketing campaigning online and are confident that they will have good business in the future."
     },
     {
-        "#": 273,
+        "id": 273,
         "Name": "Shanta Kumar Bhujel",
         "District": "Bhaktapur",
         "Province Project": "Province 3 - Bagmati",
@@ -8370,7 +8370,7 @@ export const data = [
         "Description": "Shanta returned from the Middle East after 4 years working as a driver. He was spoke to his brother in law who started a CSEB enterprise in Kanchanpur and became excited about this business. He made a feasibility study checking the market in his are in Bhaktapur before starting the business. "
     },
     {
-        "#": 199,
+        "id": 199,
         "Name": "Dipak Bikram Ghorasaini",
         "District": "Sindhupalchok",
         "Province Project": "Province 3 - Bagmati",
@@ -8401,7 +8401,7 @@ export const data = [
         "Description": "Dipak, 49 and his son Pratish, 27 was running a stone crushing and hollow concrete block business. They saw really good demand for CSEB interlocking bricks and thought it has the potential to replace fired bricks. They have a very good government advocacy to back their business. Dipak jee is also a very well respected humanitarian in the area."
     },
     {
-        "#": 224,
+        "id": 224,
         "Name": "Ganesh Bahadur BK",
         "District": "Kailali",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -8432,7 +8432,7 @@ export const data = [
         "Description": "Ganesh was working in India in the construction sector. After seeing the demand in India for these bricks, he decided to establish these brick factory in his hometown of Dhangadhi. He is really happy about being able to live with his family after almost 11 years away from them."
     },
     {
-        "#": 229,
+        "id": 229,
         "Name": "Yam Bdr Dangi",
         "District": "Rukum",
         "Province Project": "Province 5",
@@ -8463,7 +8463,7 @@ export const data = [
         "Description": "Yam Bahadur Dangi is a young energetic entrepreneur who runs his own petrol pump and tractor showroom. He also has a construction enterprise and after seeing the demand for CSEB bricks in the area, decided to start his own production. He says the market is very good for CSEB bricks in the area and it is easy to make with local materials and manpower. "
     },
     {
-        "#": 265,
+        "id": 265,
         "Name": "Ram Naresh chaudhary Tharu",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -8494,7 +8494,7 @@ export const data = [
         "Description": "Ram Naresh Chaudhary Tharu returned from Malasiya during the COVID crisis. After returning to Nepal, he was looking for some options to start something in his own village and thorugh various social media found out about CSEB enterprises. Ramu and his father are actively involved in the business and his sister overlooks the production site ensuring the quality is maintained. "
     },
     {
-        "#": 266,
+        "id": 266,
         "Name": "Geeta Devi",
         "District": "Rautahat",
         "Province Project": "Province 2",
@@ -8525,7 +8525,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 272,
+        "id": 272,
         "Name": "Naresh Chhettri",
         "District": "Banke",
         "Province Project": "Province 5",
@@ -8556,7 +8556,7 @@ export const data = [
         "Description": "Naresh son, Niranjan Chhetri 27 years old was planning for foreign employment. But they decided instead to start an enterprise of CSEB bricks allowing Niranjan to stay in Nepal and work alongside his father. "
     },
     {
-        "#": 289,
+        "id": 289,
         "Name": "Ghanshyam Shrestha",
         "District": "Tanahu",
         "Province Project": "",
@@ -8587,7 +8587,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 219,
+        "id": 219,
         "Name": "Krishna Bahadur Thapa Magar",
         "District": "Nawalparasi",
         "Province Project": "Province 5",
@@ -8618,7 +8618,7 @@ export const data = [
         "Description": "Krishna Thapa Magar was running a Agrovet store before staring this business. He partnered with his neighbour who had a construction business and started producing these bricks. In a very short time, they have been able to capture good share of the market and are looking to aggresivly expand their business to other parts of Nawalparasi."
     },
     {
-        "#": 220,
+        "id": 220,
         "Name": "Manju Gharti Magar",
         "District": "Makwanpur",
         "Province Project": "Province 3 - Bagmati",
@@ -8649,7 +8649,7 @@ export const data = [
         "Description": "Chandra Pokharel, 42 returned from Dubai after 11 years in foreign employment as a cleaner in a car wash. He has recently started and is very confident about the market of the CSEB. He is working with his brother Krishna in the business."
     },
     {
-        "#": 221,
+        "id": 221,
         "Name": "Rabindra Chaudhary",
         "District": "Udayapur",
         "Province Project": "Province 1",
@@ -8680,7 +8680,7 @@ export const data = [
         "Description": "Rabindra  Chaudhary was working as a radio technician and wanted to something of his own so he found out about CSEB entrepreneurship from Build Up Nepal social media and contacted us to get his own business started."
     },
     {
-        "#": 227,
+        "id": 227,
         "Name": "Yubraj Katwal",
         "District": "Ilam",
         "Province Project": "Province 1",
@@ -8711,7 +8711,7 @@ export const data = [
         "Description": "Yubraj  Katwal returned after almost 9 years in Qatar, Saudi and Malaysia. After returning he wanted to start something in Nepal and on his land. He decided to establish his own factory to produce CSEB. First he built a small shop for his family business as a model building followed by sales of the bricks to others."
     },
     {
-        "#": 228,
+        "id": 228,
         "Name": "Sunil BK",
         "District": "Bajhang",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -8742,7 +8742,7 @@ export const data = [
         "Description": "Sunil BK was working as an electrician and has studied to become an electric overseer. He found out about CSEB bricks on YouTube and established a production with the help of his friends and family. He is confident that these bricks will be the best construction material for his village."
     },
     {
-        "#": 231,
+        "id": 231,
         "Name": "Kala Sharma",
         "District": "Ilam",
         "Province Project": "Province 1",
@@ -8773,7 +8773,7 @@ export const data = [
         "Description": "Kala Sharma wanted to find a way for her and her husband to make a good living in their village. She started a CSEB enterprise with the aim to make it possible for her husband to return home from Malaysia so they can run the business together. "
     },
     {
-        "#": 232,
+        "id": 232,
         "Name": "Lab Dev Rana",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -8804,7 +8804,7 @@ export const data = [
         "Description": "Lab Dev Rana is a well-respected social worker and politician in the area. He visited his friends factory who was producing CSEB and got inspired to start his own enterprise."
     },
     {
-        "#": 260,
+        "id": 260,
         "Name": "Pradip Khadka",
         "District": "Ilam",
         "Province Project": "Province 1",
@@ -8835,7 +8835,7 @@ export const data = [
         "Description": "When Pradip retired from Indian Army service he wanted a plan to start business at Nepal. Looking for a business that could be done in his own village with low investment and good prospects he decided to start producing CSEB bricks."
     },
     {
-        "#": 261,
+        "id": 261,
         "Name": "Sagar Sunar",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -8866,7 +8866,7 @@ export const data = [
         "Description": "Sagar was an NGO employee and learned about CSEB from his friends and family. Sagar is a young entrepreneur got excited and decided to start his own business. He is very confident that his new business will grow in the coming days."
     },
     {
-        "#": 223,
+        "id": 223,
         "Name": "Puspa Kumari Poudel",
         "District": "Rupandehi",
         "Province Project": "Province 5",
@@ -8897,7 +8897,7 @@ export const data = [
         "Description": "Puspa is an independent woman who is a full time engaged in a grocery shop. She found out about the business from her cousin and she added a machine right next to her shop where she is involved part time in both and supervises the production. Her husband also supports her in the business."
     },
     {
-        "#": 230,
+        "id": 230,
         "Name": "Gopal singh Thapa",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -8928,7 +8928,7 @@ export const data = [
         "Description": "Gopal Singh learned about the business from his friends and since he was a contractor, he decided to start making his own bricks. It was a good decision and he have got a good start on his CSEB enterprise. "
     },
     {
-        "#": 222,
+        "id": 222,
         "Name": "Prakash Jaisi",
         "District": "Kanchanpur",
         "Province Project": "Province 7 - Sudurpashchim",
@@ -8959,7 +8959,7 @@ export const data = [
         "Description": "Prakash Jaisi was working as an armed police in Nepal army before taking a voluntary retirement to start his own enterprise. He has always wanted to run his own business and thought this was the right time and opportunity. "
     },
     {
-        "#": 290,
+        "id": 290,
         "Name": "Rajan Prasad Dhakal",
         "District": "Makwanpur",
         "Province Project": "",
@@ -8990,7 +8990,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 293,
+        "id": 293,
         "Name": "Tula Lal Gurung",
         "District": "Lamjung",
         "Province Project": "",
@@ -9021,7 +9021,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 291,
+        "id": 291,
         "Name": "Ram Maya Gurung",
         "District": "Tanahu",
         "Province Project": "",
@@ -9052,7 +9052,7 @@ export const data = [
         "Description": ""
     },
     {
-        "#": 288,
+        "id": 288,
         "Name": "Chuwar Karuna Foundation",
         "District": "Kathmandu",
         "Province Project": "",
