@@ -1,4 +1,3 @@
-import type { GeoJSONSourceRaw, FillLayer, LineLayer } from "react-map-gl";
 
 import MAP_STYLE from "./style.json";
 import districs from "./data/province_outlines.json";
