@@ -9,6 +9,7 @@ import { PopulationLayer } from "./PopulationLayer";
 import { CountryOutlineLayer } from "./CountryOutlineLayer";
 import MAP_STYLE from "./style.json";
 import districs from "./data/province_outlines.json";
+import { InsetMap } from "./InsetMap";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -41,7 +42,8 @@ export function Map() {
 
     return (
         <>
-            <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
+            <InsetMap onClick={()=> console.log("click")}/>
+            {/* <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
             <button onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
             <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
@@ -63,7 +65,7 @@ export function Map() {
 
 
 
-            </MapGL>
+            </MapGL> */}
         </>
 
     );

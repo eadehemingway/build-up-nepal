@@ -25,7 +25,7 @@ const fillLayer = {
 // };
 
 // Make a copy of the map style
-export const MapStyle = {
+export const insetMapStyle = {
     ...MAP_STYLE,
     sources: {
         ...MAP_STYLE.sources,
