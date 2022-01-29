@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 
-export function StackedBar({ data, highlight, updateData }) {
+export function StackedBar({ data, highlight, updateData, chart_margin, chart_size, bar_size }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const [ctx_top, setCtxTop] = useState(null);
@@ -15,17 +15,12 @@ export function StackedBar({ data, highlight, updateData }) {
 
     const $canvas_bottom = useRef(null);
     const $canvas_top = useRef(null);
-    const window_width = document.body.clientWidth;
-    const chart_margin_left = 100;
-    const chart_margin_right = 200;
-    const chart_margin_top = 20;
-    const chart_width = window_width - (chart_margin_left + chart_margin_right);
-    const chart_height = 80;
-    const regular_stroke_width = 0.5;
+
+    const regular_stroke_width = 0.3;
     const highlight_stroke_width = 2;
 
     function onMouseMove(e) {
-        let x = e.clientX - chart_margin_left;
+        let x = e.clientX - chart_margin.left;
         const hovered_id = getBarId(x);
         if (hovered_id == null) return;
         updateData({
@@ -34,7 +29,27 @@ export function StackedBar({ data, highlight, updateData }) {
         });
     }
 
+    function onMouseOut() {
+        updateData({
+            filtered: [],
+            highlighted: null,
+        });
+    }
+
+    function transformCanvas(ctx) {
+        ctx.scale(2, 2);
+        ctx.translate(chart_margin.left, chart_margin.top);
+    }
+
+    function clearCanvas(ctx) {
+        ctx.save();
+        ctx.translate(-chart_margin.left, -chart_margin.top);
+        ctx.clearRect(-(highlight_stroke_width), -(highlight_stroke_width), chart_size.width + (highlight_stroke_width / 2), chart_size.height + (highlight_stroke_width / 2));
+        ctx.restore();
+    }
+
     function drawHighlight(ctx, h) {
+        clearCanvas(ctx);
         if (h === null) return;
         ctx.save();
         ctx.beginPath();
@@ -43,13 +58,14 @@ export function StackedBar({ data, highlight, updateData }) {
         ctx.closePath();
         ctx.fillStyle = "blue";
         ctx.fill("evenodd");
-        ctx.font = "13px serif";
+        ctx.font = "13px sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(h.metric, (h.x + (h.width / 2)), h.y - 8);
         ctx.restore();
     }
 
     function drawStackedBar(ctx, d) {
+        clearCanvas(ctx);
         d.forEach(v => {
             ctx.save();
             ctx.fillStyle = v.filtered ? "pink" : "red";
@@ -59,6 +75,14 @@ export function StackedBar({ data, highlight, updateData }) {
             ctx.strokeRect(v.x, v.y, v.width, v.height);
             ctx.restore();
         });
+
+        ctx.textAlign = "left";
+        ctx.font = "25px sans-serif";
+        ctx.fillStyle = "red";
+        ctx.fillText(d.total, bar_size.width + 10, bar_size.height);
+        ctx.fillStyle = "#000000";
+        ctx.font = "13px sans-serif";
+        ctx.fillText(d.name, bar_size.width + 10, 10);
     }
 
     useEffect(()=> {
@@ -69,21 +93,14 @@ export function StackedBar({ data, highlight, updateData }) {
     useEffect(()=>{
         if (!$canvas_bottom.current) return;
         if (!ctx_bottom) return;
-        ctx_bottom.scale(2, 2);
-        ctx_bottom.translate(chart_margin_left, chart_margin_top);
+        transformCanvas(ctx_bottom);
         drawStackedBar(ctx_bottom, data);
     }, [ctx_bottom]);
 
     useEffect(()=>{
         if (!ctx_bottom) return;
-        ctx_bottom.save();
-        ctx_bottom.translate(-chart_margin_left, -chart_margin_top);
-        ctx_bottom.clearRect(-(regular_stroke_width), -(regular_stroke_width), window_width + (regular_stroke_width / 2), chart_height + (regular_stroke_width / 2));
-        ctx_bottom.restore();
         drawStackedBar(ctx_bottom, data);
     }, [data]);
-
-
 
 
     useEffect(()=> {
@@ -94,28 +111,20 @@ export function StackedBar({ data, highlight, updateData }) {
     useEffect(()=>{
         if (!$canvas_top.current) return;
         if (!ctx_top) return;
-        ctx_top.clearRect(0, 0, window_width, chart_height);
-        ctx_top.scale(2, 2);
-        ctx_top.translate(chart_margin_left, chart_margin_top);
+        transformCanvas(ctx_top);
         drawHighlight(ctx_top, highlight);
     }, [ctx_top]);
 
     useEffect(()=>{
         if (!ctx_top) return;
-        ctx_top.save();
-        ctx_top.translate(-chart_margin_left, -chart_margin_top);
-        ctx_top.clearRect(-(highlight_stroke_width), -(highlight_stroke_width), window_width + (highlight_stroke_width / 2), chart_height + (highlight_stroke_width / 2));
-        ctx_top.restore();
         drawHighlight(ctx_top, highlight);
     }, [highlight]);
 
 
-
-
     return (
         <CanvasContainer>
-            <CanvasBottom onMouseMove={onMouseMove} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
-            <CanvasTop ref={$canvas_top} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
+            <CanvasBottom onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={chart_size.width * 2} height={chart_size.height * 2} chart_height={chart_size.height}/>
+            <CanvasTop ref={$canvas_top} width={chart_size.width * 2} height={chart_size.height * 2} chart_height={chart_size.height}/>
         </CanvasContainer>
     );
 }
