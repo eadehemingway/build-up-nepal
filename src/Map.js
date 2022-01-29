@@ -3,11 +3,13 @@ import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
 import { Markers } from "./Markers";
-import { MapStyle } from "./Map-style";
 import bbox from "@turf/bbox";
 import { ContourLayer } from "./ContourLayer";
 import { PopulationLayer } from "./PopulationLayer";
 import { CountryOutlineLayer } from "./CountryOutlineLayer";
+import MAP_STYLE from "./style.json";
+import districs from "./data/province_outlines.json";
+
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
 
@@ -48,7 +50,6 @@ export function Map() {
             <MapGL
                 ref={mapRef}
                 {...map_attributes}
-                onClick={onClick}
                 onLoad={()=> setLoaded(true)}
             >
 
@@ -69,7 +70,17 @@ export function Map() {
 }
 
 const map_attributes = {
-    mapStyle:MapStyle,
+    mapStyle: {
+        ...MAP_STYLE,
+        sources: {
+            ...MAP_STYLE.sources,
+            "provinces": {
+                type: "geojson",
+                data: districs
+            }
+        },
+
+    },
     interactiveLayerIds:["provinces-fill"],
     mapboxAccessToken:MAPBOX_TOKEN,
     scrollZoom:false,
