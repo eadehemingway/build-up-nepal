@@ -47,6 +47,22 @@ export function MapTest() {
                 onClick={onClick}
                 mapboxAccessToken={MAPBOX_TOKEN}
             >
+                <Source id="contour_source" type="raster" url={"mapbox://eadehem.9bmo07eb"} tileSize={256}>
+                    <Layer
+                        id="contour_layer"
+                        type="raster"
+                        source="contour_source"
+                        paint={{ "raster-contrast": 1 , "raster-opacity": 1 }}
+                    />
+                </Source>
+                <Source id="population_source" type="raster" url={"mapbox://eadehem.5a0w2g3f"} tileSize={256}>
+                    <Layer
+                        id="population_layer"
+                        type="raster"
+                        source="population_source"
+                        paint={{ "raster-contrast": 1 , "raster-opacity": 1 }}
+                    />
+                </Source>
             </MapGL>
         </>
 

@@ -13,7 +13,7 @@ const fillLayer = {
     source: "provinces",
     type: "fill",
     paint: {
-        "fill-outline-color": "#0040c8",
+        "fill-outline-color": "red",
         "fill-color": "#fff",
         "fill-opacity": 0
     }
@@ -24,8 +24,8 @@ const lineLayer = {
     source: "provinces",
     type: "line",
     paint: {
-        "line-width": 2,
-        "line-color": "#0080ef"
+        "line-width": 0.2,
+        "line-color": "red"
     }
 };
 
