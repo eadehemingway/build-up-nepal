@@ -42,8 +42,7 @@ export function Map() {
 
     return (
         <>
-            <InsetMap onClick={()=> console.log("click")}/>
-            {/* <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
+            <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
             <button onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
             <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
@@ -65,7 +64,9 @@ export function Map() {
 
 
 
-            </MapGL> */}
+            </MapGL>
+            <InsetMap onClick={(e)=> console.log("click", e)}/>
+
         </>
 
     );
@@ -83,7 +84,6 @@ const map_attributes = {
         },
 
     },
-    interactiveLayerIds:["provinces-fill"],
     mapboxAccessToken:MAPBOX_TOKEN,
     scrollZoom:false,
     doubleClickZoom:false,

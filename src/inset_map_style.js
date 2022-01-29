@@ -1,6 +1,6 @@
 
 import MAP_STYLE from "./style.json";
-import districs from "./data/province_outlines.json";
+import provinces from "./data/mini_map.json";
 
 
 const fillLayer = {
@@ -31,7 +31,7 @@ export const insetMapStyle = {
         ...MAP_STYLE.sources,
         "provinces": {
             type: "geojson",
-            data: districs
+            data: provinces
         }
     },
     layers: [

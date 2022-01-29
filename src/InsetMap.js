@@ -2,13 +2,7 @@ import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
-import { Markers } from "./Markers";
-import bbox from "@turf/bbox";
-import { ContourLayer } from "./ContourLayer";
-import { PopulationLayer } from "./PopulationLayer";
-import { CountryOutlineLayer } from "./CountryOutlineLayer";
-import MAP_STYLE from "./style.json";
-import districs from "./data/province_outlines.json";
+import provinces from "./data/mini_map.json";
 import { insetMapStyle } from "./inset_map_style";
 
 
@@ -49,7 +43,6 @@ const map_attributes = {
         "boxSizing": "border-box",
         "top": 20,
         right: 0,
-        left: 0,
         height: "400px",
         width: "600px",
         overflow: "hidden"
