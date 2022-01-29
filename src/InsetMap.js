@@ -17,6 +17,7 @@ export function InsetMap({ onClick }) {
     useEffect(()=>{
         if (!mapRef.current) return;
         let hoveredStateId = null;
+        let clickedStateId = null;
 
         mapRef.current.on("mousemove", "provinces-fill", (e) => {
             if (e.features.length > 0) {
@@ -31,6 +32,23 @@ export function InsetMap({ onClick }) {
                 mapRef.current.setFeatureState(
                     { source: "provinces", id: hoveredStateId },
                     { hover: true }
+                );
+            }
+        });
+
+        mapRef.current.on("click", "provinces-fill", (e) => {
+            if (e.features.length > 0) {
+                if (clickedStateId !== null) {
+                    mapRef.current.setFeatureState(
+                        { source: "provinces", id: clickedStateId },
+                        { click: false }
+                    );
+                }
+                clickedStateId = e.features[0].id;
+
+                mapRef.current.setFeatureState(
+                    { source: "provinces", id: clickedStateId },
+                    { click: true }
                 );
             }
         });

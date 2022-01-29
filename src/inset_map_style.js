@@ -9,7 +9,12 @@ const fillLayer = {
     type: "fill",
     paint: {
         "fill-outline-color": "red",
-        "fill-color": "red",
+        "fill-color": [
+            "case",
+            ["boolean", ["feature-state", "click"], false],
+            "red",
+            "blue"
+        ],
         "fill-opacity": [
             "case",
             ["boolean", ["feature-state", "hover"], false],
@@ -40,17 +45,6 @@ function geoCollectionToFeatureCollection(geoJson){
     return json;
 }
 
-
-// const lineLayer = {
-//     id: "provinces-outline",
-//     source: "provinces",
-//     type: "line",
-//     paint: {
-//         "line-width": 0.2,
-//         "line-color": "red"
-//     }
-// };
-
 // Make a copy of the map style
 export const insetMapStyle = {
     ...MAP_STYLE,
@@ -62,6 +56,7 @@ export const insetMapStyle = {
         }
     },
     layers: [
+
         fillLayer,
         // lineLayer
     ]
