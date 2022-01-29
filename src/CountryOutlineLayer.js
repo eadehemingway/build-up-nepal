@@ -2,7 +2,7 @@ import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
-import { nepal_outline } from "./data/nepal_outline";
+import nepal_outline  from "./data/nepal_outline.json";
 
 
 
