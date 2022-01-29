@@ -5,12 +5,12 @@ import "./App.css";
 import { data } from "./data/data";
 
 
-export function Markers({ markers_visible }) {
+export function Markers( ) {
 
     return (
         <>
             {data.map((d, i)=>{
-                return <MarkerPoint key={i} data={d} markers_visible={markers_visible}/>;
+                return <MarkerPoint key={i} data={d}/>;
             })}
         </>
     );
@@ -18,8 +18,8 @@ export function Markers({ markers_visible }) {
 
 
 
-function MarkerPoint({ data , markers_visible }){
-    if (!data.Latitude || !data.Longitude || !markers_visible ) return null;
+function MarkerPoint({ data  }){
+    if (!data.Latitude || !data.Longitude ) return null;
     return (
         <>
             <Marker

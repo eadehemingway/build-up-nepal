@@ -13,6 +13,19 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXV
 
 
 export function Map() {
+    const [contour_visible, setContourVisible] = useState(true);
+    const [population_visible, setPopulationVisible] = useState(true);
+    const [outline_visible, setOutlineVisible] = useState(true);
+    const [markers_visible, setMarkerVisible] = useState(true);
+
+    // useEffect(()=>{
+
+    //     setTimeout(()=>{
+    //         setViewport(viewport_first_house);
+    //     }, 1000);
+    // }, []);
+
+
     const mapRef = useRef();
     const onClick = (event) => {
         if (!mapRef.current) return;
@@ -32,6 +45,10 @@ export function Map() {
 
     return (
         <>
+            <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
+            <button onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
+            <button onClick={()=> setOutlineVisible((v)=> !v)}>outline toggle</button>
+            <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
             <MapGL
                 ref={mapRef}
                 initialViewState={{
@@ -49,22 +66,27 @@ export function Map() {
                 scrollZoom={false}
             >
                 <Source id="contour_source" type="raster" url={"mapbox://eadehem.9bmo07eb"} tileSize={256}>
-                    <Layer
-                        id="contour_layer"
-                        type="raster"
-                        source="contour_source"
-                        paint={{ "raster-contrast": 1 , "raster-opacity": 1 }}
-                    />
+                    {contour_visible && (
+                        <Layer
+                            id="contour_layer"
+                            type="raster"
+                            source="contour_source"
+                            paint={{ "raster-contrast": 1 , "raster-opacity": 1 }}
+                        />
+
+                    )}
                 </Source>
                 <Source id="population_source" type="raster" url={"mapbox://eadehem.5a0w2g3f"} tileSize={256}>
-                    <Layer
-                        id="population_layer"
-                        type="raster"
-                        source="population_source"
-                        paint={{ "raster-contrast": 1 , "raster-opacity": 1 }}
-                    />
+                    {population_visible && (
+                        <Layer
+                            id="population_layer"
+                            type="raster"
+                            source="population_source"
+                            paint={{ "raster-contrast": 1 , "raster-opacity": 1 }}
+                        />
+                    )}
                 </Source>
-                {/* <Markers markers_visible={true}/> */}
+                {markers_visible &&  <Markers />}
 
             </MapGL>
         </>
