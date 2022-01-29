@@ -65,7 +65,7 @@ export function Map() {
 
 
             </MapGL>
-            <InsetMap onClick={(e)=> console.log("click", e)}/>
+            <InsetMap onClick={onClick}/>
 
         </>
 

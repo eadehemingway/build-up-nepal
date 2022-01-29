@@ -9,9 +9,9 @@ const fillLayer = {
     type: "fill",
     paint: {
         "fill-outline-color": "red",
-        "fill-color": "#fff",
-        "fill-opacity": 0
-    }
+        "fill-color": "#fff1E0",
+        "fill-opacity": 1
+    },
 };
 
 // const lineLayer = {

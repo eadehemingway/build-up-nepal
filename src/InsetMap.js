@@ -12,14 +12,34 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXV
 export function InsetMap({ onClick }) {
 
     const mapRef = useRef();
+    // const cursor = getCursor();
+    // console.log("cursor:", cursor);
     return (
         <>
             <MapGL
                 ref={mapRef}
                 {...map_attributes}
                 onClick={onClick}
+                getCursor={(e) => "crosshair"}
+                style= {{
+                    "position": "absolute",
+                    "border": "1px solid blue",
+                    "boxSizing": "border-box",
+                    "top": 20,
+                    right: 0,
+                    height: "400px",
+                    width: "600px",
+                    overflow: "hidden",
+                    cursor: "pointer" // ideally we would do it on the layer not the whole map...
+                }}
             >
-                <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>
+                <Layer
+                    id="provinces-outline"
+                    source="provinces"
+                    type="line"
+                    paint={{ "line-width": 0.2, "line-color": "red" }}
+
+                />
 
             </MapGL>
         </>
@@ -37,16 +57,6 @@ const map_attributes = {
     touchZoom:false,
     touchRotate:false,
     keyboard:false,
-    style:{
-        "position": "absolute",
-        "border": "1px solid blue",
-        "boxSizing": "border-box",
-        "top": 20,
-        right: 0,
-        height: "400px",
-        width: "600px",
-        overflow: "hidden"
-    },
     initialViewState:{
         latitude: 28.0,
         longitude: 85.251,
