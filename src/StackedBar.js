@@ -1,51 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MapGL, { Source, Layer, Marker } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
-import { Map } from "./Map";
-import * as d3 from "d3";
 
+export function StackedBar({ data }) {
 
-export function StackedBar({ bar_data }) {
+    const $canvas = useRef(null);
+    const window_width = document.body.clientWidth;
+    const chart_height = 80;
 
-    useEffect(()=>{
-        drawBars();
-    }, []);
-
-    function drawBars(){
-    // stuff you only want to happen once ...
-    // might not need it, depends what you want to do
-        const svg = d3.select("#shared-svg");
-        svg.append("g")
-            .attr("class", "co2-bar");
+    function drawStackedBar(ctx, metric) {
+        metric.forEach(v => {
+            ctx.fillStyle = "red";
+            ctx.strokeStyle = "white";
+            ctx.fillRect(v.x, v.y, v.width, v.height);
+            ctx.strokeRect(v.x, v.y, v.width, v.height);
+        });
     }
 
     useEffect(()=>{
-        updateBars();
-    }, [bar_data]);
+        if (!$canvas.current) return;
+        const ctx = $canvas.current.getContext("2d");
+        ctx.scale(2, 2);
+        drawStackedBar(ctx, data);
+    }, [data]);
 
-    function updateBars(){
-        const g = d3.select(".co2-bar");
-
-        const bars = g.selectAll("rect")
-            .data(bar_data);
-
-        const entering_bars = bars.enter()
-            .append("rect");
-
-        const update_bars = bars.merge(entering_bars);
-
-        update_bars
-            .attr("width", 100)
-            .attr("height", 100)
-            .attr("x", (d, i)=> i * 200)
-            .attr("y", 100);
-
-        bars.exit()
-            .remove();
-    }
-
-    return null;
+    return (
+        <Canvas ref={$canvas} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
+    );
 }
+
+const Canvas = styled.canvas`
+    width: 100%;
+    height: ${({ chart_height })=>chart_height}px;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+`;
 
 

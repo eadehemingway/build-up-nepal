@@ -29,7 +29,7 @@
     ],
     "rules": {
       "no-trailing-spaces": [
-        "error",
+        "warn",
         {
           "skipBlankLines": false
         }
@@ -47,7 +47,7 @@
         "double"
       ],
       "semi": [
-        "error",
+        "warn",
         "always"
       ]
     }
