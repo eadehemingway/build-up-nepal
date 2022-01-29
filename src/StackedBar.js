@@ -1,4 +1,3 @@
-import { window } from "d3";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
@@ -38,6 +37,7 @@ export function StackedBar({ data, highlight, updateData, chart_margin, window_w
     }
 
     function transformCanvas(ctx) {
+        ctx.resetTransform();
         ctx.scale(2, 2);
         ctx.translate(chart_margin.left, chart_margin.top);
     }
@@ -80,10 +80,10 @@ export function StackedBar({ data, highlight, updateData, chart_margin, window_w
         ctx.textAlign = "left";
         ctx.font = "25px sans-serif";
         ctx.fillStyle = "red";
-        ctx.fillText(d.total, (d.chart_width - (chart_margin.left + chart_margin.right)) + 10, d.chart_height - (chart_margin.top + chart_margin.bottom));
+        ctx.fillText(d.total, (window_width - (chart_margin.left + chart_margin.right)) + 10, 80 - (chart_margin.top + chart_margin.bottom));
         ctx.fillStyle = "#000000";
         ctx.font = "13px sans-serif";
-        ctx.fillText(d.name, (d.chart_width - (chart_margin.left + chart_margin.right)) + 10, 10);
+        ctx.fillText(d.name, (window_width - (chart_margin.left + chart_margin.right)) + 10, 10);
     }
 
     useEffect(()=> {
@@ -100,6 +100,7 @@ export function StackedBar({ data, highlight, updateData, chart_margin, window_w
 
     useEffect(()=>{
         if (!ctx_bottom) return;
+        transformCanvas(ctx_bottom);
         drawStackedBar(ctx_bottom, data);
     }, [data]);
 
@@ -118,12 +119,9 @@ export function StackedBar({ data, highlight, updateData, chart_margin, window_w
 
     useEffect(()=>{
         if (!ctx_top) return;
+        transformCanvas(ctx_top);
         drawHighlight(ctx_top, highlight);
     }, [highlight]);
-
-    useEffect(()=> {
-        window.onresize = updateData;
-    }, []);
 
 
     return (

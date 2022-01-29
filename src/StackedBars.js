@@ -9,7 +9,6 @@ const chart_margin = { left: 100, right: 200, top: 20, bottom: 20 };
 const chart_height = 80;
 
 function checkMetric(str) {
-    // if (/^\s*$/.test(str)) return 0;
     if (str === "" || str === " ") return 0;
     if (!isNaN(str)) return Number(str);
     return null;
@@ -65,10 +64,17 @@ export function StackedBars() {
     const [jobs_highlight, setJobsHighlight] = useState(null);
 
     useEffect(() => {
-        window.addEventListener("resize", ()=> {
-            setWindowWidth(document.body.clientWidth);
+        window.addEventListener("resize", () => {
+            if (document.body && document.body.clientWidth) {
+                setWindowWidth(document.body.clientWidth);
+            }
         });
     }, []);
+
+    console.log("window_width:", window_width);
+    console.log("window.innerWidth", window.innerWidth);
+    console.log(document.body.clientWidth);
+
     useEffect(() => {
         setCarbonData(stackData(mapMetric("CO2 saved"), window_width));
         setHousesData(stackData(mapMetric("Houses built TOTAL"), window_width));
@@ -130,4 +136,5 @@ const StackedBarContainer = styled.div`
     left: 0;
     vertical-align: top;
     line-height: 0px;
+    background: white;
 `;
