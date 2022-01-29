@@ -46,9 +46,9 @@ function MarkerPoint({ data , highlighted_id, setHighlightedId }){
 }
 
 const MarkerStyled = styled.div`
-    border-radius: 50%;
     background: red;
-    width: 10px;
+    width: 2px;
     height: 10px;
     border: 1px solid coral;
+    cursor: pointer;
 `;

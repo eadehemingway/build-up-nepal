@@ -14,6 +14,7 @@ function App() {
                 highlighted_id={highlighted_id}
                 setHighlightedId={setHighlightedId}
             />
+
             <StackedBars
                 highlighted_id={highlighted_id}
                 setHighlightedId={setHighlightedId}

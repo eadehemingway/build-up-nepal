@@ -111,7 +111,7 @@ const map_attributes = {
     initialViewState:{
         latitude: 28.0,
         longitude: 85.251,
-        zoom: 5.2
+        zoom: 4.2
     }
 };
 
