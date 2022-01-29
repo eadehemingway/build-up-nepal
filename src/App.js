@@ -7,11 +7,17 @@ import { StackedBars } from "./StackedBars";
 
 
 function App() {
-
+    const [highlighted_id, setHighlightedId] = useState(null);
     return (
         <>
-            <Map/>
-            <StackedBars/>
+            <Map
+                highlighted_id={highlighted_id}
+                setHighlightedId={setHighlightedId}
+            />
+            <StackedBars
+                highlighted_id={highlighted_id}
+                setHighlightedId={setHighlightedId}
+            />
         </>
 
     );

@@ -25,7 +25,7 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function Map() {
+export function Map({ highlighted_id, setHighlightedId }) {
     const [contour_visible, setContourVisible] = useState(true);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
@@ -78,7 +78,7 @@ export function Map() {
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
-                {markers_visible &&  <Markers />}
+                {markers_visible &&  <Markers highlighted_id={highlighted_id} setHighlightedId={setHighlightedId}/>}
             </MapGL>
             <InsetMap onClick={onClick}/>
 

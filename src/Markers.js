@@ -5,12 +5,12 @@ import "./App.css";
 import { data } from "./data/data";
 
 
-export function Markers( ) {
+export function Markers( { highlighted_id, setHighlightedId } ) {
 
     return (
         <>
             {data.map((d, i)=>{
-                return <MarkerPoint key={i} data={d}/>;
+                return <MarkerPoint highlighted_id={highlighted_id} key={i} data={d} setHighlightedId={setHighlightedId}/>;
             })}
         </>
     );
@@ -18,8 +18,10 @@ export function Markers( ) {
 
 
 
-function MarkerPoint({ data  }){
+function MarkerPoint({ data , highlighted_id, setHighlightedId }){
+
     if (!data.Latitude || !data.Longitude ) return null;
+    const is_highlighted = highlighted_id === data.id;
     return (
         <>
             <Marker
@@ -33,7 +35,10 @@ function MarkerPoint({ data  }){
                     willChange: "transform",
                 }}
             >
-                <MarkerStyled onMouseOver={()=> console.log(data.Description)}/>
+                <MarkerStyled
+                    style={{ backgroundColor : is_highlighted ? "red": "blue" }}
+                    onClick={()=> setHighlightedId(data.id)}
+                />
             </Marker>
         </>
     );
@@ -43,7 +48,7 @@ function MarkerPoint({ data  }){
 const MarkerStyled = styled.div`
     border-radius: 50%;
     background: red;
-    width: 2px;
-    height: 2px;
+    width: 10px;
+    height: 10px;
     border: 1px solid coral;
 `;
