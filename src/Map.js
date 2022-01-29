@@ -20,7 +20,7 @@ export function Map() {
     const [outline_visible, setOutlineVisible] = useState(true);
     const [markers_visible, setMarkerVisible] = useState(true);
 
-
+    const [loaded, setLoaded] = useState(false);
     const mapRef = useRef();
     const onClick = (event) => {
         if (!mapRef.current) return;
@@ -44,15 +44,21 @@ export function Map() {
             <button onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
             <button onClick={()=> setOutlineVisible((v)=> !v)}>outline toggle</button>
             <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
+            <Overlay loaded={loaded}/>
             <MapGL
                 ref={mapRef}
                 {...map_attributes}
                 onClick={onClick}
+                onLoad={()=> setLoaded(true)}
             >
+
+
                 <ContourVisible contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 {outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
                 {markers_visible &&  <Markers />}
+
+
 
             </MapGL>
         </>
@@ -85,3 +91,17 @@ const map_attributes = {
         zoom: 6.1
     }
 };
+
+const Overlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff1E0;
+    z-index: 5;
+    opacity: ${({ loaded })=> loaded ? 0 : 1};
+    display: ${({ loaded })=> loaded ? "none" : "block"};
+    transition: opacity 1s;
+
+`;
