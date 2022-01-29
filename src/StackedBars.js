@@ -66,21 +66,34 @@ export function StackedBars() {
                 updated_data[c].highlighted = true;
             });
         }
-        // console.log("updated_data:", updated_data);
         setCarbonData(updated_data);
     }
 
     function updateHousesData(changes) {
+        let updated_data = [...houses_data].map(function(d) { return ({ ...d, highlighted: false }); });
+        if (changes.highlight.length) {
+            changes.highlight.forEach(c => {
+                updated_data[c].highlighted = true;
+            });
+        }
+        setHousesData(updated_data);
     }
 
     function updateJobsData(changes) {
+        let updated_data = [...jobs_data].map(function(d) { return ({ ...d, highlighted: false }); });
+        if (changes.highlight.length) {
+            changes.highlight.forEach(c => {
+                updated_data[c].highlighted = true;
+            });
+        }
+        setJobsData(updated_data);
     }
 
     return (
         <StackedBarContainer>
             <StackedBar data={carbon_data} updateData={updateCarbonData}/>
-            {/* <StackedBar data={houses_data} updateData={updateHousesData}/>
-            <StackedBar data={jobs_data} updateData={updateJobsData}/> */}
+            <StackedBar data={houses_data} updateData={updateHousesData}/>
+            <StackedBar data={jobs_data} updateData={updateJobsData}/>
         </StackedBarContainer>
     );
 }
