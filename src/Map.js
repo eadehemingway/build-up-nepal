@@ -8,7 +8,7 @@ import { Markers } from "./Markers";
 import province_outlines from "./data/province_outlines.json";
 import { MapStyle } from "./Map-style";
 import bbox from "@turf/bbox";
-import { ContourVisible } from "./ContourLayer";
+import { ContourLayer } from "./ContourLayer";
 import { PopulationLayer } from "./PopulationLayer";
 import { CountryOutlineLayer } from "./CountryOutlineLayer";
 
@@ -56,7 +56,7 @@ export function Map() {
             >
 
 
-                <ContourVisible contour_visible={contour_visible}/>
+                <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
