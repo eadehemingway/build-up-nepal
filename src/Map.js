@@ -97,6 +97,7 @@ export function Map() {
                         />
                     )}
                 </Source>
+                {outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
                 {markers_visible &&  <Markers />}
 
             </MapGL>

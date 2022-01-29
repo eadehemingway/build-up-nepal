@@ -15,15 +15,15 @@ const fillLayer = {
     }
 };
 
-const lineLayer = {
-    id: "provinces-outline",
-    source: "provinces",
-    type: "line",
-    paint: {
-        "line-width": 0.2,
-        "line-color": "red"
-    }
-};
+// const lineLayer = {
+//     id: "provinces-outline",
+//     source: "provinces",
+//     type: "line",
+//     paint: {
+//         "line-width": 0.2,
+//         "line-color": "red"
+//     }
+// };
 
 // Make a copy of the map style
 export const MapStyle = {
@@ -35,5 +35,8 @@ export const MapStyle = {
             data: districs
         }
     },
-    layers: [fillLayer, lineLayer]
+    layers: [
+        fillLayer,
+        // lineLayer
+    ]
 };
