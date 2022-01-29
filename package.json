@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "d3": "^7.3.0",
     "mapbox-gl": "^2.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -26,11 +27,28 @@
       "react-app/jest"
     ],
     "rules": {
-      "no-trailing-spaces": ["error", { "skipBlankLines": false }],
-      "object-curly-spacing": [2, "always"],
-      "indent": ["warn", 4 ],
-      "quotes": ["warn", "double" ],
-      "semi":["error","always"]
+      "no-trailing-spaces": [
+        "error",
+        {
+          "skipBlankLines": false
+        }
+      ],
+      "object-curly-spacing": [
+        2,
+        "always"
+      ],
+      "indent": [
+        "warn",
+        4
+      ],
+      "quotes": [
+        "warn",
+        "double"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
     }
   },
   "browserslist": {
