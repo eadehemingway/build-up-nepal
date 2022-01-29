@@ -5,6 +5,10 @@ import { data } from "./data/data";
 import { StackedBar } from "./StackedBar";
 
 const window_width = document.body.clientWidth;
+const chart_margin_left = 100;
+const chart_margin_right = 200;
+const chart_width = window_width - (chart_margin_left + chart_margin_right);
+const chart_height = 80;
 
 function checkMetric(str) {
     // if (/^\s*$/.test(str)) return 0;
@@ -28,7 +32,7 @@ function stackData(d) {
     stacked.forEach(function(d, i) {
         let val = d.metric;
         let proportion = val / metric_total; // As a decimal
-        let width = proportion * window_width;
+        let width = proportion * chart_width;
         d.x = x;
         d.y = y;
         d.height = height;
@@ -59,41 +63,54 @@ export function StackedBars() {
         id: d["id"]
     }))));
 
+    const [carbon_highlight, setCarbonHighlight] = useState(null);
+    const [houses_highlight, setHousesHighlight] = useState(null);
+    const [jobs_highlight, setJobsHighlight] = useState(null);
+
     function updateCarbonData(changes) {
-        let updated_data = [...carbon_data].map(function(d) { return ({ ...d, highlighted: false }); });
-        if (changes.highlight.length) {
-            changes.highlight.forEach(c => {
-                updated_data[c].highlighted = true;
-            });
+        let updated_data = [...carbon_data];
+        if (changes.highlighted.length) {
+            let index = updated_data.findIndex(e => e.id === changes.highlighted[0]);
+            setCarbonHighlight(updated_data[index]);
         }
-        setCarbonData(updated_data);
+        if (changes.filtered.length) {
+            setCarbonData(updated_data);
+        }
     }
 
     function updateHousesData(changes) {
-        let updated_data = [...houses_data].map(function(d) { return ({ ...d, highlighted: false }); });
-        if (changes.highlight.length) {
-            changes.highlight.forEach(c => {
-                updated_data[c].highlighted = true;
-            });
+        let updated_data = [...houses_data];
+        if (changes.highlighted.length) {
+            let index = updated_data.findIndex(e => e.id === changes.highlighted[0]);
+            setHousesHighlight(updated_data[index]);
         }
-        setHousesData(updated_data);
+        if (changes.filtered.length) {
+            setHousesData(updated_data);
+        }
     }
 
     function updateJobsData(changes) {
-        let updated_data = [...jobs_data].map(function(d) { return ({ ...d, highlighted: false }); });
-        if (changes.highlight.length) {
-            changes.highlight.forEach(c => {
-                updated_data[c].highlighted = true;
-            });
+        let updated_data = [...jobs_data];
+        if (changes.highlighted.length) {
+            let index = updated_data.findIndex(e => e.id === changes.highlighted[0]);
+            setJobsHighlight(updated_data[index]);
         }
-        setJobsData(updated_data);
+        if (changes.filtered.length) {
+            setJobsData(updated_data);
+        }
+    }
+
+    function updateData(changes) {
+        updateCarbonData(changes);
+        updateHousesData(changes);
+        updateJobsData(changes);
     }
 
     return (
         <StackedBarContainer>
-            <StackedBar data={carbon_data} updateData={updateCarbonData}/>
-            <StackedBar data={houses_data} updateData={updateHousesData}/>
-            <StackedBar data={jobs_data} updateData={updateJobsData}/>
+            <StackedBar data={carbon_data} highlight={carbon_highlight} updateData={updateData}/>
+            <StackedBar data={houses_data} highlight={houses_highlight} updateData={updateData}/>
+            <StackedBar data={jobs_data} highlight={jobs_highlight} updateData={updateData}/>
         </StackedBarContainer>
     );
 }
