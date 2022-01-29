@@ -10,16 +10,18 @@ import { MapStyle } from "./Map-style";
 import bbox from "@turf/bbox";
 
 
-export function PopulationLayer({ population_visible }) {
+export function CountryOutlineLayer({ country_outline_visible }) {
 
     return (
 
-        <Source id="population_source" type="raster" url={"mapbox://eadehem.5a0w2g3f"} tileSize={256}>
-            {population_visible && (
+        <Source id="country_outline" type="geojson" data={nepal_outline}>
+            {country_outline_visible && (
                 <Layer
-                    id="population_layer"
-                    type="raster"
-                    source="population_source"
+                    id="country_outline_layer"
+                    type="line"
+                    source="country_outline"
+                    paint={{ "line-width": 0.4, "line-color": "red" }}
+
                 />
             )}
         </Source>
