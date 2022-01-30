@@ -14,19 +14,20 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                 {markers_visible && (
                     <Layer
                         id="markers-layer"
-                        type="symbol"
-                        layout={{ "icon-image": "custom-marker", "icon-size": 0.05 }}
+                        type="circle"
+                        // type="symbol"
+                        // layout={{ "icon-image": "custom-marker", "icon-size": 0.05 }}
                         source="marker-source"
-                        // paint = {{ "circle-color":"red",
-                        //     "circle-stroke-width": [
-                        //         "match",
-                        //         ["get", "#"], highlight_id_or_str,
-                        //         3,
-                        //         0
-                        //     ],
-                        //     "circle-stroke-color": "navy"
+                        paint = {{ "circle-color":"red",
+                            "circle-stroke-width": [
+                                "match",
+                                ["get", "#"], highlight_id_or_str,
+                                3,
+                                0
+                            ],
+                            "circle-stroke-color": "navy"
 
-                        // }}
+                        }}
                     />
                 )}
             </Source>
