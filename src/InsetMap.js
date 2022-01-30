@@ -12,12 +12,17 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXV
 export function InsetMap({ onClick }) {
 
     const mapRef = useRef();
-    // const cursor = getCursor();
-    // console.log("cursor:", cursor);
+
     useEffect(()=>{
         if (!mapRef.current) return;
         let hoveredStateId = null;
         let clickedStateId = null;
+
+
+        mapRef.current.on("mouseenter", "provinces-fill", () => {
+            mapRef.current.getCanvas().style.cursor = "pointer";
+        });
+
 
         mapRef.current.on("mousemove", "provinces-fill", (e) => {
             if (e.features.length > 0) {
@@ -56,12 +61,15 @@ export function InsetMap({ onClick }) {
         // When the mouse leaves the state-fill layer, update the feature state of the
         // previously hovered feature.
         mapRef.current.on("mouseleave", "provinces-fill", () => {
+            mapRef.current.getCanvas().style.cursor = "";
+
             if (hoveredStateId !== null) {
                 mapRef.current.setFeatureState(
                     { source: "provinces", id: hoveredStateId },
                     { hover: false }
                 );
             }
+
             hoveredStateId = null;
         });
     });
@@ -81,7 +89,6 @@ export function InsetMap({ onClick }) {
                     height: "400px",
                     width: "600px",
                     overflow: "hidden",
-                    cursor: "pointer" // ideally we would do it on the layer not the whole mapRef.current...
                 }}
             >
                 <Layer

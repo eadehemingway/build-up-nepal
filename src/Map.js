@@ -35,34 +35,7 @@ export function Map({ highlight_id, setHighlightId }) {
     const mapRef = useRef();
 
 
-    useEffect(()=>{
-
-        if (!mapRef.current) return;
-        if (highlight_id ) {
-            // let feature = mapRef.current.querySourceFeatures("marker-source", {
-            //     source: "marker-source"
-            // });
-            // console.log("feature:", feature);
-
-            // if (hoveredStateId) {
-            // mapRef.current.getSource("marker-source").setFeatureState(
-            //     { source: "marker-source" },
-            //     { id_match: true }
-            // );
-            // }
-
-            mapRef.current.setFeatureState({
-                source: "marker-source",
-                id: highlight_id,
-            }, {
-                current_highlight_id: highlight_id,
-            });
-        }
-
-
-    }, [highlight_id]);
-
-    const onClick = (event) => {
+    const onClickInsetMap = (event) => {
         if (!mapRef.current) return;
         const feature = event.features[0];
         if (feature) {
@@ -78,6 +51,25 @@ export function Map({ highlight_id, setHighlightId }) {
             );
         }
     };
+
+    const onClickMainMap = (event) => {
+        if (!mapRef.current) return;
+        const feature = event.features[0];
+        if (feature) {
+            setHighlightId(feature.id);
+
+        }
+    };
+    useEffect(()=>{
+        if (!mapRef.current) return;
+        mapRef.current.on("mouseenter", "markers-layer", () => {
+            mapRef.current.getCanvas().style.cursor = "pointer";
+        });
+        mapRef.current.on("mouseleave", "markers-layer", () => {
+            mapRef.current.getCanvas().style.cursor = "";
+        });
+    }, [mapRef.current]);
+
 
     function unZoom(){
         if (!mapRef.current) return;
@@ -100,6 +92,7 @@ export function Map({ highlight_id, setHighlightId }) {
             <MapGL
                 ref={mapRef}
                 {...map_attributes}
+                onClick={onClickMainMap}
                 onLoad={()=> setLoaded(true)}
             >
                 <ContourLayer contour_visible={contour_visible}/>
@@ -108,7 +101,7 @@ export function Map({ highlight_id, setHighlightId }) {
                 <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
             </MapGL>
-            <InsetMap onClick={onClick}/>
+            <InsetMap onClick={onClickInsetMap}/>
 
         </>
 
@@ -127,6 +120,7 @@ const map_attributes = {
         },
 
     },
+    interactiveLayerIds:["markers-layer"],
     mapboxAccessToken:MAPBOX_TOKEN,
     scrollZoom:false,
     doubleClickZoom:false,

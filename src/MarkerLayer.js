@@ -14,7 +14,7 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
             <Source id="marker-source" type="geojson" data={marker_geojson} promoteId={"#"}>
                 {markers_visible && (
                     <Layer
-                        id="markers"
+                        id="markers-layer"
                         type="circle"
                         source="marker-source"
                         paint = {{ "circle-color": [
