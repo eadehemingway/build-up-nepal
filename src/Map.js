@@ -12,6 +12,7 @@ import { InsetMap } from "./InsetMap";
 import { MarkerLayer } from "./MarkerLayer";
 import { data } from "./data/data";
 import { TextBox } from "./TextBox";
+import { MAP_STYLE_MAIN } from "./main_map_style";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -115,17 +116,7 @@ export function Map({ highlight_id, setHighlightId }) {
 }
 
 const map_attributes = {
-    mapStyle: {
-        ...MAP_STYLE,
-        sources: {
-            ...MAP_STYLE.sources,
-            "provinces": {
-                type: "geojson",
-                data: districs
-            }
-        },
-
-    },
+    mapStyle:MAP_STYLE_MAIN,
     interactiveLayerIds:["markers-layer"],
     mapboxAccessToken:MAPBOX_TOKEN,
     scrollZoom:false,
