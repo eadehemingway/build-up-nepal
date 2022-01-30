@@ -74,18 +74,6 @@ export function InsetMap({ onClick }) {
         });
     });
 
-
-    function handleLoaded (){
-        mapRef.current.loadImage(
-            "https://docs.mapbox.com/mapbox-gl-js/assets/cat.png",
-            (error, image) => {
-                if (error) throw error;
-
-                // Add the image to the map style.
-                mapRef.current.addImage("custom-marker", image);
-
-
-            });}
     return (
         <>
             <MapGL
@@ -98,8 +86,8 @@ export function InsetMap({ onClick }) {
                     "boxSizing": "border-box",
                     "top": 20,
                     right: 0,
-                    height: "400px",
-                    width: "600px",
+                    height: "200px",
+                    width: "300px",
                     overflow: "hidden",
                 }}
             >
@@ -129,8 +117,8 @@ const map_attributes = {
     keyboard:false,
     initialViewState:{
         latitude: 28.0,
-        longitude: 85.251,
-        zoom: 4.2
+        longitude: 84.2,
+        zoom: 4.6
     }
 };
 
