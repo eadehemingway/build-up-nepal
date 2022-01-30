@@ -8,6 +8,7 @@ import marker_geojson from "./data/markers_geojson.json";
 
 export function MarkerLayer( { markers_visible, highlight_id } ) {
 
+    const highlight_id_or_str = highlight_id || "";
     return (
         <>
             <Source id="marker-source" type="geojson" data={marker_geojson} promoteId={"#"}>
@@ -18,7 +19,7 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                         source="marker-source"
                         paint = {{ "circle-color": [
                             "match",
-                            ["get", "#"], highlight_id,
+                            ["get", "#"], highlight_id_or_str,
                             "red",
                             "green"
                         ] }}
