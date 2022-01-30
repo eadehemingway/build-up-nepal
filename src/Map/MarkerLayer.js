@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
-import { data } from "./data/data";
-import marker_geojson from "./data/markers_geojson.json";
+import { data } from "../data/data";
+import marker_geojson from "../data/markers_geojson.json";
 
 
 export function MarkerLayer( { markers_visible, highlight_id } ) {

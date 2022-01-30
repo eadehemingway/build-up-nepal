@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
-import { data } from "./data/data";
+import { data } from "../data/data";
 import { StackedBar } from "./StackedBar";
 import { SortButtons } from "./SortButtons";
 

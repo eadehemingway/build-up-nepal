@@ -7,11 +7,11 @@ import { PopulationLayer } from "./PopulationLayer";
 import { CountryOutlineLayer } from "./CountryOutlineLayer";
 import { InsetMap } from "./InsetMap";
 import { MarkerLayer } from "./MarkerLayer";
-import { data } from "./data/data";
-import { TextBox } from "./TextBox";
+import { data } from "../data/data";
+import { TextBox } from "../InfoOverlay/TextBox";
 import { MAP_STYLE_MAIN } from "./main_map_style";
-import zoom_out from "./zoom-out.png";
-import { LoadingScreen } from "./LoadingScreen";
+import zoom_out from "./../assets/zoom-out.png";
+import { LoadingScreen } from "../Loading/LoadingScreen";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -158,6 +158,7 @@ const map_attributes = {
         "top": 20,
         right: 0,
         left: 0,
+        height: "80vh",
         overflow: "hidden"
     },
     initialViewState:{

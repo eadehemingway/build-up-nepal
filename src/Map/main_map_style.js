@@ -1,6 +1,6 @@
 
 import MAP_STYLE from "./style.json";
-import provinces from "./data/mini_map_feat.json";
+import provinces from "../data/mini_map_feat.json";
 
 export const MAP_STYLE_MAIN =  {
     ...MAP_STYLE,
