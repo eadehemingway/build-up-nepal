@@ -1,19 +1,17 @@
 import React, { useEffect, useState , useRef, useMemo } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
-import "./App.css";
 import bbox from "@turf/bbox";
 import { ContourLayer } from "./ContourLayer";
 import { PopulationLayer } from "./PopulationLayer";
 import { CountryOutlineLayer } from "./CountryOutlineLayer";
-import MAP_STYLE from "./style.json";
-import districs from "./data/province_outlines.json";
 import { InsetMap } from "./InsetMap";
 import { MarkerLayer } from "./MarkerLayer";
 import { data } from "./data/data";
 import { TextBox } from "./TextBox";
 import { MAP_STYLE_MAIN } from "./main_map_style";
 import zoom_out from "./zoom-out.png";
+import { LoadingScreen } from "./LoadingScreen";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -92,6 +90,7 @@ export function Map({ highlight_id, setHighlightId }) {
     }, [highlight_id]);
 
     function handleLoaded (){
+        console.log("lOADED");
         setLoaded(true);
         mapRef.current.loadImage(
             "https://docs.mapbox.com/mapbox-gl-js/assets/cat.png",
@@ -107,7 +106,7 @@ export function Map({ highlight_id, setHighlightId }) {
             <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
             <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
             {is_zoomed && <Button onClick={unZoom}></Button>}
-            <Overlay loaded={loaded}/>
+            <LoadingScreen loaded={loaded}/>
             <MapGL
                 ref={mapRef}
                 {...map_attributes}
@@ -156,7 +155,7 @@ const map_attributes = {
     style:{
         "position": "absolute",
         "boxSizing": "border-box",
-        "top": 0,
+        "top": 20,
         right: 0,
         left: 0,
         overflow: "hidden"
@@ -167,18 +166,4 @@ const map_attributes = {
         zoom: 6.5
     }
 };
-
-const Overlay = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #fff1E0;
-    z-index: 5;
-    opacity: ${({ loaded })=> loaded ? 0 : 1};
-    display: ${({ loaded })=> loaded ? "none" : "block"};
-    transition: opacity 1s;
-
-`;
 

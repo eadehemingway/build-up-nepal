@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
-import "./App.css";
 import { data } from "./data/data";
 import marker_geojson from "./data/markers_geojson.json";
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker } from "react-map-gl";
 import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
-import "./App.css";
 import { Map } from "./Map";
 import { StackedBars } from "./StackedBars";
 
