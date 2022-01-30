@@ -48,19 +48,19 @@ export function StackedBar({ data, highlight, updateData, chart_margin, chart_si
         ctx.restore();
     }
 
-    function drawHighlight(ctx, h) {
+    function drawHighlight(ctx, highlight) {
         clearCanvas(ctx);
-        if (h === null) return;
+        if (highlight === null) return;
         ctx.save();
         ctx.beginPath();
-        ctx.rect(h.x - highlight_stroke_width, h.y - highlight_stroke_width, h.width + (highlight_stroke_width * 2), h.height + (highlight_stroke_width * 2)); // Outer
-        ctx.rect(h.x + (regular_stroke_width / 2), h.y + (regular_stroke_width / 2), h.width - (regular_stroke_width / 2), h.height - (regular_stroke_width / 2)); // Inner
+        ctx.rect(highlight.x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight.width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
+        ctx.rect(highlight.x + (regular_stroke_width / 2), highlight.y + (regular_stroke_width / 2), highlight.width - (regular_stroke_width / 2), highlight.height - (regular_stroke_width / 2)); // Inner
         ctx.closePath();
         ctx.fillStyle = "blue";
         ctx.fill("evenodd");
         ctx.font = "13px sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText(h.metric, (h.x + (h.width / 2)), h.y - 8);
+        ctx.fillText(highlight.metric, (highlight.x + (highlight.width / 2)), highlight.y - 8);
         ctx.restore();
     }
 
