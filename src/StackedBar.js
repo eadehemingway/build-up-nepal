@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 
-export function StackedBar({ data, highlight, updateData, chart_margin, window_width }) {
+export function StackedBar({ data, highlight, updateData, chart_margin, window_width, chart_height }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const [ctx_top, setCtxTop] = useState(null);
@@ -45,7 +45,7 @@ export function StackedBar({ data, highlight, updateData, chart_margin, window_w
     function clearCanvas(ctx) {
         ctx.save();
         ctx.translate(-chart_margin.left, -chart_margin.top);
-        ctx.clearRect(-(highlight_stroke_width), -(highlight_stroke_width), window_width + (highlight_stroke_width / 2), 80 + (highlight_stroke_width / 2));
+        ctx.clearRect(-(highlight_stroke_width), -(highlight_stroke_width), window_width + (highlight_stroke_width / 2), chart_height + (highlight_stroke_width / 2));
         ctx.restore();
     }
 
@@ -80,11 +80,31 @@ export function StackedBar({ data, highlight, updateData, chart_margin, window_w
         ctx.textAlign = "left";
         ctx.font = "25px sans-serif";
         ctx.fillStyle = "red";
-        ctx.fillText(d.total, (window_width - (chart_margin.left + chart_margin.right)) + 10, 80 - (chart_margin.top + chart_margin.bottom));
+        ctx.fillText(d.total, (window_width - (chart_margin.left + chart_margin.right)) + 10, chart_height - (chart_margin.top + chart_margin.bottom));
         ctx.fillStyle = "#000000";
         ctx.font = "13px sans-serif";
         ctx.fillText(d.name, (window_width - (chart_margin.left + chart_margin.right)) + 10, 10);
     }
+
+    function drawAxis(ctx, axis) {
+        axis.forEach(a => {
+            ctx.save();
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(a.x, chart_height - (chart_margin.top + chart_margin.bottom) + 15);
+            ctx.moveTo(a.x + a.width, a.y);
+            ctx.lineTo(a.x + a.width, chart_height - (chart_margin.top + chart_margin.bottom) + 15);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.restore();
+            ctx.fillStyle = "#000000";
+            ctx.font = "12px sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText(a.label, a.x + (a.width / 2), chart_height - (chart_margin.top + chart_margin.bottom) + 15);
+        });
+    };
 
     useEffect(()=> {
         if (!$canvas_bottom.current) return;
@@ -96,12 +116,14 @@ export function StackedBar({ data, highlight, updateData, chart_margin, window_w
         if (!ctx_bottom) return;
         transformCanvas(ctx_bottom);
         drawStackedBar(ctx_bottom, data);
+        drawAxis(ctx_bottom, data.axis);
     }, [ctx_bottom]);
 
     useEffect(()=>{
         if (!ctx_bottom) return;
         transformCanvas(ctx_bottom);
         drawStackedBar(ctx_bottom, data);
+        drawAxis(ctx_bottom, data.axis);
     }, [data]);
 
 
@@ -126,8 +148,8 @@ export function StackedBar({ data, highlight, updateData, chart_margin, window_w
 
     return (
         <CanvasContainer>
-            <CanvasBottom onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={window_width * 2} height={80 * 2} chart_height={80}/>
-            <CanvasTop ref={$canvas_top} width={window_width * 2} height={80 * 2} chart_height={80}/>
+            <CanvasBottom onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
+            <CanvasTop ref={$canvas_top} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
         </CanvasContainer>
     );
 }
