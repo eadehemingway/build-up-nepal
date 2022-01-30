@@ -5,9 +5,9 @@ import "./App.css";
 export function StackedBar({
     data,
     highlight_id,
-    locked_highlight_id,
+    setHighlightId,
+    locked_highlight_id, // use...
     setLockedHighlightId,
-    updateData,
     chart_margin,
     chart_size,
     bar_size
@@ -32,11 +32,10 @@ export function StackedBar({
         let x = e.clientX - chart_margin.left;
         const hovered_id = getBarId(x);
         if (hovered_id == null) return;
-        updateData({
-            filtered: [],
-            highlighted: [hovered_id],
-        });
+        setHighlightId(hovered_id);
+
     }, []);
+
     const onClick = useCallback((e)=>{
         let x = e.clientX - chart_margin.left;
         const id = getBarId(x);
@@ -45,10 +44,7 @@ export function StackedBar({
     }, []);
 
     const onMouseOut = useCallback(()=>{
-        updateData({
-            filtered: [],
-            highlighted: null,
-        });
+        setHighlightId(null);
     }, []);
 
     const transformCanvas = useCallback((ctx) =>{

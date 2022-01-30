@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo } from "react";
 import styled from "styled-components";
 import "./App.css";
 import { data } from "./data/data";
@@ -47,7 +47,7 @@ function stackData(d) {
         d.y = y;
         d.height = height;
         d.width = width;
-        d.highlighted = false;
+        // d.highlighted = false;
         d.filtered = false;
         x += width;
     });
@@ -57,46 +57,29 @@ function stackData(d) {
 
 export function StackedBars({ locked_highlight_id, setLockedHighlightId }) {
     const [highlight_id, setHighlightId] = useState(null);
-    const [carbon_data, setCarbonData] = useState(stackData(data.map(d => ({
-        metric: d["CO2 saved"],
-        year: d["Start Year"],
-        id: d["id"]
-    }))));
-    const [houses_data, setHousesData] = useState(stackData(data.map(d => ({
-        metric: d["Houses built TOTAL"],
-        year: d["Start Year"],
-        id: d["id"]
-    }))));;
-    const [jobs_data, setJobsData] = useState(stackData(data.map(d => ({
-        metric: d["Total jobs"],
-        year: d["Start Year"],
-        id: d["id"]
-    }))));
+    const carbon_data = useMemo(()=>{
+        return stackData(data.map(d => ({
+            metric: d["CO2 saved"],
+            year: d["Start Year"],
+            id: d["id"]
+        })));
+    }, []);
+    const houses_data = useMemo(()=>{
+        return stackData(data.map(d => ({
+            metric: d["Houses built TOTAL"],
+            year: d["Start Year"],
+            id: d["id"]
+        })));
+    }, []);
+    const jobs_data = useMemo(()=>{
+        return stackData(data.map(d => ({
+            metric: d["Total jobs"],
+            year: d["Start Year"],
+            id: d["id"]
+        })));
+    }, []);
 
 
-
-    function updateBarData(data, setData, changes){
-        let updated_data = [...data];
-        if (changes.highlighted.length) {
-            let index = updated_data.findIndex(e => e.id === changes.highlighted[0]);
-            setHighlightId(updated_data[index].id);
-        }
-        if (changes.filtered.length) {
-            setData(updated_data);
-        }
-
-    }
-
-    function updateData(changes) {
-        if (changes.highlighted == null) {
-            setHighlightId(null);
-            return;
-        }
-        updateBarData(carbon_data, setCarbonData, changes);
-        updateBarData(houses_data, setHousesData, changes);
-        updateBarData(jobs_data, setJobsData, changes);
-
-    }
     const data_arr = [carbon_data, houses_data, jobs_data];
     return (
         <StackedBarContainer>
@@ -107,7 +90,7 @@ export function StackedBars({ locked_highlight_id, setLockedHighlightId }) {
                     setLockedHighlightId={setLockedHighlightId}
                     data={d}
                     highlight_id={highlight_id}
-                    updateData={updateData}
+                    setHighlightId={setHighlightId}
                     chart_margin={chart_margin}
                     chart_size={chart_size}
                     bar_size={bar_size}/>
