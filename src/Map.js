@@ -54,22 +54,20 @@ export function Map({ highlight_id, setHighlightId }) {
         }
     };
 
-    const onClickMainMap = (event) => {
-        if (!mapRef.current) return;
-        const feature = event.features[0];
-        if (feature) {
-            setHighlightId(feature.id);
-
-        }
-    };
     useEffect(()=>{
         if (!mapRef.current) return;
-        mapRef.current.on("mouseenter", "markers-layer", () => {
+        mapRef.current.on("mouseenter", "markers-layer", (e) => {
             mapRef.current.getCanvas().style.cursor = "pointer";
+            const feature = e.features[0];
+            if (feature) {
+                setHighlightId(feature.id);
+            }
         });
-        mapRef.current.on("mouseleave", "markers-layer", () => {
+        mapRef.current.on("mouseleave", "markers-layer", (e) => {
             mapRef.current.getCanvas().style.cursor = "";
+            setHighlightId(null);
         });
+
     }, [mapRef.current]);
 
 
@@ -100,7 +98,6 @@ export function Map({ highlight_id, setHighlightId }) {
             <MapGL
                 ref={mapRef}
                 {...map_attributes}
-                onClick={onClickMainMap}
                 onLoad={()=> setLoaded(true)}
             >
                 <ContourLayer contour_visible={contour_visible}/>
@@ -110,7 +107,7 @@ export function Map({ highlight_id, setHighlightId }) {
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
             </MapGL>
             <TextBox highlight_obj={highlight_obj}/>
-            {/* <InsetMap onClick={onClickInsetMap}/> */}
+            <InsetMap onClick={onClickInsetMap}/>
 
         </>
 
