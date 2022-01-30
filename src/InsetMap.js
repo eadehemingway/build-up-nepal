@@ -79,7 +79,6 @@ export function InsetMap({ onClick }) {
                 ref={mapRef}
                 {...map_attributes}
                 onClick={onClick}
-                getCursor={(e) => "crosshair"}
                 style= {{
                     "position": "absolute",
                     "border": "1px solid blue",

@@ -13,7 +13,7 @@ const fillLayer = {
             "case",
             ["boolean", ["feature-state", "click"], false],
             "red",
-            "blue"
+            "#FFAEFF"
         ],
         "fill-opacity": [
             "case",
