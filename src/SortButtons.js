@@ -3,16 +3,12 @@ import styled from "styled-components";
 
 const types = ["Year", "Metric", "Province"];
 
-export function SortButtons({ updateData }) {
+export function SortButtons({ updateData, setSortBy }) {
     const [active, setActive] = useState(types[0]);
 
     function handleClick(type) {
         setActive(type);
-        updateData({
-            filtered: [],
-            highlighted: null,
-            sort: type.toLowerCase(),
-        });
+        setSortBy(type.toLowerCase());
     }
 
     return (
