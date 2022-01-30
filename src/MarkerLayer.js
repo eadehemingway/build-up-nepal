@@ -17,12 +17,16 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                         id="markers-layer"
                         type="circle"
                         source="marker-source"
-                        paint = {{ "circle-color": [
-                            "match",
-                            ["get", "#"], highlight_id_or_str,
-                            "red",
-                            "green"
-                        ] }}
+                        paint = {{ "circle-color":"red",
+                            "circle-stroke-width": [
+                                "match",
+                                ["get", "#"], highlight_id_or_str,
+                                3,
+                                0
+                            ],
+                            "circle-stroke-color": "navy"
+
+                        }}
                     />
                 )}
             </Source>
