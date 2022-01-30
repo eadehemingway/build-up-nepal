@@ -10,6 +10,7 @@ export function StackedBars({ highlight_id, setHighlightId }) {
 
     const chart_margin = { left: 100, right: 200, top: 20, bottom: 30 };
     const chart_height = 80;
+    const [sort_by, setSortBy] = useState("year");
 
     function checkMetric(str) {
         if (str === "" || str === " ") return 0;
@@ -61,6 +62,62 @@ export function StackedBars({ highlight_id, setHighlightId }) {
         return stacked;
     }
 
+    function checkValues(values) {
+        for (var value in values) {
+            if (values[value] == null) return false;
+        }
+        return true;
+    }
+
+    function stack(metric, sortings) {
+        let height = chart_height - (chart_margin.top + chart_margin.bottom);
+        let stacked = {};
+        stacked.data = [...data].map(d => {
+            let values = {};
+            for (var sorting in sortings) {
+                values[sorting] = sorting === "metric" ? checkMetric(d[sortings[sorting]]) : d[sortings[sorting]];
+            }
+            if (!checkValues(values)) return;
+            let mapped = {
+                value: values,
+                id: d.id,
+                height: height,
+                x: {},
+                width: {},
+                y: 0
+            };
+            return mapped;
+        });
+        let metric_total = stacked.data.reduce((partialSum, a) => partialSum + Number(a["value"]["metric"]), 0);
+        stacked.total = metric_total;
+        stacked.axis = [];
+        stacked.name = metric;
+
+        for (var sorting in sortings) {
+            let x = 0;
+            stacked.data.sort((a, b) => {
+                let sortBy = sorting;
+                if (sortBy === "metric") return sortNumerically(a.value[sortBy], b.value[sortBy]);
+                else return sortAlphabetically(a.value[sortBy], b.value[sortBy]);
+            });
+            stacked.data.forEach(d => {
+                let val = d.value["metric"];
+                let proportion = val / metric_total; // As a decimal
+                d.x[sorting] = x;
+                d.width[sorting] = proportion;
+
+                // let relevant_axis = stacked.axis.filter(e => e.label === d.value[metric]);
+                // if (!relevant_axis.length) {
+                //     stacked.axis.push({ label: d.value[metric], x: x, width: proportion, y: 0 });
+                // } else {
+                //     relevant_axis[0].width += proportion;
+                // }
+                x += proportion;
+            });
+        }
+        return stacked;
+    }
+
     function mapMetric(this_metric, all_metrics) {
         const mapped = data.map(d => ({
             metric: d[this_metric],
@@ -71,18 +128,13 @@ export function StackedBars({ highlight_id, setHighlightId }) {
         return mapped;
     }
 
-    function mapData(chosen_metrics) {
+    function mapData(chosen_metrics, chosen_sortings) {
         let mapped_metrics = [...chosen_metrics];
 
-        let mapped_data = {
-            width: window_width,
-            metrics: mapped_metrics.map(metric => {
-                return ({
-                    name: metric,
-                    data: stackData(metric, chosen_metrics),
-                });
-            }),
-        };
+        let mapped_data = mapped_metrics.map(metric => {
+            chosen_sortings["metric"] = metric;
+            return stack(metric, chosen_sortings);
+        });
 
         return mapped_data;
     }
@@ -103,9 +155,7 @@ export function StackedBars({ highlight_id, setHighlightId }) {
     }, []);
 
     const chosen_metrics = ["CO2 saved", "Houses built TOTAL", "Total jobs"];
-    const chosen_sortings = ["Start Year", "metric", "Province Project"];
-
-    console.log(mapData(chosen_metrics, chosen_sortings));
+    const chosen_sortings = { year: "Start Year", province: "Province Project" };
 
     useEffect(() => {
         setCarbonData(stackData(mapMetric("CO2 saved").sort((a, b) => sortAlphabetically(a.year, b.year)), window_width, "year"));
@@ -128,17 +178,17 @@ export function StackedBars({ highlight_id, setHighlightId }) {
 
     }
 
-
-
     function updateData(changes) {
         updateBarData(carbon_data, changes, setCarbonData);
         updateBarData(jobs_data, changes, setJobsData);
         updateBarData(houses_data, changes, setHousesData);
     }
-    const data_arr = [carbon_data, houses_data, jobs_data];
+
+    const data_arr = mapData(chosen_metrics, chosen_sortings);
+
     return (
         <StackedBarContainer>
-            <SortButtons updateData={updateData}/>
+            <SortButtons updateData={updateData} setSortBy={setSortBy}/>
 
             {data_arr.map((d,i)=> (
                 <StackedBar
@@ -150,6 +200,7 @@ export function StackedBars({ highlight_id, setHighlightId }) {
                     updateData={updateData}
                     chart_height={chart_height}
                     window_width={window_width}
+                    sort_by={sort_by}
                 />
             ))}
         </StackedBarContainer>

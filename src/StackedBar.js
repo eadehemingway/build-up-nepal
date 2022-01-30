@@ -2,14 +2,17 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 
-export function StackedBar({ data, highlight_id, setHighlightId, updateData, chart_margin, window_width, chart_height, }) {
-
+export function StackedBar({ data, highlight_id, setHighlightId, updateData, chart_margin, window_width, chart_height, sort_by }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const [ctx_top, setCtxTop] = useState(null);
 
     function getBarId(x) {
-        let filtered = data.filter(d => x >= d.x && x <= (d.x + d.width));
+        let filtered = data.data.filter(function(d) {
+            let d_x = d.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+            let d_width = d.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+            return x >= d_x && x <= (d_x + d_width);
+        });
         if (!filtered.length) return null;
         return filtered[0].id;
     }
@@ -52,32 +55,35 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
     }
 
     function drawHighlight(ctx, highlight_id) {
-        const highlight = data.find((d)=> d.id === highlight_id );
-
+        const highlight = data.data.find(d => d.id === highlight_id);
         clearCanvas(ctx);
         if (!highlight) return;
+        let highlight_x = highlight.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+        let highlight_width = highlight.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
         ctx.save();
         ctx.beginPath();
-        ctx.rect(highlight.x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight.width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
-        ctx.rect(highlight.x + (regular_stroke_width / 2), highlight.y + (regular_stroke_width / 2), highlight.width - (regular_stroke_width / 2), highlight.height - (regular_stroke_width / 2)); // Inner
+        ctx.rect(highlight_x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight_width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
+        ctx.rect(highlight_x + (regular_stroke_width / 2), highlight.y + (regular_stroke_width / 2), highlight_width - (regular_stroke_width / 2), highlight.height - (regular_stroke_width / 2)); // Inner
         ctx.closePath();
         ctx.fillStyle = "blue";
         ctx.fill("evenodd");
         ctx.font = "13px sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText(highlight.metric, (highlight.x + (highlight.width / 2)), highlight.y - 8);
+        ctx.fillText(highlight.value.metric, (highlight_x + (highlight_width / 2)), highlight.y - 8);
         ctx.restore();
     }
 
     function drawStackedBar(ctx, d) {
         clearCanvas(ctx);
-        d.forEach(v => {
+        d.data.forEach(v => {
+            let x = v.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+            let width = v.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
             ctx.save();
             ctx.fillStyle = v.filtered ? "pink" : "red";
             ctx.strokeStyle = "white";
             ctx.lineWidth = regular_stroke_width;
-            ctx.fillRect(v.x, v.y, v.width, v.height);
-            ctx.strokeRect(v.x, v.y, v.width, v.height);
+            ctx.fillRect(x, v.y, width, v.height);
+            ctx.strokeRect(x, v.y, width, v.height);
             ctx.restore();
         });
 
