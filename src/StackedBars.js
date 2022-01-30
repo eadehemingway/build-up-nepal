@@ -47,7 +47,6 @@ function stackData(d, w, sort) {
         d.y = y;
         d.height = height;
         d.width = width;
-        d.highlighted = false;
         d.filtered = false;
         let relevant_axis = stacked.axis.filter(e => e.label === d[sort]);
         if (!relevant_axis.length) {
@@ -107,13 +106,6 @@ export function StackedBars() {
             });
             setData(stackData(updated_data, window_width, changes.sort));
         }
-        // if (changes.filtered.length) { setCarbonData(updated_data); };
-        if (changes.highlighted == null) {
-            setHighlightId(null);
-            return;
-        }
-        let index = updated_data.findIndex(e => e.id === changes.highlighted);
-        setHighlightId(updated_data[index].id);
 
     }
 

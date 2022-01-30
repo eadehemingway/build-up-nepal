@@ -4,6 +4,7 @@ import "./App.css";
 
 export function StackedBar({ data, highlight_id, setHighlightId, updateData, chart_margin, window_width, chart_height, }) {
 
+
     const [ctx_bottom, setCtxBottom] = useState(null);
     const [ctx_top, setCtxTop] = useState(null);
 
@@ -21,12 +22,12 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
 
     function onMouseMove(e) {
         let x = e.clientX - chart_margin.left;
-        const hovered_id = getBarId(x);
-        if (hovered_id == null) return;
-        updateData({
-            filtered: [],
-            highlighted: hovered_id,
-        });
+        const ID = getBarId(x);
+        if (ID == null) return;
+        setHighlightId(ID);
+        // updateData({
+        //     filtered: [],
+        // });
     }
 
     function onMouseOut() {
@@ -52,6 +53,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
 
     function drawHighlight(ctx, highlight_id) {
         const highlight = data.find((d)=> d.id === highlight_id );
+
         clearCanvas(ctx);
         if (!highlight) return;
         ctx.save();
