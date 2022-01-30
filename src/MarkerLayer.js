@@ -16,7 +16,7 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                     <Layer
                         id="markers-layer"
                         type="symbol"
-                        layout={{ "icon-image": "custom-marker", "icon-size": 0.1 }}
+                        layout={{ "icon-image": "custom-marker", "icon-size": 0.05 }}
                         source="marker-source"
                         // paint = {{ "circle-color":"red",
                         //     "circle-stroke-width": [
