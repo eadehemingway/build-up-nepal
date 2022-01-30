@@ -18,14 +18,14 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                         // type="symbol"
                         // layout={{ "icon-image": "custom-marker", "icon-size": 0.05 }}
                         source="marker-source"
-                        paint = {{ "circle-color":"red",
-                            "circle-stroke-width": [
+                        paint = {{ "circle-stroke-width": 0.5,
+                            "circle-color": [
                                 "match",
                                 ["get", "#"], highlight_id_or_str,
-                                3,
-                                0
+                                "red",
+                                "transparent"
                             ],
-                            "circle-stroke-color": "navy"
+                            "circle-stroke-color": "red"
 
                         }}
                     />
