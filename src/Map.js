@@ -25,7 +25,7 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function Map({ highlight_id, setHighlightId }) {
+export function Map({ locked_highlight_id, setLockedHighlightId }) {
     const [contour_visible, setContourVisible] = useState(true);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
@@ -60,6 +60,7 @@ export function Map({ highlight_id, setHighlightId }) {
         { padding: 40, duration: 3500 }
         );
     }
+
     return (
         <>
             <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
@@ -78,7 +79,7 @@ export function Map({ highlight_id, setHighlightId }) {
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
-                {markers_visible &&  <Markers highlight_id={highlight_id} setHighlightId={setHighlightId}/>}
+                {markers_visible &&  <Markers locked_highlight_id={locked_highlight_id} setLockedHighlightId={setLockedHighlightId}/>}
             </MapGL>
             <InsetMap onClick={onClick}/>
 

@@ -5,12 +5,17 @@ import "./App.css";
 import { data } from "./data/data";
 
 
-export function Markers( { highlight_id, setHighlightId } ) {
+export function Markers( { locked_highlight_id, setLockedHighlightId } ) {
 
     return (
         <>
             {data.map((d, i)=>{
-                return <MarkerPoint highlight_id={highlight_id} key={i} data={d} setHighlightId={setHighlightId}/>;
+                return <MarkerPoint
+                    key={i}
+                    data={d}
+                    locked_highlight_id={locked_highlight_id}
+                    setLockedHighlightId={setLockedHighlightId}
+                />;
             })}
         </>
     );
@@ -18,10 +23,10 @@ export function Markers( { highlight_id, setHighlightId } ) {
 
 
 
-function MarkerPoint({ data , highlight_id, setHighlightId }){
+function MarkerPoint({ data , locked_highlight_id, setLockedHighlightId }){
 
     if (!data.Latitude || !data.Longitude ) return null;
-    const is_highlighted = highlight_id === data.id;
+    const is_locked_highlight = locked_highlight_id === data.id;
     return (
         <>
             <Marker
@@ -35,8 +40,8 @@ function MarkerPoint({ data , highlight_id, setHighlightId }){
                     willChange: "transform",
                 }}
             >
-                {is_highlighted ? <HighlightedMarker/> : <MarkerStyled
-                    onClick={()=> setHighlightId(data.id)}
+                {is_locked_highlight ? <HighlightedMarker/> : <MarkerStyled
+                    onClick={()=> setLockedHighlightId(data.id)}
                 />}
             </Marker>
         </>

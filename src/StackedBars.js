@@ -55,8 +55,8 @@ function stackData(d) {
 }
 
 
-export function StackedBars({ highlight_id, setHighlightId }) {
-
+export function StackedBars({ locked_highlight_id, setLockedHighlightId }) {
+    const [highlight_id, setHighlightId] = useState(null);
     const [carbon_data, setCarbonData] = useState(stackData(data.map(d => ({
         metric: d["CO2 saved"],
         year: d["Start Year"],
@@ -97,12 +97,22 @@ export function StackedBars({ highlight_id, setHighlightId }) {
         updateBarData(jobs_data, setJobsData, changes);
 
     }
-
+    const data_arr = [carbon_data, houses_data, jobs_data];
     return (
         <StackedBarContainer>
-            <StackedBar data={carbon_data} highlight_id={highlight_id} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
-            <StackedBar data={houses_data} highlight_id={highlight_id} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
-            <StackedBar data={jobs_data} highlight_id={highlight_id} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
+            {data_arr.map((d,i)=> (
+                <StackedBar
+                    key={i}
+                    locked_highlight_id={locked_highlight_id}
+                    setLockedHighlightId={setLockedHighlightId}
+                    data={d}
+                    highlight_id={highlight_id}
+                    updateData={updateData}
+                    chart_margin={chart_margin}
+                    chart_size={chart_size}
+                    bar_size={bar_size}/>
+            ))}
+
         </StackedBarContainer>
     );
 }

@@ -1,8 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import styled from "styled-components";
 import "./App.css";
 
-export function StackedBar({ data, highlight_id, updateData, chart_margin, chart_size, bar_size }) {
+export function StackedBar({
+    data,
+    highlight_id,
+    locked_highlight_id,
+    setLockedHighlightId,
+    updateData,
+    chart_margin,
+    chart_size,
+    bar_size
+}) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const [ctx_top, setCtxTop] = useState(null);
@@ -19,7 +28,7 @@ export function StackedBar({ data, highlight_id, updateData, chart_margin, chart
     const regular_stroke_width = 0.3;
     const highlight_stroke_width = 2;
 
-    function onMouseMove(e) {
+    const onMouseMove = useCallback((e)=>{
         let x = e.clientX - chart_margin.left;
         const hovered_id = getBarId(x);
         if (hovered_id == null) return;
@@ -27,28 +36,34 @@ export function StackedBar({ data, highlight_id, updateData, chart_margin, chart
             filtered: [],
             highlighted: [hovered_id],
         });
-    }
+    }, []);
+    const onClick = useCallback((e)=>{
+        let x = e.clientX - chart_margin.left;
+        const id = getBarId(x);
+        if (id == null) return;
+        setLockedHighlightId(id);
+    }, []);
 
-    function onMouseOut() {
+    const onMouseOut = useCallback(()=>{
         updateData({
             filtered: [],
             highlighted: null,
         });
-    }
+    }, []);
 
-    function transformCanvas(ctx) {
+    const transformCanvas = useCallback((ctx) =>{
         ctx.scale(2, 2);
         ctx.translate(chart_margin.left, chart_margin.top);
-    }
+    }, []);
 
-    function clearCanvas(ctx) {
+    const clearCanvas = useCallback((ctx)=>{
         ctx.save();
         ctx.translate(-chart_margin.left, -chart_margin.top);
         ctx.clearRect(-(highlight_stroke_width), -(highlight_stroke_width), chart_size.width + (highlight_stroke_width / 2), chart_size.height + (highlight_stroke_width / 2));
         ctx.restore();
-    }
+    }, []);
 
-    function drawHighlight(ctx, highlight_id) {
+    const drawHighlight = useCallback((ctx, highlight_id)=>{
         const highlight = data.find((d)=> d.id === highlight_id );
         clearCanvas(ctx);
         if (!highlight) return;
@@ -63,9 +78,9 @@ export function StackedBar({ data, highlight_id, updateData, chart_margin, chart
         ctx.textAlign = "center";
         ctx.fillText(highlight.metric, (highlight.x + (highlight.width / 2)), highlight.y - 8);
         ctx.restore();
-    }
+    }, []);
 
-    function drawStackedBar(ctx, d) {
+    const drawStackedBar = useCallback((ctx, d)=> {
         clearCanvas(ctx);
         d.forEach(v => {
             ctx.save();
@@ -84,7 +99,7 @@ export function StackedBar({ data, highlight_id, updateData, chart_margin, chart
         ctx.fillStyle = "#000000";
         ctx.font = "13px sans-serif";
         ctx.fillText(d.name, bar_size.width + 10, 10);
-    }
+    }, []);
 
     useEffect(()=> {
         if (!$canvas_bottom.current) return;
@@ -124,12 +139,11 @@ export function StackedBar({ data, highlight_id, updateData, chart_margin, chart
 
     return (
         <CanvasContainer>
-            <CanvasBottom onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={chart_size.width * 2} height={chart_size.height * 2} chart_height={chart_size.height}/>
+            <CanvasBottom onClick={onClick} onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={chart_size.width * 2} height={chart_size.height * 2} chart_height={chart_size.height}/>
             <CanvasTop ref={$canvas_top} width={chart_size.width * 2} height={chart_size.height * 2} chart_height={chart_size.height}/>
         </CanvasContainer>
     );
 }
-
 const CanvasContainer = styled.div`
     width: 100%;
     display: inline-block;
@@ -146,6 +160,8 @@ const CanvasBottom = styled.canvas`
     padding: 0px;
     z-index: 1;
 `;
+
+
 
 const CanvasTop = styled(CanvasBottom)`
     position: absolute;

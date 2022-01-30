@@ -7,17 +7,17 @@ import { StackedBars } from "./StackedBars";
 
 
 function App() {
-    const [highlight_id, setHighlightId] = useState(null);
+    const [locked_highlight_id, setLockedHighlightId] = useState(null);
     return (
         <>
             <Map
-                highlight_id={highlight_id}
-                setHighlightId={setHighlightId}
+                locked_highlight_id={locked_highlight_id}
+                setLockedHighlightId={setLockedHighlightId}
             />
 
             <StackedBars
-                highlight_id={highlight_id}
-                setHighlightId={setHighlightId}
+                locked_highlight_id={locked_highlight_id}
+                setLockedHighlightId={setLockedHighlightId}
             />
         </>
 
