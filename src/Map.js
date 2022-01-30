@@ -2,7 +2,6 @@ import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
-import { Markers } from "./Markers";
 import bbox from "@turf/bbox";
 import { ContourLayer } from "./ContourLayer";
 import { PopulationLayer } from "./PopulationLayer";
@@ -10,6 +9,7 @@ import { CountryOutlineLayer } from "./CountryOutlineLayer";
 import MAP_STYLE from "./style.json";
 import districs from "./data/province_outlines.json";
 import { InsetMap } from "./InsetMap";
+import { MarkerLayer } from "./MarkerLayer";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -77,8 +77,8 @@ export function Map({ highlighted_id, setHighlightedId }) {
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
+                <MarkerLayer markers_visible={markers_visible}/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
-                {markers_visible &&  <Markers highlighted_id={highlighted_id} setHighlightedId={setHighlightedId}/>}
             </MapGL>
             <InsetMap onClick={onClick}/>
 
