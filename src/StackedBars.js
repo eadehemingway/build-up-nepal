@@ -77,37 +77,17 @@ export function StackedBars() {
     const [houses_highlight, setHousesHighlight] = useState(null);
     const [jobs_highlight, setJobsHighlight] = useState(null);
 
-    function updateCarbonData(changes) {
-        let updated_data = [...carbon_data];
-        if (changes.highlighted.length) {
-            let index = updated_data.findIndex(e => e.id === changes.highlighted[0]);
-            setCarbonHighlight(updated_data[index]);
-        }
-        if (changes.filtered.length) {
-            setCarbonData(updated_data);
-        }
-    }
 
-    function updateHousesData(changes) {
-        let updated_data = [...houses_data];
+    function updateBarData(data, setData, setHighlight, changes){
+        let updated_data = [...data];
         if (changes.highlighted.length) {
             let index = updated_data.findIndex(e => e.id === changes.highlighted[0]);
-            setHousesHighlight(updated_data[index]);
+            setHighlight(updated_data[index]);
         }
         if (changes.filtered.length) {
-            setHousesData(updated_data);
+            setData(updated_data);
         }
-    }
 
-    function updateJobsData(changes) {
-        let updated_data = [...jobs_data];
-        if (changes.highlighted.length) {
-            let index = updated_data.findIndex(e => e.id === changes.highlighted[0]);
-            setJobsHighlight(updated_data[index]);
-        }
-        if (changes.filtered.length) {
-            setJobsData(updated_data);
-        }
     }
 
     function updateData(changes) {
@@ -117,9 +97,10 @@ export function StackedBars() {
             setJobsHighlight(null);
             return;
         }
-        updateCarbonData(changes);
-        updateHousesData(changes);
-        updateJobsData(changes);
+        updateBarData(carbon_data, setCarbonData, setCarbonHighlight, changes);
+        updateBarData(houses_data, setHousesData, setHousesHighlight, changes);
+        updateBarData(jobs_data, setJobsData, setJobsHighlight, changes);
+
     }
 
     return (
