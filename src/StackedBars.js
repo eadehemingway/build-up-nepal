@@ -73,16 +73,14 @@ export function StackedBars() {
         id: d["id"]
     }))));
 
-    const [carbon_highlight, setCarbonHighlight] = useState(null);
-    const [houses_highlight, setHousesHighlight] = useState(null);
-    const [jobs_highlight, setJobsHighlight] = useState(null);
+    const [highlight_id, setHighlightId] = useState(null);
 
 
-    function updateBarData(data, setData, setHighlight, changes){
+    function updateBarData(data, setData, changes){
         let updated_data = [...data];
         if (changes.highlighted.length) {
             let index = updated_data.findIndex(e => e.id === changes.highlighted[0]);
-            setHighlight(updated_data[index]);
+            setHighlightId(updated_data[index].id);
         }
         if (changes.filtered.length) {
             setData(updated_data);
@@ -92,22 +90,20 @@ export function StackedBars() {
 
     function updateData(changes) {
         if (changes.highlighted == null) {
-            setCarbonHighlight(null);
-            setHousesHighlight(null);
-            setJobsHighlight(null);
+            setHighlightId(null);
             return;
         }
-        updateBarData(carbon_data, setCarbonData, setCarbonHighlight, changes);
-        updateBarData(houses_data, setHousesData, setHousesHighlight, changes);
-        updateBarData(jobs_data, setJobsData, setJobsHighlight, changes);
+        updateBarData(carbon_data, setCarbonData, changes);
+        updateBarData(houses_data, setHousesData, changes);
+        updateBarData(jobs_data, setJobsData, changes);
 
     }
 
     return (
         <StackedBarContainer>
-            <StackedBar data={carbon_data} highlight={carbon_highlight} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
-            <StackedBar data={houses_data} highlight={houses_highlight} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
-            <StackedBar data={jobs_data} highlight={jobs_highlight} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
+            <StackedBar data={carbon_data} highlight_id={highlight_id} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
+            <StackedBar data={houses_data} highlight_id={highlight_id} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
+            <StackedBar data={jobs_data} highlight_id={highlight_id} updateData={updateData} chart_margin={chart_margin} chart_size={chart_size} bar_size={bar_size}/>
         </StackedBarContainer>
     );
 }

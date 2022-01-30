@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 
-export function StackedBar({ data, highlight, updateData, chart_margin, chart_size, bar_size }) {
+export function StackedBar({ data, highlight_id, updateData, chart_margin, chart_size, bar_size }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const [ctx_top, setCtxTop] = useState(null);
@@ -48,9 +48,10 @@ export function StackedBar({ data, highlight, updateData, chart_margin, chart_si
         ctx.restore();
     }
 
-    function drawHighlight(ctx, highlight) {
+    function drawHighlight(ctx, highlight_id) {
+        const highlight = data.find((d)=> d.id === highlight_id );
         clearCanvas(ctx);
-        if (highlight === null) return;
+        if (!highlight) return;
         ctx.save();
         ctx.beginPath();
         ctx.rect(highlight.x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight.width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
@@ -112,13 +113,13 @@ export function StackedBar({ data, highlight, updateData, chart_margin, chart_si
         if (!$canvas_top.current) return;
         if (!ctx_top) return;
         transformCanvas(ctx_top);
-        drawHighlight(ctx_top, highlight);
+        drawHighlight(ctx_top, highlight_id);
     }, [ctx_top]);
 
     useEffect(()=>{
         if (!ctx_top) return;
-        drawHighlight(ctx_top, highlight);
-    }, [highlight]);
+        drawHighlight(ctx_top, highlight_id);
+    }, [highlight_id]);
 
 
     return (

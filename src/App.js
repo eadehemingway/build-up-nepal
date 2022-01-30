@@ -10,10 +10,10 @@ function App() {
     const [highlighted_id, setHighlightedId] = useState(null);
     return (
         <>
-            <Map
+            {/* <Map
                 highlighted_id={highlighted_id}
                 setHighlightedId={setHighlightedId}
-            />
+            /> */}
 
             <StackedBars
                 highlighted_id={highlighted_id}
