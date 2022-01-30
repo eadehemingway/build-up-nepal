@@ -95,8 +95,8 @@ export function StackedBars() {
         setJobsData(stackData(mapMetric("Total jobs").sort((a, b) => sortAlphabetically(a.year, b.year)), window_width, "year"));
     }, [window_width]);
 
-    function updateCarbonData(changes) {
-        let updated_data = [...carbon_data];
+    function updateBarData(d, changes, setData){
+        let updated_data = [...d];
         if (changes.sort) {
             updated_data.sort(function(a, b) {
                 if (changes.sort === "size") {
@@ -105,7 +105,7 @@ export function StackedBars() {
                     return sortAlphabetically(a[changes.sort], b[changes.sort]);
                 }
             });
-            setCarbonData(stackData(updated_data, window_width, changes.sort));
+            setData(stackData(updated_data, window_width, changes.sort));
         }
         // if (changes.filtered.length) { setCarbonData(updated_data); };
         if (changes.highlighted == null) {
@@ -114,54 +114,15 @@ export function StackedBars() {
         }
         let index = updated_data.findIndex(e => e.id === changes.highlighted);
         setHighlightId(updated_data[index].id);
+
     }
 
-    function updateHousesData(changes) {
-        let updated_data = [...houses_data];
-        if (changes.sort) {
-            updated_data.sort(function(a, b) {
-                if (changes.sort === "size") {
-                    return sortNumerically(a[changes.sort], b[changes.sort]);
-                } else {
-                    return sortAlphabetically(a[changes.sort], b[changes.sort]);
-                }
-            });
-            setHousesData(stackData(updated_data, window_width, changes.sort));
-        }
-        // if (changes.filtered.length) setHousesData(updated_data);
-        if (changes.highlighted == null) {
-            setHighlightId(null);
-            return;
-        }
-        let index = updated_data.findIndex(e => e.id === changes.highlighted);
-        setHighlightId(updated_data[index].id);
-    }
 
-    function updateJobsData(changes) {
-        let updated_data = [...jobs_data];
-        if (changes.sort) {
-            updated_data.sort(function(a, b) {
-                if (changes.sort === "size") {
-                    return sortNumerically(a[changes.sort], b[changes.sort]);
-                } else {
-                    return sortAlphabetically(a[changes.sort], b[changes.sort]);
-                }
-            });
-            setJobsData(stackData(updated_data, window_width, changes.sort));
-        }
-        // if (changes.filtered.length) setJobsData(updated_data);
-        if (changes.highlighted == null) {
-            setHighlightId(null);
-            return;
-        }
-        let index = updated_data.findIndex(e => e.id === changes.highlighted);
-        setHighlightId(updated_data[index].id);
-    }
 
     function updateData(changes) {
-        updateCarbonData(changes);
-        updateHousesData(changes);
-        updateJobsData(changes);
+        updateBarData(carbon_data, changes, setCarbonData);
+        updateBarData(jobs_data, changes, setJobsData);
+        updateBarData(houses_data, changes, setHousesData);
     }
     const data_arr = [carbon_data, houses_data, jobs_data];
     return (
