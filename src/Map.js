@@ -13,6 +13,8 @@ import { MarkerLayer } from "./MarkerLayer";
 import { data } from "./data/data";
 import { TextBox } from "./TextBox";
 import { MAP_STYLE_MAIN } from "./main_map_style";
+import icon from "./test.png";
+console.log("icon:", icon);
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -87,6 +89,19 @@ export function Map({ highlight_id, setHighlightId }) {
         return obj;
 
     }, [highlight_id]);
+
+    function handleLoaded (){
+        setLoaded(true);
+        mapRef.current.loadImage(
+            "https://docs.mapbox.com/mapbox-gl-js/assets/cat.png",
+            (error, image) => {
+                if (error) throw error;
+
+                // Add the image to the map style.
+                mapRef.current.addImage("custom-marker", image);
+
+
+            });}
     return (
         <>
             <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
@@ -99,7 +114,7 @@ export function Map({ highlight_id, setHighlightId }) {
             <MapGL
                 ref={mapRef}
                 {...map_attributes}
-                onLoad={()=> setLoaded(true)}
+                onLoad={handleLoaded}
             >
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
