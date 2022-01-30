@@ -1,4 +1,4 @@
-import React, { useEffect, useState , useRef } from "react";
+import React, { useEffect, useState , useRef, useMemo } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import "./App.css";
@@ -10,6 +10,8 @@ import MAP_STYLE from "./style.json";
 import districs from "./data/province_outlines.json";
 import { InsetMap } from "./InsetMap";
 import { MarkerLayer } from "./MarkerLayer";
+import { data } from "./data/data";
+import { TextBox } from "./TextBox";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -80,6 +82,12 @@ export function Map({ highlight_id, setHighlightId }) {
         { padding: 40, duration: 3500 }
         );
     }
+
+    const highlight_obj = useMemo(()=>{
+        const obj = data.find(d=>  d.id === highlight_id);
+        return obj;
+
+    }, [highlight_id]);
     return (
         <>
             <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
@@ -101,7 +109,8 @@ export function Map({ highlight_id, setHighlightId }) {
                 <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
             </MapGL>
-            <InsetMap onClick={onClickInsetMap}/>
+            <TextBox highlight_obj={highlight_obj}/>
+            {/* <InsetMap onClick={onClickInsetMap}/> */}
 
         </>
 
@@ -156,3 +165,4 @@ const Overlay = styled.div`
     transition: opacity 1s;
 
 `;
+
