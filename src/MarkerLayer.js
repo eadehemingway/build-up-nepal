@@ -18,8 +18,7 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                         source="marker-source"
                         paint = {{ "circle-color": [
                             "match",
-                            ["feature-state", "current_highlight_id"],
-                            ["get", "#"],
+                            ["get", "#"], highlight_id,
                             "red",
                             "green"
                         ] }}
