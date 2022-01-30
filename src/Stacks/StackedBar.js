@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { TotalSvg } from "./TotalSvg";
 
 export function StackedBar({ data, highlight_id, setHighlightId, updateData, chart_margin, window_width, chart_height, sort_by }) {
 
@@ -19,8 +20,12 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
     const $canvas_bottom = useRef(null);
     const $canvas_top = useRef(null);
 
-    const regular_stroke_width = 0.3;
+    const regular_stroke_width = 0.1;
     const highlight_stroke_width = 2;
+    const bar_fill = "#fdc0ff";
+    const bar_stroke = "#ff0000";
+    const highlight_fill = "#ff0000";
+    const highlight_stroke = "#ff0000";
 
     function onMouseMove(e) {
         let x = e.clientX - chart_margin.left;
@@ -61,11 +66,14 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
         let highlight_width = highlight.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
         ctx.save();
         ctx.beginPath();
-        ctx.rect(highlight_x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight_width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
-        ctx.rect(highlight_x + (regular_stroke_width / 2), highlight.y + (regular_stroke_width / 2), highlight_width - (regular_stroke_width / 2), highlight.height - (regular_stroke_width / 2)); // Inner
+        // ctx.rect(highlight_x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight_width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
+        // ctx.rect(highlight_x + (regular_stroke_width / 2), highlight.y + (regular_stroke_width / 2), highlight_width - (regular_stroke_width / 2), highlight.height - (regular_stroke_width / 2)); // Inner
+        // ctx.closePath();
+        ctx.fillStyle = highlight_stroke;
+        // ctx.fill("evenodd");
+        ctx.rect(highlight_x, highlight.y, highlight_width, highlight.height);
         ctx.closePath();
-        ctx.fillStyle = "#1400a3";
-        ctx.fill("evenodd");
+        ctx.fill();
         ctx.font = "12px sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(highlight.value.metric, (highlight_x + (highlight_width / 2)), highlight.y - 8);
@@ -78,21 +86,21 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
             let x = v.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
             let width = v.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
             ctx.save();
-            ctx.fillStyle = v.filtered ? "pink" : "red";
-            ctx.strokeStyle = "#FFD6FF";
+            ctx.fillStyle = v.filtered ? "pink" : bar_fill;
+            ctx.strokeStyle = bar_stroke;
             ctx.lineWidth = regular_stroke_width;
             ctx.fillRect(x, v.y, width, v.height);
             ctx.strokeRect(x, v.y, width, v.height);
             ctx.restore();
         });
 
-        ctx.textAlign = "left";
-        ctx.font = "38px sans-serif";
-        ctx.fillStyle = "red";
-        ctx.fillText(d.total, (window_width - (chart_margin.left + chart_margin.right)) + 10, chart_height - (chart_margin.top + chart_margin.bottom));
-        ctx.fillStyle = "#1400a3";
-        ctx.font = "12px sans-serif";
-        ctx.fillText(d.name, (window_width - (chart_margin.left + chart_margin.right)) + 10, -8);
+        // ctx.textAlign = "left";
+        // ctx.font = "38px sans-serif";
+        // ctx.fillStyle = "red";
+        // ctx.fillText(d.total, (window_width - (chart_margin.left + chart_margin.right)) + 10, chart_height - (chart_margin.top + chart_margin.bottom));
+        // ctx.fillStyle = "#1400a3";
+        // ctx.font = "12px sans-serif";
+        // ctx.fillText(d.name, (window_width - (chart_margin.left + chart_margin.right)) + 10, -8);
     }
 
     function drawAxis(ctx, axis) {
@@ -161,6 +169,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
         <CanvasContainer>
             <CanvasBottom onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
             <CanvasTop ref={$canvas_top} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
+            <TotalSvg total={data.total} chart_margin={chart_margin} chart_height={chart_height} window_width={window_width}/>
         </CanvasContainer>
     );
 }
