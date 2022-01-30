@@ -79,9 +79,7 @@ export function StackedBars() {
     const [houses_data, setHousesData] = useState([]);
     const [jobs_data, setJobsData] = useState([]);
 
-    const [carbon_highlight, setCarbonHighlight] = useState(null);
-    const [houses_highlight, setHousesHighlight] = useState(null);
-    const [jobs_highlight, setJobsHighlight] = useState(null);
+    const [highlight_id, setHighlightId] = useState(null);
 
     useEffect(() => {
         window.addEventListener("resize", () => {
@@ -111,11 +109,11 @@ export function StackedBars() {
         }
         // if (changes.filtered.length) { setCarbonData(updated_data); };
         if (changes.highlighted == null) {
-            setCarbonHighlight(null);
+            setHighlightId(null);
             return;
         }
         let index = updated_data.findIndex(e => e.id === changes.highlighted);
-        setCarbonHighlight(updated_data[index]);
+        setHighlightId(updated_data[index].id);
     }
 
     function updateHousesData(changes) {
@@ -132,11 +130,11 @@ export function StackedBars() {
         }
         // if (changes.filtered.length) setHousesData(updated_data);
         if (changes.highlighted == null) {
-            setHousesHighlight(null);
+            setHighlightId(null);
             return;
         }
         let index = updated_data.findIndex(e => e.id === changes.highlighted);
-        setHousesHighlight(updated_data[index]);
+        setHighlightId(updated_data[index].id);
     }
 
     function updateJobsData(changes) {
@@ -153,11 +151,11 @@ export function StackedBars() {
         }
         // if (changes.filtered.length) setJobsData(updated_data);
         if (changes.highlighted == null) {
-            setJobsHighlight(null);
+            setHighlightId(null);
             return;
         }
         let index = updated_data.findIndex(e => e.id === changes.highlighted);
-        setJobsHighlight(updated_data[index]);
+        setHighlightId(updated_data[index].id);
     }
 
     function updateData(changes) {
@@ -165,13 +163,23 @@ export function StackedBars() {
         updateHousesData(changes);
         updateJobsData(changes);
     }
-
+    const data_arr = [carbon_data, houses_data, jobs_data];
     return (
         <StackedBarContainer>
             <SortButtons updateData={updateData}/>
-            <StackedBar data={carbon_data} highlight={carbon_highlight} updateData={updateData} chart_margin={chart_margin} window_width={window_width} chart_height={chart_height}/>
-            <StackedBar data={houses_data} highlight={houses_highlight} updateData={updateData} chart_margin={chart_margin} window_width={window_width} chart_height={chart_height}/>
-            <StackedBar data={jobs_data} highlight={jobs_highlight} updateData={updateData} chart_margin={chart_margin} window_width={window_width} chart_height={chart_height}/>
+
+            {data_arr.map((d,i)=> (
+                <StackedBar
+                    key={i}
+                    data={d}
+                    highlight_id={highlight_id}
+                    setHighlightId={setHighlightId}
+                    chart_margin={chart_margin}
+                    updateData={updateData}
+                    chart_height={chart_height}
+                    window_width={window_width}
+                />
+            ))}
         </StackedBarContainer>
     );
 }
