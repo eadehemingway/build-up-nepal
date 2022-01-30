@@ -70,7 +70,7 @@ function mapMetric(metric) {
 }
 
 
-export function StackedBars() {
+export function StackedBars({ highlight_id, setHighlightId }) {
 
     const [window_width, setWindowWidth] = useState(document.body.clientWidth);
 
@@ -78,7 +78,6 @@ export function StackedBars() {
     const [houses_data, setHousesData] = useState([]);
     const [jobs_data, setJobsData] = useState([]);
 
-    const [highlight_id, setHighlightId] = useState(null);
 
     useEffect(() => {
         window.addEventListener("resize", () => {

@@ -25,7 +25,7 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function Map({ highlighted_id, setHighlightedId }) {
+export function Map({ highlight_id, setHighlightId }) {
     const [contour_visible, setContourVisible] = useState(true);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
@@ -33,6 +33,34 @@ export function Map({ highlighted_id, setHighlightedId }) {
     const [markers_visible, setMarkerVisible] = useState(true);
     const [loaded, setLoaded] = useState(false);
     const mapRef = useRef();
+
+
+    useEffect(()=>{
+
+        if (!mapRef.current) return;
+        if (highlight_id ) {
+            // let feature = mapRef.current.querySourceFeatures("marker-source", {
+            //     source: "marker-source"
+            // });
+            // console.log("feature:", feature);
+
+            // if (hoveredStateId) {
+            // mapRef.current.getSource("marker-source").setFeatureState(
+            //     { source: "marker-source" },
+            //     { id_match: true }
+            // );
+            // }
+
+            mapRef.current.setFeatureState({
+                source: "marker-source",
+                id: highlight_id,
+            }, {
+                current_highlight_id: highlight_id,
+            });
+        }
+
+
+    }, [highlight_id]);
 
     const onClick = (event) => {
         if (!mapRef.current) return;
@@ -77,7 +105,7 @@ export function Map({ highlighted_id, setHighlightedId }) {
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
-                <MarkerLayer markers_visible={markers_visible}/>
+                <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
             </MapGL>
             <InsetMap onClick={onClick}/>
