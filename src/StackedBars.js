@@ -8,8 +8,8 @@ import { SortButtons } from "./SortButtons";
 
 export function StackedBars({ highlight_id, setHighlightId }) {
 
-    const chart_margin = { left: 100, right: 200, top: 20, bottom: 30 };
-    const chart_height = 80;
+    const chart_margin = { left: 50, right: 200, top: 40, bottom: 30 };
+    const chart_height = 100;
     const [sort_by, setSortBy] = useState("year");
 
     function checkMetric(str) {
@@ -89,31 +89,32 @@ export function StackedBars({ highlight_id, setHighlightId }) {
             return mapped;
         });
         let metric_total = stacked.data.reduce((partialSum, a) => partialSum + Number(a["value"]["metric"]), 0);
+        let axis = {};
         stacked.total = metric_total;
-        stacked.axis = [];
         stacked.name = metric;
 
         for (var sorting in sortings) {
             let x = 0;
-            stacked.data.sort((a, b) => {
+            axis[sorting] = [];
+            stacked.data.sort(function(a, b) {
                 let sortBy = sorting;
                 if (sortBy === "metric") return sortNumerically(a.value[sortBy], b.value[sortBy]);
                 else return sortAlphabetically(a.value[sortBy], b.value[sortBy]);
             });
-            stacked.data.forEach(d => {
+            stacked.data.forEach(function(d) {
                 let val = d.value["metric"];
                 let proportion = val / metric_total; // As a decimal
                 d.x[sorting] = x;
                 d.width[sorting] = proportion;
 
-                // let relevant_axis = stacked.axis.filter(e => e.label === d.value[metric]);
-                // if (!relevant_axis.length) {
-                //     stacked.axis.push({ label: d.value[metric], x: x, width: proportion, y: 0 });
-                // } else {
-                //     relevant_axis[0].width += proportion;
-                // }
+                // Update axis
+                let relevant_axis = axis[sorting].filter(e => e.label === d.value[sorting]);
+                if (!relevant_axis.length) axis[sorting].push({ label: d.value[sorting], x: x, width: proportion, y: 0 });
+                else relevant_axis[0].width += proportion;
+
                 x += proportion;
             });
+            stacked.axis = axis;
         }
         return stacked;
     }
@@ -214,5 +215,5 @@ const StackedBarContainer = styled.div`
     left: 0;
     vertical-align: top;
     line-height: 0px;
-    background: white;
+    background: #FFD6FF;
 `;

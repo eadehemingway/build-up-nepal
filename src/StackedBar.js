@@ -65,9 +65,9 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
         ctx.rect(highlight_x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight_width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
         ctx.rect(highlight_x + (regular_stroke_width / 2), highlight.y + (regular_stroke_width / 2), highlight_width - (regular_stroke_width / 2), highlight.height - (regular_stroke_width / 2)); // Inner
         ctx.closePath();
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = "#1400a3";
         ctx.fill("evenodd");
-        ctx.font = "13px sans-serif";
+        ctx.font = "12px sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(highlight.value.metric, (highlight_x + (highlight_width / 2)), highlight.y - 8);
         ctx.restore();
@@ -80,7 +80,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
             let width = v.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
             ctx.save();
             ctx.fillStyle = v.filtered ? "pink" : "red";
-            ctx.strokeStyle = "white";
+            ctx.strokeStyle = "#FFD6FF";
             ctx.lineWidth = regular_stroke_width;
             ctx.fillRect(x, v.y, width, v.height);
             ctx.strokeRect(x, v.y, width, v.height);
@@ -88,31 +88,33 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
         });
 
         ctx.textAlign = "left";
-        ctx.font = "25px sans-serif";
+        ctx.font = "38px sans-serif";
         ctx.fillStyle = "red";
         ctx.fillText(d.total, (window_width - (chart_margin.left + chart_margin.right)) + 10, chart_height - (chart_margin.top + chart_margin.bottom));
-        ctx.fillStyle = "#000000";
-        ctx.font = "13px sans-serif";
-        ctx.fillText(d.name, (window_width - (chart_margin.left + chart_margin.right)) + 10, 10);
+        ctx.fillStyle = "#1400a3";
+        ctx.font = "12px sans-serif";
+        ctx.fillText(d.name, (window_width - (chart_margin.left + chart_margin.right)) + 10, -8);
     }
 
     function drawAxis(ctx, axis) {
-        axis.forEach(a => {
+        axis[sort_by].forEach(a => {
+            let a_x = a.x * (window_width - (chart_margin.left + chart_margin.right));
+            let a_width = a.width * (window_width - (chart_margin.left + chart_margin.right));
             ctx.save();
-            ctx.strokeStyle = "black";
+            ctx.strokeStyle = "#1400a3";
             ctx.lineWidth = 0.5;
             ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(a.x, chart_height - (chart_margin.top + chart_margin.bottom) + 15);
-            ctx.moveTo(a.x + a.width, a.y);
-            ctx.lineTo(a.x + a.width, chart_height - (chart_margin.top + chart_margin.bottom) + 15);
+            ctx.moveTo(a_x, a.y);
+            ctx.lineTo(a_x, chart_height - (chart_margin.top + chart_margin.bottom) + 5);
+            ctx.moveTo(a_x + a_width, a.y);
+            ctx.lineTo(a_x + a_width, chart_height - (chart_margin.top + chart_margin.bottom) + 5);
             ctx.closePath();
             ctx.stroke();
             ctx.restore();
-            ctx.fillStyle = "#000000";
+            ctx.fillStyle = "#1400a3";
             ctx.font = "12px sans-serif";
             ctx.textAlign = "center";
-            ctx.fillText(a.label, a.x + (a.width / 2), chart_height - (chart_margin.top + chart_margin.bottom) + 15);
+            ctx.fillText(a.label, a_x + (a_width / 2), chart_height - (chart_margin.top + chart_margin.bottom) + 20);
         });
     };
 
