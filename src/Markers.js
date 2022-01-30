@@ -5,12 +5,12 @@ import "./App.css";
 import { data } from "./data/data";
 
 
-export function Markers( { highlighted_id, setHighlightedId } ) {
+export function Markers( { highlight_id, setHighlightId } ) {
 
     return (
         <>
             {data.map((d, i)=>{
-                return <MarkerPoint highlighted_id={highlighted_id} key={i} data={d} setHighlightedId={setHighlightedId}/>;
+                return <MarkerPoint highlight_id={highlight_id} key={i} data={d} setHighlightId={setHighlightId}/>;
             })}
         </>
     );
@@ -18,10 +18,10 @@ export function Markers( { highlighted_id, setHighlightedId } ) {
 
 
 
-function MarkerPoint({ data , highlighted_id, setHighlightedId }){
+function MarkerPoint({ data , highlight_id, setHighlightId }){
 
     if (!data.Latitude || !data.Longitude ) return null;
-    const is_highlighted = highlighted_id === data.id;
+    const is_highlighted = highlight_id === data.id;
     return (
         <>
             <Marker
@@ -35,10 +35,9 @@ function MarkerPoint({ data , highlighted_id, setHighlightedId }){
                     willChange: "transform",
                 }}
             >
-                <MarkerStyled
-                    style={{ backgroundColor : is_highlighted ? "red": "blue" }}
-                    onClick={()=> setHighlightedId(data.id)}
-                />
+                {is_highlighted ? <HighlightedMarker/> : <MarkerStyled
+                    onClick={()=> setHighlightId(data.id)}
+                />}
             </Marker>
         </>
     );
@@ -46,9 +45,16 @@ function MarkerPoint({ data , highlighted_id, setHighlightedId }){
 }
 
 const MarkerStyled = styled.div`
-    background: red;
+    background: blue;
     width: 2px;
     height: 10px;
+    border: 1px solid coral;
+    cursor: pointer;
+`;
+const HighlightedMarker = styled.div`
+    background: red;
+    width: 10px;
+    height: 20px;
     border: 1px solid coral;
     cursor: pointer;
 `;

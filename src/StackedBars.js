@@ -55,7 +55,7 @@ function stackData(d) {
 }
 
 
-export function StackedBars() {
+export function StackedBars({ highlight_id, setHighlightId }) {
 
     const [carbon_data, setCarbonData] = useState(stackData(data.map(d => ({
         metric: d["CO2 saved"],
@@ -73,7 +73,6 @@ export function StackedBars() {
         id: d["id"]
     }))));
 
-    const [highlight_id, setHighlightId] = useState(null);
 
 
     function updateBarData(data, setData, changes){
