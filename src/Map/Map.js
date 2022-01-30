@@ -158,13 +158,13 @@ const map_attributes = {
         "top": 20,
         right: 0,
         left: 0,
-        height: "80vh",
+        height: "calc(100vh - 300px)",
         overflow: "hidden"
     },
     initialViewState:{
         latitude:center_lat,
         longitude: center_lng,
-        zoom: 6.5
+        zoom: 6.2
     }
 };
 

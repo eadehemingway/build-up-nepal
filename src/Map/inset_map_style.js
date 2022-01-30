@@ -25,25 +25,25 @@ const fillLayer = {
 };
 
 
-function geoCollectionToFeatureCollection(geoJson){
-    const geo_arr = geoJson.geometries;
-    const features_arr = geo_arr.map((obj, i)=> {
-        return {
-            type: "Feature",
-            geometry: {
-                ...obj
-            },
-            properties: {
-            },
-            id: i
-        };
-    });
-    const json = {
-        type: "FeatureCollection",
-        features: features_arr
-    };
-    return json;
-}
+// function geoCollectionToFeatureCollection(geoJson){
+//     const geo_arr = geoJson.geometries;
+//     const features_arr = geo_arr.map((obj, i)=> {
+//         return {
+//             type: "Feature",
+//             geometry: {
+//                 ...obj
+//             },
+//             properties: {
+//             },
+//             id: i
+//         };
+//     });
+//     const json = {
+//         type: "FeatureCollection",
+//         features: features_arr
+//     };
+//     return json;
+// }
 
 // Make a copy of the map style
 export const insetMapStyle = {
