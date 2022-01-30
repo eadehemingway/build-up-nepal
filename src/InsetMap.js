@@ -73,6 +73,19 @@ export function InsetMap({ onClick }) {
             hoveredStateId = null;
         });
     });
+
+
+    function handleLoaded (){
+        mapRef.current.loadImage(
+            "https://docs.mapbox.com/mapbox-gl-js/assets/cat.png",
+            (error, image) => {
+                if (error) throw error;
+
+                // Add the image to the map style.
+                mapRef.current.addImage("custom-marker", image);
+
+
+            });}
     return (
         <>
             <MapGL

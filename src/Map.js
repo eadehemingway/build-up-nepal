@@ -13,8 +13,7 @@ import { MarkerLayer } from "./MarkerLayer";
 import { data } from "./data/data";
 import { TextBox } from "./TextBox";
 import { MAP_STYLE_MAIN } from "./main_map_style";
-import icon from "./test.png";
-console.log("icon:", icon);
+import zoom_out from "./zoom-out.png";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -37,6 +36,7 @@ export function Map({ highlight_id, setHighlightId }) {
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
     const [markers_visible, setMarkerVisible] = useState(true);
     const [loaded, setLoaded] = useState(false);
+    const [is_zoomed, setIsZoomed] = useState(false);
     const mapRef = useRef();
 
 
@@ -46,7 +46,7 @@ export function Map({ highlight_id, setHighlightId }) {
         if (feature) {
             // calculate the bounding box of the feature
             const [minLng, minLat, maxLng, maxLat] = bbox(feature);
-
+            setIsZoomed(true);
             mapRef.current.fitBounds(
                 [
                     [minLng, minLat],
@@ -76,6 +76,7 @@ export function Map({ highlight_id, setHighlightId }) {
 
     function unZoom(){
         if (!mapRef.current) return;
+        setIsZoomed(false);
         mapRef.current.fitBounds([
             [minLng, minLat],
             [maxLng, maxLat]
@@ -96,11 +97,7 @@ export function Map({ highlight_id, setHighlightId }) {
             "https://docs.mapbox.com/mapbox-gl-js/assets/cat.png",
             (error, image) => {
                 if (error) throw error;
-
-                // Add the image to the map style.
                 mapRef.current.addImage("custom-marker", image);
-
-
             });}
     return (
         <>
@@ -109,7 +106,7 @@ export function Map({ highlight_id, setHighlightId }) {
             <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
             <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
-            <button onClick={unZoom}>unzoom</button>
+            {is_zoomed && <Button onClick={unZoom}></Button>}
             <Overlay loaded={loaded}/>
             <MapGL
                 ref={mapRef}
@@ -129,7 +126,23 @@ export function Map({ highlight_id, setHighlightId }) {
 
     );
 }
+const Button = styled.button`
+    position: absolute;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    background: none;
+    background-image: url("${zoom_out}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 35px;
+    width: 35px;
 
+`;
 const map_attributes = {
     mapStyle:MAP_STYLE_MAIN,
     interactiveLayerIds:["markers-layer"],
@@ -143,7 +156,7 @@ const map_attributes = {
     style:{
         "position": "absolute",
         "boxSizing": "border-box",
-        "top": 20,
+        "top": 0,
         right: 0,
         left: 0,
         overflow: "hidden"
