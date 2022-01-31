@@ -12,16 +12,39 @@
         "mapbox:groups": {},
         "mapbox:uiParadigm": "layers"
     },
-    "center": [84.94330346726235, 28.339748071096864],
-    "zoom": 6.497143002500685,
+    "center": [85.32705307006847, 27.70878227489628],
+    "zoom": 12.713545283859183,
     "bearing": 0,
     "pitch": 0,
-    "sources": {},
+    "sources": {
+        "composite": {
+            "url": "mapbox://eadehem.ckz1pmh2d94j022o0rpcdi7o3-8hede",
+            "type": "vector"
+        }
+    },
     "sprite": "mapbox://sprites/eadehem/ckyyyndyw004614s0q903vsci/ck2u8j60r58fu0sgyxrigm3cu",
     "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
-    "layers": [],
+    "layers": [
+        {
+            "id": "cunting-labels",
+            "type": "symbol",
+            "source": "composite",
+            "source-layer": "cunting_labels",
+            "layout": {
+                "text-field": ["to-string", ["get", "label"]],
+                "symbol-placement": "line",
+                "text-size": 32,
+                "text-font": [
+                    "Open Sans ExtraBold",
+                    "Arial Unicode MS Regular"
+                ],
+                "text-line-height": 1.6
+            },
+            "paint": {"text-color": "hsl(0, 89%, 51%)"}
+        }
+    ],
     "created": "2022-01-28T22:12:09.480Z",
-    "modified": "2022-01-28T22:12:29.165Z",
+    "modified": "2022-01-30T20:48:15.574Z",
     "id": "ckyyyndyw004614s0q903vsci",
     "owner": "eadehem",
     "visibility": "private",

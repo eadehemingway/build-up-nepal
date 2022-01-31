@@ -11,6 +11,7 @@ import { data } from "../data/data";
 import { TextBox } from "../InfoOverlay/TextBox";
 import { MAP_STYLE_MAIN } from "./main_map_style";
 import zoom_out from "./../assets/zoom-out.png";
+import flag from "./../assets/flag-01.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
 
 
@@ -90,10 +91,9 @@ export function Map({ highlight_id, setHighlightId }) {
     }, [highlight_id]);
 
     function handleLoaded (){
-        console.log("lOADED");
         setLoaded(true);
         mapRef.current.loadImage(
-            "https://docs.mapbox.com/mapbox-gl-js/assets/cat.png",
+            flag,
             (error, image) => {
                 if (error) throw error;
                 mapRef.current.addImage("custom-marker", image);
