@@ -97,7 +97,8 @@ export function Map({ highlight_id, setHighlightId }) {
             (error, image) => {
                 if (error) throw error;
                 mapRef.current.addImage("custom-marker", image);
-            });}
+            })
+        ;}
     return (
         <>
             <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>

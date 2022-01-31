@@ -15,8 +15,9 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                 <Layer
                     id="flag-layer"
                     type="symbol"
-                    layout={{ "icon-image": "custom-marker", "icon-size": 0.2 , "visibility":"visible" }}
+                    layout={{ "icon-image": "custom-marker", "icon-size": 0.4, "icon-anchor": "bottom-left",   "icon-allow-overlap": true, }}
                     source="marker-source"
+                    filter={["==", ["get", "#"], highlight_id_or_str]}
                 />
                 <Layer
                     id="markers-layer"
