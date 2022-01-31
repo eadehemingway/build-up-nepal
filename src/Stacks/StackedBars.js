@@ -7,7 +7,7 @@ import { SortButtons } from "./SortButtons";
 
 export function StackedBars({ highlight_id, setHighlightId }) {
 
-    const chart_margin = { left: 50, right: 200, top: 40, bottom: 30 };
+    const chart_margin = { left: 50, right: 200, top: 30, bottom: 40 };
     const chart_height = 100;
     const [sort_by, setSortBy] = useState("year");
 

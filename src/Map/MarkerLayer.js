@@ -25,7 +25,8 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                                 "red",
                                 "transparent"
                             ],
-                            "circle-stroke-color": "red"
+                            "circle-stroke-color": "red",
+                            "circle-radius": 3
 
                         }}
                     />

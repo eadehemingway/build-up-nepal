@@ -17,7 +17,7 @@ export const MAP_STYLE_MAIN =  {
             source: "provinces",
             type: "fill",
             paint: {
-                "fill-color": "#CAF9F7"
+                "fill-color": "#d3f0f7"
             }
         }
     ]

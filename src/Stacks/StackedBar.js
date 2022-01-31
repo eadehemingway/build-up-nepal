@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { TotalSvg } from "./TotalSvg";
 
 export function StackedBar({ data, highlight_id, setHighlightId, updateData, chart_margin, window_width, chart_height, sort_by }) {
 
@@ -93,13 +94,13 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
             ctx.restore();
         });
 
-        ctx.textAlign = "left";
-        ctx.font = "38px sans-serif";
-        ctx.fillStyle = "red";
-        ctx.fillText(d.total, (window_width - (chart_margin.left + chart_margin.right)) + 10, chart_height - (chart_margin.top + chart_margin.bottom));
-        ctx.fillStyle = "#1400a3";
-        ctx.font = "12px sans-serif";
-        ctx.fillText(d.name, (window_width - (chart_margin.left + chart_margin.right)) + 10, -8);
+        // ctx.textAlign = "left";
+        // ctx.font = "38px sans-serif";
+        // ctx.fillStyle = "red";
+        // ctx.fillText(d.total, (window_width - (chart_margin.left + chart_margin.right)) + 10, chart_height - (chart_margin.top + chart_margin.bottom));
+        // ctx.fillStyle = "#1400a3";
+        // ctx.font = "12px sans-serif";
+        // ctx.fillText(d.name, (window_width - (chart_margin.left + chart_margin.right)) + 10, -8);
     }
 
     function drawAxis(ctx, axis) {
@@ -168,6 +169,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
         <CanvasContainer>
             <CanvasBottom onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
             <CanvasTop ref={$canvas_top} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
+            <TotalSvg total={data.total} chart_margin={chart_margin} chart_height={chart_height} window_width={window_width}/>
         </CanvasContainer>
     );
 }
