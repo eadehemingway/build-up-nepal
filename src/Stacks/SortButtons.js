@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const types = ["Year", "Metric", "Province"];
 
-export function SortButtons({ updateData, setSortBy }) {
+export function SortButtons({ setSortBy }) {
     const [active, setActive] = useState(types[0]);
 
     function handleClick(type) {
