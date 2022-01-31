@@ -11,7 +11,8 @@ import { data } from "../data/data";
 import { TextBox } from "../InfoOverlay/TextBox";
 import { MAP_STYLE_MAIN } from "./main_map_style";
 import zoom_out from "./../assets/zoom-out.png";
-import flag from "./../assets/flag-01.png";
+import red_flag from "./../assets/red-flag.png";
+import blue_flag from "./../assets/blue-flag.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
 
 
@@ -93,10 +94,16 @@ export function Map({ highlight_id, setHighlightId }) {
     function handleLoaded (){
         setLoaded(true);
         mapRef.current.loadImage(
-            flag,
+            red_flag,
             (error, image) => {
                 if (error) throw error;
-                mapRef.current.addImage("custom-marker", image);
+                mapRef.current.addImage("red-flag", image);
+            });
+        mapRef.current.loadImage(
+            blue_flag,
+            (error, image) => {
+                if (error) throw error;
+                mapRef.current.addImage("blue-flag", image);
             })
         ;}
     return (
