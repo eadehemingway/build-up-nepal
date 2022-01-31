@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import { data } from "../data/data";
-// import markers_geojson from "../data/markers_geojson.json";
+import markers_geojson from "../data/markers_geojson.json";
 
 const mock_json = {
     "type": "FeatureCollection",
@@ -41,7 +41,7 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
     const highlight_id_or_str = highlight_id || "";
     return (
         <>
-            <Source id="marker-source" type="geojson" data={mock_json} promoteId={"#"}>
+            <Source id="marker-source" type="geojson" data={markers_geojson} promoteId={"#"}>
                 <Layer
                     id="flag-layer"
                     type="symbol"
