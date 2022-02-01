@@ -14,6 +14,8 @@ import zoom_out from "./../assets/zoom-out.png";
 import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
+import { MainLabelsLayer } from "./MainLabelsLayer";
+import { MainCitiesLayer } from "./MainCitiesLayer";
 
 console.log("MAP_STYLE_MAIN:", MAP_STYLE_MAIN);
 
@@ -125,6 +127,8 @@ export function Map({ highlight_id, setHighlightId }) {
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
                 <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
+                <MainLabelsLayer/>
+                <MainCitiesLayer/>
                 {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
             </MapGL>
             <TextBox highlight_obj={highlight_obj}/>
