@@ -2,6 +2,7 @@ import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import provinces from "../data/mini_map.json";
+import { InsetLabelLayer } from "./Inset_labels";
 import { insetMapStyle } from "./inset_map_style";
 
 
@@ -97,6 +98,7 @@ export function InsetMap({ onClick }) {
                     paint={{ "line-width": 0.2, "line-color": "red" }}
 
                 />
+                <InsetLabelLayer/>
 
             </MapGL>
         </>
