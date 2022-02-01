@@ -2,20 +2,20 @@ import React, { useEffect, useState , useRef, useMemo } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import bbox from "@turf/bbox";
-import { ContourLayer } from "./ContourLayer";
-import { PopulationLayer } from "./PopulationLayer";
-import { CountryOutlineLayer } from "./CountryOutlineLayer";
-import { InsetMap } from "./InsetMap";
-import { MarkerLayer } from "./MarkerLayer";
+import { ContourLayer } from "./MainLayers/Layer-contour";
+import { PopulationLayer } from "./MainLayers/Layer-population";
+import { CountryOutlineLayer } from "./MainLayers/Layer-country-outline";
+import { InsetMap } from "./Inset/Map-inset";
+import { MarkerLayer } from "./MainLayers/Layer-makers";
 import { data } from "../data/data";
 import { TextBox } from "../InfoOverlay/TextBox";
-import { MAP_STYLE_MAIN } from "./main_map_style";
+import { MAP_STYLE_MAIN } from "./style-main";
 import zoom_out from "./../assets/zoom-out.png";
 import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
-import { MainLabelsLayer } from "./MainLabelsLayer";
-import { MainCitiesLayer } from "./MainCitiesLayer";
+import { MainLabelsLayer } from "./MainLayers/Layer-labels-nepal";
+import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";

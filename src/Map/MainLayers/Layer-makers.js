@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
-import { data } from "../data/data";
-import markers_geojson from "../data/markers_geojson.json";
+import markers_geojson from "../../data/markers_geojson.json";
 
 const mock_json = {
     "type": "FeatureCollection",

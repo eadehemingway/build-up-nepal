@@ -1,9 +1,9 @@
 import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
-import provinces from "../data/mini_map.json";
-import { InsetLabelLayer } from "./Inset_labels";
-import { insetMapStyle } from "./inset_map_style";
+import provinces from "../../data/mini_map.json";
+import { InsetLabelLayer } from "./Layer-labels-inset";
+import { insetMapStyle } from "./style-inset";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";

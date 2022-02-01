@@ -1,5 +1,5 @@
 
-import MAP_STYLE from "./style.json";
+import MAP_STYLE from "./style-common.json";
 import provinces from "../data/mini_map_feat.json";
 
 export const MAP_STYLE_MAIN =  {
