@@ -7,9 +7,14 @@ import { SortButtons } from "./SortButtons";
 
 export function StackedBars({ highlight_id, setHighlightId }) {
 
-    const chart_margin = { left: 50, right: 200, top: 30, bottom: 40 };
+    const chart_margin = { left: 50, right: 220, top: 30, bottom: 40 };
     const chart_height = 100;
     const [sort_by, setSortBy] = useState("year");
+    const [window_width, setWindowWidth] = useState(document.body.clientWidth);
+
+    useEffect(() => {
+        setWindowWidth(document.body.clientWidth);
+    }, []);
 
     function checkMetric(str) {
         if (str === "" || str === " ") return 0;
@@ -25,40 +30,6 @@ export function StackedBars({ highlight_id, setHighlightId }) {
 
     function sortNumerically(a, b) {
         return a - b;
-    }
-
-    function stackData(d, w, sort) {
-        let x = 0;
-        let y = 0;
-        let height = chart_height - (chart_margin.top + chart_margin.bottom);
-        let stacked = [...d].map(v => ({
-            year: v.year,
-            metric: checkMetric(v.metric),
-            id: v.id,
-            province: v.province,
-
-        })).filter(v => v.metric !== null);
-        let metric_total = stacked.reduce((partialSum, a) => partialSum + Number(a.metric), 0);
-        stacked.total = metric_total;
-        stacked.axis = [];
-        stacked.forEach(function(d, i) {
-            let val = d.metric;
-            let proportion = val / metric_total; // As a decimal
-            let width = proportion * (w - (chart_margin.left + chart_margin.right));
-            d.x = x;
-            d.y = y;
-            d.height = height;
-            d.width = width;
-            d.filtered = false;
-            let relevant_axis = stacked.axis.filter(e => e.label === d[sort]);
-            if (!relevant_axis.length) {
-                stacked.axis.push({ label: d[sort], x: x, width: 0, y: 0 });
-            } else {
-                relevant_axis[0].width += width;
-            }
-            x += width;
-        });
-        return stacked;
     }
 
     function checkValues(values) {
@@ -90,7 +61,9 @@ export function StackedBars({ highlight_id, setHighlightId }) {
         let metric_total = stacked.data.reduce((partialSum, a) => partialSum + Number(a["value"]["metric"]), 0);
         let axis = {};
         stacked.total = metric_total;
-        stacked.name = metric;
+        stacked.name = metric.name;
+        stacked.suffix = metric.suffix;
+        stacked.caption = metric.caption;
 
         for (var sorting in sortings) {
             let x = 0;
@@ -118,78 +91,37 @@ export function StackedBars({ highlight_id, setHighlightId }) {
         return stacked;
     }
 
-    function mapMetric(this_metric, all_metrics) {
-        const mapped = data.map(d => ({
-            metric: d[this_metric],
-            year: d["Start Year"],
-            id: d["id"],
-            province: d["Province Project"]
-        }));
-        return mapped;
-    }
-
     function mapData(chosen_metrics, chosen_sortings) {
         let mapped_metrics = [...chosen_metrics];
 
         let mapped_data = mapped_metrics.map(metric => {
-            chosen_sortings["metric"] = metric;
+            chosen_sortings["metric"] = metric.name;
             return stack(metric, chosen_sortings);
         });
 
         return mapped_data;
     }
 
-    const [window_width, setWindowWidth] = useState(document.body.clientWidth);
+    const chosen_metrics = [{
+        name: "CO2 saved",
+        caption: "Total CO₂ saved",
+        suffix: { singular: "t", plural: "t" },
+    },{
+        name: "Houses built TOTAL",
+        caption: "Total houses built",
+        suffix: { singular: " house", plural: " houses" },
+    },{
+        name: "Total jobs",
+        caption: "Total jobs created",
+        suffix: { singular: " job", plural: " jobs" },
+    }];
 
-    const [carbon_data, setCarbonData] = useState([]);
-    const [houses_data, setHousesData] = useState([]);
-    const [jobs_data, setJobsData] = useState([]);
-
-
-    useEffect(() => {
-        window.addEventListener("resize", () => {
-            if (document.body && document.body.clientWidth) {
-                setWindowWidth(document.body.clientWidth);
-            }
-        });
-    }, []);
-
-    const chosen_metrics = ["CO2 saved", "Houses built TOTAL", "Total jobs"];
     const chosen_sortings = { year: "Start Year", province: "Province Project" };
-
-    useEffect(() => {
-        setCarbonData(stackData(mapMetric("CO2 saved").sort((a, b) => sortAlphabetically(a.year, b.year)), window_width, "year"));
-        setHousesData(stackData(mapMetric("Houses built TOTAL").sort((a, b) => sortAlphabetically(a.year, b.year)), window_width, "year"));
-        setJobsData(stackData(mapMetric("Total jobs").sort((a, b) => sortAlphabetically(a.year, b.year)), window_width, "year"));
-    }, [window_width]);
-
-    function updateBarData(d, changes, setData){
-        let updated_data = [...d];
-        if (changes.sort) {
-            updated_data.sort(function(a, b) {
-                if (changes.sort === "size") {
-                    return sortNumerically(a[changes.sort], b[changes.sort]);
-                } else {
-                    return sortAlphabetically(a[changes.sort], b[changes.sort]);
-                }
-            });
-            setData(stackData(updated_data, window_width, changes.sort));
-        }
-
-    }
-
-    function updateData(changes) {
-        updateBarData(carbon_data, changes, setCarbonData);
-        updateBarData(jobs_data, changes, setJobsData);
-        updateBarData(houses_data, changes, setHousesData);
-    }
-
     const data_arr = mapData(chosen_metrics, chosen_sortings);
 
     return (
         <StackedBarContainer>
-            <SortButtons updateData={updateData} setSortBy={setSortBy}/>
-
+            <SortButtons setSortBy={setSortBy}/>
             {data_arr.map((d,i)=> (
                 <StackedBar
                     key={i}
@@ -197,7 +129,6 @@ export function StackedBars({ highlight_id, setHighlightId }) {
                     highlight_id={highlight_id}
                     setHighlightId={setHighlightId}
                     chart_margin={chart_margin}
-                    updateData={updateData}
                     chart_height={chart_height}
                     window_width={window_width}
                     sort_by={sort_by}

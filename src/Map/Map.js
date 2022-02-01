@@ -15,6 +15,7 @@ import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
 
+console.log("MAP_STYLE_MAIN:", MAP_STYLE_MAIN);
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
 

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { TotalSvg } from "./TotalSvg";
 
-export function StackedBar({ data, highlight_id, setHighlightId, updateData, chart_margin, window_width, chart_height, sort_by }) {
+export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const [ctx_top, setCtxTop] = useState(null);
@@ -27,22 +27,23 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
     const highlight_fill = "#ff0000";
     const highlight_stroke = "#ff0000";
 
+    function formatNumber(number, to_fixed) {
+        const number_copy = number.valueOf().toString();
+        let decimals = number_copy.split(".")[1] || [];
+        if (decimals.length > 1) number = number.toFixed(to_fixed !== undefined ? to_fixed : 2);
+        if (number > 1000) return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return number;
+    }
+
     function onMouseMove(e) {
         let x = e.clientX - chart_margin.left;
         const ID = getBarId(x);
         if (ID == null) return;
         setHighlightId(ID);
-        // updateData({
-        //     filtered: [],
-        // });
     }
 
     function onMouseOut() {
         setHighlightId(null);
-        updateData({
-            filtered: [],
-            highlighted: null,
-        });
     }
 
     function transformCanvas(ctx) {
@@ -64,6 +65,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
         if (!highlight) return;
         let highlight_x = highlight.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
         let highlight_width = highlight.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+        let suffix = highlight.value.metric === 1 ? data.suffix.singular : data.suffix.plural;
         ctx.save();
         ctx.beginPath();
         // ctx.rect(highlight_x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight_width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
@@ -76,7 +78,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
         ctx.fill();
         ctx.font = "12px sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText(highlight.value.metric, (highlight_x + (highlight_width / 2)), highlight.y - 8);
+        ctx.fillText(formatNumber(highlight.value.metric) + suffix, (highlight_x + (highlight_width / 2)), highlight.y - 8);
         ctx.restore();
     }
 
@@ -169,7 +171,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, updateData, cha
         <CanvasContainer>
             <CanvasBottom onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
             <CanvasTop ref={$canvas_top} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
-            <TotalSvg total={data.total} chart_margin={chart_margin} chart_height={chart_height} window_width={window_width}/>
+            <TotalSvg formatNumber={formatNumber} caption={data.caption} suffix={data.suffix} total={data.total} chart_margin={chart_margin} chart_height={chart_height} window_width={window_width}/>
         </CanvasContainer>
     );
 }

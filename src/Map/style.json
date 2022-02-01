@@ -1,6 +1,6 @@
 {
     "version": 8,
-    "name": "nepal blank",
+    "name": "nepal main labels",
     "metadata": {
         "mapbox:autocomposite": true,
         "mapbox:type": "template",
@@ -12,40 +12,35 @@
         "mapbox:groups": {},
         "mapbox:uiParadigm": "layers"
     },
-    "center": [85.32705307006847, 27.70878227489628],
-    "zoom": 12.713545283859183,
+    "center": [83.33242701592371, 29.32582685047177],
+    "zoom": 11.06019968547265,
     "bearing": 0,
     "pitch": 0,
     "sources": {
         "composite": {
-            "url": "mapbox://eadehem.ckz1pmh2d94j022o0rpcdi7o3-8hede",
+            "url": "mapbox://eadehem.ckz3b9tq1028q27qvaeg5rnn8-6lpph",
             "type": "vector"
         }
     },
-    "sprite": "mapbox://sprites/eadehem/ckyyyndyw004614s0q903vsci/ck2u8j60r58fu0sgyxrigm3cu",
-    "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+    "sprite": "mapbox://sprites/eadehem/ckz3buhkh000b14parfgbfn2z/ck2u8j60r58fu0sgyxrigm3cu",
+    "glyphs": "mapbox://fonts/eadehem/{fontstack}/{range}.pbf",
     "layers": [
         {
-            "id": "cunting-labels",
+            "id": "nepal-main-labels",
             "type": "symbol",
             "source": "composite",
-            "source-layer": "cunting_labels",
+            "source-layer": "nepal_main_labels",
             "layout": {
-                "text-field": ["to-string", ["get", "label"]],
-                "symbol-placement": "line",
-                "text-size": 32,
-                "text-font": [
-                    "Open Sans ExtraBold",
-                    "Arial Unicode MS Regular"
-                ],
-                "text-line-height": 1.6
+                "text-field": "NEPAL",
+                "text-font": ["Etna Black", "Arial Unicode MS Regular"],
+                "text-letter-spacing": 1
             },
-            "paint": {"text-color": "hsl(0, 89%, 51%)"}
+            "paint": {"text-color": "hsl(247, 90%, 39%)"}
         }
     ],
-    "created": "2022-01-28T22:12:09.480Z",
-    "modified": "2022-01-30T20:48:15.574Z",
-    "id": "ckyyyndyw004614s0q903vsci",
+    "created": "2022-01-31T23:32:40.454Z",
+    "modified": "2022-01-31T23:51:52.593Z",
+    "id": "ckz3buhkh000b14parfgbfn2z",
     "owner": "eadehem",
     "visibility": "private",
     "protected": false,
