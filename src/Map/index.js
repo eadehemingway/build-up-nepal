@@ -5,7 +5,7 @@ import bbox from "@turf/bbox";
 import { ContourLayer } from "./MainLayers/Layer-contour";
 import { PopulationLayer } from "./MainLayers/Layer-population";
 import { CountryOutlineLayer } from "./MainLayers/Layer-country-outline";
-import { InsetMap } from "./Inset/Map-inset";
+import { InsetMap } from "./Inset/index";
 import { MarkerLayer } from "./MainLayers/Layer-makers";
 import { data } from "../data/data";
 import { TextBox } from "../InfoOverlay/TextBox";
