@@ -16,6 +16,7 @@ import blue_flag from "./../assets/blue-flag.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
 import { MainLabelsLayer } from "./MainLayers/Layer-labels-nepal";
 import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
+import { ProvincesLayer } from "./MainLayers/Layer-provinces";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -126,9 +127,9 @@ export function Map({ highlight_id, setHighlightId }) {
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
                 <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
+                <ProvincesLayer province_outline_visible={province_outline_visible}/>
                 <MainLabelsLayer/>
                 <MainCitiesLayer/>
-                {province_outline_visible && <Layer id="provinces-outline" source="provinces" type="line" paint={{ "line-width": 0.2, "line-color": "red" }}/>}
             </MapGL>
             <TextBox highlight_obj={highlight_obj}/>
             <InsetMap onClick={onClickInsetMap}/>
