@@ -80,11 +80,11 @@ export function Map({ highlight_id, setHighlightId }) {
         ;}
     return (
         <>
-            <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
+            {/* <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
             <button onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
             <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
-            <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
+            <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button> */}
             <LoadingScreen loaded={loaded}/>
             <MapGL
                 ref={$main_map}
