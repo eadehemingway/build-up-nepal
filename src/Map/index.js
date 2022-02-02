@@ -71,13 +71,13 @@ export function Map({ highlight_id, setHighlightId }) {
             red_flag,
             (error, image) => {
                 if (error) throw error;
-                $main_map.current.addImage("red-flag", image);
+                $main_map.current.addImage("one-off", image);
             });
         $main_map.current.loadImage(
             blue_flag,
             (error, image) => {
                 if (error) throw error;
-                $main_map.current.addImage("blue-flag", image);
+                $main_map.current.addImage("enterprise", image);
             })
         ;}
     return (

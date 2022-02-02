@@ -1,39 +1,7 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
-import markers_geojson from "../../data/markers_geojson.json";
-
-const mock_json = {
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    87.0528762,
-                    26.816496
-                ]
-            },
-            "properties": {
-                "#": 61,
-                "icon": "red-flag"
-            }
-        },
-        {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    86.7808809,
-                    26.6325551
-                ]
-            },
-            "properties": {
-                "#": 62,
-                "icon": "blue-flag"
-            }
-        }] };
+import markers_geojson from "../../data/markers_with_flags.json";
 
 export function MarkerLayer( { markers_visible, highlight_id } ) {
 
@@ -44,7 +12,7 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                 <Layer
                     id="flag-layer"
                     type="symbol"
-                    layout={{ "icon-image": ["get", "icon"], "icon-size": 0.4, "icon-anchor": "bottom-left",   "icon-allow-overlap": true, }}
+                    layout={{ "icon-image": ["get", "project_type"], "icon-size": 0.6, "icon-anchor": "bottom-left",   "icon-allow-overlap": true, }}
                     source="marker-source"
                     filter={["==", ["get", "#"], highlight_id_or_str]}
                 />
