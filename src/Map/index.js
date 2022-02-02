@@ -49,14 +49,12 @@ export function Map({ highlight_id, setHighlightId }) {
     useEffect(()=>{
         if (!$main_map.current) return;
         $main_map.current.on("mouseenter", "markers-layer", (e) => {
-            $main_map.current.getCanvas().style.cursor = "pointer";
             const feature = e.features[0];
             if (feature) {
                 setHighlightId(feature.id);
             }
         });
         $main_map.current.on("mouseleave", "markers-layer", (e) => {
-            $main_map.current.getCanvas().style.cursor = "";
             setHighlightId(null);
         });
 
