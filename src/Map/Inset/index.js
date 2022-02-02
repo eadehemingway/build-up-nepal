@@ -20,37 +20,32 @@ export function InsetMap({ zoomMapTo  }) {
 
     useEffect(()=>{
         if (!$inset_map.current) return;
-        let hoveredStateId = null;
-        let clickedStateId = null;
+        let hovered_state_id = null;
+        let clicked_state_id = null;
 
         $inset_map.current.on("mouseenter", "provinces-fill", () => {
             $inset_map.current.getCanvas().style.cursor = "pointer";
         });
 
-
         $inset_map.current.on("mousemove", "provinces-fill", (e) => {
             if (e.features.length > 0) {
-                if (hoveredStateId !== null) {
-                    updateFeatState(hoveredStateId, { hover: false });
-
+                if (hovered_state_id !== null) {
+                    updateFeatState(hovered_state_id, { hover: false });
                 }
-                hoveredStateId = e.features[0].id;
-                updateFeatState(hoveredStateId, { hover: true });
-
+                hovered_state_id = e.features[0].id;
+                updateFeatState(hovered_state_id, { hover: true });
             }
         });
 
         $inset_map.current.on("click", "provinces-fill", (e) => {
             const feature = e.features[0];
             if (e.features.length > 0) {
-                if (clickedStateId !== null) {
-                    updateFeatState(clickedStateId, { click: false });
-
+                if (clicked_state_id !== null) {
+                    updateFeatState(clicked_state_id, { click: false });
                 }
-                clickedStateId = feature.id;
-                setClickedId(clickedStateId);
-                updateFeatState(clickedStateId, { click: true });
-
+                clicked_state_id = feature.id;
+                setClickedId(clicked_state_id);
+                updateFeatState(clicked_state_id, { click: true });
             }
 
             if (feature){
@@ -60,17 +55,16 @@ export function InsetMap({ zoomMapTo  }) {
             }
         });
 
-        // When the mouse leaves the state-fill layer, update the feature state of the
-        // previously hovered feature.
         $inset_map.current.on("mouseleave", "provinces-fill", () => {
             $inset_map.current.getCanvas().style.cursor = "";
 
-            if (hoveredStateId !== null) {
-                updateFeatState(hoveredStateId, { hover: false });
+            if (hovered_state_id !== null) {
+                updateFeatState(hovered_state_id, { hover: false });
             }
-            hoveredStateId = null;
+            hovered_state_id = null;
         });
     });
+
     function updateFeatState(id, state){
         $inset_map.current.setFeatureState(
             { source: "provinces", id },
@@ -82,8 +76,8 @@ export function InsetMap({ zoomMapTo  }) {
         setIsZoomed(false);
         zoomMapTo({ minLng, minLat, maxLng, maxLat });
         updateFeatState(clicked_id, { click: false });
-
     }
+
     return (
         <>
             <MapGL
