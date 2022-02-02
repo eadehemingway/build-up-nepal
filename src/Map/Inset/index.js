@@ -31,17 +31,12 @@ export function InsetMap({ zoomMapTo  }) {
         $inset_map.current.on("mousemove", "provinces-fill", (e) => {
             if (e.features.length > 0) {
                 if (hoveredStateId !== null) {
-                    $inset_map.current.setFeatureState(
-                        { source: "provinces", id: hoveredStateId },
-                        { hover: false }
-                    );
+                    updateFeatState(hoveredStateId, { hover: false });
+
                 }
                 hoveredStateId = e.features[0].id;
+                updateFeatState(hoveredStateId, { hover: true });
 
-                $inset_map.current.setFeatureState(
-                    { source: "provinces", id: hoveredStateId },
-                    { hover: true }
-                );
             }
         });
 
@@ -49,17 +44,13 @@ export function InsetMap({ zoomMapTo  }) {
             const feature = e.features[0];
             if (e.features.length > 0) {
                 if (clickedStateId !== null) {
-                    $inset_map.current.setFeatureState(
-                        { source: "provinces", id: clickedStateId },
-                        { click: false }
-                    );
+                    updateFeatState(clickedStateId, { click: false });
+
                 }
                 clickedStateId = feature.id;
                 setClickedId(clickedStateId);
-                $inset_map.current.setFeatureState(
-                    { source: "provinces", id: clickedStateId },
-                    { click: true }
-                );
+                updateFeatState(clickedStateId, { click: true });
+
             }
 
             if (feature){
@@ -75,22 +66,22 @@ export function InsetMap({ zoomMapTo  }) {
             $inset_map.current.getCanvas().style.cursor = "";
 
             if (hoveredStateId !== null) {
-                $inset_map.current.setFeatureState(
-                    { source: "provinces", id: hoveredStateId },
-                    { hover: false }
-                );
+                updateFeatState(hoveredStateId, { hover: false });
             }
             hoveredStateId = null;
         });
     });
+    function updateFeatState(id, state){
+        $inset_map.current.setFeatureState(
+            { source: "provinces", id },
+            state
+        );
+    }
 
     function unZoom (){
         setIsZoomed(false);
         zoomMapTo({ minLng, minLat, maxLng, maxLat });
-        $inset_map.current.setFeatureState(
-            { source: "provinces", id: clicked_id },
-            { click: false }
-        );
+        updateFeatState(clicked_id, { click: false });
 
     }
     return (
