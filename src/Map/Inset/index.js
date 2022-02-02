@@ -16,6 +16,7 @@ export const minLat = 26.3;
 export function InsetMap({ zoomMapTo  }) {
     const [is_zoomed, setIsZoomed] = useState(false);
     const $inset_map = useRef();
+    const [clicked_id, setClickedId] = useState(null);
 
     useEffect(()=>{
         if (!$inset_map.current) return;
@@ -54,7 +55,7 @@ export function InsetMap({ zoomMapTo  }) {
                     );
                 }
                 clickedStateId = feature.id;
-
+                setClickedId(clickedStateId);
                 $inset_map.current.setFeatureState(
                     { source: "provinces", id: clickedStateId },
                     { click: true }
@@ -79,13 +80,6 @@ export function InsetMap({ zoomMapTo  }) {
                     { hover: false }
                 );
             }
-            if (clickedStateId !== null && !is_zoomed) {
-                $inset_map.current.setFeatureState(
-                    { source: "provinces", id: clickedStateId },
-                    { click: false }
-                );
-            }
-
             hoveredStateId = null;
         });
     });
@@ -93,6 +87,10 @@ export function InsetMap({ zoomMapTo  }) {
     function unZoom (){
         setIsZoomed(false);
         zoomMapTo({ minLng, minLat, maxLng, maxLat });
+        $inset_map.current.setFeatureState(
+            { source: "provinces", id: clicked_id },
+            { click: false }
+        );
 
     }
     return (
