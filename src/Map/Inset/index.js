@@ -1,7 +1,6 @@
 import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
-import provinces from "../../data/mini_map.json";
 import { InsetLabelLayer } from "./Layer-labels-inset";
 import { insetMapStyle } from "./style-inset";
 
