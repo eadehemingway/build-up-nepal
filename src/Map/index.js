@@ -27,7 +27,7 @@ const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
 export function Map({ highlight_id, setHighlightId }) {
-    const [contour_visible, setContourVisible] = useState(false);
+    const [contour_visible, setContourVisible] = useState(true);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
