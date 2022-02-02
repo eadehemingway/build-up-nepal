@@ -24,8 +24,6 @@ export function InsetLabelLayer() {
                     maxzoom = {6.5}
                     layout = {{
                         "text-field": ["get", "STATE"],
-                        "text-variable-anchor": ["top", "bottom", "left", "right"],
-                        "text-radial-offset": 0.5,
                         "text-justify": "center",
                         "text-font": ["Etna Black", "Arial Unicode MS Regular"],
                         "text-letter-spacing": 2,
