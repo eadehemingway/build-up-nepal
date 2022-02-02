@@ -40,17 +40,17 @@ export function Map({ highlight_id, setHighlightId }) {
     const [markers_visible, setMarkerVisible] = useState(true);
     const [loaded, setLoaded] = useState(false);
     const [is_zoomed, setIsZoomed] = useState(false);
-    const mapRef = useRef();
+    const $main_map = useRef();
 
 
     const onClickInsetMap = (event) => {
-        if (!mapRef.current) return;
+        if (!$main_map.current) return;
         const feature = event.features[0];
         if (feature) {
             // calculate the bounding box of the feature
             const [minLng, minLat, maxLng, maxLat] = bbox(feature);
             setIsZoomed(true);
-            mapRef.current.fitBounds(
+            $main_map.current.fitBounds(
                 [
                     [minLng, minLat],
                     [maxLng, maxLat]
@@ -61,26 +61,26 @@ export function Map({ highlight_id, setHighlightId }) {
     };
 
     useEffect(()=>{
-        if (!mapRef.current) return;
-        mapRef.current.on("mouseenter", "markers-layer", (e) => {
-            mapRef.current.getCanvas().style.cursor = "pointer";
+        if (!$main_map.current) return;
+        $main_map.current.on("mouseenter", "markers-layer", (e) => {
+            $main_map.current.getCanvas().style.cursor = "pointer";
             const feature = e.features[0];
             if (feature) {
                 setHighlightId(feature.id);
             }
         });
-        mapRef.current.on("mouseleave", "markers-layer", (e) => {
-            mapRef.current.getCanvas().style.cursor = "";
+        $main_map.current.on("mouseleave", "markers-layer", (e) => {
+            $main_map.current.getCanvas().style.cursor = "";
             setHighlightId(null);
         });
 
-    }, [mapRef.current]);
+    }, [$main_map.current]);
 
 
     function unZoom(){
-        if (!mapRef.current) return;
+        if (!$main_map.current) return;
         setIsZoomed(false);
-        mapRef.current.fitBounds([
+        $main_map.current.fitBounds([
             [minLng, minLat],
             [maxLng, maxLat]
         ],
@@ -96,17 +96,17 @@ export function Map({ highlight_id, setHighlightId }) {
 
     function handleLoaded (){
         setLoaded(true);
-        mapRef.current.loadImage(
+        $main_map.current.loadImage(
             red_flag,
             (error, image) => {
                 if (error) throw error;
-                mapRef.current.addImage("red-flag", image);
+                $main_map.current.addImage("red-flag", image);
             });
-        mapRef.current.loadImage(
+        $main_map.current.loadImage(
             blue_flag,
             (error, image) => {
                 if (error) throw error;
-                mapRef.current.addImage("blue-flag", image);
+                $main_map.current.addImage("blue-flag", image);
             })
         ;}
     return (
@@ -119,7 +119,7 @@ export function Map({ highlight_id, setHighlightId }) {
             {is_zoomed && <Button onClick={unZoom}></Button>}
             <LoadingScreen loaded={loaded}/>
             <MapGL
-                ref={mapRef}
+                ref={$main_map}
                 {...map_attributes}
                 onLoad={handleLoaded}
             >

@@ -10,47 +10,47 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXV
 
 export function InsetMap({ onClick }) {
 
-    const mapRef = useRef();
+    const $inset_map = useRef();
 
     useEffect(()=>{
-        if (!mapRef.current) return;
+        if (!$inset_map.current) return;
         let hoveredStateId = null;
         let clickedStateId = null;
 
 
-        mapRef.current.on("mouseenter", "provinces-fill", () => {
-            mapRef.current.getCanvas().style.cursor = "pointer";
+        $inset_map.current.on("mouseenter", "provinces-fill", () => {
+            $inset_map.current.getCanvas().style.cursor = "pointer";
         });
 
 
-        mapRef.current.on("mousemove", "provinces-fill", (e) => {
+        $inset_map.current.on("mousemove", "provinces-fill", (e) => {
             if (e.features.length > 0) {
                 if (hoveredStateId !== null) {
-                    mapRef.current.setFeatureState(
+                    $inset_map.current.setFeatureState(
                         { source: "provinces", id: hoveredStateId },
                         { hover: false }
                     );
                 }
                 hoveredStateId = e.features[0].id;
 
-                mapRef.current.setFeatureState(
+                $inset_map.current.setFeatureState(
                     { source: "provinces", id: hoveredStateId },
                     { hover: true }
                 );
             }
         });
 
-        mapRef.current.on("click", "provinces-fill", (e) => {
+        $inset_map.current.on("click", "provinces-fill", (e) => {
             if (e.features.length > 0) {
                 if (clickedStateId !== null) {
-                    mapRef.current.setFeatureState(
+                    $inset_map.current.setFeatureState(
                         { source: "provinces", id: clickedStateId },
                         { click: false }
                     );
                 }
                 clickedStateId = e.features[0].id;
 
-                mapRef.current.setFeatureState(
+                $inset_map.current.setFeatureState(
                     { source: "provinces", id: clickedStateId },
                     { click: true }
                 );
@@ -59,11 +59,11 @@ export function InsetMap({ onClick }) {
 
         // When the mouse leaves the state-fill layer, update the feature state of the
         // previously hovered feature.
-        mapRef.current.on("mouseleave", "provinces-fill", () => {
-            mapRef.current.getCanvas().style.cursor = "";
+        $inset_map.current.on("mouseleave", "provinces-fill", () => {
+            $inset_map.current.getCanvas().style.cursor = "";
 
             if (hoveredStateId !== null) {
-                mapRef.current.setFeatureState(
+                $inset_map.current.setFeatureState(
                     { source: "provinces", id: hoveredStateId },
                     { hover: false }
                 );
@@ -76,7 +76,7 @@ export function InsetMap({ onClick }) {
     return (
         <>
             <MapGL
-                ref={mapRef}
+                ref={$inset_map}
                 {...map_attributes}
                 onClick={onClick}
                 style= {{
