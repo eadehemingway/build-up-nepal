@@ -1,16 +1,14 @@
 import React, { useEffect, useState , useRef, useMemo } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
-import bbox from "@turf/bbox";
 import { ContourLayer } from "./MainLayers/Layer-contour";
 import { PopulationLayer } from "./MainLayers/Layer-population";
 import { CountryOutlineLayer } from "./MainLayers/Layer-country-outline";
-import { InsetMap } from "./Inset/index";
+import { InsetMap, maxLat, maxLng, minLng, minLat } from "./Inset/index";
 import { MarkerLayer } from "./MainLayers/Layer-makers";
 import { data } from "../data/data";
 import { TextBox } from "../InfoOverlay/TextBox";
 import { MAP_STYLE_MAIN } from "./style-main";
-import zoom_out from "./../assets/zoom-out.png";
 import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
@@ -22,10 +20,6 @@ import { ProvincesLayer } from "./MainLayers/Layer-provinces";
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
 
 
-const minLng = 80;
-const maxLng = 88.1;
-const maxLat = 30.6;
-const minLat = 26.3;
 
 const half_lng = (maxLng - minLng) /2;
 const half_lat = (maxLat - minLat) /2;
@@ -39,26 +33,18 @@ export function Map({ highlight_id, setHighlightId }) {
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
     const [markers_visible, setMarkerVisible] = useState(true);
     const [loaded, setLoaded] = useState(false);
-    const [is_zoomed, setIsZoomed] = useState(false);
     const $main_map = useRef();
 
-
-    const onClickInsetMap = (event) => {
+    function zoomMapTo({ minLng, minLat, maxLng, maxLat }){
         if (!$main_map.current) return;
-        const feature = event.features[0];
-        if (feature) {
-            // calculate the bounding box of the feature
-            const [minLng, minLat, maxLng, maxLat] = bbox(feature);
-            setIsZoomed(true);
-            $main_map.current.fitBounds(
-                [
-                    [minLng, minLat],
-                    [maxLng, maxLat]
-                ],
-                { padding: 40, duration: 3500 }
-            );
-        }
-    };
+        $main_map.current.fitBounds(
+            [
+                [minLng, minLat],
+                [maxLng, maxLat]
+            ],
+            { padding: 40, duration: 3500 }
+        );
+    }
 
     useEffect(()=>{
         if (!$main_map.current) return;
@@ -77,22 +63,7 @@ export function Map({ highlight_id, setHighlightId }) {
     }, [$main_map.current]);
 
 
-    function unZoom(){
-        if (!$main_map.current) return;
-        setIsZoomed(false);
-        $main_map.current.fitBounds([
-            [minLng, minLat],
-            [maxLng, maxLat]
-        ],
-        { padding: 40, duration: 3500 }
-        );
-    }
-
-    const highlight_obj = useMemo(()=>{
-        const obj = data.find(d=>  d.id === highlight_id);
-        return obj;
-
-    }, [highlight_id]);
+    const highlight_obj = useMemo(()=>data.find(d=>  d.id === highlight_id), [highlight_id]);
 
     function handleLoaded (){
         setLoaded(true);
@@ -116,7 +87,6 @@ export function Map({ highlight_id, setHighlightId }) {
             <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
             <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
-            {is_zoomed && <Button onClick={unZoom}></Button>}
             <LoadingScreen loaded={loaded}/>
             <MapGL
                 ref={$main_map}
@@ -132,29 +102,13 @@ export function Map({ highlight_id, setHighlightId }) {
                 <MainCitiesLayer/>
             </MapGL>
             <TextBox highlight_obj={highlight_obj}/>
-            <InsetMap onClick={onClickInsetMap}/>
+            <InsetMap zoomMapTo={zoomMapTo}/>
 
         </>
 
     );
 }
-const Button = styled.button`
-    position: absolute;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    top: 10px;
-    right: 10px;
-    z-index: 2;
-    background: none;
-    background-image: url("${zoom_out}");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 35px;
-    width: 35px;
 
-`;
 const map_attributes = {
     mapStyle:MAP_STYLE_MAIN,
     interactiveLayerIds:["markers-layer"],

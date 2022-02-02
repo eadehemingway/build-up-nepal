@@ -2,21 +2,25 @@ import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import { InsetLabelLayer } from "./Layer-labels-inset";
+import zoom_out from "./../../assets/zoom-out.png";
 import { insetMapStyle } from "./style-inset";
+import bbox from "@turf/bbox";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
+export const minLng = 80;
+export const maxLng = 88.1;
+export const maxLat = 30.6;
+export const minLat = 26.3;
 
-
-export function InsetMap({ onClick }) {
-
+export function InsetMap({ zoomMapTo  }) {
+    const [is_zoomed, setIsZoomed] = useState(false);
     const $inset_map = useRef();
 
     useEffect(()=>{
         if (!$inset_map.current) return;
         let hoveredStateId = null;
         let clickedStateId = null;
-
 
         $inset_map.current.on("mouseenter", "provinces-fill", () => {
             $inset_map.current.getCanvas().style.cursor = "pointer";
@@ -41,6 +45,7 @@ export function InsetMap({ onClick }) {
         });
 
         $inset_map.current.on("click", "provinces-fill", (e) => {
+            const feature = e.features[0];
             if (e.features.length > 0) {
                 if (clickedStateId !== null) {
                     $inset_map.current.setFeatureState(
@@ -48,12 +53,18 @@ export function InsetMap({ onClick }) {
                         { click: false }
                     );
                 }
-                clickedStateId = e.features[0].id;
+                clickedStateId = feature.id;
 
                 $inset_map.current.setFeatureState(
                     { source: "provinces", id: clickedStateId },
                     { click: true }
                 );
+            }
+
+            if (feature){
+                const [minLng, minLat, maxLng, maxLat] = bbox(feature);
+                setIsZoomed(true);
+                zoomMapTo({ minLng, minLat, maxLng, maxLat });
             }
         });
 
@@ -68,17 +79,27 @@ export function InsetMap({ onClick }) {
                     { hover: false }
                 );
             }
+            if (clickedStateId !== null && !is_zoomed) {
+                $inset_map.current.setFeatureState(
+                    { source: "provinces", id: clickedStateId },
+                    { click: false }
+                );
+            }
 
             hoveredStateId = null;
         });
     });
 
+    function unZoom (){
+        setIsZoomed(false);
+        zoomMapTo({ minLng, minLat, maxLng, maxLat });
+
+    }
     return (
         <>
             <MapGL
                 ref={$inset_map}
                 {...map_attributes}
-                onClick={onClick}
                 style= {{
                     "position": "absolute",
                     "border": "1px solid blue",
@@ -90,6 +111,7 @@ export function InsetMap({ onClick }) {
                     overflow: "hidden",
                 }}
             >
+                {is_zoomed && <Button onClick={unZoom}></Button>}
                 <Layer
                     id="provinces-outline"
                     source="provinces"
@@ -122,3 +144,21 @@ const map_attributes = {
     }
 };
 
+
+const Button = styled.button`
+    position: absolute;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    background: none;
+    background-image: url("${zoom_out}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 35px;
+    width: 35px;
+
+`;
