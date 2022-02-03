@@ -12,7 +12,7 @@ const data_pending_ent_data = enterprise_data.filter((d)=> d.status === "Data pe
 const closed_ent_data = enterprise_data.filter((d)=> d.status === "Closed / Sold" );
 const struggling_ent_data = enterprise_data.filter((d)=> d.status === "Struggling" || d.status === "Running, Struggling" );
 
-const combo = [running_ent_data, struggling_ent_data,  closed_ent_data, data_pending_ent_data].flat();
+const combo = [running_ent_data, struggling_ent_data, closed_ent_data, data_pending_ent_data].flat();
 
 export function IconChart(){
     const $canvas = useRef(null);
@@ -28,7 +28,6 @@ export function IconChart(){
         ctx.closePath();
         ctx.translate(-x, -y);
         ctx.stroke();
-
         ctx.restore();
     }
 
@@ -51,24 +50,11 @@ export function IconChart(){
 
     const flag_size = 20;
     const columns = 8;
+    const getX = (column_index) => column_index * flag_size;
+    const getY = (row_index) => row_index * flag_size;
+    const getColumn = (i) =>  i % columns;
+    const getRow = (i)=>  Math.floor(i / columns);
 
-    function getX(column_index){
-        return column_index * flag_size;
-    }
-
-    function getY(row_index){
-        return row_index * flag_size;
-    }
-
-    function getColumn(i){
-        const column_index = i % columns;
-        return column_index;
-    }
-
-    function getRow(i){
-        const row_index = Math.floor(i / columns);
-        return row_index;
-    }
 
     useEffect(()=>{
         if (!$canvas.current) return;
@@ -92,14 +78,13 @@ export function IconChart(){
             const x = getX(col_index) + margin.left;
             const y = getY(row_index) + margin.top + gap + offset_from_status;
             drawEnterpriseFlag(ctx, x, y);
-
-
         });
 
     }, []);
 
     function getOffset(status){
         const gap = 40;
+        // these need to be in the order of the array above
         if (status === "Running") return 0;
         if (status === "Struggling" || status === "Running, Struggling") return gap;
         if (status === "Closed / Sold") return gap * 2;
