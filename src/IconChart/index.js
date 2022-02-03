@@ -12,8 +12,7 @@ const data_pending_ent_data = enterprise_data.filter((d)=> d.status === "Data pe
 const closed_ent_data = enterprise_data.filter((d)=> d.status === "Closed / Sold" );
 const struggling_ent_data = enterprise_data.filter((d)=> d.status === "Struggling" || d.status === "Running, Struggling" );
 
-const enterprise_grouped = [running_ent_data, data_pending_ent_data, closed_ent_data, struggling_ent_data];
-
+const combo = [running_ent_data, struggling_ent_data,  closed_ent_data, data_pending_ent_data].flat();
 
 export function IconChart(){
     const $canvas = useRef(null);
@@ -86,19 +85,26 @@ export function IconChart(){
         });
 
         const gap = 200;
-        enterprise_grouped.forEach((data, i)=> {
-            data.forEach((d, i)=> {
-                const col_index = getColumn(i);
-                const row_index = getRow(i);
+        combo.forEach((data, i)=> {
+            const offset_from_status = getOffset(data.status);
+            const col_index = getColumn(i);
+            const row_index = getRow(i);
+            const x = getX(col_index) + margin.left;
+            const y = getY(row_index) + margin.top + gap + offset_from_status;
+            drawEnterpriseFlag(ctx, x, y);
 
-                const x = getX(col_index) + margin.left;
-                const y = getY(row_index) + margin.top + gap;
-                drawEnterpriseFlag(ctx, x, y);
 
-            });
         });
 
     }, []);
+
+    function getOffset(status){
+        const gap = 40;
+        if (status === "Running") return 0;
+        if (status === "Struggling" || status === "Running, Struggling") return gap;
+        if (status === "Closed / Sold") return gap * 2;
+        if (status === "Data pending") return gap * 3;
+    }
 
     return (
         <Canvas width={800} height={2000} ref={$canvas} id="icon-chart"/>
