@@ -4,6 +4,7 @@ import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 import { Map } from "./Map/index.js";
 import { StackedBars } from "./Stacks/index.js";
+import { IconChart } from "./IconChart";
 
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
 
     return (
         <>
-            <Map
+            <IconChart/>
+            {/* <Map
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
             />
@@ -19,7 +21,7 @@ function App() {
             <StackedBars
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
-            />
+            /> */}
         </>
 
     );
