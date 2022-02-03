@@ -96,8 +96,8 @@ export function Map({ highlight_id, setHighlightId }) {
                 {...map_attributes}
                 onLoad={handleLoaded}
             >
+                <ZoomedProvinceFill zoomed_province={zoomed_province}/>
                 <UnzoomedProvFill zoomed_province={zoomed_province}/>
-                {/* <ZoomedProvinceFill zoomed_province={zoomed_province}/> */}
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
