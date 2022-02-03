@@ -17,26 +17,12 @@
     "bearing": 0,
     "pitch": 0,
     "sources": {
-        "composite": {
-            "url": "mapbox://eadehem.ckz3b9tq1028q27qvaeg5rnn8-6lpph",
-            "type": "vector"
-        }
+
     },
     "sprite": "mapbox://sprites/eadehem/ckz3buhkh000b14parfgbfn2z/ck2u8j60r58fu0sgyxrigm3cu",
     "glyphs": "mapbox://fonts/eadehem/{fontstack}/{range}.pbf",
     "layers": [
-        {
-            "id": "nepal-main-labels",
-            "type": "symbol",
-            "source": "composite",
-            "source-layer": "nepal_main_labels",
-            "layout": {
-                "text-field": "NEPAL",
-                "text-font": ["Etna Black", "Arial Unicode MS Regular"],
-                "text-letter-spacing": 1
-            },
-            "paint": {"text-color": "hsl(247, 90%, 39%)"}
-        }
+
     ],
     "created": "2022-01-31T23:32:40.454Z",
     "modified": "2022-01-31T23:51:52.593Z",

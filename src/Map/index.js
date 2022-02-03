@@ -8,13 +8,15 @@ import { InsetMap, maxLat, maxLng, minLng, minLat } from "./Inset/index";
 import { MarkerLayer } from "./MainLayers/Layer-makers";
 import { data } from "../data/data";
 import { TextBox } from "../InfoOverlay/TextBox";
-import { MAP_STYLE_MAIN } from "./style-main";
+import MAP_STYLE_MAIN from "./style-common";
 import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
 import { MainLabelsLayer } from "./MainLayers/Layer-labels-nepal";
 import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
 import { ProvincesLayer } from "./MainLayers/Layer-provinces";
+import { ProvinceFillLayer } from "./MainLayers/Layer-province-fill";
+
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -91,6 +93,7 @@ export function Map({ highlight_id, setHighlightId }) {
                 {...map_attributes}
                 onLoad={handleLoaded}
             >
+                <ProvinceFillLayer zoomed_province={null}/>
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
