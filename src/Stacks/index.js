@@ -121,7 +121,7 @@ export function StackedBars({ highlight_id, setHighlightId }) {
 
     return (
         <StackedBarContainer>
-            <SortButtons setSortBy={setSortBy}/>
+            <SortButtons sort_by={sort_by} setSortBy={setSortBy}/>
             {data_arr.map((d,i)=> (
                 <StackedBar
                     key={i}
