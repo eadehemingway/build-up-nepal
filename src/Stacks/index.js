@@ -7,8 +7,8 @@ import { SortButtons } from "./SortButtons";
 
 export function StackedBars({ highlight_id, setHighlightId }) {
 
-    const chart_margin = { left: 50, right: 220, top: 30, bottom: 40 };
-    const chart_height = 100;
+    const chart_margin = { left: 50, right: 220, top: 20, bottom: 40 };
+    const chart_height = 85;
     const [sort_by, setSortBy] = useState("year");
     const [window_width, setWindowWidth] = useState(document.body.clientWidth);
 
