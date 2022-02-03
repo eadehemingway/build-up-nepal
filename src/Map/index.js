@@ -16,6 +16,7 @@ import { MainLabelsLayer } from "./MainLayers/Layer-labels-nepal";
 import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
 import { ProvincesLayer } from "./MainLayers/Layer-provinces";
 import { ZoomedProvinceFill } from "./MainLayers/Layer-zoomed-prov-fill";
+import { UnzoomedProvFill } from "./MainLayers/Layer-unzoomed-prov-fill";
 
 
 
@@ -95,7 +96,8 @@ export function Map({ highlight_id, setHighlightId }) {
                 {...map_attributes}
                 onLoad={handleLoaded}
             >
-                <ZoomedProvinceFill zoomed_province={zoomed_province}/>
+                <UnzoomedProvFill zoomed_province={zoomed_province}/>
+                {/* <ZoomedProvinceFill zoomed_province={zoomed_province}/> */}
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
