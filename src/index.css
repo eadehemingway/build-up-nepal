@@ -1,27 +1,9 @@
 @import url("https://use.typekit.net/mcr3ois.css");
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: code-saver, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #FFD6FF;
-  font-family: aktiv-grotesk, sans-serif;
   font-style: normal;
-}
-
-h1 {
-  font-family: etna, sans-serif;
-  font-style: normal;
-}
-
-text {
-  font-family: etna, sans-serif;
-  font-style: normal;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

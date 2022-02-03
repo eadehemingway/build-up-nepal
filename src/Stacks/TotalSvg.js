@@ -9,7 +9,7 @@ export function TotalSvg({ caption, suffix, total, chart_margin, chart_height, w
         <TotalLabelContainer label_width={chart_margin.right} margin_left={chart_margin.left} label_height={chart_height} chart_width={chart_width}>
             <CaptionText y={chart_margin.top - 10}>{caption}</CaptionText>
             <TotalText y={chart_margin.top + (chart_height - (chart_margin.top + chart_margin.bottom))}>
-                {formatNumber(total, 0)}{total === 1 ? suffix.singular : suffix.plural}
+                {formatNumber(total, 0)}
             </TotalText>
         </TotalLabelContainer>
     );
@@ -35,9 +35,8 @@ const CaptionText = styled.text`
 `;
 
 const TotalText = styled.text`
-    font-size: 38px;
-    font-family: etna, serif;
-    fill: #ff0000;
+    font-size: 32px;
+    fill: #1400a3;
 `;
 
 
