@@ -13,10 +13,9 @@ export const maxLng = 88.1;
 export const maxLat = 30.6;
 export const minLat = 26.3;
 
-export function InsetMap({ zoomMapTo  }) {
+export function InsetMap({ zoomMapTo, zoomed_province, setZoomedProvince }) {
     const [is_zoomed, setIsZoomed] = useState(false);
     const $inset_map = useRef();
-    const [clicked_id, setClickedId] = useState(null);
 
     useEffect(()=>{
         if (!$inset_map.current) return;
@@ -44,7 +43,7 @@ export function InsetMap({ zoomMapTo  }) {
                     updateFeatState(clicked_state_id, { click: false });
                 }
                 clicked_state_id = feature.id;
-                setClickedId(clicked_state_id);
+                setZoomedProvince(clicked_state_id);
                 updateFeatState(clicked_state_id, { click: true });
             }
 
@@ -75,7 +74,7 @@ export function InsetMap({ zoomMapTo  }) {
     function unZoom (){
         setIsZoomed(false);
         zoomMapTo({ minLng, minLat, maxLng, maxLat });
-        updateFeatState(clicked_id, { click: false });
+        updateFeatState(zoomed_province, { click: false });
     }
 
     return (

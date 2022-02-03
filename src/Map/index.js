@@ -35,6 +35,8 @@ export function Map({ highlight_id, setHighlightId }) {
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
     const [markers_visible, setMarkerVisible] = useState(true);
     const [loaded, setLoaded] = useState(false);
+    const [zoomed_province, setZoomedProvince] = useState(null);
+
     const $main_map = useRef();
 
     function zoomMapTo({ minLng, minLat, maxLng, maxLat }){
@@ -87,13 +89,13 @@ export function Map({ highlight_id, setHighlightId }) {
             <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
             <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
-            <LoadingScreen loaded={loaded}/>
+            {/* <LoadingScreen loaded={loaded}/> */}
             <MapGL
                 ref={$main_map}
                 {...map_attributes}
                 onLoad={handleLoaded}
             >
-                <ProvinceFillLayer zoomed_province={null}/>
+                <ProvinceFillLayer zoomed_province={zoomed_province}/>
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
@@ -103,7 +105,7 @@ export function Map({ highlight_id, setHighlightId }) {
                 <MainCitiesLayer/>
             </MapGL>
             <TextBox highlight_obj={highlight_obj}/>
-            <InsetMap zoomMapTo={zoomMapTo}/>
+            <InsetMap zoomMapTo={zoomMapTo} zoomed_province={zoomed_province} setZoomedProvince={setZoomedProvince}/>
 
         </>
 
