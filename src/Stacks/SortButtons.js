@@ -68,6 +68,10 @@ const Dropdown = styled.div`
         color: inherit;
     }
 
+    button:focus {
+        outline: none;
+    }
+
     .button_open:after {
         content: "";
         width: 0;
@@ -102,6 +106,10 @@ const Dropdown = styled.div`
         list-style-type: none;
         background: inherit;
         box-sizing: border-box;
+    }
+
+    ul:focus {
+        outline: none;
     }
 
     li {

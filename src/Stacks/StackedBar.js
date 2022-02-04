@@ -5,7 +5,7 @@ import { TotalSvg } from "./TotalSvg";
 export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
-    const [ctx_top, setCtxTop] = useState(null);
+    const $svg_top = useRef(null);
 
     function getBarId(x) {
         let filtered = data.data.filter(function(d) {
@@ -18,7 +18,6 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
     }
 
     const $canvas_bottom = useRef(null);
-    const $canvas_top = useRef(null);
 
     const regular_stroke_width = 0.1;
     const highlight_stroke_width = 2;
@@ -59,27 +58,28 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
         ctx.restore();
     }
 
-    function drawHighlight(ctx, highlight_id) {
+    function drawHighlight(svg, highlight_id) {
         const highlight = data.data.find(d => d.id === highlight_id);
-        clearCanvas(ctx);
+        svg.innerHTML = "";
         if (!highlight) return;
-        let highlight_x = highlight.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
-        let highlight_width = highlight.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
-        let suffix = highlight.value.metric === 1 ? data.suffix.singular : data.suffix.plural;
-        ctx.save();
-        ctx.beginPath();
-        // ctx.rect(highlight_x - highlight_stroke_width, highlight.y - highlight_stroke_width, highlight_width + (highlight_stroke_width * 2), highlight.height + (highlight_stroke_width * 2)); // Outer
-        // ctx.rect(highlight_x + (regular_stroke_width / 2), highlight.y + (regular_stroke_width / 2), highlight_width - (regular_stroke_width / 2), highlight.height - (regular_stroke_width / 2)); // Inner
-        // ctx.closePath();
-        ctx.fillStyle = highlight_stroke;
-        // ctx.fill("evenodd");
-        ctx.rect(highlight_x, highlight.y, highlight_width, highlight.height);
-        ctx.closePath();
-        ctx.fill();
-        ctx.font = "12px sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(formatNumber(highlight.value.metric) + suffix, (highlight_x + (highlight_width / 2)), highlight.y - 8);
-        ctx.restore();
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        const highlight_x = chart_margin.left + (highlight.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right)));
+        const highlight_y = chart_margin.top;
+        const highlight_width = highlight.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+        const suffix = highlight.value.metric === 1 ? data.suffix.singular : data.suffix.plural;
+        const arrow_d = "l -3 -5.1962 h 6 l -3 5.1962";
+        const path_d = `M ${highlight_x + (highlight_width / 2)} ${highlight_y} ${arrow_d} h ${highlight_width / 2} v ${highlight.height} h ${-highlight_width} v ${-highlight.height} Z`;
+        path.setAttribute("d", path_d);
+        path.setAttribute("fill", highlight_stroke);
+        svg.appendChild(path);
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute("text-anchor", "middle");
+        text.setAttribute("font-size", "13px");
+        text.setAttribute("fill", highlight_stroke);
+        text.setAttribute("x", (highlight_x + (highlight_width / 2)));
+        text.setAttribute("y", highlight_y - 10);
+        text.innerHTML = formatNumber(highlight.value.metric) + suffix;
+        svg.appendChild(text);
     }
 
     function drawStackedBar(ctx, d) {
@@ -137,40 +137,28 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
         if (!ctx_bottom) return;
         transformCanvas(ctx_bottom);
         drawStackedBar(ctx_bottom, data);
-        drawAxis(ctx_bottom, data.axis);
     }, [ctx_bottom]);
 
     useEffect(()=>{
         if (!ctx_bottom) return;
         transformCanvas(ctx_bottom);
         drawStackedBar(ctx_bottom, data);
-        drawAxis(ctx_bottom, data.axis);
     }, [data]);
 
 
-    useEffect(()=> {
-        if (!$canvas_top.current) return;
-        setCtxTop($canvas_top.current.getContext("2d"));
-    }, []);
-
     useEffect(()=>{
-        if (!$canvas_top.current) return;
-        if (!ctx_top) return;
-        transformCanvas(ctx_top);
-        drawHighlight(ctx_top, highlight_id);
-    }, [ctx_top]);
-
-    useEffect(()=>{
-        if (!ctx_top) return;
-        transformCanvas(ctx_top);
-        drawHighlight(ctx_top, highlight_id);
+        if (!$svg_top) return;
+        // transformCanvas(svg_top);
+        $svg_top.current.innerHTML = "";
+        drawHighlight($svg_top.current, highlight_id);
+        // drawAxis(ctx_bottom, data.axis);
     }, [highlight_id]);
 
 
     return (
         <CanvasContainer>
             <CanvasBottom onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
-            <CanvasTop ref={$canvas_top} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
+            <SvgTop ref={$svg_top} width={window_width} height={chart_height} chart_height={chart_height}/>
             <TotalSvg formatNumber={formatNumber} caption={data.caption} suffix={data.suffix} total={data.total} chart_margin={chart_margin} chart_height={chart_height} window_width={window_width}/>
         </CanvasContainer>
     );
@@ -193,7 +181,7 @@ const CanvasBottom = styled.canvas`
     z-index: 1;
 `;
 
-const CanvasTop = styled(CanvasBottom)`
+const SvgTop = styled.svg`
     position: absolute;
     top: 0px;
     left: 0px;
