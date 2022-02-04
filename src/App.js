@@ -27,7 +27,7 @@ function App() {
                         highlight_id={highlight_id}
                         setHighlightId={setHighlightId}
                     />
-                    {/* <Map
+                    <Map
                         highlight_id={highlight_id}
                         setHighlightId={setHighlightId}
                     />
@@ -35,7 +35,7 @@ function App() {
                     <StackedBars
                         highlight_id={highlight_id}
                         setHighlightId={setHighlightId}
-                    /> */}
+                    />
                 </>
             }
         </>

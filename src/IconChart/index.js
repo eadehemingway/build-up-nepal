@@ -8,6 +8,7 @@ export function IconChart({ highlight_id, setHighlightId }){
     const text_padding = 10;
     const title_size = 16;
     const subtitle_size = 13;
+
     function drawOneOffFlag(ctx, x, y, should_fill){
         ctx.save();
         ctx.translate(x, y);
@@ -31,7 +32,6 @@ export function IconChart({ highlight_id, setHighlightId }){
     }
 
     function drawEnterpriseFlag(ctx, x, y, should_fill){
-
         ctx.save();
         ctx.translate(x, y);
         ctx.beginPath();
@@ -71,8 +71,8 @@ export function IconChart({ highlight_id, setHighlightId }){
 
     },[]);
 
-    function drawLabel(ctx, label, x, y, color, fontsize){
-        ctx.font = `${fontsize}px code-saver, sans-serif`;
+    function drawLabel({ ctx, label, x, y, color, fontSize }){
+        ctx.font = `${fontSize}px code-saver, sans-serif`;
         ctx.fillStyle = color;
         ctx.fillText(label, x, y);
 
@@ -82,10 +82,11 @@ export function IconChart({ highlight_id, setHighlightId }){
     }
 
     function drawOneOffFlags(ctx){
-        drawLabel(ctx, "One-off projects", margin.left, margin.top - text_padding, "blue", title_size);
+        const color = "blue";
+        drawLabel({ ctx, label: "One-off projects", x: margin.left, y: margin.top - text_padding, color, fontSize: title_size });
         const x = margin.left + (COLUMNS * flag_size);
-        drawLabel(ctx, "Projects", x, margin.top + text_padding, "blue", subtitle_size);
-        drawLabel(ctx, one_off_data.length, x, margin.top + 15 + text_padding, "blue", subtitle_size);
+        drawLabel({ ctx, label: "Projects", x, y: margin.top + text_padding, color, fontSize: subtitle_size });
+        drawLabel({ ctx, label: one_off_data.length, x, y: margin.top + 15 + text_padding, color, fontSize: subtitle_size });
         one_off_data.forEach((d, i)=> {
             const col_index = getColumn(i);
             const row_index = getRow(i);
@@ -98,14 +99,15 @@ export function IconChart({ highlight_id, setHighlightId }){
     }
 
     function drawEnterpriseFlags(ctx){
-        drawLabel(ctx, "Enterprise", margin.left, blue_red_gap + margin.top - text_padding, "red", title_size);
+        const color = "red";
+        drawLabel({ ctx, label: "Enterprise", x: margin.left, y: blue_red_gap + margin.top - text_padding, color, fontSize: title_size });
         const x = margin.left + (COLUMNS * flag_size);
         order.forEach((s, i)=> {
             const label = capitalizeFirstLetter(s.toLowerCase());
             const min_y = y_ranges_per_section[i][0] + margin.top + text_padding;
-            drawLabel(ctx, label, x, min_y, "red", subtitle_size);
+            drawLabel({ ctx, label, x, y:min_y, color, fontSize:subtitle_size });
             const total = LOOKUP[s].length;
-            drawLabel(ctx, total, x, min_y + 15, "red", subtitle_size);
+            drawLabel({ ctx, label: total, x, y: min_y + 15, color, fontSize:subtitle_size });
         });
         ordered_ent_data.forEach((data, i)=> {
             const offset_from_status = getRedOffset(data.status);
@@ -144,8 +146,6 @@ const Canvas = styled.canvas`
     display: inline-block;
     margin: 0px;
     padding: 0px;
-    z-index: 1;
-    border: 2px solid red;
 `;
 
 
