@@ -8,10 +8,11 @@ const flag_size = 20;
 const one_off_data = data.filter(d=> d["flag-status"] === "one-off").map(d=>{
     return  { flag: d["flag-status"], status: d.Status, id: d["#"] };
 });
-function getTotalRows(data){
-    Math.ceil(data.length / columns);
-}
-const total_rows_one_off = Math.ceil(one_off_data.length / columns);
+
+const getStartIndex = (prev_data) => prev_data.length % columns;
+const getTotalRows = (data, col_start_index) =>  Math.ceil((data.length + col_start_index)/ columns);
+
+const total_rows_one_off = getTotalRows(one_off_data, 0);
 const enterprise_data = data.filter(d=> d["flag-status"] === "enterprise").map(d=> ({ flag: d["flag-status"], status: d.Status, id: d["#"] }));
 
 const running_ent_data = enterprise_data.filter((d)=> d.status === "Running" ).map(d=> ({ ...d, status: "RUNNING" }));
@@ -100,6 +101,55 @@ export function IconChart({ highlight_id, setHighlightId }){
 
     }, []);
 
+    // get how many rows are in each section (slighty tricky because you need to know what column index you start at)
+    function getSectionRowNums(){
+        const row_nums = order.map((s, i)=> {
+            const data = LOOKUP[s];
+            if (i === 0) {
+                const rows = getTotalRows(data, 0);
+                return rows;
+            }else{
+                const prev_data = LOOKUP[order[i-1]];
+                const start_index = getStartIndex(prev_data);
+                const rows = getTotalRows(data, start_index);
+                return rows;
+            }
+
+        });
+        return row_nums;
+    }
+
+    function getFlagIdOfEntFlags(x, y){
+        /// get y ranges that determine which section you are looking at.
+        const rows_per_section = getSectionRowNums();
+        const height_per_section = rows_per_section.map(r=> r * flag_size);
+        let prev_height = 0;
+        console.log("--------------------------");
+        let prev_data = [];
+        const y_range_per_section = height_per_section.map((h, i)=>{
+            // calculate the red_gaps val
+            let start_index = 0;
+            let red_gap_adjusted = 0;
+            if (i > 0){
+                start_index = getStartIndex(prev_data);
+                red_gap_adjusted = start_index === 0 ? red_gap : red_gap - flag_size;
+            }
+            prev_data += LOOKUP[order[i]];
+            // calculate min and max based on that.
+            const min_y = prev_height + red_gap_adjusted;// prev_height should be the max val
+            const max_y = min_y + h;
+            prev_height = max_y;
+            return [min_y, max_y];
+        });
+        console.log("y_range_per_section:", y_range_per_section);
+
+
+        console.log("--------------------------");
+
+
+
+
+    }
     function getFlagId(x, y){
         // if no sub gaps
         const row_if_no_gaps = Math.floor(y / flag_size);
@@ -111,12 +161,9 @@ export function IconChart({ highlight_id, setHighlightId }){
             const index = (row_if_no_gaps * columns) + col;
             highlighted_id = one_off_data[index]?.id;
         }else{
-            // if Y is above certain value (calculated by...) then adjust...
-
+            highlight_id = getFlagIdOfEntFlags(x, y);
 
         }
-
-        // then need to check which subgroup it is in to get the offset.
         return highlighted_id || null;
     }
     function onMouseMove(e) {
