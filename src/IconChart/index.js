@@ -39,7 +39,7 @@ export function IconChart({ highlight_id, setHighlightId }){
         const flag_height = 10;
         const point_one = { x: 0, y: 0 };
         const point_two = { x: flag_width, y: 0 };
-        const point_three = { x: flag_width/2, y: flag_height/2 };
+        const point_three = { x: flag_width/3, y: flag_height/2 };
         const point_four = { x: flag_width , y: flag_height };
         const point_five = { x: 0 , y: flag_height };
         ctx.moveTo(point_one.x, point_one.y);
