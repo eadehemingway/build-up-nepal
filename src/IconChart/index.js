@@ -17,6 +17,7 @@ const enterprise_data = data.filter(d=> d["flag-status"] === "enterprise").map(d
 
 const running_ent_data = enterprise_data.filter((d)=> d.status === "Running" ).map(d=> ({ ...d, status: "RUNNING" }));
 const data_pending_ent_data = enterprise_data.filter((d)=> d.status === "Data pending" ).map(d=> ({ ...d, status: "PENDING" }));
+console.log("data_pending_ent_data:", data_pending_ent_data);
 const closed_ent_data = enterprise_data.filter((d)=> d.status === "Closed / Sold" ).map(d=> ({ ...d, status: "CLOSED" }));
 const struggling_ent_data = enterprise_data.filter((d)=> d.status === "Struggling" || d.status === "Running, Struggling" ).map(d=> ({ ...d, status: "STRUGGLING" }));
 
@@ -118,16 +119,12 @@ export function IconChart({ highlight_id, setHighlightId }){
         });
         return row_nums;
     }
-
-    function getFlagIdOfEntFlags(x, y){
-        /// get y ranges that determine which section you are looking at.
+    function getYRangesPerSection(){
         const rows_per_section = getSectionRowNums();
         const height_per_section = rows_per_section.map(r=> r * flag_size);
         let prev_height = 0;
-        console.log("--------------------------");
         let prev_data = [];
         const y_range_per_section = height_per_section.map((h, i)=>{
-            // calculate the red_gaps val
             let start_index = 0;
             let red_gap_adjusted = 0;
             if (i > 0){
@@ -135,19 +132,50 @@ export function IconChart({ highlight_id, setHighlightId }){
                 red_gap_adjusted = start_index === 0 ? red_gap : red_gap - flag_size;
             }
             prev_data += LOOKUP[order[i]];
-            // calculate min and max based on that.
-            const min_y = prev_height + red_gap_adjusted;// prev_height should be the max val
+            const min_y = prev_height + red_gap_adjusted;
             const max_y = min_y + h;
             prev_height = max_y;
             return [min_y, max_y];
-        });
-        console.log("y_range_per_section:", y_range_per_section);
+        }).map(arr=> ([arr[0] + blue_red_gap, arr[1] + blue_red_gap]));
+        return y_range_per_section;
+    }
 
+    function getAccumalativePrevData(i){
+        let prev_data= [];
+        for(let j = 0; j < i; j ++){
+            const data = LOOKUP[order[j]];
+            prev_data = [...prev_data, ...data];
+        }
+        return prev_data;
 
-        console.log("--------------------------");
+    }
+    function getFlagIdOfEntFlags(x, y){
+        const y_ranges_per_section = getYRangesPerSection();
+        const section_index = y_ranges_per_section.reduce((acc, range, i)=>{
+            if (y > range[0] && y < range[1]) return i;
+            return acc;
+        }, null);
 
+        const status = order[section_index];
+        if (section_index=== undefined || section_index === null) return null;
+        const min_section_val = y_ranges_per_section[section_index][0];
 
+        const relative_y = y - min_section_val;
 
+        const rows = Math.floor(relative_y/ flag_size);
+        const col = Math.floor(x / flag_size);
+
+        const prev_data = getAccumalativePrevData(section_index);// needs to be accumulative
+        const start_index = getStartIndex(prev_data);
+
+        const index = (rows * columns) + col - start_index;
+
+        const data = LOOKUP[status];
+
+        const highlighted_id = data ? data[index]?.id: null;
+        console.log("highlighted_id:", highlighted_id);
+
+        return highlighted_id;
 
     }
     function getFlagId(x, y){
@@ -167,8 +195,8 @@ export function IconChart({ highlight_id, setHighlightId }){
         return highlighted_id || null;
     }
     function onMouseMove(e) {
-        let x = e.clientX - margin.left;
-        let y = e.clientY - margin.top;
+        let x = e.pageX - margin.left;
+        let y = e.pageY - margin.top;
         const ID = getFlagId(x, y);
         if (ID == null) return;
         setHighlightId(ID);
@@ -184,7 +212,6 @@ export function IconChart({ highlight_id, setHighlightId }){
     );
 }
 
-
 const Canvas = styled.canvas`
     width: 400px;
     height: 1000px;
@@ -194,3 +221,5 @@ const Canvas = styled.canvas`
     z-index: 1;
     border: 2px solid red;
 `;
+
+
