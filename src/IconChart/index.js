@@ -5,9 +5,7 @@ import { data } from "./../data/data";
 
 const columns = 8;
 const flag_size = 20;
-const one_off_data = data.filter(d=> d["flag-status"] === "one-off").map(d=>{
-    return  { flag: d["flag-status"], status: d.Status, id: d["#"] };
-});
+const one_off_data = data.filter(d=> d["flag-status"] === "one-off").map(d=>({ flag: d["flag-status"], status: d.Status, id: d["#"] }));
 
 const getStartIndex = (prev_data) => prev_data.length % columns;
 const getTotalRows = (data, col_start_index) =>  Math.ceil((data.length + col_start_index)/ columns);
@@ -17,7 +15,7 @@ const enterprise_data = data.filter(d=> d["flag-status"] === "enterprise").map(d
 
 const running_ent_data = enterprise_data.filter((d)=> d.status === "Running" ).map(d=> ({ ...d, status: "RUNNING" }));
 const data_pending_ent_data = enterprise_data.filter((d)=> d.status === "Data pending" ).map(d=> ({ ...d, status: "PENDING" }));
-console.log("data_pending_ent_data:", data_pending_ent_data);
+
 const closed_ent_data = enterprise_data.filter((d)=> d.status === "Closed / Sold" ).map(d=> ({ ...d, status: "CLOSED" }));
 const struggling_ent_data = enterprise_data.filter((d)=> d.status === "Struggling" || d.status === "Running, Struggling" ).map(d=> ({ ...d, status: "STRUGGLING" }));
 
@@ -28,7 +26,7 @@ const LOOKUP = {
     PENDING: data_pending_ent_data,
     CLOSED: closed_ent_data
 };
-const combo = order.map(d=> LOOKUP[d]).flat();
+const ordered_ent_data = order.map(d=> LOOKUP[d]).flat();
 
 const margin = { top: 80, left: 80 };
 const red_blue_padding = 3 * flag_size;
@@ -39,7 +37,8 @@ const red_gap = flag_size * 2;
 
 export function IconChart({ highlight_id, setHighlightId }){
     const $canvas = useRef(null);
-    function drawOneOffFlag(ctx, x, y){
+
+    function drawOneOffFlag(ctx, x, y, should_fill){
         ctx.save();
         ctx.translate(x, y);
         ctx.beginPath();
@@ -50,11 +49,13 @@ export function IconChart({ highlight_id, setHighlightId }){
         ctx.lineTo(0.05 * flag_size, 0.85 * flag_size);
         ctx.closePath();
         ctx.translate(-x, -y);
+        ctx.fillStyle = should_fill ? "blue": "rgba(0, 0, 0, 0)";
+        ctx.fill();
         ctx.stroke();
         ctx.restore();
     }
 
-    function drawEnterpriseFlag(ctx, x, y){
+    function drawEnterpriseFlag(ctx, x, y, should_fill){
         ctx.save();
         ctx.translate(x, y);
         ctx.beginPath();
@@ -67,6 +68,8 @@ export function IconChart({ highlight_id, setHighlightId }){
         ctx.lineTo(0.05 * flag_size, 0.85 * flag_size);
         ctx.closePath();
         ctx.stroke();
+        ctx.fillStyle = should_fill ? "red": "rgba(0, 0, 0, 0)";
+        ctx.fill();
         ctx.translate(-x, -y);
         ctx.restore();
     }
@@ -77,30 +80,38 @@ export function IconChart({ highlight_id, setHighlightId }){
     const getColumn = (i) =>  i % columns;
     const getRow = (i)=>  Math.floor(i / columns);
 
+    useEffect(()=> {
+        if (!$canvas.current) return;
+        const ctx = $canvas.current.getContext("2d");
+        ctx.scale(2, 2);
+
+    },[]);
 
     useEffect(()=>{
         if (!$canvas.current) return;
         const ctx = $canvas.current.getContext("2d");
-        ctx.clearRect(0, 0, 800, 800);
-        ctx.scale(2, 2);
+        ctx.clearRect(0, 0, 800, 1600);
         one_off_data.forEach((d, i)=> {
             const col_index = getColumn(i);
             const row_index = getRow(i);
             const x = getX(col_index) + margin.left;
             const y = getY(row_index) + margin.top;
-            drawOneOffFlag(ctx, x, y);
+            const should_fill = highlight_id === d.id;
+
+            drawOneOffFlag(ctx, x, y, should_fill );
         });
 
-        combo.forEach((data, i)=> {
-            const offset_from_status = getOffset(data.status);
+        ordered_ent_data.forEach((data, i)=> {
+            const offset_from_status = getRedOffset(data.status);
             const col_index = getColumn(i);
             const row_index = getRow(i);
             const x = getX(col_index) + margin.left;
             const y = getY(row_index) + margin.top + blue_red_gap + offset_from_status;
-            drawEnterpriseFlag(ctx, x, y);
+            const should_fill = highlight_id === data.id;
+            drawEnterpriseFlag(ctx, x, y, should_fill);
         });
 
-    }, []);
+    }, [highlight_id]);
 
     // get how many rows are in each section (slighty tricky because you need to know what column index you start at)
     function getSectionRowNums(){
@@ -115,7 +126,6 @@ export function IconChart({ highlight_id, setHighlightId }){
                 const rows = getTotalRows(data, start_index);
                 return rows;
             }
-
         });
         return row_nums;
     }
@@ -173,15 +183,17 @@ export function IconChart({ highlight_id, setHighlightId }){
         const data = LOOKUP[status];
 
         const highlighted_id = data ? data[index]?.id: null;
-        console.log("highlighted_id:", highlighted_id);
 
         return highlighted_id;
 
     }
+
     function getFlagId(x, y){
         // if no sub gaps
         const row_if_no_gaps = Math.floor(y / flag_size);
         const col = Math.floor(x / flag_size);
+        console.log("col:", col);
+        if (col > 7 || col < 0) return null;
         let highlighted_id;
 
         const is_one_off = row_if_no_gaps < total_rows_one_off;
@@ -189,8 +201,7 @@ export function IconChart({ highlight_id, setHighlightId }){
             const index = (row_if_no_gaps * columns) + col;
             highlighted_id = one_off_data[index]?.id;
         }else{
-            highlight_id = getFlagIdOfEntFlags(x, y);
-
+            highlighted_id = getFlagIdOfEntFlags(x, y);
         }
         return highlighted_id || null;
     }
@@ -198,11 +209,10 @@ export function IconChart({ highlight_id, setHighlightId }){
         let x = e.pageX - margin.left;
         let y = e.pageY - margin.top;
         const ID = getFlagId(x, y);
-        if (ID == null) return;
         setHighlightId(ID);
     }
 
-    function getOffset(status){
+    function getRedOffset(status){
         const order_index = order.findIndex(d=> d === status);
         return order_index * red_gap;
     }
