@@ -16,7 +16,7 @@ const data_pending_ent_data = enterprise_data.filter((d)=> d.status === "Data pe
 const closed_ent_data = enterprise_data.filter((d)=> d.status === "Closed / Sold" ).map(d=> ({ ...d, status: "CLOSED" }));
 const struggling_ent_data = enterprise_data.filter((d)=> d.status === "Struggling" || d.status === "Running, Struggling" ).map(d=> ({ ...d, status: "STRUGGLING" }));
 
-export const order = ["RUNNING", "STRUGGLING", "CLOSED", "PENDING"];
+export const order = ["RUNNING", "STRUGGLING", "CLOSED", "PENDING" ];
 const LOOKUP = {
     RUNNING: running_ent_data,
     STRUGGLING: struggling_ent_data,
@@ -29,15 +29,14 @@ function getYRangesPerSection(){
     const rows_per_section = getSectionRows();
     const height_per_section = rows_per_section.map(r=> r * flag_size);
     let prev_height = 0;
-    let prev_data = [];
     const y_range_per_section = height_per_section.map((h, i)=>{
         let start_index = 0;
         let red_gap_adjusted = 0;
+        const prev_data = getAccumalativePrevData(i);
         if (i > 0){
             start_index = getStartIndex(prev_data);
             red_gap_adjusted = start_index === 0 ? red_gap : red_gap - flag_size;
         }
-        prev_data += LOOKUP[order[i]];
         const min_y = prev_height + red_gap_adjusted;
         const max_y = min_y + h;
         prev_height = max_y;
