@@ -56,7 +56,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
     }, [chart_margin, highlight_stroke_width, window_width, chart_height]);
 
     const drawAxis = useCallback((ctx, axis) => {
-        axis[sort_by].forEach((a, i) => {
+        axis[sort_by].forEach((a) => {
             ctx.font = "13px code-saver, sans-serif";
             const label = sort_by === "metric" ? formatNumber(a.label) : a.label;
             const a_width = a.width * (window_width - (chart_margin.left + chart_margin.right));
@@ -79,7 +79,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
             ctx.fillText(label, a_x + offset, chart_height - (chart_margin.top + chart_margin.bottom) + 20);
             ctx.fillStyle = "#1400a3";
         });
-    },[chart_margin, chart_height, window_width, sort_by]);
+    },[chart_margin, chart_height, window_width, sort_by, formatNumber]);
 
     const drawHighlight = useCallback((ctx, highlight_id) => {
         const highlight = data.data.find(d => d.id === highlight_id);
@@ -113,7 +113,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
             ctx.strokeRect(x, v.y, width, v.height);
             ctx.restore();
         });
-    }, []);
+    }, [sort_by, chart_margin, window_width, regular_stroke_width, bar_stroke, bar_fill, clearCanvas]);
 
     useEffect(()=> {
         if (!$canvas_bottom.current) return;
