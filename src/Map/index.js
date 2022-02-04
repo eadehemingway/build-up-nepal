@@ -70,13 +70,13 @@ export function Map({ highlight_id, setHighlightId }) {
         setLoaded(true);
 
         $main_map.current.loadImage(
-            red_flag,
+            blue_flag,
             (error, image) => {
                 if (error) throw error;
                 $main_map.current.addImage("one-off", image);
             });
         $main_map.current.loadImage(
-            blue_flag,
+            red_flag,
             (error, image) => {
                 if (error) throw error;
                 $main_map.current.addImage("enterprise", image);
