@@ -131,7 +131,8 @@ const map_attributes = {
         right: 0,
         left: 0,
         height: "calc(100vh - 300px)",
-        overflow: "hidden"
+        overflow: "hidden",
+        "zIndex": -1
     },
     initialViewState:{
         latitude:center_lat,

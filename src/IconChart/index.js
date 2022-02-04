@@ -3,18 +3,39 @@ import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 import { data } from "./../data/data";
 
+const columns = 8;
+const flag_size = 20;
+const one_off_data = data.filter(d=> d["flag-status"] === "one-off").map(d=>{
+    return  { flag: d["flag-status"], status: d.Status, id: d["#"] };
+});
+function getTotalRows(data){
+    Math.ceil(data.length / columns);
+}
+const total_rows_one_off = Math.ceil(one_off_data.length / columns);
+const enterprise_data = data.filter(d=> d["flag-status"] === "enterprise").map(d=> ({ flag: d["flag-status"], status: d.Status, id: d["#"] }));
 
-const one_off_data = data.filter(d=> d["flag-status"] === "one-off").map(d=> ({ flag: d["flag-status"], status: d.Status }));
-const enterprise_data = data.filter(d=> d["flag-status"] === "enterprise").map(d=> ({ flag: d["flag-status"], status: d.Status }));
+const running_ent_data = enterprise_data.filter((d)=> d.status === "Running" ).map(d=> ({ ...d, status: "RUNNING" }));
+const data_pending_ent_data = enterprise_data.filter((d)=> d.status === "Data pending" ).map(d=> ({ ...d, status: "PENDING" }));
+const closed_ent_data = enterprise_data.filter((d)=> d.status === "Closed / Sold" ).map(d=> ({ ...d, status: "CLOSED" }));
+const struggling_ent_data = enterprise_data.filter((d)=> d.status === "Struggling" || d.status === "Running, Struggling" ).map(d=> ({ ...d, status: "STRUGGLING" }));
 
-const running_ent_data = enterprise_data.filter((d)=> d.status === "Running" );
-const data_pending_ent_data = enterprise_data.filter((d)=> d.status === "Data pending" );
-const closed_ent_data = enterprise_data.filter((d)=> d.status === "Closed / Sold" );
-const struggling_ent_data = enterprise_data.filter((d)=> d.status === "Struggling" || d.status === "Running, Struggling" );
+const order = ["RUNNING", "STRUGGLING", "CLOSED", "PENDING"];
+const LOOKUP = {
+    RUNNING: running_ent_data,
+    STRUGGLING: struggling_ent_data,
+    PENDING: data_pending_ent_data,
+    CLOSED: closed_ent_data
+};
+const combo = order.map(d=> LOOKUP[d]).flat();
 
-const combo = [running_ent_data, struggling_ent_data, closed_ent_data, data_pending_ent_data].flat();
+const margin = { top: 80, left: 80 };
+const red_blue_padding = 3 * flag_size;
+const blue_red_gap = total_rows_one_off * flag_size + red_blue_padding;
+const red_gap = flag_size * 2;
 
-export function IconChart(){
+
+
+export function IconChart({ highlight_id, setHighlightId }){
     const $canvas = useRef(null);
     function drawOneOffFlag(ctx, x, y){
         ctx.save();
@@ -48,8 +69,7 @@ export function IconChart(){
         ctx.restore();
     }
 
-    const flag_size = 20;
-    const columns = 8;
+
     const getX = (column_index) => column_index * flag_size;
     const getY = (row_index) => row_index * flag_size;
     const getColumn = (i) =>  i % columns;
@@ -61,7 +81,6 @@ export function IconChart(){
         const ctx = $canvas.current.getContext("2d");
         ctx.clearRect(0, 0, 800, 800);
         ctx.scale(2, 2);
-        const margin = { top: 80, left: 80 };
         one_off_data.forEach((d, i)=> {
             const col_index = getColumn(i);
             const row_index = getRow(i);
@@ -70,29 +89,51 @@ export function IconChart(){
             drawOneOffFlag(ctx, x, y);
         });
 
-        const gap = 200;
         combo.forEach((data, i)=> {
             const offset_from_status = getOffset(data.status);
             const col_index = getColumn(i);
             const row_index = getRow(i);
             const x = getX(col_index) + margin.left;
-            const y = getY(row_index) + margin.top + gap + offset_from_status;
+            const y = getY(row_index) + margin.top + blue_red_gap + offset_from_status;
             drawEnterpriseFlag(ctx, x, y);
         });
 
     }, []);
 
+    function getFlagId(x, y){
+        // if no sub gaps
+        const row_if_no_gaps = Math.floor(y / flag_size);
+        const col = Math.floor(x / flag_size);
+        let highlighted_id;
+
+        const is_one_off = row_if_no_gaps < total_rows_one_off;
+        if (is_one_off){
+            const index = (row_if_no_gaps * columns) + col;
+            highlighted_id = one_off_data[index]?.id;
+        }else{
+            // if Y is above certain value (calculated by...) then adjust...
+
+
+        }
+
+        // then need to check which subgroup it is in to get the offset.
+        return highlighted_id || null;
+    }
+    function onMouseMove(e) {
+        let x = e.clientX - margin.left;
+        let y = e.clientY - margin.top;
+        const ID = getFlagId(x, y);
+        if (ID == null) return;
+        setHighlightId(ID);
+    }
+
     function getOffset(status){
-        const gap = 40;
-        // these need to be in the order of the array above
-        if (status === "Running") return 0;
-        if (status === "Struggling" || status === "Running, Struggling") return gap;
-        if (status === "Closed / Sold") return gap * 2;
-        if (status === "Data pending") return gap * 3;
+        const order_index = order.findIndex(d=> d === status);
+        return order_index * red_gap;
     }
 
     return (
-        <Canvas width={800} height={2000} ref={$canvas} id="icon-chart"/>
+        <Canvas onMouseMove={onMouseMove}  width={800} height={2000} ref={$canvas} id="icon-chart"/>
     );
 }
 

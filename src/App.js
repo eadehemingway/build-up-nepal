@@ -12,7 +12,10 @@ function App() {
 
     return (
         <>
-            <IconChart/>
+            <IconChart
+                highlight_id={highlight_id}
+                setHighlightId={setHighlightId}
+            />
             {/* <Map
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
