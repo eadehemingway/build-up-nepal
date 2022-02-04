@@ -13,7 +13,6 @@ export function SortButtons({ sort_by, setSortBy }) {
     ];
 
     useEffect(() => {
-        console.log("this");
         const name = types.filter(t => t.value === sort_by)[0].name;
         setSortByName(name);
     }, [sort_by]);

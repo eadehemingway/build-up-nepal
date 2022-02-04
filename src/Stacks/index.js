@@ -80,10 +80,16 @@ export function StackedBars({ highlight_id, setHighlightId }) {
                 d.width[sorting] = proportion;
 
                 // Update axis
-                let relevant_axis = axis[sorting].filter(e => e.label === d.value[sorting]);
-                if (!relevant_axis.length) axis[sorting].push({ label: d.value[sorting], x: x, width: proportion, y: 0 });
-                else relevant_axis[0].width += proportion;
-
+                if (sorting === "metric") {
+                    axis[sorting] = [
+                        { label: stacked.data[0].value["metric"], x: 0, width: 1, y: 0, align: "left" },
+                        { label: stacked.data[stacked.data.length - 1].value["metric"], x: 1, width: 0, y: 0, align: "right" },
+                    ];
+                } else {
+                    let relevant_axis = axis[sorting].filter(e => e.label === d.value[sorting]);
+                    if (!relevant_axis.length) axis[sorting].push({ label: d.value[sorting], x: x, width: proportion, y: 0, align: "left" });
+                    else relevant_axis[0].width += proportion;
+                }
                 x += proportion;
             });
             stacked.axis = axis;
