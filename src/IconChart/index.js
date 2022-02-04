@@ -1,12 +1,13 @@
 import { useRef, useEffect } from "react";
 import styled from "styled-components";
-import {  one_off_data , ordered_ent_data, order, blue_red_gap, getFlagId } from "./process_data";
+import {  one_off_data , ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
 import { flag_size, margin, COLUMNS , red_gap } from "./constants";
-
 
 export function IconChart({ highlight_id, setHighlightId }){
     const $canvas = useRef(null);
-
+    const text_padding = 10;
+    const title_size = 16;
+    const subtitle_size = 13;
     function drawOneOffFlag(ctx, x, y, should_fill){
         ctx.save();
         ctx.translate(x, y);
@@ -23,13 +24,14 @@ export function IconChart({ highlight_id, setHighlightId }){
         ctx.lineTo(point_three.x, point_three.y);
         ctx.closePath();
         ctx.translate(-x, -y);
-        ctx.fillStyle = should_fill ? "blue": "rgba(0, 0, 0, 0)";
+        ctx.fillStyle = should_fill ? "blue": "#FDC5FF";
         ctx.fill();
         ctx.stroke();
         ctx.restore();
     }
 
     function drawEnterpriseFlag(ctx, x, y, should_fill){
+
         ctx.save();
         ctx.translate(x, y);
         ctx.beginPath();
@@ -49,12 +51,12 @@ export function IconChart({ highlight_id, setHighlightId }){
         ctx.lineTo(point_five.x, point_five.y);
         ctx.closePath();
         ctx.stroke();
-        ctx.fillStyle = should_fill ? "red": "rgba(0, 0, 0, 0)";
+        ctx.fillStyle = should_fill ? "red": "#fdc0ff";
         ctx.fill();
         ctx.translate(-x, -y);
         ctx.restore();
-    }
 
+    }
 
     const getX = (column_index) => column_index * flag_size;
     const getY = (row_index) => row_index * flag_size;
@@ -69,10 +71,21 @@ export function IconChart({ highlight_id, setHighlightId }){
 
     },[]);
 
-    useEffect(()=>{
-        if (!$canvas.current) return;
-        const ctx = $canvas.current.getContext("2d");
-        ctx.clearRect(0, 0, 800, 1600);
+    function drawLabel(ctx, label, x, y, color, fontsize){
+        ctx.font = `${fontsize}px code-saver, sans-serif`;
+        ctx.fillStyle = color;
+        ctx.fillText(label, x, y);
+
+    }
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    function drawOneOffFlags(ctx){
+        drawLabel(ctx, "One-off projects", margin.left, margin.top - text_padding, "blue", title_size);
+        const x = margin.left + (COLUMNS * flag_size);
+        drawLabel(ctx, "Projects", x, margin.top + text_padding, "blue", subtitle_size);
+        drawLabel(ctx, one_off_data.length, x, margin.top + 15 + text_padding, "blue", subtitle_size);
         one_off_data.forEach((d, i)=> {
             const col_index = getColumn(i);
             const row_index = getRow(i);
@@ -82,7 +95,18 @@ export function IconChart({ highlight_id, setHighlightId }){
 
             drawOneOffFlag(ctx, x, y, should_fill );
         });
+    }
 
+    function drawEnterpriseFlags(ctx){
+        drawLabel(ctx, "Enterprise", margin.left, blue_red_gap + margin.top - text_padding, "red", title_size);
+        const x = margin.left + (COLUMNS * flag_size);
+        order.forEach((s, i)=> {
+            const label = capitalizeFirstLetter(s.toLowerCase());
+            const min_y = y_ranges_per_section[i][0] + margin.top + text_padding;
+            drawLabel(ctx, label, x, min_y, "red", subtitle_size);
+            const total = LOOKUP[s].length;
+            drawLabel(ctx, total, x, min_y + 15, "red", subtitle_size);
+        });
         ordered_ent_data.forEach((data, i)=> {
             const offset_from_status = getRedOffset(data.status);
             const col_index = getColumn(i);
@@ -92,7 +116,14 @@ export function IconChart({ highlight_id, setHighlightId }){
             const should_fill = highlight_id === data.id;
             drawEnterpriseFlag(ctx, x, y, should_fill);
         });
+    }
 
+    useEffect(()=>{
+        if (!$canvas.current) return;
+        const ctx = $canvas.current.getContext("2d");
+        ctx.clearRect(0, 0, 800, 1600);
+        drawOneOffFlags(ctx);
+        drawEnterpriseFlags(ctx);
     }, [highlight_id]);
 
     function onMouseMove(e) {

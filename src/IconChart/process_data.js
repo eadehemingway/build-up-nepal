@@ -17,7 +17,7 @@ const closed_ent_data = enterprise_data.filter((d)=> d.status === "Closed / Sold
 const struggling_ent_data = enterprise_data.filter((d)=> d.status === "Struggling" || d.status === "Running, Struggling" ).map(d=> ({ ...d, status: "STRUGGLING" }));
 
 export const order = ["RUNNING", "STRUGGLING", "CLOSED", "PENDING" ];
-const LOOKUP = {
+export const LOOKUP = {
     RUNNING: running_ent_data,
     STRUGGLING: struggling_ent_data,
     PENDING: data_pending_ent_data,
@@ -46,7 +46,7 @@ function getYRangesPerSection(){
 }
 
 
-const y_ranges_per_section = getYRangesPerSection();
+export const y_ranges_per_section = getYRangesPerSection();
 
 // get how many rows are in each section (slighty tricky because you need to know what column index you start at)
 function getSectionRows(){
