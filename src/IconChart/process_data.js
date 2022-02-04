@@ -4,11 +4,11 @@ import { flag_size, COLUMNS, red_blue_padding , red_gap } from "./constants";
 
 const getTotalRows = (data, col_start_index) =>  Math.ceil((data.length + col_start_index)/ COLUMNS);
 const getStartIndex = (prev_data) => prev_data.length % COLUMNS;
-export const one_off_data = data.filter(d=> d["flag-status"] === "one-off").map(d=>({ flag: d["flag-status"], status: d.Status, id: d["#"] }));
+export const one_off_data = data.filter(d=> d["flag-status"] === "one-off").map(d=>({ flag: d["flag-status"], status: d.Status, id: d["id"] }));
 const total_rows_one_off = getTotalRows(one_off_data, 0);
 export const blue_red_gap = total_rows_one_off * flag_size + red_blue_padding;
 
-const enterprise_data = data.filter(d=> d["flag-status"] === "enterprise").map(d=> ({ flag: d["flag-status"], status: d.Status, id: d["#"] }));
+const enterprise_data = data.filter(d=> d["flag-status"] === "enterprise").map(d=> ({ flag: d["flag-status"], status: d.Status, id: d["id"] }));
 
 const running_ent_data = enterprise_data.filter((d)=> d.status === "Running" ).map(d=> ({ ...d, status: "RUNNING" }));
 const data_pending_ent_data = enterprise_data.filter((d)=> d.status === "Data pending" ).map(d=> ({ ...d, status: "PENDING" }));
