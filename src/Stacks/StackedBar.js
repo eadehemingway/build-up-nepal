@@ -157,5 +157,5 @@ const CanvasChart = styled.canvas`
     display: inline-block;
     margin: 0px;
     padding: 0px;
-    z-index: 1;
+    z-index: 5;
 `;
