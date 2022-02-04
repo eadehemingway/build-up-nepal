@@ -19,9 +19,7 @@ import { ZoomedProvinceFill } from "./MainLayers/Layer-zoomed-prov-fill";
 import { UnzoomedProvFill } from "./MainLayers/Layer-unzoomed-prov-fill";
 
 
-
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
-
 
 
 const half_lng = (maxLng - minLng) /2;
@@ -70,6 +68,7 @@ export function Map({ highlight_id, setHighlightId }) {
 
     function handleLoaded (){
         setLoaded(true);
+
         $main_map.current.loadImage(
             red_flag,
             (error, image) => {
@@ -81,8 +80,9 @@ export function Map({ highlight_id, setHighlightId }) {
             (error, image) => {
                 if (error) throw error;
                 $main_map.current.addImage("enterprise", image);
-            })
-        ;}
+            });
+    };
+
     return (
         <>
             <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>

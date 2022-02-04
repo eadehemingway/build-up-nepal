@@ -6,7 +6,7 @@ import brick_machine from "./../assets/brick_machine.gif";
 export function LoadingScreen({ loaded }) {
 
     const [load_delay, setLoadDelay] = useState(false);
-    let delay_seconds = 6;
+    let delay_seconds = 0;
     if (loaded) setTimeout(function(){ setLoadDelay(true); }, delay_seconds * 1000);
 
     return (

@@ -13,7 +13,6 @@ export function SortButtons({ sort_by, setSortBy }) {
     ];
 
     useEffect(() => {
-        console.log("this");
         const name = types.filter(t => t.value === sort_by)[0].name;
         setSortByName(name);
     }, [sort_by]);
@@ -68,6 +67,10 @@ const Dropdown = styled.div`
         color: inherit;
     }
 
+    button:focus {
+        outline: none;
+    }
+
     .button_open:after {
         content: "";
         width: 0;
@@ -102,6 +105,10 @@ const Dropdown = styled.div`
         list-style-type: none;
         background: inherit;
         box-sizing: border-box;
+    }
+
+    ul:focus {
+        outline: none;
     }
 
     li {
