@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { MobileMap } from "./Map/MobileMap.js";
 import { MobileStacks } from "./Stacks/MobileStacks";
-import { TextBox } from "./InfoOverlay";
+import { TextBox } from "./Panel/MobilePanel";
 
 export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highlight_locked, windowH, windowW }) {
+    console.log("highlight_id:", highlight_id);
+    console.log("highlight_locked:", highlight_locked);
 
 
 
@@ -31,11 +33,11 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
                 width={windowW}
                 height={400}
             />
-            {/* <TextBox
+            <TextBox
                 highlight_locked={highlight_locked}
                 highlight_id={highlight_id}
                 setHighlightLocked={setHighlightLocked}
-            /> */}
+            />
         </Container>
     );
 }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { DesktopMap } from "./Map/DesktopMap.js";
 import { DesktopStacks } from "./Stacks/DesktopStacks";
 import { IconChart } from "./IconChart";
-import { TextBox } from "./InfoOverlay";
+import { TextBox } from "./Panel/DesktopPanel";
 
 export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, highlight_locked, windowH, windowW }) {
 
