@@ -76,6 +76,7 @@ export function DesktopInset({ zoomMapTo, zoomed_province, setZoomedProvince }) 
         setIsZoomed(false);
         zoomMapTo({ minLng, minLat, maxLng, maxLat });
         updateFeatState(zoomed_province, { click: false });
+        setZoomedProvince(null);
     }
 
     return (
