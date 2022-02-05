@@ -25,8 +25,9 @@ export function InsetLabelLayer() {
                     layout = {{
                         "text-field": ["get", "STATE"],
                         "text-justify": "center",
-                        "text-font": ["Etna Black", "Arial Unicode MS Regular"],
+                        "text-font": ["Code Saver Regular"],
                         "text-letter-spacing": 2,
+                        "text-size": 13,
                     }}
                     paint = {{
                         "text-color": "#1400a3",

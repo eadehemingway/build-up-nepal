@@ -10,6 +10,7 @@ import { data } from "../data/data";
 import MAP_STYLE_MAIN from "./style-common";
 import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
+import location_marker from "./../assets/location-marker.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
 import { MainLabelsLayer } from "./MainLayers/Layer-labels-nepal";
 import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
@@ -81,6 +82,12 @@ export function Map({ highlight_id, setHighlightId, setTextBoxOpen }) {
             (error, image) => {
                 if (error) throw error;
                 $main_map.current.addImage("enterprise", image);
+            });
+        $main_map.current.loadImage(
+            location_marker,
+            (error, image) => {
+                if (error) throw error;
+                $main_map.current.addImage("location_marker", image);
             });
     };
 

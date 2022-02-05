@@ -23,15 +23,25 @@ export function MainCitiesLayer() {
                     minzoom = {0}
                     maxzoom = {24}
                     layout = {{
+                        "icon-image": "location_marker",
+                        "icon-size": 0.2,
+                        "icon-anchor": "bottom",
+                        "icon-allow-overlap": true,
+                        "icon-ignore-placement": true,
                         "text-field": ["get", "label"],
-                        "text-variable-anchor": ["top", "bottom", "left", "right"],
-                        "text-radial-offset": 0.5,
+                        "text-variable-anchor": ["bottom"],
                         "text-justify": "center",
-                        "text-font": ["Arial Unicode MS Regular"],
+                        "text-font": ["Code Saver Regular"],
+                        "text-allow-overlap": true,
                         "text-letter-spacing": 0,
+                        "text-size": 13,
+                        "text-offset": [0, -0.75],
                     }}
                     paint = {{
                         "text-color": "#1400a3",
+                        "text-halo-width": 3,
+                        "text-halo-color": "#D3F0F7",
+                        "text-halo-blur": 2,
                     }}
                 />
 
