@@ -1,18 +1,26 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 import { data } from "../data/data";
 import icon_close from "../assets/icon_close.svg";
 import { PanelContent } from "./PanelContent";
 
 export function MobileTextBox( { setHighlightLocked, highlight_locked, highlight_id } ) {
+    const [panel_open, setPanelOpen] = useState(false);
     const highlightObj = useMemo(() => data.find(d => d.id === highlight_id), [highlight_id]);
 
-    function closeContainer() {
+    function closeContainer(e) {
+        e.stopPropagation();
         setHighlightLocked(false);
+        setPanelOpen(false);
     }
 
+
+    function onClick(e){
+        setPanelOpen(true);
+        e.stopPropagation();
+    }
     return (
-        <Container open={highlight_locked}>
+        <Container onClick={onClick} open={panel_open} bit_open={highlight_locked}>
             <Close onClick={closeContainer} background_image={icon_close}></Close>
             {highlightObj && <PanelContent highlightObj={highlightObj}/>}
         </Container>
@@ -24,8 +32,10 @@ const Container = styled.div`
     position: absolute;
     left: 0;
     right:0;
-    bottom: ${({ open }) =>{
-        return open ? "0px" : `-${panel_height}px`;
+    bottom: ${({ open, bit_open }) =>{
+        if (open) return "0px";
+        if (bit_open) return `-${panel_height - 50}px`;
+        return `-${panel_height}px`;
     }};
     transition: bottom 1s ease;
     margin-right: -20px;
