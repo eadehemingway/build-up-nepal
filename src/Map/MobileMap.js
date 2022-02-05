@@ -17,7 +17,7 @@ import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
 import { ProvincesLayer } from "./MainLayers/Layer-provinces";
 import { ZoomedProvinceFill } from "./MainLayers/Layer-zoomed-prov-fill";
 import { UnzoomedProvFill } from "./MainLayers/Layer-unzoomed-prov-fill";
-import { Inset } from "./MobileInset";
+import { Inset } from "./Inset/MobileInset";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";

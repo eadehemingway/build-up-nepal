@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Listbox } from "@headlessui/react";
 import styled from "styled-components";
-import { Dropdown } from "./../shared/Dropdown";
-import { province_bounds } from "../data/prov_bounds";
-import { unzoomed_latlng } from "./Inset/index";
+import { Dropdown } from "../../shared/Dropdown";
+import { province_bounds } from "../../data/prov_bounds";
+import { unzoomed_latlng } from "./index";
 
 
 export function Inset({ zoomMapTo, zoomed_province, setZoomedProvince }) {
@@ -34,7 +34,7 @@ export function Inset({ zoomMapTo, zoomed_province, setZoomedProvince }) {
     return (
         <Dropdown
             label={"Projects in"}
-            value={zoomed_province}
+            value={zoomed_province || options[0].label}
             options={options}
             onSelect={onSelect}
         />

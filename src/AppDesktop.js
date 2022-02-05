@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Map } from "./Map/index.js";
+import { Map } from "./Map/DesktopMap.js";
 import { StackedBars } from "./Stacks/index.js";
 import { IconChart } from "./IconChart";
 import { TextBox } from "./InfoOverlay";

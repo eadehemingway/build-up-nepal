@@ -19,7 +19,7 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
                 width={windowW}
-                height={windowH}
+                height={windowH /2}
                 highlight_locked={highlight_locked}
             />
 
