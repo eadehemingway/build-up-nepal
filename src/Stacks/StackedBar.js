@@ -108,7 +108,7 @@ export function StackedBar({ width, setTextBoxOpen, data, highlight_id, setHighl
 
     const drawStackedBar = useCallback((ctx, data) => {
         clearCanvas(ctx);
-        data.forEach(v => {
+        data.data.forEach(v => {
             let x = v.x[sort_by] * chart_width;
             let bar_width = v.width[sort_by] * chart_width;
             ctx.save();
@@ -119,7 +119,16 @@ export function StackedBar({ width, setTextBoxOpen, data, highlight_id, setHighl
             ctx.strokeRect(x, v.y, bar_width, v.height);
             ctx.restore();
         });
-    }, [sort_by, chart_width, regular_stroke_width, bar_stroke, bar_fill, clearCanvas]);
+
+        ctx.textAlign = "left";
+        ctx.font = "34px code-saver, sans-serif";
+        ctx.fillStyle = "#1400a3";
+        console.log("data[sort_by].total:", data);
+        ctx.fillText(formatNumber(data.total), chart_width + 10, chart_height - (chart_margin.top + chart_margin.bottom));
+        ctx.font = "13px code-saver, sans-serif";
+        ctx.fillText(data.caption, chart_width + 10, -10);
+
+    }, [sort_by, chart_height, chart_margin, chart_width, regular_stroke_width, bar_stroke, bar_fill, clearCanvas, formatNumber]);
 
     useEffect(()=> {
         if (!$canvas_bottom.current) return;
@@ -130,14 +139,14 @@ export function StackedBar({ width, setTextBoxOpen, data, highlight_id, setHighl
         if (!$canvas_bottom.current) return;
         if (!ctx_bottom) return;
         transformCanvas(ctx_bottom);
-        drawStackedBar(ctx_bottom, data.data);
+        drawStackedBar(ctx_bottom, data);
         drawAxis(ctx_bottom, data.axis);
     }, [ctx_bottom]);
 
     useEffect(()=>{
         if (!ctx_bottom) return;
         clearCanvas(ctx_bottom);
-        drawStackedBar(ctx_bottom, data.data);
+        drawStackedBar(ctx_bottom, data);
         drawHighlight(ctx_bottom, highlight_id);
         drawAxis(ctx_bottom, data.axis);
     }, [data, highlight_id]);
