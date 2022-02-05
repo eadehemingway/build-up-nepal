@@ -7,7 +7,6 @@ import { CountryOutlineLayer } from "./MainLayers/Layer-country-outline";
 import { InsetMap, maxLat, maxLng, minLng, minLat } from "./Inset/index";
 import { MarkerLayer } from "./MainLayers/Layer-makers";
 import { data } from "../data/data";
-import { TextBox } from "../InfoOverlay/TextBox";
 import MAP_STYLE_MAIN from "./style-common";
 import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
@@ -27,7 +26,7 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function Map({ highlight_id, setHighlightId }) {
+export function Map({ highlight_id, setHighlightId, setTextBoxOpen }) {
     const [contour_visible, setContourVisible] = useState(true);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
@@ -60,11 +59,13 @@ export function Map({ highlight_id, setHighlightId }) {
         $main_map.current.on("mouseleave", "markers-layer", (e) => {
             setHighlightId(null);
         });
-
+        $main_map.current.on("click", "markers-layer", (e) => {
+            const feature = e.features[0];
+            if (feature) {
+                setTextBoxOpen(true);
+            }
+        });
     }, [$main_map.current]);
-
-
-    const highlight_obj = useMemo(()=>data.find(d=>  d.id === highlight_id), [highlight_id]);
 
     function handleLoaded (){
         setLoaded(true);
@@ -106,7 +107,6 @@ export function Map({ highlight_id, setHighlightId }) {
                 <MainLabelsLayer/>
                 <MainCitiesLayer/>
             </MapGL>
-            <TextBox highlight_obj={highlight_obj}/>
             <InsetMap zoomMapTo={zoomMapTo} zoomed_province={zoomed_province} setZoomedProvince={setZoomedProvince}/>
 
         </>

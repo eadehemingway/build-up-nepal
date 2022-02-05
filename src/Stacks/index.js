@@ -5,7 +5,7 @@ import { data } from "../data/data";
 import { StackedBar } from "./StackedBar";
 import { SortButtons } from "./SortButtons";
 
-export function StackedBars({ highlight_id, setHighlightId }) {
+export function StackedBars({ setTextBoxOpen, highlight_id, setHighlightId }) {
 
     const chart_margin = { left: 50, right: 220, top: 20, bottom: 40 };
     const chart_height = 85;
@@ -138,6 +138,7 @@ export function StackedBars({ highlight_id, setHighlightId }) {
                     chart_height={chart_height}
                     window_width={window_width}
                     sort_by={sort_by}
+                    setTextBoxOpen={setTextBoxOpen}
                 />
             ))}
         </StackedBarContainer>

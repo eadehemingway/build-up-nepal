@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {  one_off_data , ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
 import { flag_size, margin, COLUMNS , red_gap } from "./constants";
 
-export function IconChart({ highlight_id, setHighlightId }){
+export function IconChart({ setTextBoxOpen, highlight_id, setHighlightId }){
     const $canvas = useRef(null);
     const text_padding = 10;
     const title_size = 16;
@@ -135,8 +135,16 @@ export function IconChart({ highlight_id, setHighlightId }){
         setHighlightId(ID);
     }
 
+    function onMouseOut() {
+        setHighlightId(null);
+    }
+
+    function onClick() {
+        setTextBoxOpen(true);
+    }
+
     return (
-        <Canvas onMouseMove={onMouseMove}  width={800} height={2000} ref={$canvas} id="icon-chart"/>
+        <Canvas onMouseMove={onMouseMove} onClick={onClick} onMouseOut={onMouseOut} width={800} height={2000} ref={$canvas} id="icon-chart"/>
     );
 }
 
@@ -146,6 +154,7 @@ const Canvas = styled.canvas`
     display: inline-block;
     margin: 0px;
     padding: 0px;
+    cursor: pointer;
 `;
 
 

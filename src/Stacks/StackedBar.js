@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
+export function StackedBar({ setTextBoxOpen, data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const $canvas_bottom = useRef(null);
@@ -41,6 +41,10 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
     const onMouseOut = useCallback(() => {
         setHighlightId(null);
     }, [setHighlightId]);
+
+    const onClick = useCallback(() => {
+        setTextBoxOpen(true);
+    }, []);
 
     const transformCanvas = useCallback((ctx) => {
         ctx.resetTransform();
@@ -138,7 +142,7 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
 
     return (
         <CanvasContainer>
-            <CanvasChart onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
+            <CanvasChart onMouseMove={onMouseMove} onMouseOut={onMouseOut} onClick={onClick} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
         </CanvasContainer>
     );
 }
@@ -149,6 +153,7 @@ const CanvasContainer = styled.div`
     margin: 0px;
     padding: 0px;
     position: relative;
+    cursor: pointer;
 `;
 
 const CanvasChart = styled.canvas`
