@@ -126,10 +126,10 @@ const Dropdown = styled.div`
         box-sizing: border-box;
         line-height: normal;
         width: 100%;
-        background: #FDC5FF;
+        background:#FFD6FF;
     }
 
     .active {
-        background: #FFD6FF;
+        background: #FDC5FF;
     }
 `;
