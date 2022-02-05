@@ -29,6 +29,10 @@ export function MainLabelsLayer() {
                         "text-font": ["Etna Black"],
                         "text-letter-spacing": 1,
                         "text-size": 26,
+                        "text-allow-overlap": true,
+                        "icon-allow-overlap": true,
+                        "icon-ignore-placement": true,
+                        "text-ignore-placement": true
                     }}
                     paint = {{
                         "text-color": "#1400a3",
