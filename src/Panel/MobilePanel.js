@@ -19,17 +19,19 @@ export function MobileTextBox( { setHighlightLocked, highlight_locked, highlight
     );
 }
 
+const panel_height = 600;
 const Container = styled.div`
     position: absolute;
     left: 0;
     right:0;
     bottom: ${({ open }) =>{
-        return open ? "0px" : "-550px";}};
+        return open ? "0px" : `-${panel_height}px`;
+    }};
     transition: bottom 1s ease;
     margin-right: -20px;
     max-width: 100vw;
     padding: 0px 20px 0px 30px;
-    height: 600px;
+    height: ${panel_height}px;
     background: #D3F0F7;
     color: #1400a3;
     border-left: 1px solid #1400a3;
