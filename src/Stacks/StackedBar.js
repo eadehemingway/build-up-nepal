@@ -63,6 +63,7 @@ export function StackedBar({
     }, [setHighlightId, highlight_locked]);
 
     const onClick = useCallback((e) => {
+        e.stopPropagation();
         updateHighlight(e);
         setHighlightLocked(true);
     }, [setHighlightLocked, setHighlightId, getBarId, chart_margin, offset_left]);

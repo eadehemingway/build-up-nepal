@@ -148,6 +148,7 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
     }
 
     function onClick(e) {
+        e.stopPropagation();
         updateHighlightId(e);
         setHighlightLocked(true);
     }

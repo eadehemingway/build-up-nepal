@@ -66,6 +66,7 @@ export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, h
     }
 
     function handleOnClick (e){
+        e.originalEvent.cancelBubble = true;
         if (!$main_map.current) return;
         const feature = e.features[0];
         if (feature) {

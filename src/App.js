@@ -23,8 +23,11 @@ function App() {
         });
     }, []);
 
+    function onClick(e){
+        setHighlightLocked(false);
+    }
     return (
-        <>
+        <div onClick={onClick}>
             {font_loaded &&
                 <>
                     <IconChart
@@ -59,7 +62,7 @@ function App() {
                     />
                 </>
             }
-        </>
+        </div>
 
     );
 }
