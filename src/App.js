@@ -31,6 +31,7 @@ function App() {
                         highlight_id={highlight_id}
                         setHighlightId={setHighlightId}
                         setHighlightLocked={setHighlightLocked}
+                        highlight_locked={highlight_locked}
                         width={300}
                         height={windowH - 10}
                     />
@@ -47,6 +48,7 @@ function App() {
                         highlight_id={highlight_id}
                         setHighlightId={setHighlightId}
                         setHighlightLocked={setHighlightLocked}
+                        highlight_locked={highlight_locked}
                         width={windowW - 300}
                         height={300}
                     />

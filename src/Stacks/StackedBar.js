@@ -1,7 +1,18 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-export function StackedBar({ width, setHighlightLocked, data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
+export function StackedBar({
+    width,
+    setHighlightLocked,
+    data,
+    highlight_id,
+    setHighlightId,
+    chart_margin,
+    window_width,
+    chart_height,
+    sort_by,
+    highlight_locked
+}) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const $canvas_bottom = useRef(null);
@@ -35,18 +46,26 @@ export function StackedBar({ width, setHighlightLocked, data, highlight_id, setH
 
     const onMouseMove = useCallback((e) => {
         let x = e.clientX - (chart_margin.left + offset_left);
+        if(!highlight_locked){
+            const ID = getBarId(x);
+            if (ID == null) return;
+            setHighlightId(ID);
+        }
+    }, [chart_margin, setHighlightId, offset_left, getBarId, highlight_locked]);
+
+    const onMouseOut = useCallback(() => {
+        if (!highlight_locked){
+            setHighlightId(null);
+        }
+    }, [setHighlightId, highlight_locked]);
+
+    const onClick = useCallback((e) => {
+        let x = e.clientX - (chart_margin.left + offset_left);
         const ID = getBarId(x);
         if (ID == null) return;
         setHighlightId(ID);
-    }, [chart_margin, setHighlightId, offset_left, getBarId]);
-
-    const onMouseOut = useCallback(() => {
-        setHighlightId(null);
-    }, [setHighlightId]);
-
-    const onClick = useCallback(() => {
         setHighlightLocked(true);
-    }, [setHighlightLocked]);
+    }, [setHighlightLocked, setHighlightId, getBarId, chart_margin, offset_left]);
 
     const transformCanvas = useCallback((ctx) => {
         ctx.resetTransform();

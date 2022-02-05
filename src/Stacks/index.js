@@ -5,7 +5,7 @@ import { data } from "../data/data";
 import { StackedBar } from "./StackedBar";
 import { SortButtons } from "./SortButtons";
 
-export function StackedBars({ width, height, setHighlightLocked, highlight_id, setHighlightId }) {
+export function StackedBars({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }) {
     const chart_margin = { left: 2, right: 220, top: 20, bottom: 40 };
     const chart_height = (height - 40) / 3;
     const [sort_by, setSortBy] = useState("year");
@@ -139,6 +139,7 @@ export function StackedBars({ width, height, setHighlightLocked, highlight_id, s
                     width={width}
                     sort_by={sort_by}
                     setHighlightLocked={setHighlightLocked}
+                    highlight_locked={highlight_locked}
                 />
             ))}
         </StackedBarContainer>
