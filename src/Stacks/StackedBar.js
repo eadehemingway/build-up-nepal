@@ -11,7 +11,8 @@ export function StackedBar({
     window_width,
     chart_height,
     sort_by,
-    highlight_locked
+    highlight_locked,
+    label_size
 }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
@@ -142,7 +143,7 @@ export function StackedBar({
         });
 
         ctx.textAlign = "left";
-        ctx.font = "34px code-saver, sans-serif";
+        ctx.font = `${label_size}px code-saver, sans-serif`;
         ctx.fillStyle = blue;
 
         ctx.fillText(formatNumber(data.total), chart_width + 10, chart_height - (chart_margin.top + chart_margin.bottom));

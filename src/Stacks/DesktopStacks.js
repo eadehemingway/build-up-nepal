@@ -35,6 +35,7 @@ export function DesktopStacks({ width, height, setHighlightLocked, highlight_id,
                     sort_by={sort_by}
                     setHighlightLocked={setHighlightLocked}
                     highlight_locked={highlight_locked}
+                    label_size={36}
                 />
             ))}
         </StackedBarContainer>

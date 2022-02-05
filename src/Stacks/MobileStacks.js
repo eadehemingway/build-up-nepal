@@ -8,7 +8,7 @@ import { Dropdown } from "./../shared/Dropdown";
 
 export function MobileStacks({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }) {
     const chart_height = (height - 40) / 3;
-    const chart_margin = { left: 2, right: 220, top: 20, bottom: 40 };
+    const chart_margin = { left: 2, right: 100, top: 20, bottom: 40 };
 
     const [sort_by, setSortBy] = useState("year");
     const [window_width, setWindowWidth] = useState(document.body.clientWidth);
@@ -52,6 +52,7 @@ export function MobileStacks({ width, height, setHighlightLocked, highlight_id, 
                 sort_by={sort_by}
                 setHighlightLocked={setHighlightLocked}
                 highlight_locked={highlight_locked}
+                label_size = {26}
             />}
 
         </StackedBarContainer>
