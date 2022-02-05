@@ -68,6 +68,7 @@ export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, h
         const feature = e.features[0];
         if (feature) {
             setHighlightLocked(true);
+            setHighlightId(feature.id);
         }else {
             setHighlightLocked(false);
         }
