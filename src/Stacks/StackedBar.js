@@ -117,7 +117,6 @@ export function StackedBar({
         const suffix = highlight.value.metric === 1 ? data.suffix.singular : data.suffix.plural;
         ctx.save();
         const highlight_fill = highlight["flag-status"] === "enterprise" ? "blue" : "red";
-        console.log("highlight:", highlight);
         ctx.fillStyle = highlight_fill;
         const arrow_d = "l -3 -5.1962 h 6 l -3 5.1962";
         const path = new Path2D(`M ${x + (w / 2)} ${y} ${arrow_d} h ${w / 2} v ${h} h ${-w} v ${-h} Z`);
