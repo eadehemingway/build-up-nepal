@@ -53,7 +53,8 @@ export function StackedBars({ width, height, setHighlightLocked, highlight_id, s
                 height: height,
                 x: {},
                 width: {},
-                y: 0
+                y: 0,
+                "flag-status": d["flag-status"]
             };
             return mapped;
         });
