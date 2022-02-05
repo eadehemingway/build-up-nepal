@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ContourLayer } from "./MainLayers/Layer-contour";
 import { PopulationLayer } from "./MainLayers/Layer-population";
 import { CountryOutlineLayer } from "./MainLayers/Layer-country-outline";
-import { InsetMap, maxLat, maxLng, minLng, minLat } from "./Inset/index";
+import { DesktopInset, maxLat, maxLng, minLng, minLat } from "./Inset/DesktopInset";
 import { MarkerLayer } from "./MainLayers/Layer-markers";
 import { data } from "../data/data";
 import MAP_STYLE_MAIN from "./style-common";
@@ -27,7 +27,7 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, height, highlight_locked }) {
+export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, width, height, highlight_locked }) {
     const [contour_visible, setContourVisible] = useState(false);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
@@ -134,7 +134,7 @@ export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, h
                 <MainCitiesLayer/>
                 <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
             </MapGL>
-            <InsetMap zoomMapTo={zoomMapTo} zoomed_province={zoomed_province} setZoomedProvince={setZoomedProvince}/>
+            <DesktopInset zoomMapTo={zoomMapTo} zoomed_province={zoomed_province} setZoomedProvince={setZoomedProvince}/>
         </>
 
     );

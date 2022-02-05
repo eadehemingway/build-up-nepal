@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ContourLayer } from "./MainLayers/Layer-contour";
 import { PopulationLayer } from "./MainLayers/Layer-population";
 import { CountryOutlineLayer } from "./MainLayers/Layer-country-outline";
-import { InsetMap, maxLat, maxLng, minLng, minLat } from "./Inset/index";
+import { InsetMap, maxLat, maxLng, minLng, minLat } from "./Inset/DesktopInset";
 import { MarkerLayer } from "./MainLayers/Layer-markers";
 import { data } from "../data/data";
 import MAP_STYLE_MAIN from "./style-common";

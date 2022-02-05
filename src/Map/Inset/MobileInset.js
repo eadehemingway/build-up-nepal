@@ -3,7 +3,7 @@ import { Listbox } from "@headlessui/react";
 import styled from "styled-components";
 import { Dropdown } from "../../shared/Dropdown";
 import { province_bounds } from "../../data/prov_bounds";
-import { unzoomed_latlng } from "./index";
+import { unzoomed_latlng } from "./DesktopInset";
 
 
 export function Inset({ zoomMapTo, zoomed_province, setZoomedProvince }) {

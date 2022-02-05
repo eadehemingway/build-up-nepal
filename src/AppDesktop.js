@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Map } from "./Map/DesktopMap.js";
-import { StackedBars } from "./Stacks/index.js";
+import { DesktopMap } from "./Map/DesktopMap.js";
+import { DesktopStacks } from "./Stacks/DesktopStacks";
 import { IconChart } from "./IconChart";
 import { TextBox } from "./InfoOverlay";
 
@@ -17,7 +17,7 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
                 width={300}
                 height={windowH - 10}
             />
-            <Map
+            <DesktopMap
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
@@ -26,7 +26,7 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
                 highlight_locked={highlight_locked}
             />
 
-            <StackedBars
+            <DesktopStacks
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}

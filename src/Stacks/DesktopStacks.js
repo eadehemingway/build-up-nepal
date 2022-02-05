@@ -3,9 +3,9 @@ import { useEffect } from "react/cjs/react.development";
 import styled from "styled-components";
 import { StackedBar } from "./StackedBar";
 import { getStackedData } from "./process_stacked_data";
-import { SortButtons } from "./SortButtons";
+import { SortDropdown } from "./SortDropdown";
 
-export function StackedBars({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }) {
+export function DesktopStacks({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }) {
     const chart_height = (height - 40) / 3;
     const chart_margin = { left: 2, right: 220, top: 20, bottom: 40 };
 
@@ -21,7 +21,7 @@ export function StackedBars({ width, height, setHighlightLocked, highlight_id, s
 
     return (
         <StackedBarContainer width={width} height={height}>
-            <SortButtons sort_by={sort_by} setSortBy={setSortBy}/>
+            <SortDropdown sort_by={sort_by} setSortBy={setSortBy}/>
             {stacked_data && stacked_data.map((d,i)=> (
                 <StackedBar
                     key={i}

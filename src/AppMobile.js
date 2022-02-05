@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { MobileMap } from "./Map/MobileMap.js";
-import { StackedBars } from "./Stacks/index.js";
+import { MobileStacks } from "./Stacks/MobileStacks";
 import { TextBox } from "./InfoOverlay";
 
 export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highlight_locked, windowH, windowW }) {
@@ -23,14 +23,14 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
                 highlight_locked={highlight_locked}
             />
 
-            {/* <StackedBars
+            <MobileStacks
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
                 highlight_locked={highlight_locked}
                 width={windowW - 300}
                 height={300}
-            /> */}
+            />
             {/* <TextBox
                 highlight_locked={highlight_locked}
                 highlight_id={highlight_id}

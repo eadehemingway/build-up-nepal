@@ -14,7 +14,7 @@ export const maxLat = 30.6;
 export const minLat = 26.3;
 export const unzoomed_latlng = { minLng, maxLng, maxLat, minLat };
 
-export function InsetMap({ zoomMapTo, zoomed_province, setZoomedProvince }) {
+export function DesktopInset({ zoomMapTo, zoomed_province, setZoomedProvince }) {
     const [is_zoomed, setIsZoomed] = useState(false);
     const $inset_map = useRef();
 
