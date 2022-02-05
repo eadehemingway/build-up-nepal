@@ -27,7 +27,7 @@ const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
 export function Map({ highlight_id, setHighlightId, setTextBoxOpen }) {
-    const [contour_visible, setContourVisible] = useState(true);
+    const [contour_visible, setContourVisible] = useState(false);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
@@ -132,6 +132,7 @@ const map_attributes = {
         left: 0,
         height: "calc(100vh - 300px)",
         overflow: "hidden",
+        cursor: "pointer"
     },
     initialViewState:{
         latitude:center_lat,

@@ -29,10 +29,20 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                             "circle-color": [
                                 "match",
                                 ["get", "id"], highlight_id_or_str,
-                                "red",
-                                "transparent"
+                                [
+                                    "case",
+                                    ["==", ["get", "project_type"], "enterprise"],
+                                    "red",
+                                    "#1400a3"
+                                ],
+                                "#FDC0FF"
                             ],
-                            "circle-stroke-color": "red",
+                            "circle-stroke-color": [
+                                "case",
+                                ["==", ["get", "project_type"], "enterprise"],
+                                "red",
+                                "#1400a3"
+                            ],
                             "circle-radius": 3
                         }}
                     />
