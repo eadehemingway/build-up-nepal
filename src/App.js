@@ -13,6 +13,8 @@ function App() {
     const [highlight_id, setHighlightId] = useState(null);
     const [font_loaded, setFontLoaded] = useState(null);
     const [textBoxOpen, setTextBoxOpen] = useState(false);
+    const windowW = window.innerWidth;
+    const windowH = window.innerHeight;
 
     useEffect (() => {
         font.load().then(function(font) {
@@ -29,17 +31,23 @@ function App() {
                         highlight_id={highlight_id}
                         setHighlightId={setHighlightId}
                         setTextBoxOpen={setTextBoxOpen}
+                        width={300}
+                        height={windowH - 10}
                     />
                     <Map
                         highlight_id={highlight_id}
                         setHighlightId={setHighlightId}
                         setTextBoxOpen={setTextBoxOpen}
+                        width={windowW - 300}
+                        height={windowH - 300}
                     />
 
                     <StackedBars
                         highlight_id={highlight_id}
                         setHighlightId={setHighlightId}
                         setTextBoxOpen={setTextBoxOpen}
+                        width={windowW - 300}
+                        height={300}
                     />
                     <TextBox
                         highlight_id={highlight_id}

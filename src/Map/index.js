@@ -27,7 +27,7 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function Map({ highlight_id, setHighlightId, setTextBoxOpen }) {
+export function Map({ highlight_id, setHighlightId, setTextBoxOpen, width, height }) {
     const [contour_visible, setContourVisible] = useState(false);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
@@ -93,16 +93,25 @@ export function Map({ highlight_id, setHighlightId, setTextBoxOpen }) {
 
     return (
         <>
-            <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
-            <button onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
-            <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
-            <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
-            <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
             {/* <LoadingScreen loaded={loaded}/> */}
             <MapGL
                 ref={$main_map}
                 {...map_attributes}
                 onLoad={handleLoaded}
+                style={{
+                    width: `${width}px`,
+                    height: `${height}px`,
+                    margin: "0px",
+                    padding: "0px",
+                    position: "absolute",
+                    top: "0px",
+                    right: "0px",
+                }}
             >
                 <ZoomedProvinceFill zoomed_province={zoomed_province}/>
                 <UnzoomedProvFill zoomed_province={zoomed_province}/>
@@ -115,7 +124,6 @@ export function Map({ highlight_id, setHighlightId, setTextBoxOpen }) {
                 <MainCitiesLayer/>
             </MapGL>
             <InsetMap zoomMapTo={zoomMapTo} zoomed_province={zoomed_province} setZoomedProvince={setZoomedProvince}/>
-
         </>
 
     );

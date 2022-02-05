@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {  one_off_data , ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
 import { flag_size, margin, COLUMNS , red_gap } from "./constants";
 
-export function IconChart({ setTextBoxOpen, highlight_id, setHighlightId }){
+export function IconChart({ width, height, setTextBoxOpen, highlight_id, setHighlightId }){
     const $canvas = useRef(null);
     const text_padding = 10;
     const title_size = 16;
@@ -123,7 +123,7 @@ export function IconChart({ setTextBoxOpen, highlight_id, setHighlightId }){
     useEffect(()=>{
         if (!$canvas.current) return;
         const ctx = $canvas.current.getContext("2d");
-        ctx.clearRect(0, 0, 800, 1600);
+        ctx.clearRect(0, 0, width * 2, height * 2);
         drawOneOffFlags(ctx);
         drawEnterpriseFlags(ctx);
     }, [highlight_id]);
@@ -144,13 +144,13 @@ export function IconChart({ setTextBoxOpen, highlight_id, setHighlightId }){
     }
 
     return (
-        <Canvas onMouseMove={onMouseMove} onClick={onClick} onMouseOut={onMouseOut} width={800} height={2000} ref={$canvas} id="icon-chart"/>
+        <Canvas onMouseMove={onMouseMove} onClick={onClick} onMouseOut={onMouseOut} width={width * 2} height={height * 2} ref={$canvas} id="icon-chart"/>
     );
 }
 
 const Canvas = styled.canvas`
-    width: 400px;
-    height: 1000px;
+    width: ${({ width }) => width / 2 }px;
+    height: ${({ height }) => height / 2 }px;
     display: inline-block;
     margin: 0px;
     padding: 0px;
