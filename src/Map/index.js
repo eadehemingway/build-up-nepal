@@ -11,7 +11,7 @@ import MAP_STYLE_MAIN from "./style-common";
 import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
 import location_marker from "./../assets/location-marker.png";
-import { LoadingScreen } from "../Loading/LoadingScreen";
+import { LoadingScreen } from "../Loading";
 import { MainLabelsLayer } from "./MainLayers/Layer-labels-nepal";
 import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
 import { ProvincesLayer } from "./MainLayers/Layer-provinces";
@@ -105,7 +105,7 @@ export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, h
             <button style={{ display: "none" }} onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button style={{ display: "none" }} onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
             <button style={{ display: "none" }} onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
-            {/* <LoadingScreen loaded={loaded}/> */}
+            <LoadingScreen loaded={loaded}/>
             <MapGL
                 ref={$main_map}
                 {...map_attributes}
