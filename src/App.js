@@ -32,8 +32,8 @@ function App() {
                        highlight_id={highlight_id}
                        setHighlightId={setHighlightId}
                        setHighlightLocked={setHighlightLocked}
-                       width={windowW - 300}
-                       height={windowH - 300}
+                       windowW={windowW}
+                       windowH={windowH}
                        highlight_locked={highlight_locked}
                    /> :
                    <Desktop
