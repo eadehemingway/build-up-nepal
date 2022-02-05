@@ -5,7 +5,7 @@ import { ContourLayer } from "./MainLayers/Layer-contour";
 import { PopulationLayer } from "./MainLayers/Layer-population";
 import { CountryOutlineLayer } from "./MainLayers/Layer-country-outline";
 import { InsetMap, maxLat, maxLng, minLng, minLat } from "./Inset/index";
-import { MarkerLayer } from "./MainLayers/Layer-makers";
+import { MarkerLayer } from "./MainLayers/Layer-markers";
 import { data } from "../data/data";
 import MAP_STYLE_MAIN from "./style-common";
 import red_flag from "./../assets/red-flag.png";
@@ -71,8 +71,6 @@ export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, h
         if (feature) {
             setHighlightLocked(true);
             setHighlightId(feature.id);
-        }else {
-            setHighlightLocked(false);
         }
     }
 
@@ -130,10 +128,10 @@ export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, h
                 <ContourLayer contour_visible={contour_visible}/>
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
-                <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
                 <ProvincesLayer province_outline_visible={province_outline_visible}/>
                 <MainLabelsLayer/>
                 <MainCitiesLayer/>
+                <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
             </MapGL>
             <InsetMap zoomMapTo={zoomMapTo} zoomed_province={zoomed_province} setZoomedProvince={setZoomedProvince}/>
         </>

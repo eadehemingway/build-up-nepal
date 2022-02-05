@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
-import styled from "styled-components";
 import markers_geojson from "../../data/markers_with_flags.json";
 
 export function MarkerLayer( { markers_visible, highlight_id } ) {
@@ -10,15 +9,6 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
         <>
             <Source id="marker-source" type="geojson" data={markers_geojson} promoteId={"id"}>
                 {markers_visible && <>
-
-
-                    <Layer
-                        id="flag-layer"
-                        type="symbol"
-                        layout={{ "icon-image": ["get", "project_type"], "icon-size": 0.5, "icon-anchor": "bottom-left",   "icon-allow-overlap": true, }}
-                        source="marker-source"
-                        filter={["==", ["get", "id"], highlight_id_or_str]}
-                    />
                     <Layer
                         id="markers-layer"
                         type="circle"
@@ -43,6 +33,13 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                             ],
                             "circle-radius": 3
                         }}
+                    />
+                    <Layer
+                        id="flag-layer"
+                        type="symbol"
+                        layout={{ "icon-image": ["get", "project_type"], "icon-size": 0.5, "icon-anchor": "bottom-left",   "icon-allow-overlap": true, }}
+                        source="marker-source"
+                        filter={["==", ["get", "id"], highlight_id_or_str]}
                     />
                 </>
                 }
