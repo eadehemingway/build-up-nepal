@@ -130,10 +130,7 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
 
     function onMouseMove(e) {
         if(!highlight_locked){
-            let x = e.pageX - margin.left;
-            let y = e.pageY - margin.top;
-            const ID = getFlagId(x, y);
-            setHighlightId(ID);
+            updateHighlightId(e);
         }
     }
 
@@ -142,13 +139,16 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
             setHighlightId(null);
         }
     }
-
-    function onClick(e) {
+    function updateHighlightId(e){
         let x = e.pageX - margin.left;
         let y = e.pageY - margin.top;
         const ID = getFlagId(x, y);
         if (ID == null) return;
         setHighlightId(ID);
+    }
+
+    function onClick(e) {
+        updateHighlightId(e);
         setHighlightLocked(true);
     }
 

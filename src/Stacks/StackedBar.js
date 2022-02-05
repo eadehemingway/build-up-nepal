@@ -44,12 +44,15 @@ export function StackedBar({
         return number;
     }, []);
 
-    const onMouseMove = useCallback((e) => {
+    const updateHighlight =(e)=>{
         let x = e.clientX - (chart_margin.left + offset_left);
+        const ID = getBarId(x);
+        if (ID == null) return;
+        setHighlightId(ID);
+    };
+    const onMouseMove = useCallback((e) => {
         if(!highlight_locked){
-            const ID = getBarId(x);
-            if (ID == null) return;
-            setHighlightId(ID);
+            updateHighlight(e);
         }
     }, [chart_margin, setHighlightId, offset_left, getBarId, highlight_locked]);
 
@@ -60,10 +63,7 @@ export function StackedBar({
     }, [setHighlightId, highlight_locked]);
 
     const onClick = useCallback((e) => {
-        let x = e.clientX - (chart_margin.left + offset_left);
-        const ID = getBarId(x);
-        if (ID == null) return;
-        setHighlightId(ID);
+        updateHighlight(e);
         setHighlightLocked(true);
     }, [setHighlightLocked, setHighlightId, getBarId, chart_margin, offset_left]);
 
