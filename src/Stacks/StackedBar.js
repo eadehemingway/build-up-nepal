@@ -170,7 +170,7 @@ export function StackedBar({
         drawStackedBar(ctx_bottom, data);
         drawHighlight(ctx_bottom, highlight_id);
         drawAxis(ctx_bottom, data.axis);
-    }, [data, highlight_id]);
+    }, [data, highlight_id, sort_by]);
 
     return (
         <CanvasContainer>
