@@ -33,12 +33,13 @@ export function MobileStacks({ width, height, setHighlightLocked, highlight_id, 
     return (
         <StackedBarContainer width={width} height={height}>
             <Dropdowns>
-                <SortDropdown sort_by={sort_by} setSortBy={setSortBy}/>
+                <SortDropdown sort_by={sort_by} setSortBy={setSortBy} is_mobile={true}/>
                 <Dropdown
-                    label={"View metric:"}
+                    label={"View metric"}
                     value={selected_metric}
                     options={options}
                     onSelect={setSelectedMetric}
+                    is_mobile={true}
                 />
             </Dropdowns>
             {selected_stacked_data &&  <StackedBar

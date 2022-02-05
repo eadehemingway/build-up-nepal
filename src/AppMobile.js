@@ -29,7 +29,7 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
                 setHighlightLocked={setHighlightLocked}
                 highlight_locked={highlight_locked}
                 width={windowW}
-                height={300}
+                height={400}
             />
             {/* <TextBox
                 highlight_locked={highlight_locked}

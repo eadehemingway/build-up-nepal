@@ -3,30 +3,80 @@ import { Listbox } from "@headlessui/react";
 import styled from "styled-components";
 
 
-export function Dropdown({ label, value, options, onSelect }) {
-
+export function Dropdown({ label, value, options, onSelect, is_mobile }) {
+    const inactive_color = is_mobile ? null : "#FDC5FF";
     return (
         <Container>
             <Listbox value={value} onChange={onSelect}>
-                <Listbox.Label>{label}:</Listbox.Label>
-                <Listbox.Button style={{ width: "100px", padding: "10px 0" }} className={
+                <Label>{label}:</Label>
+                <Button  className={
                     ({ open }) => (open ? "button_open" : "button_closed")
-                }>{value}</Listbox.Button>
-                <Listbox.Options style={{ width: "100px", padding: "10px 0" }}>
+                }>{value}</Button>
+                <Options>
                     {options.map(({ label, value }) => (
-                        <Listbox.Option value={value} key={value}>
+                        <Option value={value} key={value}>
                             {({ active }) => (
-                                <span className={`${ active ? "active" : "inactive" }`}>
+                                <span style={{ background: active ? null : inactive_color }}>
                                     {label}
                                 </span>
                             )}
-                        </Listbox.Option>
+                        </Option>
                     ))}
-                </Listbox.Options>
+                </Options>
             </Listbox>
         </Container>
     );
 }
+const Options = styled(Listbox.Options)`
+
+    width: 100px;
+    position: absolute;
+    right: 0px;
+    top: 100%;
+    padding: 0px 0px!important;
+    margin: 0px;
+    list-style-type: none;
+    background: inherit;
+    box-sizing: border-box;
+    :focus {
+        outline: none;
+    }
+`;
+
+const Option = styled(Listbox.Option)`
+    width: 100%;
+    text-align: center;
+    background: inherit;
+    box-sizing: border-box;
+    border: 1px solid #1400a3;
+    border-top: none;
+    span {
+        padding: 10px 0px;
+        display: inline-block;
+        box-sizing: border-box;
+        line-height: normal;
+        width: 100%;
+        background:#FFD6FF;
+    }
+
+`;
+const Label = styled(Listbox.Label)`
+    width: 80px;
+    display: inline-block;
+`;
+
+const Button = styled(Listbox.Button)`
+    width: 100px;
+    font-family: inherit;
+    background: inherit;
+    box-sizing: border-box;
+    border: 1px solid #1400a3;
+    cursor: pointer;
+    color: inherit;
+    :focus {
+        outline: none;
+    }
+`;
 
 const Container = styled.div`
     display: inline-block;
@@ -40,24 +90,6 @@ const Container = styled.div`
     background: #FFD6FF;
     color: #1400a3;
 
-    label {
-        width: 80px;
-        display: inline-block;
-    }
-
-    button {
-        width: 100px;
-        font-family: inherit;
-        background: inherit;
-        box-sizing: border-box;
-        border: 1px solid #1400a3;
-        cursor: pointer;
-        color: inherit;
-    }
-
-    button:focus {
-        outline: none;
-    }
 
     .button_open:after {
         content: "";
@@ -83,41 +115,5 @@ const Container = styled.div`
         position: absolute;
     }
 
-    ul {
-        width: 100px;
-        position: absolute;
-        right: 0px;
-        top: 100%;
-        padding: 0px 0px!important;
-        margin: 0px;
-        list-style-type: none;
-        background: inherit;
-        box-sizing: border-box;
-    }
 
-    ul:focus {
-        outline: none;
-    }
-
-    li {
-        width: 100%;
-        text-align: center;
-        background: inherit;
-        box-sizing: border-box;
-        border: 1px solid #1400a3;
-        border-top: none;
-    }
-
-    span {
-        padding: 10px 0px;
-        display: inline-block;
-        box-sizing: border-box;
-        line-height: normal;
-        width: 100%;
-        background:#FFD6FF;
-    }
-
-    .active {
-        background: #FDC5FF;
-    }
 `;
