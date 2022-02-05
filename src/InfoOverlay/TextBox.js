@@ -1,36 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
+import { data } from "../data/data";
 import icon_close from "../assets/icon_close.svg";
 
 
-export function TextBox( { highlight_obj } ) {
-    const [open, setOpen] = useState(true);
-    if (!highlight_obj) return null;
-    const enterprise = highlight_obj["flag-status"] === "enterprise";
+export function TextBox( { setTextBoxOpen, highlight_id, textBoxOpen } ) {
+    const highlightObj = useMemo(() => data.find(d => d.id === highlight_id), [highlight_id]);
+    if (!highlightObj) return null;
+    const enterprise = highlightObj["flag-status"] === "enterprise";
     const kicker = enterprise ? "Enterprise" : "One-off";
     const flag_path = enterprise ? "M 0 0 L 22.5 0 L 11.333 7.5 L 22.5 16.25 L 0 16.25 Z" : "M 0 0 L 22.5 7.5 L 0 13.7 Z";
     const flag_color = enterprise ? "red" : "#1400a3";
 
     function closeContainer() {
-        setOpen(false);
+        setTextBoxOpen(false);
     }
 
     return (
-        <Container right={open}>
+        <Container open={textBoxOpen}>
             <Close onClick={closeContainer} background_image={icon_close}></Close>
             <Flag>
                 <path fill={flag_color} d={flag_path}></path>
             </Flag>
             <Kicker enterprise={enterprise}>{kicker}</Kicker>
-            <TextHeader>{highlight_obj["Name"]}</TextHeader>
-            <P>Type: {highlight_obj["Type"]}</P>
-            <P>District: {highlight_obj["District"]}</P>
-            <P>Start year: {highlight_obj["Start Year"]}</P>
-            {highlight_obj.Description &&
+            <TextHeader>{highlightObj["Name"]}</TextHeader>
+            <P>Type: {highlightObj["Type"]}</P>
+            <P>District: {highlightObj["District"]}</P>
+            <P>Start year: {highlightObj["Start Year"]}</P>
+            {highlightObj.Description &&
                 <>
-                    <FirstCharacter>{highlight_obj.Description[0]}</FirstCharacter>
-                    <P>{highlight_obj.Description.slice(1)}</P>
+                    <FirstCharacter>{highlightObj.Description[0]}</FirstCharacter>
+                    <P>{highlightObj.Description.slice(1)}</P>
                 </>
             }
         </Container>

@@ -7,10 +7,10 @@ import { CountryOutlineLayer } from "./MainLayers/Layer-country-outline";
 import { InsetMap, maxLat, maxLng, minLng, minLat } from "./Inset/index";
 import { MarkerLayer } from "./MainLayers/Layer-makers";
 import { data } from "../data/data";
-import { TextBox } from "../InfoOverlay/TextBox";
 import MAP_STYLE_MAIN from "./style-common";
 import red_flag from "./../assets/red-flag.png";
 import blue_flag from "./../assets/blue-flag.png";
+import location_marker from "./../assets/location-marker.png";
 import { LoadingScreen } from "../Loading/LoadingScreen";
 import { MainLabelsLayer } from "./MainLayers/Layer-labels-nepal";
 import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
@@ -27,8 +27,8 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function Map({ highlight_id, setHighlightId }) {
-    const [contour_visible, setContourVisible] = useState(true);
+export function Map({ highlight_id, setHighlightId, setTextBoxOpen, width, height }) {
+    const [contour_visible, setContourVisible] = useState(false);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
@@ -60,11 +60,13 @@ export function Map({ highlight_id, setHighlightId }) {
         $main_map.current.on("mouseleave", "markers-layer", (e) => {
             setHighlightId(null);
         });
-
+        $main_map.current.on("click", "markers-layer", (e) => {
+            const feature = e.features[0];
+            if (feature) {
+                setTextBoxOpen(true);
+            }
+        });
     }, [$main_map.current]);
-
-
-    const highlight_obj = useMemo(()=>data.find(d=>  d.id === highlight_id), [highlight_id]);
 
     function handleLoaded (){
         setLoaded(true);
@@ -81,20 +83,35 @@ export function Map({ highlight_id, setHighlightId }) {
                 if (error) throw error;
                 $main_map.current.addImage("enterprise", image);
             });
+        $main_map.current.loadImage(
+            location_marker,
+            (error, image) => {
+                if (error) throw error;
+                $main_map.current.addImage("location_marker", image);
+            });
     };
 
     return (
         <>
-            <button onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
-            <button onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
-            <button onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
-            <button onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
-            <button onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setContourVisible((v)=> !v)}>contour toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setPopulationVisible((v)=> !v)}>pop toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
+            <button style={{ display: "none" }} onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
             {/* <LoadingScreen loaded={loaded}/> */}
             <MapGL
                 ref={$main_map}
                 {...map_attributes}
                 onLoad={handleLoaded}
+                style={{
+                    width: `${width}px`,
+                    height: `${height}px`,
+                    margin: "0px",
+                    padding: "0px",
+                    position: "absolute",
+                    top: "0px",
+                    right: "0px",
+                }}
             >
                 <ZoomedProvinceFill zoomed_province={zoomed_province}/>
                 <UnzoomedProvFill zoomed_province={zoomed_province}/>
@@ -106,9 +123,7 @@ export function Map({ highlight_id, setHighlightId }) {
                 <MainLabelsLayer/>
                 <MainCitiesLayer/>
             </MapGL>
-            <TextBox highlight_obj={highlight_obj}/>
             <InsetMap zoomMapTo={zoomMapTo} zoomed_province={zoomed_province} setZoomedProvince={setZoomedProvince}/>
-
         </>
 
     );
@@ -132,6 +147,7 @@ const map_attributes = {
         left: 0,
         height: "calc(100vh - 300px)",
         overflow: "hidden",
+        cursor: "pointer"
     },
     initialViewState:{
         latitude:center_lat,

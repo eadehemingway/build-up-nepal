@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {  one_off_data , ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
 import { flag_size, margin, COLUMNS , red_gap } from "./constants";
 
-export function IconChart({ highlight_id, setHighlightId }){
+export function IconChart({ width, height, setTextBoxOpen, highlight_id, setHighlightId }){
     const $canvas = useRef(null);
     const text_padding = 10;
     const title_size = 16;
@@ -13,7 +13,7 @@ export function IconChart({ highlight_id, setHighlightId }){
         ctx.save();
         ctx.translate(x, y);
         ctx.beginPath();
-        ctx.strokeStyle = "blue";
+        ctx.strokeStyle = "#1400a3";
         ctx.lineWidth = 0.4;
         const flag_width = 10;
         const flag_height = 10;
@@ -25,7 +25,7 @@ export function IconChart({ highlight_id, setHighlightId }){
         ctx.lineTo(point_three.x, point_three.y);
         ctx.closePath();
         ctx.translate(-x, -y);
-        ctx.fillStyle = should_fill ? "blue": "#FDC5FF";
+        ctx.fillStyle = should_fill ? "#1400a3": "#FDC5FF";
         ctx.fill();
         ctx.stroke();
         ctx.restore();
@@ -82,7 +82,7 @@ export function IconChart({ highlight_id, setHighlightId }){
     }
 
     function drawOneOffFlags(ctx){
-        const color = "blue";
+        const color = "#1400a3";
         drawLabel({ ctx, label: "One-off projects", x: margin.left, y: margin.top - text_padding, color, fontSize: title_size });
         const x = margin.left + (COLUMNS * flag_size);
         drawLabel({ ctx, label: "Projects", x, y: margin.top + text_padding, color, fontSize: subtitle_size });
@@ -123,7 +123,7 @@ export function IconChart({ highlight_id, setHighlightId }){
     useEffect(()=>{
         if (!$canvas.current) return;
         const ctx = $canvas.current.getContext("2d");
-        ctx.clearRect(0, 0, 800, 1600);
+        ctx.clearRect(0, 0, width * 2, height * 2);
         drawOneOffFlags(ctx);
         drawEnterpriseFlags(ctx);
     }, [highlight_id]);
@@ -135,17 +135,26 @@ export function IconChart({ highlight_id, setHighlightId }){
         setHighlightId(ID);
     }
 
+    function onMouseOut() {
+        setHighlightId(null);
+    }
+
+    function onClick() {
+        setTextBoxOpen(true);
+    }
+
     return (
-        <Canvas onMouseMove={onMouseMove}  width={800} height={2000} ref={$canvas} id="icon-chart"/>
+        <Canvas onMouseMove={onMouseMove} onClick={onClick} onMouseOut={onMouseOut} width={width * 2} height={height * 2} ref={$canvas} id="icon-chart"/>
     );
 }
 
 const Canvas = styled.canvas`
-    width: 400px;
-    height: 1000px;
+    width: ${({ width }) => width / 2 }px;
+    height: ${({ height }) => height / 2 }px;
     display: inline-block;
     margin: 0px;
     padding: 0px;
+    cursor: pointer;
 `;
 
 

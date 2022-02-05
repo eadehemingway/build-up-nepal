@@ -5,10 +5,9 @@ import { data } from "../data/data";
 import { StackedBar } from "./StackedBar";
 import { SortButtons } from "./SortButtons";
 
-export function StackedBars({ highlight_id, setHighlightId }) {
-
-    const chart_margin = { left: 50, right: 220, top: 20, bottom: 40 };
-    const chart_height = 85;
+export function StackedBars({ width, height, setTextBoxOpen, highlight_id, setHighlightId }) {
+    const chart_margin = { left: 2, right: 220, top: 20, bottom: 40 };
+    const chart_height = (height - 40) / 3;
     const [sort_by, setSortBy] = useState("year");
     const [window_width, setWindowWidth] = useState(document.body.clientWidth);
 
@@ -126,7 +125,7 @@ export function StackedBars({ highlight_id, setHighlightId }) {
     const data_arr = mapData(chosen_metrics, chosen_sortings);
 
     return (
-        <StackedBarContainer>
+        <StackedBarContainer width={width} height={height}>
             <SortButtons sort_by={sort_by} setSortBy={setSortBy}/>
             {data_arr.map((d,i)=> (
                 <StackedBar
@@ -137,7 +136,9 @@ export function StackedBars({ highlight_id, setHighlightId }) {
                     chart_margin={chart_margin}
                     chart_height={chart_height}
                     window_width={window_width}
+                    width={width}
                     sort_by={sort_by}
+                    setTextBoxOpen={setTextBoxOpen}
                 />
             ))}
         </StackedBarContainer>
@@ -145,10 +146,11 @@ export function StackedBars({ highlight_id, setHighlightId }) {
 }
 
 const StackedBarContainer = styled.div`
-    width: 100%;
+    width: ${({ width }) => width }px;
+    height: ${({ height }) => height }px;
     position: absolute;
     bottom: 0px;
-    left: 0;
+    right: 0;
     vertical-align: top;
     line-height: 0px;
     background: #FFD6FF;

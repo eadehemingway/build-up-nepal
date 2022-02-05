@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
+export function StackedBar({ width, setTextBoxOpen, data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const $canvas_bottom = useRef(null);
@@ -12,16 +12,18 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
     const bar_stroke = "#ff0000";
     const highlight_fill = "#ff0000";
     const highlight_stroke = "#ff0000";
+    const offset_left = window_width - width;
+    const chart_width = width - (chart_margin.left + chart_margin.right);
 
     const getBarId =  useCallback((x) => {
         let filtered = data.data.filter(function(d) {
-            let d_x = d.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
-            let d_width = d.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+            let d_x = d.x[sort_by] * chart_width;
+            let d_width = d.width[sort_by] * chart_width;
             return x >= d_x && x <= (d_x + d_width);
         });
         if (!filtered.length) return null;
         return filtered[0].id;
-    }, [chart_margin, window_width, data, sort_by]);
+    }, [chart_width, data, sort_by]);
 
     const formatNumber = useCallback((number, to_fixed) => {
         const number_copy = number.valueOf().toString();
@@ -32,15 +34,19 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
     }, []);
 
     const onMouseMove = useCallback((e) => {
-        let x = e.clientX - chart_margin.left;
+        let x = e.clientX - (chart_margin.left + offset_left);
         const ID = getBarId(x);
         if (ID == null) return;
         setHighlightId(ID);
-    }, [chart_margin, setHighlightId, getBarId]);
+    }, [chart_margin, setHighlightId, offset_left, getBarId]);
 
     const onMouseOut = useCallback(() => {
         setHighlightId(null);
     }, [setHighlightId]);
+
+    const onClick = useCallback(() => {
+        setTextBoxOpen(true);
+    }, [setTextBoxOpen]);
 
     const transformCanvas = useCallback((ctx) => {
         ctx.resetTransform();
@@ -51,17 +57,17 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
     const clearCanvas = useCallback((ctx) => {
         ctx.save();
         ctx.translate(-chart_margin.left, -chart_margin.top);
-        ctx.clearRect(-(highlight_stroke_width), -(highlight_stroke_width), window_width + (highlight_stroke_width / 2), chart_height + (highlight_stroke_width / 2));
+        ctx.clearRect(-(highlight_stroke_width), -(highlight_stroke_width), width + (highlight_stroke_width / 2), chart_height + (highlight_stroke_width / 2));
         ctx.restore();
-    }, [chart_margin, highlight_stroke_width, window_width, chart_height]);
+    }, [chart_margin, highlight_stroke_width, width, chart_height]);
 
     const drawAxis = useCallback((ctx, axis) => {
         axis[sort_by].forEach((a) => {
             ctx.font = "13px code-saver, sans-serif";
             const label = sort_by === "metric" ? formatNumber(a.label) : a.label;
-            const a_width = a.width * (window_width - (chart_margin.left + chart_margin.right));
+            const a_width = a.width * chart_width;
             const hide_label = ctx.measureText(label).width + 5 > a_width && a.align === "left";
-            const a_x = a.x * (window_width - (chart_margin.left + chart_margin.right));
+            const a_x = a.x * chart_width;
             const offset = a.align === "left" ? 5 : -5;
             ctx.save();
             ctx.strokeStyle = "#1400a3";
@@ -76,17 +82,17 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
             ctx.restore();
             if (hide_label) return;
             ctx.textAlign = a.align;
-            ctx.fillText(label, a_x + offset, chart_height - (chart_margin.top + chart_margin.bottom) + 20);
             ctx.fillStyle = "#1400a3";
+            ctx.fillText(label, a_x + offset, chart_height - (chart_margin.top + chart_margin.bottom) + 20);
         });
-    },[chart_margin, chart_height, window_width, sort_by, formatNumber]);
+    },[chart_margin, chart_height, chart_width, sort_by, formatNumber]);
 
     const drawHighlight = useCallback((ctx, highlight_id) => {
         const highlight = data.data.find(d => d.id === highlight_id);
         if (!highlight) return;
-        const x = highlight.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+        const x = highlight.x[sort_by] * chart_width;
         const y = highlight.y;
-        const w = highlight.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+        const w = highlight.width[sort_by] * chart_width;
         const h = highlight.height;
         const suffix = highlight.value.metric === 1 ? data.suffix.singular : data.suffix.plural;
         ctx.save();
@@ -98,22 +104,31 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
         ctx.textAlign = "center";
         ctx.fillText(formatNumber(highlight.value.metric) + suffix, x + (w / 2), y - 10);
         ctx.restore();
-    }, [chart_margin, data, sort_by, highlight_stroke, window_width, formatNumber]);
+    }, [data, sort_by, highlight_stroke, chart_width, formatNumber]);
 
     const drawStackedBar = useCallback((ctx, data) => {
         clearCanvas(ctx);
-        data.forEach(v => {
-            let x = v.x[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
-            let width = v.width[sort_by] * (window_width - (chart_margin.left + chart_margin.right));
+        data.data.forEach(v => {
+            let x = v.x[sort_by] * chart_width;
+            let bar_width = v.width[sort_by] * chart_width;
             ctx.save();
             ctx.fillStyle = v.filtered ? "pink" : bar_fill;
             ctx.strokeStyle = bar_stroke;
             ctx.lineWidth = regular_stroke_width;
-            ctx.fillRect(x, v.y, width, v.height);
-            ctx.strokeRect(x, v.y, width, v.height);
+            ctx.fillRect(x, v.y, bar_width, v.height);
+            ctx.strokeRect(x, v.y, bar_width, v.height);
             ctx.restore();
         });
-    }, [sort_by, chart_margin, window_width, regular_stroke_width, bar_stroke, bar_fill, clearCanvas]);
+
+        ctx.textAlign = "left";
+        ctx.font = "34px code-saver, sans-serif";
+        ctx.fillStyle = "#1400a3";
+        console.log("data[sort_by].total:", data);
+        ctx.fillText(formatNumber(data.total), chart_width + 10, chart_height - (chart_margin.top + chart_margin.bottom));
+        ctx.font = "13px code-saver, sans-serif";
+        ctx.fillText(data.caption, chart_width + 10, -10);
+
+    }, [sort_by, chart_height, chart_margin, chart_width, regular_stroke_width, bar_stroke, bar_fill, clearCanvas, formatNumber]);
 
     useEffect(()=> {
         if (!$canvas_bottom.current) return;
@@ -124,21 +139,21 @@ export function StackedBar({ data, highlight_id, setHighlightId, chart_margin, w
         if (!$canvas_bottom.current) return;
         if (!ctx_bottom) return;
         transformCanvas(ctx_bottom);
-        drawStackedBar(ctx_bottom, data.data);
+        drawStackedBar(ctx_bottom, data);
         drawAxis(ctx_bottom, data.axis);
     }, [ctx_bottom]);
 
     useEffect(()=>{
         if (!ctx_bottom) return;
         clearCanvas(ctx_bottom);
-        drawStackedBar(ctx_bottom, data.data);
+        drawStackedBar(ctx_bottom, data);
         drawHighlight(ctx_bottom, highlight_id);
         drawAxis(ctx_bottom, data.axis);
     }, [data, highlight_id]);
 
     return (
         <CanvasContainer>
-            <CanvasChart onMouseMove={onMouseMove} onMouseOut={onMouseOut} ref={$canvas_bottom} width={window_width * 2} height={chart_height * 2} chart_height={chart_height}/>
+            <CanvasChart onMouseMove={onMouseMove} onMouseOut={onMouseOut} onClick={onClick} ref={$canvas_bottom} width={width * 2} height={chart_height * 2} chart_height={chart_height}/>
         </CanvasContainer>
     );
 }
@@ -149,6 +164,7 @@ const CanvasContainer = styled.div`
     margin: 0px;
     padding: 0px;
     position: relative;
+    cursor: pointer;
 `;
 
 const CanvasChart = styled.canvas`
