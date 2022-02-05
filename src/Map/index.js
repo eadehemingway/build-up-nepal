@@ -52,12 +52,14 @@ export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, h
 
     function handleMouseEnter(e){
         const feature = e.features[0];
-        if (feature && !highlight_locked) {
-            setHighlightId(feature.id);
+        if (feature ) {
+            $main_map.current.getCanvas().style.cursor = "pointer";
+            if(!highlight_locked) setHighlightId(feature.id);
         }
     }
 
     function handleMouseLeave(e){
+        $main_map.current.getCanvas().style.cursor = "default";
         if (!highlight_locked){
             setHighlightId(null);
         }
