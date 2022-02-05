@@ -4,10 +4,8 @@ import { data } from "../data/data";
 import icon_close from "../assets/icon_close.svg";
 import { PanelContent } from "./PanelContent";
 
-export function TextBox( { setHighlightLocked, highlight_locked, highlight_id } ) {
-
+export function MobileTextBox( { setHighlightLocked, highlight_locked, highlight_id } ) {
     const highlightObj = useMemo(() => data.find(d => d.id === highlight_id), [highlight_id]);
-
 
     function closeContainer() {
         setHighlightLocked(false);
