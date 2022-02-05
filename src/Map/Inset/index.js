@@ -12,6 +12,7 @@ export const minLng = 80;
 export const maxLng = 88.1;
 export const maxLat = 30.6;
 export const minLat = 26.3;
+export const unzoomed_latlng = { minLng, maxLng, maxLat, minLat };
 
 export function InsetMap({ zoomMapTo, zoomed_province, setZoomedProvince }) {
     const [is_zoomed, setIsZoomed] = useState(false);

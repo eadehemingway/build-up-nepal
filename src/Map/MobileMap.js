@@ -29,7 +29,6 @@ const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
 export function MobileMap({ highlight_id, setHighlightId, setHighlightLocked, width, height, highlight_locked }) {
-    console.log("width:", width);
     const [markers_visible, setMarkerVisible] = useState(true);
     const [loaded, setLoaded] = useState(false);
     const [zoomed_province, setZoomedProvince] = useState(null);
@@ -86,7 +85,11 @@ export function MobileMap({ highlight_id, setHighlightId, setHighlightLocked, wi
         <>
             <button style={{ display: "none" }} onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
             <LoadingScreen loaded={loaded}/>
-            <Inset />
+            <Inset
+                zoomMapTo={zoomMapTo}
+                zoomed_province={zoomed_province}
+                setZoomedProvince={setZoomedProvince}
+            />
             <MapGL
                 ref={$main_map}
                 {...map_attributes}

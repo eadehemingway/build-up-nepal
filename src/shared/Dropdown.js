@@ -13,11 +13,11 @@ export function Dropdown({ label, value, options, onSelect }) {
                     ({ open }) => (open ? "button_open" : "button_closed")
                 }>{value}</Listbox.Button>
                 <Listbox.Options style={{ width: "100px", padding: "10px 0" }}>
-                    {options.map((type) => (
-                        <Listbox.Option value={type} key={type}>
+                    {options.map(({ label, value }) => (
+                        <Listbox.Option value={value} key={value}>
                             {({ active }) => (
                                 <span className={`${ active ? "active" : "inactive" }`}>
-                                    {type}
+                                    {label}
                                 </span>
                             )}
                         </Listbox.Option>
