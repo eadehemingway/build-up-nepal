@@ -84,7 +84,6 @@ export function InsetMap({ zoomMapTo, zoomed_province, setZoomedProvince }) {
                 {...map_attributes}
                 style= {{
                     "position": "absolute",
-                    "border": "1px solid blue",
                     "boxSizing": "border-box",
                     "top": 20,
                     right: 0,

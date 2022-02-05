@@ -13,7 +13,7 @@ export function IconChart({ setTextBoxOpen, highlight_id, setHighlightId }){
         ctx.save();
         ctx.translate(x, y);
         ctx.beginPath();
-        ctx.strokeStyle = "blue";
+        ctx.strokeStyle = "#1400a3";
         ctx.lineWidth = 0.4;
         const flag_width = 10;
         const flag_height = 10;
@@ -25,7 +25,7 @@ export function IconChart({ setTextBoxOpen, highlight_id, setHighlightId }){
         ctx.lineTo(point_three.x, point_three.y);
         ctx.closePath();
         ctx.translate(-x, -y);
-        ctx.fillStyle = should_fill ? "blue": "#FDC5FF";
+        ctx.fillStyle = should_fill ? "#1400a3": "#FDC5FF";
         ctx.fill();
         ctx.stroke();
         ctx.restore();
@@ -82,7 +82,7 @@ export function IconChart({ setTextBoxOpen, highlight_id, setHighlightId }){
     }
 
     function drawOneOffFlags(ctx){
-        const color = "blue";
+        const color = "#1400a3";
         drawLabel({ ctx, label: "One-off projects", x: margin.left, y: margin.top - text_padding, color, fontSize: title_size });
         const x = margin.left + (COLUMNS * flag_size);
         drawLabel({ ctx, label: "Projects", x, y: margin.top + text_padding, color, fontSize: subtitle_size });
