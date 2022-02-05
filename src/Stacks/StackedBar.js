@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-export function StackedBar({ width, setTextBoxOpen, data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
+export function StackedBar({ width, setHighlightLocked, data, highlight_id, setHighlightId, chart_margin, window_width, chart_height, sort_by }) {
 
     const [ctx_bottom, setCtxBottom] = useState(null);
     const $canvas_bottom = useRef(null);
@@ -45,8 +45,8 @@ export function StackedBar({ width, setTextBoxOpen, data, highlight_id, setHighl
     }, [setHighlightId]);
 
     const onClick = useCallback(() => {
-        setTextBoxOpen(true);
-    }, [setTextBoxOpen]);
+        setHighlightLocked(true);
+    }, [setHighlightLocked]);
 
     const transformCanvas = useCallback((ctx) => {
         ctx.resetTransform();
@@ -123,7 +123,7 @@ export function StackedBar({ width, setTextBoxOpen, data, highlight_id, setHighl
         ctx.textAlign = "left";
         ctx.font = "34px code-saver, sans-serif";
         ctx.fillStyle = "#1400a3";
-        console.log("data[sort_by].total:", data);
+
         ctx.fillText(formatNumber(data.total), chart_width + 10, chart_height - (chart_margin.top + chart_margin.bottom));
         ctx.font = "13px code-saver, sans-serif";
         ctx.fillText(data.caption, chart_width + 10, -10);

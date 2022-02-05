@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {  one_off_data , ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
 import { flag_size, margin, COLUMNS , red_gap } from "./constants";
 
-export function IconChart({ width, height, setTextBoxOpen, highlight_id, setHighlightId }){
+export function IconChart({ width, height, setHighlightLocked, highlight_id, setHighlightId }){
     const $canvas = useRef(null);
     const text_padding = 10;
     const title_size = 16;
@@ -140,7 +140,7 @@ export function IconChart({ width, height, setTextBoxOpen, highlight_id, setHigh
     }
 
     function onClick() {
-        setTextBoxOpen(true);
+        setHighlightLocked(true);
     }
 
     return (

@@ -27,7 +27,7 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function Map({ highlight_id, setHighlightId, setTextBoxOpen, width, height }) {
+export function Map({ highlight_id, setHighlightId, setHighlightLocked, width, height, highlight_locked }) {
     const [contour_visible, setContourVisible] = useState(false);
     const [population_visible, setPopulationVisible] = useState(true);
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
@@ -49,24 +49,30 @@ export function Map({ highlight_id, setHighlightId, setTextBoxOpen, width, heigh
         );
     }
 
-    useEffect(()=>{
-        if (!$main_map.current) return;
-        $main_map.current.on("mouseenter", "markers-layer", (e) => {
-            const feature = e.features[0];
-            if (feature) {
-                setHighlightId(feature.id);
-            }
-        });
-        $main_map.current.on("mouseleave", "markers-layer", (e) => {
+
+    function handleMouseEnter(e){
+        const feature = e.features[0];
+        if (feature && !highlight_locked) {
+            setHighlightId(feature.id);
+        }
+    }
+
+    function handleMouseLeave(e){
+        if (!highlight_locked){
             setHighlightId(null);
-        });
-        $main_map.current.on("click", "markers-layer", (e) => {
-            const feature = e.features[0];
-            if (feature) {
-                setTextBoxOpen(true);
-            }
-        });
-    }, [$main_map.current]);
+        }
+    }
+
+    function handleOnClick (e){
+        if (!$main_map.current) return;
+        const feature = e.features[0];
+        if (feature) {
+            setHighlightLocked(true);
+        }else {
+            setHighlightLocked(false);
+        }
+    }
+
 
     function handleLoaded (){
         setLoaded(true);
@@ -103,6 +109,9 @@ export function Map({ highlight_id, setHighlightId, setTextBoxOpen, width, heigh
                 ref={$main_map}
                 {...map_attributes}
                 onLoad={handleLoaded}
+                onClick={handleOnClick}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 style={{
                     width: `${width}px`,
                     height: `${height}px`,
