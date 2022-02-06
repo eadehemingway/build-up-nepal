@@ -1,22 +1,28 @@
 import { useRef, useEffect } from "react";
 import styled from "styled-components";
-import {  one_off_data , ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
+import { one_off_data, ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
 import { flag_size, margin, COLUMNS , red_gap } from "./constants";
 import { dark_blue, dark_pink, red } from "../shared/colors";
 
 export function IconChart({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }){
     const $canvas = useRef(null);
-    const text_padding = 10;
+    const text_padding = 20;
     const title_size = 16;
-    const subtitle_size = 13;
+    const subtitle_size = 12;
+
+    function getFlagSize(width, height) {
+        console.log(ordered_ent_data);
+    }
+
+    getFlagSize(width, height);
 
     function drawOneOffFlag(ctx, x, y, should_fill){
         ctx.save();
         ctx.translate(x, y);
         ctx.beginPath();
         ctx.strokeStyle = dark_blue;
-        ctx.lineWidth = 0.4;
-        const flag_width = 10;
+        ctx.lineWidth = 0.5;
+        const flag_width = 15;
         const flag_height = 10;
         const point_one = { x: 0, y: 0 };
         const point_two = { x: flag_width, y: flag_height/2 };
@@ -37,12 +43,12 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
         ctx.translate(x, y);
         ctx.beginPath();
         ctx.strokeStyle = red;
-        ctx.lineWidth = 0.4;
-        const flag_width = 10;
+        ctx.lineWidth = 0.5;
+        const flag_width = 15;
         const flag_height = 10;
         const point_one = { x: 0, y: 0 };
         const point_two = { x: flag_width, y: 0 };
-        const point_three = { x: flag_width/3, y: flag_height/2 };
+        const point_three = { x: flag_width/2, y: flag_height/2 };
         const point_four = { x: flag_width , y: flag_height };
         const point_five = { x: 0 , y: flag_height };
         ctx.moveTo(point_one.x, point_one.y);
@@ -72,22 +78,23 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
 
     },[]);
 
-    function drawLabel({ ctx, label, x, y, color, fontSize }){
-        ctx.font = `${fontSize}px code-saver, sans-serif`;
+    function drawLabel({ ctx, label, x, y, color, fontSize, weight }){
+        ctx.font = `${weight || "normal"} ${fontSize}px code-saver, sans-serif`;
         ctx.fillStyle = color;
         ctx.fillText(label, x, y);
 
     }
+
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
     function drawOneOffFlags(ctx){
         const color = dark_blue;
-        drawLabel({ ctx, label: "One-off projects", x: margin.left, y: margin.top - text_padding, color, fontSize: title_size });
+        drawLabel({ ctx, label: "One-off projects", x: margin.left, y: margin.top - text_padding, color, fontSize: title_size, weight: "bold" });
         const x = margin.left + (COLUMNS * flag_size);
-        drawLabel({ ctx, label: "Projects", x, y: margin.top + text_padding, color, fontSize: subtitle_size });
-        drawLabel({ ctx, label: one_off_data.length, x, y: margin.top + 15 + text_padding, color, fontSize: subtitle_size });
+        drawLabel({ ctx, label: "Projects", x: x + 10, y: margin.top + text_padding, color, fontSize: subtitle_size });
+        drawLabel({ ctx, label: one_off_data.length, x: x + 10, y: margin.top + 15 + text_padding, color, fontSize: subtitle_size });
         one_off_data.forEach((d, i)=> {
             const col_index = getColumn(i);
             const row_index = getRow(i);
@@ -101,14 +108,14 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
 
     function drawEnterpriseFlags(ctx){
         const color = red;
-        drawLabel({ ctx, label: "Enterprise", x: margin.left, y: blue_red_gap + margin.top - text_padding, color, fontSize: title_size });
+        drawLabel({ ctx, label: "Enterprise", x: margin.left, y: blue_red_gap + margin.top - text_padding, color, fontSize: title_size, weight: "bold" });
         const x = margin.left + (COLUMNS * flag_size);
         order.forEach((s, i)=> {
             const label = capitalizeFirstLetter(s.toLowerCase());
             const min_y = y_ranges_per_section[i][0] + margin.top + text_padding;
-            drawLabel({ ctx, label, x, y:min_y, red, fontSize:subtitle_size });
+            drawLabel({ ctx, label, x: x + 10, y:min_y, red, fontSize:subtitle_size });
             const total = LOOKUP[s].length;
-            drawLabel({ ctx, label: total, x, y: min_y + 15, red, fontSize:subtitle_size });
+            drawLabel({ ctx, label: total, x: x + 10, y: min_y + 15, red, fontSize:subtitle_size });
         });
         ordered_ent_data.forEach((data, i)=> {
             const offset_from_status = getRedOffset(data.status);
@@ -131,7 +138,8 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
 
     function onMouseMove(e) {
         if(!highlight_locked){
-            updateHighlightId(e);
+            const ID = getHighlightId(e);
+            setHighlightId(ID);
         }
     }
 
@@ -140,17 +148,21 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
             setHighlightId(null);
         }
     }
-    function updateHighlightId(e){
+
+    function getHighlightId(e) {
         let x = e.pageX - margin.left;
         let y = e.pageY - margin.top;
-        const ID = getFlagId(x, y);
-        if (ID == null) return;
-        setHighlightId(ID);
+        return getFlagId(x, y);
     }
 
     function onClick(e) {
         e.stopPropagation();
-        updateHighlightId(e);
+        const ID = getHighlightId(e);
+        setHighlightId(ID);
+        if (!ID) {
+            setHighlightLocked(false);
+            return;
+        }
         setHighlightLocked(true);
     }
 

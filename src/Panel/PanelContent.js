@@ -66,5 +66,5 @@ const TextHeader = styled.h1`
 `;
 
 const P = styled.p`
-    font-size: 13px;
+    font-size: 12px;
 `;

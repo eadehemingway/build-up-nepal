@@ -35,7 +35,7 @@ export function MainCitiesLayer() {
                         "text-font": ["Code Saver Regular"],
                         "text-allow-overlap": true,
                         "text-letter-spacing": 0,
-                        "text-size": 13,
+                        "text-size": 12,
                         "text-offset": [0, -0.75],
                     }}
                     paint = {{
