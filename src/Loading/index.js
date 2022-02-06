@@ -9,7 +9,7 @@ import { base_pink, dark_blue, red } from "../shared/colors";
 export function LoadingScreen({ loaded }) {
 
     const [load_delay, setLoadDelay] = useState(false);
-    let delay_seconds = 0;
+    let delay_seconds = 5;
     if (loaded) setTimeout(function(){ setLoadDelay(true); }, delay_seconds * 1000);
 
     return (
@@ -43,9 +43,9 @@ const Standfirst = styled.div`
     font-weight: normal;
     font-size: 13px;
     line-height: 15px;
-    width: 500px;
+    width: 350px;
     display: block;
-    margin: 20px auto 0px auto;
+    margin: 200px auto 0px auto;
     justify-content: center;
     align-items: center;
     color: ${({ enterprise }) => enterprise ? red : dark_blue};
@@ -74,6 +74,7 @@ const GifWrapper = styled.video`
   margin: auto;
   display: block;
   width: 100%;
+  min-height: 350px;
 `;
 
 const Overlay = styled.div`
