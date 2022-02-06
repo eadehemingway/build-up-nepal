@@ -3,7 +3,7 @@ import { Listbox } from "@headlessui/react";
 import styled from "styled-components";
 import { Dropdown } from "../shared/Dropdown";
 
-export function SortDropdown({ sort_by, setSortBy }) {
+export function SortDropdown({ margin, sort_by, setSortBy }) {
 
     const options = [
         { label: "Year", value: "year" },
@@ -16,6 +16,7 @@ export function SortDropdown({ sort_by, setSortBy }) {
             value={sort_by}
             options={options}
             onSelect={setSortBy}
+            margin={margin}
         />
     );
 }

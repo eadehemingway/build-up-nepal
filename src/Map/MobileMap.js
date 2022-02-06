@@ -28,7 +28,7 @@ const half_lat = (maxLat - minLat) /2;
 const center_lat = minLat + half_lat;
 const center_lng = minLng + half_lng;
 
-export function MobileMap({ highlight_id, setHighlightId, setHighlightLocked, width, height, highlight_locked }) {
+export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLocked, width, height, highlight_locked }) {
     const [markers_visible, setMarkerVisible] = useState(true);
     const [loaded, setLoaded] = useState(false);
     const [zoomed_province, setZoomedProvince] = useState(null);
@@ -42,7 +42,7 @@ export function MobileMap({ highlight_id, setHighlightId, setHighlightLocked, wi
                 [minLng, minLat],
                 [maxLng, maxLat]
             ],
-            { padding: 40, duration: 3500 }
+            { padding: 20, duration: 3500 }
         );
     }
 
@@ -89,6 +89,7 @@ export function MobileMap({ highlight_id, setHighlightId, setHighlightLocked, wi
                 zoomMapTo={zoomMapTo}
                 zoomed_province={zoomed_province}
                 setZoomedProvince={setZoomedProvince}
+                margin={margin}
             />
             <MapGL
                 ref={$main_map}
@@ -97,12 +98,9 @@ export function MobileMap({ highlight_id, setHighlightId, setHighlightLocked, wi
                 onClick={handleOnClick}
                 style={{
                     width: `${width}px`,
-                    height: `${height}px`,
-                    margin: "0px",
+                    height: `${height - 49}px`,
+                    margin: `0px ${margin}px`,
                     padding: "0px",
-                    position: "absolute",
-                    top: "0px",
-                    right: "0px",
                 }}
             >
                 <ZoomedProvinceFill zoomed_province={zoomed_province}/>
@@ -133,7 +131,7 @@ const map_attributes = {
     style:{
         "position": "absolute",
         "boxSizing": "border-box",
-        "top": 20,
+        "top": 40,
         right: 0,
         left: 0,
         height: "900px",

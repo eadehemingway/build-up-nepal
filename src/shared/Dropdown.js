@@ -3,39 +3,30 @@ import { Listbox } from "@headlessui/react";
 import styled from "styled-components";
 
 
-export function Dropdown({ dropdown_width, label_width, options_width, label, value, options, onSelect, is_mobile }) {
-    console.log("value:", value);
+export function Dropdown({ margin, label_width, options_width, label, value, options, onSelect, is_mobile }) {
     const [buttonLabel, setButtonLabel] = useState(options[0].label);
     function getLabelFromValue(){
-        const l = options.find(o => {
-            return o.value === value;
-        });
-        console.log("l:", l);
-
-
-        // const label = options.find(e => e.option === value).label;
+        const l = options.find(o => o.value === value );
         setButtonLabel(l?.label);
     }
     useEffect(()=>{
-
         getLabelFromValue();
-
     }, [value]);
-    // setButtonLabel(getButtonLabel());
-    // console.log("getButtonLabel():", getButtonLabel());
+
     const inactive_color = is_mobile ? null : "#FDC5FF";
     const label_w = label_width || 100;
     const options_w = options_width || 100;
-    const dropdown_w = dropdown_width || 200;
+    const dropdown_w = label_w + options_w;
+    const margin_left = margin || 0;
 
     return (
-        <Container w={dropdown_w}>
+        <Container w={dropdown_w} margin_left={margin_left}>
             <Listbox value={value} onChange={onSelect}>
                 {({ open }) => (
                     <>
                         <Label w={label_w}>{label}:</Label>
                         <Button w={options_w} is_open={open}>{buttonLabel}</Button>
-                        <Options>
+                        <Options w={options_w}>
                             {options.map((opt) => (
                                 <Option value={opt.value} key={opt.label}>
                                     {({ active }) => (
@@ -53,7 +44,7 @@ export function Dropdown({ dropdown_width, label_width, options_width, label, va
     );
 }
 const Options = styled(Listbox.Options)`
-    width: 100px;
+    width: ${({ w }) => w}px;
     position: absolute;
     right: 0px;
     top: 100%;
@@ -122,8 +113,9 @@ const Container = styled.div`
     cursor: pointer;
     position: relative;
     overflow: visible;
+    margin-left: ${({ margin_left }) => margin_left}px;
     z-index: 4;
     background: #FFD6FF;
     color: #1400a3;
-    margin: 0 0 5px 0;
+    margin-bottom: 10px;
 `;
