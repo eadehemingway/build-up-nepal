@@ -4,21 +4,9 @@ import { data } from "../data/data";
 import icon_close from "../assets/icon_close.svg";
 import { PanelContent } from "./PanelContent";
 
-export function MobileTextBox( { setHighlightLocked, highlight_locked, highlight_id } ) {
-    const [panel_open, setPanelOpen] = useState(false);
+export function MobileTextBox( { highlight_locked, highlight_id, setPanelOpen, panel_open } ) {
     const highlightObj = useMemo(() => data.find(d => d.id === highlight_id), [highlight_id]);
 
-    function closeContainer(e) {
-        e.stopPropagation();
-        setHighlightLocked(false);
-        setPanelOpen(false);
-    }
-
-    useEffect(()=>{
-        if (highlight_locked === false){
-            setPanelOpen(false);
-        }
-    }, [highlight_locked]);
 
     function onClick(e){
         setPanelOpen(true);
@@ -26,7 +14,6 @@ export function MobileTextBox( { setHighlightLocked, highlight_locked, highlight
     }
     return (
         <Container onClick={onClick} open={panel_open} bit_open={highlight_locked}>
-            <Close onClick={closeContainer} background_image={icon_close}></Close>
             {highlightObj && <PanelContent highlightObj={highlightObj}/>}
         </Container>
     );

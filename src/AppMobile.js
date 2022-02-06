@@ -5,10 +5,14 @@ import { MobileStacks } from "./Stacks/MobileStacks";
 import { MobileTextBox } from "./Panel/MobilePanel";
 
 export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highlight_locked, windowH, windowW }) {
+    const [panel_open, setPanelOpen] = useState(false);
 
+    function clickOut(){
+        setPanelOpen(false);
+    }
 
     return (
-        <Container>
+        <Container onClick={clickOut}>
             <MobileMap
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
@@ -29,7 +33,8 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
             <MobileTextBox
                 highlight_locked={highlight_locked}
                 highlight_id={highlight_id}
-                setHighlightLocked={setHighlightLocked}
+                panel_open={panel_open}
+                setPanelOpen={setPanelOpen}
             />
         </Container>
     );

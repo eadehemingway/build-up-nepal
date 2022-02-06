@@ -6,9 +6,11 @@ import { IconChart } from "./IconChart";
 import { TextBox } from "./Panel/DesktopPanel";
 
 export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, highlight_locked, windowH, windowW }) {
-
+    function onClick(e){
+        setHighlightLocked(false);
+    }
     return (
-        <>
+        <div onClick={onClick}>
             <IconChart
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
@@ -39,6 +41,6 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
                 highlight_id={highlight_id}
                 setHighlightLocked={setHighlightLocked}
             />
-        </>
+        </div>
     );
 }

@@ -21,11 +21,9 @@ function App() {
         });
     }, []);
 
-    function onClick(e){
-        setHighlightLocked(false);
-    }
+
     return (
-        <div onClick={onClick}>
+        <>
             {font_loaded &&
                (is_mobile ?
                    <Mobile
@@ -47,7 +45,8 @@ function App() {
 
                )
             }
-        </div>
+        </>
+
 
     );
 }
