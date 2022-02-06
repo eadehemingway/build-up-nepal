@@ -4,23 +4,43 @@ import styled from "styled-components";
 
 
 export function Dropdown({ dropdown_width, label_width, options_width, label, value, options, onSelect, is_mobile }) {
+    console.log("value:", value);
+    const [buttonLabel, setButtonLabel] = useState(options[0].label);
+    function getLabelFromValue(){
+        const l = options.find(o => {
+            return o.value === value;
+        });
+        console.log("l:", l);
+
+
+        // const label = options.find(e => e.option === value).label;
+        setButtonLabel(l?.label);
+    }
+    useEffect(()=>{
+
+        getLabelFromValue();
+
+    }, [value]);
+    // setButtonLabel(getButtonLabel());
+    // console.log("getButtonLabel():", getButtonLabel());
     const inactive_color = is_mobile ? null : "#FDC5FF";
     const label_w = label_width || 100;
     const options_w = options_width || 100;
     const dropdown_w = dropdown_width || 200;
+
     return (
         <Container w={dropdown_w}>
             <Listbox value={value} onChange={onSelect}>
                 {({ open }) => (
                     <>
                         <Label w={label_w}>{label}:</Label>
-                        <Button w={options_w} is_open={open}>{value}</Button>
+                        <Button w={options_w} is_open={open}>{buttonLabel}</Button>
                         <Options>
-                            {options.map(({ label, value }) => (
-                                <Option value={value} key={value}>
+                            {options.map((opt) => (
+                                <Option value={opt.value} key={opt.label}>
                                     {({ active }) => (
                                         <span style={{ background: active ? null : inactive_color }}>
-                                            {label}
+                                            {opt.label}
                                         </span>
                                     )}
                                 </Option>
