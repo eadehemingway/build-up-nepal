@@ -21,7 +21,7 @@ export function DesktopStacks({ width, height, setHighlightLocked, highlight_id,
 
     return (
         <StackedBarContainer width={width} height={height}>
-            <SortDropdown sort_by={sort_by} setSortBy={setSortBy}/>
+            <SortDropdown sort_by={sort_by} setSortBy={setSortBy} label_width={80}/>
             {stacked_data && stacked_data.map((d,i)=> (
                 <StackedBar
                     key={i}
@@ -35,7 +35,7 @@ export function DesktopStacks({ width, height, setHighlightLocked, highlight_id,
                     sort_by={sort_by}
                     setHighlightLocked={setHighlightLocked}
                     highlight_locked={highlight_locked}
-                    label_size={36}
+                    label_size={30}
                 />
             ))}
         </StackedBarContainer>

@@ -2,7 +2,7 @@ import { data } from "../data/data";
 
 const chosen_metrics = [{
     name: "CO2 saved",
-    caption: "Total CO₂ saved",
+    caption: "Total CO₂ saved (tonnes)",
     suffix: { singular: "t", plural: "t" },
 },{
     name: "Houses built TOTAL",
