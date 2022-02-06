@@ -130,9 +130,9 @@ export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, w
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
                 <ProvincesLayer province_outline_visible={province_outline_visible}/>
+                <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
                 <MainLabelsLayer/>
                 <MainCitiesLayer/>
-                <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
             </MapGL>
             <DesktopInset zoomMapTo={zoomMapTo} zoomed_province={zoomed_province} setZoomedProvince={setZoomedProvince}/>
         </>
