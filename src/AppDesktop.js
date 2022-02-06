@@ -9,6 +9,7 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
     function onClick(e){
         setHighlightLocked(false);
     }
+    const icon_chart_width = 400;
     return (
         <div onClick={onClick}>
             <IconChart
@@ -16,14 +17,14 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
                 highlight_locked={highlight_locked}
-                width={300}
+                width={icon_chart_width}
                 height={windowH - 10}
             />
             <DesktopMap
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
-                width={windowW - 300}
+                width={windowW - icon_chart_width}
                 height={windowH - 300}
                 highlight_locked={highlight_locked}
             />
@@ -33,7 +34,7 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
                 highlight_locked={highlight_locked}
-                width={windowW - 300}
+                width={windowW - icon_chart_width}
                 height={300}
             />
             <TextBox

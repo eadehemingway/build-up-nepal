@@ -79,7 +79,7 @@ const StackedBarContainer = styled.div`
 `;
 
 const Dropdowns = styled.div`
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
 `;

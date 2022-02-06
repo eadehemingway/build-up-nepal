@@ -88,10 +88,10 @@ export function DesktopInset({ zoomMapTo, zoomed_province, setZoomedProvince }) 
                 style= {{
                     "position": "absolute",
                     "boxSizing": "border-box",
-                    "top": 20,
-                    right: 0,
-                    height: "200px",
-                    width: "300px",
+                    "top": 40,
+                    right: 60,
+                    height: "250px",
+                    width: "350px",
                     overflow: "hidden",
                 }}
             >
@@ -124,7 +124,7 @@ const map_attributes = {
     initialViewState:{
         latitude: 28.0,
         longitude: 84.2,
-        zoom: 4.6
+        zoom: 4.9
     }
 };
 
