@@ -87,6 +87,7 @@ const Overlay = styled.div`
     background: ${base_pink};
     z-index: 9;
     opacity: ${({ loaded })=> loaded ? 0 : 1};
+    transition: opacity 1s;
     pointer-events: ${({ loaded })=> loaded ? "none" : "auto"};
 `;
 
