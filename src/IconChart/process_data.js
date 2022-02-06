@@ -1,12 +1,12 @@
 
 import { data } from "./../data/data";
-import { flag_size, COLUMNS, red_blue_padding , red_gap } from "./constants";
+import { flag_cell_height, flag_cell_width, COLUMNS, red_blue_padding , red_gap } from "./constants";
 
 const getTotalRows = (data, col_start_index) =>  Math.ceil((data.length + col_start_index)/ COLUMNS);
 const getStartIndex = (prev_data) => prev_data.length % COLUMNS;
 export const one_off_data = data.filter(d=> d["flag-status"] === "one-off").map(d=>({ flag: d["flag-status"], status: d.Status, id: d["id"] }));
 const total_rows_one_off = getTotalRows(one_off_data, 0);
-export const blue_red_gap = total_rows_one_off * flag_size + red_blue_padding;
+export const blue_red_gap = total_rows_one_off * flag_cell_height + red_blue_padding;
 
 const enterprise_data = data.filter(d=> d["flag-status"] === "enterprise").map(d=> ({ flag: d["flag-status"], status: d.Status, id: d["id"] }));
 
@@ -27,7 +27,7 @@ export const ordered_ent_data = order.map(d=> LOOKUP[d]).flat();
 
 function getYRangesPerSection(){
     const rows_per_section = getSectionRows();
-    const height_per_section = rows_per_section.map(r=> r * flag_size);
+    const height_per_section = rows_per_section.map(r=> r * flag_cell_height);
     let prev_height = 0;
     const y_range_per_section = height_per_section.map((h, i)=>{
         let start_index = 0;
@@ -35,7 +35,7 @@ function getYRangesPerSection(){
         const prev_data = getAccumalativePrevData(i);
         if (i > 0){
             start_index = getStartIndex(prev_data);
-            red_gap_adjusted = start_index === 0 ? red_gap : red_gap - flag_size;
+            red_gap_adjusted = start_index === 0 ? red_gap : red_gap - flag_cell_height;
         }
         const min_y = prev_height + red_gap_adjusted;
         const max_y = min_y + h;
@@ -88,8 +88,8 @@ function getFlagIdOfEntFlag(x, y){
 
     const relative_y = y - min_section_val;
 
-    const rows = Math.floor(relative_y/ flag_size);
-    const col = Math.floor(x / flag_size);
+    const rows = Math.floor(relative_y/ flag_cell_height);
+    const col = Math.floor(x / flag_cell_width);
 
     const prev_data = getAccumalativePrevData(section_index);// needs to be accumulative
     const start_index = getStartIndex(prev_data, COLUMNS);
@@ -105,8 +105,8 @@ function getFlagIdOfEntFlag(x, y){
 }
 
 export function getFlagId(x, y){
-    const row_if_no_gaps = Math.floor(y / flag_size);
-    const col = Math.floor(x / flag_size);
+    const row_if_no_gaps = Math.floor(y / flag_cell_height);
+    const col = Math.floor(x / flag_cell_width);
     if (col > 7 || col < 0) return null;
     let highlighted_id;
 

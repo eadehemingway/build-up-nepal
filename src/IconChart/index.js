@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { one_off_data, ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
-import { flag_size, margin, COLUMNS , red_gap } from "./constants";
+import { margin, COLUMNS , red_gap, flag_height, flag_width, flag_cell_height, flag_cell_width } from "./constants";
 import { dark_blue, dark_pink, red } from "../shared/colors";
 
 export function IconChart({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }){
@@ -22,8 +22,7 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
         ctx.beginPath();
         ctx.strokeStyle = dark_blue;
         ctx.lineWidth = 0.5;
-        const flag_width = 15;
-        const flag_height = 10;
+
         const point_one = { x: 0, y: 0 };
         const point_two = { x: flag_width, y: flag_height/2 };
         const point_three = { x: 0, y: flag_height };
@@ -44,8 +43,6 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
         ctx.beginPath();
         ctx.strokeStyle = red;
         ctx.lineWidth = 0.5;
-        const flag_width = 15;
-        const flag_height = 10;
         const point_one = { x: 0, y: 0 };
         const point_two = { x: flag_width, y: 0 };
         const point_three = { x: flag_width/2, y: flag_height/2 };
@@ -65,8 +62,8 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
 
     }
 
-    const getX = (column_index) => column_index * flag_size;
-    const getY = (row_index) => row_index * flag_size;
+    const getX = (column_index) => column_index * flag_cell_width;
+    const getY = (row_index) => row_index * flag_cell_height;
     const getColumn = (i) =>  i % COLUMNS;
     const getRow = (i) =>  Math.floor(i / COLUMNS);
     const getRedOffset = (status) =>  order.findIndex(d=> d === status) * red_gap;
@@ -92,7 +89,7 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
     function drawOneOffFlags(ctx){
         const color = dark_blue;
         drawLabel({ ctx, label: "One-off projects", x: margin.left, y: margin.top - text_padding, color, fontSize: title_size, weight: "bold" });
-        const x = margin.left + (COLUMNS * flag_size);
+        const x = margin.left + (COLUMNS * flag_cell_width);
         drawLabel({ ctx, label: "Projects", x: x + 10, y: margin.top + text_padding, color, fontSize: subtitle_size });
         drawLabel({ ctx, label: one_off_data.length, x: x + 10, y: margin.top + 15 + text_padding, color, fontSize: subtitle_size });
         one_off_data.forEach((d, i)=> {
@@ -109,7 +106,7 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
     function drawEnterpriseFlags(ctx){
         const color = red;
         drawLabel({ ctx, label: "Enterprise", x: margin.left, y: blue_red_gap + margin.top - text_padding, color, fontSize: title_size, weight: "bold" });
-        const x = margin.left + (COLUMNS * flag_size);
+        const x = margin.left + (COLUMNS * flag_cell_width);
         order.forEach((s, i)=> {
             const label = capitalizeFirstLetter(s.toLowerCase());
             const min_y = y_ranges_per_section[i][0] + margin.top + text_padding;
