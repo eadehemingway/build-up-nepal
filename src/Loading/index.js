@@ -8,11 +8,11 @@ import build_up_nepal_logo from "./../assets/build_up_nepal_logo.svg";
 export function LoadingScreen({ loaded }) {
 
     const [load_delay, setLoadDelay] = useState(false);
-    let delay_seconds = 10;
+    let delay_seconds = 0;
     if (loaded) setTimeout(function(){ setLoadDelay(true); }, delay_seconds * 1000);
 
     return (
-        <Overlay loaded={false}>
+        <Overlay loaded={load_delay}>
             <Standfirst>
                 <GifWrapper width="100%" autoPlay muted>
                     <source src={brick_machine_video} type="video/mp4"></source>

@@ -3,32 +3,36 @@ import { Listbox } from "@headlessui/react";
 import styled from "styled-components";
 
 
-export function Dropdown({ label, value, options, onSelect, is_mobile }) {
+export function Dropdown({ dropdown_width, label_width, options_width, label, value, options, onSelect, is_mobile }) {
     const inactive_color = is_mobile ? null : "#FDC5FF";
+    const label_w = label_width || 100;
+    const options_w = options_width || 100;
+    const dropdown_w = dropdown_width || 200;
     return (
-        <Container>
+        <Container w={dropdown_w}>
             <Listbox value={value} onChange={onSelect}>
-                <Label>{label}:</Label>
-                <Button  className={
-                    ({ open }) => (open ? "button_open" : "button_closed")
-                }>{value}</Button>
-                <Options>
-                    {options.map(({ label, value }) => (
-                        <Option value={value} key={value}>
-                            {({ active }) => (
-                                <span style={{ background: active ? null : inactive_color }}>
-                                    {label}
-                                </span>
-                            )}
-                        </Option>
-                    ))}
-                </Options>
+                {({ open }) => (
+                    <>
+                        <Label w={label_w}>{label}:</Label>
+                        <Button w={options_w} is_open={open}>{value}</Button>
+                        <Options>
+                            {options.map(({ label, value }) => (
+                                <Option value={value} key={value}>
+                                    {({ active }) => (
+                                        <span style={{ background: active ? null : inactive_color }}>
+                                            {label}
+                                        </span>
+                                    )}
+                                </Option>
+                            ))}
+                        </Options>
+                    </>
+                )}
             </Listbox>
         </Container>
     );
 }
 const Options = styled(Listbox.Options)`
-
     width: 100px;
     position: absolute;
     right: 0px;
@@ -58,62 +62,48 @@ const Option = styled(Listbox.Option)`
         width: 100%;
         background:#FFD6FF;
     }
-
 `;
 const Label = styled(Listbox.Label)`
-    width: 80px;
+    width: ${({ w }) => w}px;
     display: inline-block;
 `;
 
 const Button = styled(Listbox.Button)`
-    width: 100px;
+    width: ${({ w }) => w}px;
     font-family: inherit;
     background: inherit;
     box-sizing: border-box;
     border: 1px solid #1400a3;
     cursor: pointer;
+    padding: 10px 0;
+    position: relative;
     color: inherit;
     :focus {
         outline: none;
+    }
+    :after {
+        content: "";
+        width: 0;
+        height: 0;
+        right: 10px;
+        top: 17px;
+        border-style: solid;
+        position: absolute;
+        border-width: ${({ is_open }) => is_open ? "0 3px 5.2px 3px" : "5.2px 3px 0 3px"};
+        border-color: ${({ is_open }) => is_open ? "transparent transparent #1400a3 transparent" : "#1400a3 transparent transparent transparent"};
     }
 `;
 
 const Container = styled.div`
     display: inline-block;
     font-size: 13px;
-    width: 180px;
-    text-align: center;
+    width: ${({ w }) => w}px;
+    text-align: left;
     cursor: pointer;
     position: relative;
     overflow: visible;
     z-index: 4;
     background: #FFD6FF;
     color: #1400a3;
-
-
-    .button_open:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 3px 5.2px 3px;
-        border-color: transparent transparent #1400a3 transparent;
-        right: 10px;
-        top: 17px;
-        position: absolute;
-    }
-
-    .button_closed:after {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 5.2px 3px 0 3px;
-        border-color: #1400a3 transparent transparent transparent;
-        right: 10px;
-        top: 17px;
-        position: absolute;
-    }
-
-
+    margin: 0 0 5px 0;
 `;
