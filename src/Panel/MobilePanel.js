@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 import { data } from "../data/data";
-import icon_close from "../assets/icon_close.svg";
+import icon_arrow from "../assets/icon_close.svg";
 import { PanelContent } from "./PanelContent";
 
 export function MobileTextBox( { highlight_locked, highlight_id, setPanelOpen, panel_open } ) {
@@ -12,8 +12,13 @@ export function MobileTextBox( { highlight_locked, highlight_id, setPanelOpen, p
         setPanelOpen(true);
         e.stopPropagation();
     }
+
+    function collapse(){
+        console.log("collapse");
+    }
     return (
         <Container onClick={onClick} open={panel_open} bit_open={highlight_locked}>
+            <Arrow onClick={collapse} background_image={icon_arrow}></Arrow>
             {highlightObj && <PanelContent highlightObj={highlightObj}/>}
         </Container>
     );
@@ -43,7 +48,7 @@ const Container = styled.div`
 
 `;
 
-const Close = styled.button`
+const Arrow = styled.button`
     width: 30px;
     height: 30px;
     position: absolute;

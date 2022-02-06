@@ -9,6 +9,8 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
 
     function clickOut(){
         setPanelOpen(false);
+        setHighlightId(null);
+        setHighlightLocked(null);
     }
 
     return (
