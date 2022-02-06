@@ -35,25 +35,25 @@ export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, w
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
     const [markers_visible, setMarkerVisible] = useState(true);
     const [map_loaded, setMapLoaded] = useState(false);
-    const [map_ready, setMapReady] = useState(false);
     const [zoomed_province, setZoomedProvince] = useState(null);
 
     const $main_map = useRef();
 
-    function zoomMapTo({ minLng, minLat, maxLng, maxLat }){
+    function zoomMapTo({ minLng, minLat, maxLng, maxLat }, duration){
         if (!$main_map.current) return;
+        const dur = duration === undefined ? 3500 : duration;
+
         $main_map.current.fitBounds(
             [
                 [minLng, minLat],
                 [maxLng, maxLat]
             ],
-            { padding: 40, duration: 3500 }
+            { padding: 40, duration:dur }
         );
     }
     useEffect(()=>{
         if(map_loaded) {
-            zoomMapTo(unzoomed_latlng);
-            setMapReady(true);
+            zoomMapTo(unzoomed_latlng, 0);
         }
     }, [map_loaded]);
 
@@ -113,7 +113,7 @@ export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, w
             <button style={{ display: "none" }} onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button style={{ display: "none" }} onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
             <button style={{ display: "none" }} onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
-            <LoadingScreen loaded={map_ready}/>
+            <LoadingScreen loaded={map_loaded}/>
             <MapGL
                 ref={$main_map}
                 {...map_attributes}

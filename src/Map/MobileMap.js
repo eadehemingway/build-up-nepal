@@ -18,6 +18,7 @@ import { ProvincesLayer } from "./MainLayers/Layer-provinces";
 import { ZoomedProvinceFill } from "./MainLayers/Layer-zoomed-prov-fill";
 import { UnzoomedProvFill } from "./MainLayers/Layer-unzoomed-prov-fill";
 import { Inset } from "./Inset/MobileInset";
+import { unzoomed_latlng } from "./Inset/DesktopInset";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -30,22 +31,28 @@ const center_lng = minLng + half_lng;
 
 export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLocked, width, height, highlight_locked }) {
     const [markers_visible, setMarkerVisible] = useState(true);
-    const [loaded, setLoaded] = useState(false);
+    const [map_loaded, setMapLoaded] = useState(false);
     const [zoomed_province, setZoomedProvince] = useState(null);
 
     const $main_map = useRef();
 
-    function zoomMapTo({ minLng, minLat, maxLng, maxLat }){
+    function zoomMapTo({ minLng, minLat, maxLng, maxLat }, duration){
         if (!$main_map.current) return;
+        const dur = duration === undefined ? 3500 : duration;
         $main_map.current.fitBounds(
             [
                 [minLng, minLat],
                 [maxLng, maxLat]
             ],
-            { padding: 20, duration: 3500 }
+            { padding: 20, duration: dur }
         );
     }
 
+    useEffect(()=>{
+        if(map_loaded) {
+            zoomMapTo(unzoomed_latlng, 0);
+        }
+    }, [map_loaded]);
 
     function handleOnClick (e){
         e.originalEvent.cancelBubble = true;
@@ -59,7 +66,7 @@ export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLo
 
 
     function handleLoaded (){
-        setLoaded(true);
+        setMapLoaded(true);
 
         $main_map.current.loadImage(
             blue_flag,
@@ -84,7 +91,7 @@ export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLo
     return (
         <>
             <button style={{ display: "none" }} onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
-            <LoadingScreen loaded={loaded}/>
+            <LoadingScreen loaded={map_loaded}/>
             <Inset
                 zoomMapTo={zoomMapTo}
                 zoomed_province={zoomed_province}
