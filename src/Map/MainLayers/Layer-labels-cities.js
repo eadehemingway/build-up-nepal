@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
+import { dark_blue, turquoise } from "../../shared/colors";
 
 const main_cities = {
     "type": "FeatureCollection",
@@ -38,9 +39,9 @@ export function MainCitiesLayer() {
                         "text-offset": [0, -0.75],
                     }}
                     paint = {{
-                        "text-color": "#1400a3",
+                        "text-color": dark_blue,
                         "text-halo-width": 3,
-                        "text-halo-color": "#D3F0F7",
+                        "text-halo-color": turquoise,
                         "text-halo-blur": 2,
                     }}
                 />

@@ -4,6 +4,7 @@ import styled, { keyframes } from "styled-components";
 import brick_machine from "./../assets/brick_machine.gif";
 import brick_machine_video from "./../assets/nepal_bricks.mp4";
 import build_up_nepal_logo from "./../assets/build_up_nepal_logo.svg";
+import { base_pink, dark_blue, red } from "../shared/colors";
 
 export function LoadingScreen({ loaded }) {
 
@@ -47,7 +48,7 @@ const Standfirst = styled.div`
     margin: 20px auto 0px auto;
     justify-content: center;
     align-items: center;
-    color: ${({ enterprise }) => enterprise ? "red" : "#1400a3"};
+    color: ${({ enterprise }) => enterprise ? red : dark_blue};
     @media only screen and (max-width: 600px) {
         width: calc(100% - 40px);
     }
@@ -83,7 +84,7 @@ const Overlay = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: #FFD6FF;
+    background: ${base_pink};
     z-index: 9;
     opacity: ${({ loaded })=> loaded ? 0 : 1};
     pointer-events: ${({ loaded })=> loaded ? "none" : "auto"};

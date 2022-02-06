@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { dark_pink , red, dark_blue } from "../shared/colors";
 
 export function StackedBar({
     width,
@@ -21,10 +22,7 @@ export function StackedBar({
 
     const regular_stroke_width = 0.1;
     const highlight_stroke_width = 2;
-    const bar_fill = "#fdc0ff";
 
-    const red = "#ff0000";
-    const blue = "#1400a3";
     const offset_left = window_width - width;
     const chart_width = width - (chart_margin.left + chart_margin.right);
     const bar_height = chart_height - (chart_margin.top + chart_margin.bottom);
@@ -93,7 +91,7 @@ export function StackedBar({
             const a_x = a.x * chart_width;
             const offset = a.align === "left" ? 5 : -5;
             ctx.save();
-            ctx.strokeStyle = blue;
+            ctx.strokeStyle = dark_blue;
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(a_x, a.y);
@@ -105,7 +103,7 @@ export function StackedBar({
             ctx.restore();
             if (hide_label) return;
             ctx.textAlign = a.align;
-            ctx.fillStyle = blue;
+            ctx.fillStyle = dark_blue;
             ctx.fillText(label, a_x + offset, bar_height + 20);
         });
     },[chart_width, sort_by, formatNumber, bar_height]);
@@ -119,7 +117,7 @@ export function StackedBar({
         const h = highlight.height;
         const suffix = highlight.value.metric === 1 ? data.suffix.singular : data.suffix.plural;
         ctx.save();
-        const highlight_fill = highlight["flag-status"] === "enterprise" ? "red" : "blue";
+        const highlight_fill = highlight["flag-status"] === "enterprise" ? red : dark_blue;
         ctx.fillStyle = highlight_fill;
         const arrow_d = "l -3 -5.1962 h 6 l -3 5.1962";
         const path = new Path2D(`M ${x + (w / 2)} ${y} ${arrow_d} h ${w / 2} v ${h} h ${-w} v ${-h} Z`);
@@ -136,7 +134,7 @@ export function StackedBar({
             let x = v.x[sort_by] * chart_width;
             let bar_width = v.width[sort_by] * chart_width;
             ctx.save();
-            ctx.fillStyle = v.filtered ? "pink" : bar_fill;
+            ctx.fillStyle = v.filtered ? "pink" : dark_pink;
             ctx.strokeStyle = red;
             ctx.lineWidth = regular_stroke_width;
             ctx.fillRect(x, v.y, bar_width, v.height);
@@ -149,12 +147,12 @@ export function StackedBar({
         const label = formatNumber(data.total, 0);
         const label_measures = ctx.measureText(label);
         const label_height = label_measures.fontBoundingBoxAscent - label_measures.fontBoundingBoxDescent;
-        ctx.fillStyle = blue;
+        ctx.fillStyle = dark_blue;
         ctx.fillText(label, chart_width + 10, bar_height - ((bar_height - label_height) / 2));
         ctx.font = "13px code-saver, sans-serif";
         ctx.fillText(is_mobile ? "Total" : data.caption, chart_width + 10, -10);
 
-    }, [sort_by, chart_width, regular_stroke_width, bar_fill, clearCanvas, formatNumber, bar_height, is_mobile, label_size]);
+    }, [sort_by, chart_width, regular_stroke_width, dark_pink, clearCanvas, formatNumber, bar_height, is_mobile, label_size]);
 
     useEffect(()=> {
         if (!$canvas_bottom.current) return;

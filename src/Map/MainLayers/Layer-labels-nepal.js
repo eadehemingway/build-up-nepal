@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
+import { dark_blue } from "../../shared/colors";
 
 const main_labels = {
     "type": "FeatureCollection",
@@ -35,7 +36,7 @@ export function MainLabelsLayer() {
                         "text-ignore-placement": true
                     }}
                     paint = {{
-                        "text-color": "#1400a3",
+                        "text-color": dark_blue,
                     }}
                 />
 

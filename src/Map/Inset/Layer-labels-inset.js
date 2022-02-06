@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
+import { dark_blue } from "../../shared/colors";
 
 const centroids ={ "type":"FeatureCollection", "features": [
     { "type":"Feature","geometry":{ "type":"Point","coordinates":[87.2744655578353,27.21018695834508] },"properties":{ "STATE":"1" } },
@@ -30,7 +31,7 @@ export function InsetLabelLayer() {
                         "text-size": 13,
                     }}
                     paint = {{
-                        "text-color": "#1400a3",
+                        "text-color": dark_blue,
                     }}
                 />
 

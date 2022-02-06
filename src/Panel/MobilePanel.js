@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { data } from "../data/data";
 import icon_arrow from "../assets/icon_close.svg";
 import { PanelContent } from "./PanelContent";
+import { dark_blue, turquoise } from "../shared/colors";
 
 export function MobileTextBox( { panel_height, highlight_locked, highlight_id, setPanelOpen, panel_open } ) {
     const highlightObj = useMemo(() => data.find(d => d.id === highlight_id), [highlight_id]);
@@ -38,9 +39,9 @@ const Container = styled.div`
     max-width: 100vw;
     padding: 0px 20px 0px 30px;
     height: ${({ panel_height }) => panel_height}px;
-    background: #D3F0F7;
-    color: #1400a3;
-    border-left: 1px solid #1400a3;
+    background: ${turquoise};
+    color: ${dark_blue};
+    border-left: 1px solid ${dark_blue};
     z-index: 7;
     overflow-y: scroll;
     overflow-x: hidden;

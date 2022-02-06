@@ -5,6 +5,7 @@ import { StackedBar } from "./StackedBar";
 import { getStackedData } from "./process_stacked_data";
 import { SortDropdown } from "./SortDropdown";
 import { Dropdown } from "./../shared/Dropdown";
+import { base_pink } from "../shared/colors";
 
 export function MobileStacks({ margin, width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }) {
     const chart_height = (height - (49 * 2));
@@ -74,7 +75,7 @@ const StackedBarContainer = styled.div`
     bottom: 50px;
     vertical-align: top;
     line-height: 0px;
-    background: #FFD6FF;
+    background: ${base_pink};
 `;
 
 const Dropdowns = styled.div`

@@ -1,6 +1,7 @@
 import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import provinces from "../../data/provinces.json";
+import { turquoise } from "../../shared/colors";
 
 
 export function UnzoomedProvFill({ zoomed_province }) {
@@ -14,7 +15,7 @@ export function UnzoomedProvFill({ zoomed_province }) {
                 type="fill"
                 source="provinces"
                 paint={{
-                    "fill-color":"#d3f0f7" ,
+                    "fill-color": turquoise ,
                     "fill-opacity":["match", zoomed_prov_or_NO, "NO", 1, 0]
 
                 }}

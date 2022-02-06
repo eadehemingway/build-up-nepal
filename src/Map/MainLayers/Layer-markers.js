@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import markers_geojson from "../../data/markers_with_flags.json";
+import { dark_blue, dark_pink, red } from "../../shared/colors";
 
 export function MarkerLayer( { markers_visible, highlight_id } ) {
 
@@ -20,16 +21,16 @@ export function MarkerLayer( { markers_visible, highlight_id } ) {
                                 [
                                     "case",
                                     ["==", ["get", "project_type"], "enterprise"],
-                                    "red",
-                                    "#1400a3"
+                                    red,
+                                    dark_blue
                                 ],
-                                "#FDC0FF"
+                                dark_pink
                             ],
                             "circle-stroke-color": [
                                 "case",
                                 ["==", ["get", "project_type"], "enterprise"],
-                                "red",
-                                "#1400a3"
+                                red,
+                                dark_blue
                             ],
                             "circle-radius": 3
                         }}

@@ -2,6 +2,7 @@ import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import nepal_outline  from "../../data/nepal_outline.json";
+import { red } from "../../shared/colors";
 
 
 
@@ -15,7 +16,7 @@ export function CountryOutlineLayer({ country_outline_visible }) {
                     id="country_outline_layer"
                     type="line"
                     source="country_outline"
-                    paint={{ "line-width": 0.4, "line-color": "red" }}
+                    paint={{ "line-width": 0.4, "line-color": red }}
 
                 />
             )}

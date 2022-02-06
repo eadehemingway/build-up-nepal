@@ -1,6 +1,7 @@
 import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import provinces from "../../data/provinces.json";
+import { turquoise } from "../../shared/colors";
 
 
 export function ZoomedProvinceFill({ zoomed_province }) {
@@ -12,7 +13,7 @@ export function ZoomedProvinceFill({ zoomed_province }) {
                 id="province-fill-main"
                 type="fill"
                 source="provinces"
-                paint={{ "fill-color":"#d3f0f7" }}
+                paint={{ "fill-color":turquoise }}
                 filter={["==", ["get", "STATE"], zoomed_prov_or_str]}
             />
         </Source>

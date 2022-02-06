@@ -5,6 +5,7 @@ import { InsetLabelLayer } from "./Layer-labels-inset";
 import zoom_out from "./../../assets/zoom-out.png";
 import { insetMapStyle } from "./style-inset";
 import bbox from "@turf/bbox";
+import { red } from "../../shared/colors";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -99,7 +100,7 @@ export function DesktopInset({ zoomMapTo, zoomed_province, setZoomedProvince }) 
                     id="provinces-outline"
                     source="provinces"
                     type="line"
-                    paint={{ "line-width": 0.2, "line-color": "red" }}
+                    paint={{ "line-width": 0.2, "line-color": red }}
 
                 />
                 <InsetLabelLayer/>

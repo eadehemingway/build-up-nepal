@@ -3,6 +3,7 @@ import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import { data } from "../data/data";
 import icon_close from "../assets/icon_close.svg";
+import { dark_blue, red } from "../shared/colors";
 
 
 export function PanelContent( { highlightObj } ) {
@@ -10,7 +11,7 @@ export function PanelContent( { highlightObj } ) {
     const enterprise = highlightObj["flag-status"] === "enterprise";
     const kicker = enterprise ? "Enterprise" : "One-off";
     const flag_path = enterprise ? "M 0 0 L 22.5 0 L 11.333 7.5 L 22.5 16.25 L 0 16.25 Z" : "M 0 0 L 22.5 7.5 L 0 13.7 Z";
-    const flag_color = enterprise ? "red" : "#1400a3";
+    const flag_color = enterprise ? red : dark_blue;
 
 
     return (
@@ -46,7 +47,7 @@ const Kicker = styled.div`
     font-size: 16px;
     line-height: 12px;
     padding-top: 60px;
-    color: ${({ enterprise }) => enterprise ? "red" : "#1400a3"}
+    color: ${({ enterprise }) => enterprise ? red : dark_blue}
 `;
 
 const FirstCharacter = styled.span`

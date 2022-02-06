@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { StackedBar } from "./StackedBar";
 import { getStackedData } from "./process_stacked_data";
 import { SortDropdown } from "./SortDropdown";
+import { base_pink } from "../shared/colors";
 
 export function DesktopStacks({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }) {
     const chart_height = (height - 40) / 3;
@@ -50,5 +51,5 @@ const StackedBarContainer = styled.div`
     right: 0;
     vertical-align: top;
     line-height: 0px;
-    background: #FFD6FF;
+    background: ${base_pink};
 `;
