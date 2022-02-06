@@ -1,5 +1,4 @@
-import React, { useState, useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { StackedBar } from "./StackedBar";
 import { getStackedData } from "./process_stacked_data";

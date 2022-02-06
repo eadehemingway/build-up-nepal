@@ -1,6 +1,5 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import MapGL, { Source, Layer, Marker } from "react-map-gl";
-import { useEffect } from "react/cjs/react.development";
 import { Mobile } from "./AppMobile.js";
 import { Desktop } from "./AppDesktop.js";
 
