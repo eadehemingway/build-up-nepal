@@ -17,8 +17,6 @@ export function Inset({ zoomMapTo, zoomed_province, setZoomedProvince }) {
         { label: "Five", value: 5 },
         { label: "Six", value: 6 },
         { label: "Seven", value: 7 },
-
-
     ];
 
     function onSelect(val){
@@ -34,7 +32,7 @@ export function Inset({ zoomMapTo, zoomed_province, setZoomedProvince }) {
     return (
         <Dropdown
             label={"Projects in"}
-            value={zoomed_province || options[0].label}
+            value={zoomed_province || options[0].value}
             options={options}
             onSelect={onSelect}
         />
