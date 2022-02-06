@@ -9,7 +9,7 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
     function onClick(e){
         setHighlightLocked(false);
     }
-    const icon_chart_width = 400;
+    const icon_chart_width = 450;
     return (
         <div onClick={onClick}>
             <IconChart
