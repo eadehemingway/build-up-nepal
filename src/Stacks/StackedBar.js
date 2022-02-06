@@ -108,6 +108,12 @@ export function StackedBar({
         });
     },[chart_width, sort_by, formatNumber, bar_height]);
 
+    const getTextAlign = useCallback((text_width, x) => {
+        if ((x - text_width) < chart_margin.left) return "left";
+        if ((x + text_width) > (width - chart_margin.right)) return "right";
+        return "center";
+    }, [chart_margin, width]);
+
     const drawHighlight = useCallback((ctx, highlight_id) => {
         const highlight = data.data.find(d => d.id === highlight_id);
         if (!highlight) return;
@@ -122,9 +128,11 @@ export function StackedBar({
         const arrow_d = "l -3 -5.1962 h 6 l -3 5.1962";
         const path = new Path2D(`M ${x + (w / 2)} ${y} ${arrow_d} h ${w / 2} v ${h} h ${-w} v ${-h} Z`);
         ctx.fill(path);
-        ctx.font = "12px code-saver, sans-serif";
-        ctx.textAlign = "center";
-        ctx.fillText(formatNumber(highlight.value.metric) + suffix, x + (w / 2), y - 10);
+        const text = formatNumber(highlight.value.metric) + suffix;
+        ctx.font = "bold 12px code-saver, sans-serif";
+        const text_width = ctx.measureText(text).width / 2;
+        ctx.textAlign = getTextAlign(text_width, x + (w / 2));
+        ctx.fillText(text, x + (w / 2), y - 10);
         ctx.restore();
     }, [data, sort_by, chart_width, formatNumber]);
 
