@@ -6,17 +6,17 @@ import { province_bounds } from "../../data/prov_bounds";
 import { unzoomed_latlng } from "./DesktopInset";
 
 
-export function Inset({ zoomMapTo, zoomed_province, setZoomedProvince }) {
+export function Inset({ margin, zoomMapTo, zoomed_province, setZoomedProvince }) {
 
     const options = [
-        { label: "All", value: null },
-        { label: "One", value: 1 },
-        { label: "Two", value: 2 },
-        { label: "Three", value: 3 },
-        { label: "Four", value: 4 },
-        { label: "Five", value: 5 },
-        { label: "Six", value: 6 },
-        { label: "Seven", value: 7 },
+        { label: "All provinces", value: null },
+        { label: "Province 1", value: 1 },
+        { label: "Province 2", value: 2 },
+        { label: "Province 3", value: 3 },
+        { label: "Province 4", value: 4 },
+        { label: "Province 5", value: 5 },
+        { label: "Province 6", value: 6 },
+        { label: "Province 7", value: 7 },
     ];
 
     function onSelect(val){
@@ -35,7 +35,8 @@ export function Inset({ zoomMapTo, zoomed_province, setZoomedProvince }) {
             value={zoomed_province || options[0].value}
             options={options}
             onSelect={onSelect}
+            options_width={200}
+            margin={margin}
         />
-
     );
 }

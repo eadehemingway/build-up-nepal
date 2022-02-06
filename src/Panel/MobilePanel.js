@@ -4,41 +4,40 @@ import { data } from "../data/data";
 import icon_arrow from "../assets/icon_close.svg";
 import { PanelContent } from "./PanelContent";
 
-export function MobileTextBox( { highlight_locked, highlight_id, setPanelOpen, panel_open } ) {
+export function MobileTextBox( { panel_height, highlight_locked, highlight_id, setPanelOpen, panel_open } ) {
     const highlightObj = useMemo(() => data.find(d => d.id === highlight_id), [highlight_id]);
-
 
     function onClick(e){
         setPanelOpen(true);
         e.stopPropagation();
     }
 
-    function collapse(){
-        console.log("collapse");
+    function collapse(e){
+        setPanelOpen(false);
+        e.stopPropagation();
     }
     return (
-        <Container onClick={onClick} open={panel_open} bit_open={highlight_locked}>
+        <Container panel_height={panel_height} onClick={onClick} open={panel_open} bit_open={highlight_locked}>
             <Arrow onClick={collapse} background_image={icon_arrow}></Arrow>
             {highlightObj && <PanelContent highlightObj={highlightObj}/>}
         </Container>
     );
 }
 
-const panel_height = 600;
 const Container = styled.div`
     position: absolute;
     left: 0;
     right:0;
-    bottom: ${({ open, bit_open }) =>{
+    top: ${({ open, bit_open, panel_height }) =>{
         if (open) return "0px";
-        if (bit_open) return `-${panel_height - 50}px`;
-        return `-${panel_height}px`;
+        if (bit_open) return `${panel_height - 50}px`;
+        return `${panel_height}px`;
     }};
-    transition: bottom 1s ease;
+    transition: top 1s ease;
     margin-right: -20px;
     max-width: 100vw;
     padding: 0px 20px 0px 30px;
-    height: ${panel_height}px;
+    height: ${({ panel_height }) => panel_height}px;
     background: #D3F0F7;
     color: #1400a3;
     border-left: 1px solid #1400a3;

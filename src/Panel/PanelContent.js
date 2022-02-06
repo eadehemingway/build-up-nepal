@@ -37,7 +37,7 @@ const Flag = styled.svg`
     position: absolute;
     left: 0px;
     top: 0px;
-    height: 100vh;
+    height: 100px;
     overflow: hidden;
 `;
 
