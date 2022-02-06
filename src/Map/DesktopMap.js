@@ -17,6 +17,7 @@ import { MainCitiesLayer } from "./MainLayers/Layer-labels-cities";
 import { ProvincesLayer } from "./MainLayers/Layer-provinces";
 import { ZoomedProvinceFill } from "./MainLayers/Layer-zoomed-prov-fill";
 import { UnzoomedProvFill } from "./MainLayers/Layer-unzoomed-prov-fill";
+import { unzoomed_latlng } from "./Inset/DesktopInset";
 
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoiZWFkZWhlbSIsImEiOiJja3l5a3FidWQwZzdiMnB1b2J3MXVyZzJ2In0.0Yy04h5WZ1O7wYDGkwSXiQ";
@@ -33,7 +34,8 @@ export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, w
     const [province_outline_visible, setProvinceOutlineVisible] = useState(true);
     const [country_outline_visible, setCountryOutlineVisible] = useState(true);
     const [markers_visible, setMarkerVisible] = useState(true);
-    const [loaded, setLoaded] = useState(false);
+    const [map_loaded, setMapLoaded] = useState(false);
+    const [map_ready, setMapReady] = useState(false);
     const [zoomed_province, setZoomedProvince] = useState(null);
 
     const $main_map = useRef();
@@ -48,7 +50,12 @@ export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, w
             { padding: 40, duration: 3500 }
         );
     }
-
+    useEffect(()=>{
+        if(map_loaded) {
+            zoomMapTo(unzoomed_latlng);
+            setMapReady(true);
+        }
+    }, [map_loaded]);
 
     function handleMouseEnter(e){
         const feature = e.features[0];
@@ -77,7 +84,7 @@ export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, w
 
 
     function handleLoaded (){
-        setLoaded(true);
+        setMapLoaded(true);
 
         $main_map.current.loadImage(
             blue_flag,
@@ -106,7 +113,7 @@ export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, w
             <button style={{ display: "none" }} onClick={()=> setProvinceOutlineVisible((v)=> !v)}>province outline toggle</button>
             <button style={{ display: "none" }} onClick={()=> setCountryOutlineVisible((v)=> !v)}>country outline toggle</button>
             <button style={{ display: "none" }} onClick={()=> setMarkerVisible((v)=> !v)}>marker toggle</button>
-            <LoadingScreen loaded={loaded}/>
+            <LoadingScreen loaded={map_ready}/>
             <MapGL
                 ref={$main_map}
                 {...map_attributes}
