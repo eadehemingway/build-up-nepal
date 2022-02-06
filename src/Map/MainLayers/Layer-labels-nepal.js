@@ -21,7 +21,7 @@ export function MainLabelsLayer() {
                     type = "symbol"
                     source = "places"
                     minzoom = {0}
-                    maxzoom = {6.5}
+                    maxzoom = {8}
                     layout = {{
                         "text-field": ["get", "label"],
                         "text-variable-anchor": ["top", "bottom", "left", "right"],
