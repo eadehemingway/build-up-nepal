@@ -4,6 +4,7 @@ import { DesktopMap } from "./Map/DesktopMap.js";
 import { DesktopStacks } from "./Stacks/DesktopStacks";
 import { IconChart } from "./IconChart";
 import { TextBox } from "./Panel/DesktopPanel";
+import page_title from "./assets/page_title.svg";
 
 export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, highlight_locked, windowH, windowW }) {
     function onClick(e){
@@ -12,6 +13,7 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
     const icon_chart_width = 450;
     return (
         <div onClick={onClick}>
+            <PageTitle w={icon_chart_width - 80} src={`${page_title}`}/>
             <IconChart
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
@@ -45,3 +47,10 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
         </div>
     );
 }
+
+const PageTitle = styled.img`
+    width: ${({ w }) => w}px;
+    position: absolute;
+    top: 0px;
+    left: 40px;
+`;
