@@ -105,7 +105,7 @@ const Button = styled(Listbox.Button)`
 
 const Container = styled.div`
     display: inline-block;
-    font-size: 13px;
+    font-size: 12px;
     width: ${({ w }) => w}px;
     text-align: left;
     cursor: pointer;

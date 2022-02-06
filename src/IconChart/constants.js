@@ -1,5 +1,3 @@
-
-
 export const COLUMNS = 8;
 export const flag_size = 20;
 export const margin = { top: 40, left: 20 };

@@ -84,7 +84,7 @@ export function StackedBar({
 
     const drawAxis = useCallback((ctx, axis) => {
         axis[sort_by].forEach((a) => {
-            ctx.font = "13px code-saver, sans-serif";
+            ctx.font = "12px code-saver, sans-serif";
             const label = sort_by === "metric" ? formatNumber(a.label) : a.label;
             const a_width = a.width * chart_width;
             const hide_label = ctx.measureText(label).width + 5 > a_width && a.align === "left";
@@ -122,7 +122,7 @@ export function StackedBar({
         const arrow_d = "l -3 -5.1962 h 6 l -3 5.1962";
         const path = new Path2D(`M ${x + (w / 2)} ${y} ${arrow_d} h ${w / 2} v ${h} h ${-w} v ${-h} Z`);
         ctx.fill(path);
-        ctx.font = "13px code-saver, sans-serif";
+        ctx.font = "12px code-saver, sans-serif";
         ctx.textAlign = "center";
         ctx.fillText(formatNumber(highlight.value.metric) + suffix, x + (w / 2), y - 10);
         ctx.restore();
@@ -149,7 +149,7 @@ export function StackedBar({
         const label_height = label_measures.fontBoundingBoxAscent - label_measures.fontBoundingBoxDescent;
         ctx.fillStyle = dark_blue;
         ctx.fillText(label, chart_width + 10, bar_height - ((bar_height - label_height) / 2));
-        ctx.font = "13px code-saver, sans-serif";
+        ctx.font = "12px code-saver, sans-serif";
         ctx.fillText(is_mobile ? "Total" : data.caption, chart_width + 10, -10);
 
     }, [sort_by, chart_width, regular_stroke_width, dark_pink, clearCanvas, formatNumber, bar_height, is_mobile, label_size]);

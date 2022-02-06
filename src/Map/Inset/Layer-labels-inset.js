@@ -28,7 +28,7 @@ export function InsetLabelLayer() {
                         "text-justify": "center",
                         "text-font": ["Code Saver Regular"],
                         "text-letter-spacing": 2,
-                        "text-size": 13,
+                        "text-size": 12,
                     }}
                     paint = {{
                         "text-color": dark_blue,

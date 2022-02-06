@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import styled from "styled-components";
-import {  one_off_data , ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
+import { one_off_data, ordered_ent_data, order, blue_red_gap, getFlagId, y_ranges_per_section, LOOKUP } from "./process_data";
 import { flag_size, margin, COLUMNS , red_gap } from "./constants";
 import { dark_blue, dark_pink, red } from "../shared/colors";
 
@@ -8,7 +8,13 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
     const $canvas = useRef(null);
     const text_padding = 20;
     const title_size = 16;
-    const subtitle_size = 13;
+    const subtitle_size = 12;
+
+    function getFlagSize(width, height) {
+        console.log(ordered_ent_data);
+    }
+
+    getFlagSize(width, height);
 
     function drawOneOffFlag(ctx, x, y, should_fill){
         ctx.save();
@@ -78,6 +84,7 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
         ctx.fillText(label, x, y);
 
     }
+
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
