@@ -25,15 +25,7 @@ function App() {
 
     return (
         <>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>Build up Nepal</title>
-                <meta
-                    name="description"
-                    content="Interactive map displaying the projects and enterprises created by Build up Nepal"
-                />
-                <meta property="og:image" content={meta_img} />
-            </Helmet>
+
             {font_loaded &&
                (is_mobile ?
                    <Mobile
