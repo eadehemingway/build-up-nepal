@@ -162,11 +162,10 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
         }
         setHighlightLocked(true);
     }
-    const height_of_chart = y_ranges_per_section[3][1] + margin.top + 40;
-    const bottom = window.innerHeight - height_of_chart;
+
 
     return (
-        <Canvas bottom={bottom} onMouseMove={onMouseMove} onClick={onClick} onMouseOut={onMouseOut} width={width * 2} height={height * 2} ref={$canvas} id="icon-chart"/>
+        <Canvas onMouseMove={onMouseMove} onClick={onClick} onMouseOut={onMouseOut} width={width * 2} height={height * 2} ref={$canvas} id="icon-chart"/>
     );
 }
 
@@ -177,8 +176,6 @@ const Canvas = styled.canvas`
     margin: 0px;
     padding: 0px;
     cursor: pointer;
-    position: absolute;
-    bottom: ${({ bottom })=> `-${bottom}px`}
 `;
 
 
