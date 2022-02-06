@@ -6,7 +6,7 @@ import { dark_blue, dark_pink, red } from "../shared/colors";
 
 export function IconChart({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }){
     const $canvas = useRef(null);
-    const text_padding = 20;
+    const text_padding = 10;
     const title_size = 16;
     const subtitle_size = 12;
 
@@ -88,7 +88,7 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
 
     function drawOneOffFlags(ctx){
         const color = dark_blue;
-        drawLabel({ ctx, label: "One-off projects", x: margin.left, y: margin.top - text_padding, color, fontSize: title_size, weight: "bold" });
+        drawLabel({ ctx, label: "One-off projects", x: margin.left, y: margin.top - (text_padding *2), color, fontSize: title_size, weight: "bold" });
         const x = margin.left + (COLUMNS * flag_cell_width);
         drawLabel({ ctx, label: "Projects", x: x + 10, y: margin.top + text_padding, color, fontSize: subtitle_size });
         drawLabel({ ctx, label: one_off_data.length, x: x + 10, y: margin.top + 15 + text_padding, color, fontSize: subtitle_size });
@@ -105,12 +105,12 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
 
     function drawEnterpriseFlags(ctx){
         const color = red;
-        drawLabel({ ctx, label: "Enterprise", x: margin.left, y: blue_red_gap + margin.top - text_padding, color, fontSize: title_size, weight: "bold" });
+        drawLabel({ ctx, label: "Enterprise", x: margin.left, y: blue_red_gap + margin.top - (2 *text_padding), color, fontSize: title_size, weight: "bold" });
         const x = margin.left + (COLUMNS * flag_cell_width);
         order.forEach((s, i)=> {
             const label = capitalizeFirstLetter(s.toLowerCase());
             const min_y = y_ranges_per_section[i][0] + margin.top + text_padding;
-            drawLabel({ ctx, label, x: x + 10, y:min_y, red, fontSize:subtitle_size });
+            drawLabel({ ctx, label, x: x + 10, y:min_y, red, fontSize: subtitle_size });
             const total = LOOKUP[s].length;
             drawLabel({ ctx, label: total, x: x + 10, y: min_y + 15, red, fontSize:subtitle_size });
         });
@@ -162,9 +162,11 @@ export function IconChart({ width, height, setHighlightLocked, highlight_id, set
         }
         setHighlightLocked(true);
     }
+    const height_of_chart = y_ranges_per_section[3][1] + margin.top + 40;
+    const bottom = window.innerHeight - height_of_chart;
 
     return (
-        <Canvas onMouseMove={onMouseMove} onClick={onClick} onMouseOut={onMouseOut} width={width * 2} height={height * 2} ref={$canvas} id="icon-chart"/>
+        <Canvas bottom={bottom} onMouseMove={onMouseMove} onClick={onClick} onMouseOut={onMouseOut} width={width * 2} height={height * 2} ref={$canvas} id="icon-chart"/>
     );
 }
 
@@ -175,6 +177,8 @@ const Canvas = styled.canvas`
     margin: 0px;
     padding: 0px;
     cursor: pointer;
+    position: absolute;
+    bottom: ${({ bottom })=> `-${bottom}px`}
 `;
 
 
