@@ -107,7 +107,7 @@ function getFlagIdOfEntFlag(x, y){
 export function getFlagId(x, y){
     const row_if_no_gaps = Math.floor(y / flag_cell_height);
     const col = Math.floor(x / flag_cell_width);
-    if (col > 7 || col < 0) return null;
+    if (col >= COLUMNS || col < 0) return null;
     let highlighted_id;
 
     const is_one_off = row_if_no_gaps < total_rows_one_off;
