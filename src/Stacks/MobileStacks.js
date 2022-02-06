@@ -16,7 +16,7 @@ export function MobileStacks({ margin, width, height, setHighlightLocked, highli
     const [selected_metric, setSelectedMetric] = useState(null);
     const options = [
         { label: "Jobs created", value: "Total jobs created" },
-        { label: "CO₂ saved", value: "Total CO₂ saved" },
+        { label: "CO₂ saved (tonnes)", value: "Total CO₂ saved (tonnes)" },
         { label: "Houses built", value: "Total houses built" }
     ];
     useEffect(() => {
@@ -60,7 +60,8 @@ export function MobileStacks({ margin, width, height, setHighlightLocked, highli
                 sort_by={sort_by}
                 setHighlightLocked={setHighlightLocked}
                 highlight_locked={highlight_locked}
-                label_size = {26}
+                label_size = {22}
+                is_mobile={true}
             />}
 
         </StackedBarContainer>

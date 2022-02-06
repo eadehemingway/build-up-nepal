@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export function StackedBar({
     width,
+    is_mobile,
     setHighlightLocked,
     data,
     highlight_id,
@@ -26,6 +27,7 @@ export function StackedBar({
     const blue = "#1400a3";
     const offset_left = window_width - width;
     const chart_width = width - (chart_margin.left + chart_margin.right);
+    const bar_height = chart_height - (chart_margin.top + chart_margin.bottom);
 
     const getBarId =  useCallback((x) => {
         let filtered = data.data.filter(function(d) {
@@ -95,18 +97,18 @@ export function StackedBar({
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(a_x, a.y);
-            ctx.lineTo(a_x, chart_height - (chart_margin.top + chart_margin.bottom) + 20);
+            ctx.lineTo(a_x, bar_height + 20);
             ctx.moveTo(a_x + a_width, a.y);
-            ctx.lineTo(a_x + a_width, chart_height - (chart_margin.top + chart_margin.bottom) + 20);
+            ctx.lineTo(a_x + a_width, bar_height + 20);
             ctx.closePath();
             ctx.stroke();
             ctx.restore();
             if (hide_label) return;
             ctx.textAlign = a.align;
             ctx.fillStyle = blue;
-            ctx.fillText(label, a_x + offset, chart_height - (chart_margin.top + chart_margin.bottom) + 20);
+            ctx.fillText(label, a_x + offset, bar_height + 20);
         });
-    },[chart_margin, chart_height, chart_width, sort_by, formatNumber]);
+    },[chart_width, sort_by, formatNumber, bar_height]);
 
     const drawHighlight = useCallback((ctx, highlight_id) => {
         const highlight = data.data.find(d => d.id === highlight_id);
@@ -144,13 +146,15 @@ export function StackedBar({
 
         ctx.textAlign = "left";
         ctx.font = `${label_size}px code-saver, sans-serif`;
+        const label = formatNumber(data.total, 0);
+        const label_measures = ctx.measureText(label);
+        const label_height = label_measures.fontBoundingBoxAscent - label_measures.fontBoundingBoxDescent;
         ctx.fillStyle = blue;
-
-        ctx.fillText(formatNumber(data.total), chart_width + 10, chart_height - (chart_margin.top + chart_margin.bottom));
+        ctx.fillText(label, chart_width + 10, bar_height - ((bar_height - label_height) / 2));
         ctx.font = "13px code-saver, sans-serif";
-        ctx.fillText(data.caption, chart_width + 10, -10);
+        ctx.fillText(is_mobile ? "Total" : data.caption, chart_width + 10, -10);
 
-    }, [sort_by, chart_height, chart_margin, chart_width, regular_stroke_width, bar_fill, clearCanvas, formatNumber]);
+    }, [sort_by, chart_width, regular_stroke_width, bar_fill, clearCanvas, formatNumber, bar_height, is_mobile, label_size]);
 
     useEffect(()=> {
         if (!$canvas_bottom.current) return;

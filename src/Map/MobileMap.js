@@ -109,8 +109,8 @@ export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLo
                 <PopulationLayer population_visible={true}/>
                 <CountryOutlineLayer country_outline_visible={true}/>
                 <ProvincesLayer province_outline_visible={true}/>
-                <MainLabelsLayer/>
                 <MarkerLayer markers_visible={markers_visible} highlight_id={highlight_id}/>
+                <MainLabelsLayer/>
             </MapGL>
 
         </>
