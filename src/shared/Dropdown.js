@@ -61,6 +61,8 @@ const Option = styled(Listbox.Option)`
     box-sizing: border-box;
     border: 1px solid #1400a3;
     border-top: none;
+    z-index: 4;
+    position: relative;
     span {
         padding: 10px 0px;
         display: inline-block;
@@ -110,7 +112,6 @@ const Container = styled.div`
     position: relative;
     overflow: visible;
     margin-left: ${({ margin_left }) => margin_left}px;
-    z-index: 4;
     background: #FFD6FF;
     color: #1400a3;
     margin-bottom: 10px;
