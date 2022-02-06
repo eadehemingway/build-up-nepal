@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Listbox } from "@headlessui/react";
 import styled from "styled-components";
-
+import { base_pink, dark_blue, dark_pink } from "./colors";
 
 export function Dropdown({ margin, label_width, options_width, label, value, options, onSelect, is_mobile }) {
     const [buttonLabel, setButtonLabel] = useState(options[0].label);
@@ -13,7 +13,6 @@ export function Dropdown({ margin, label_width, options_width, label, value, opt
         getLabelFromValue();
     }, [value]);
 
-    const inactive_color = is_mobile ? null : "#FDC5FF";
     const label_w = label_width || 100;
     const options_w = options_width || 100;
     const dropdown_w = label_w + options_w;
@@ -27,11 +26,12 @@ export function Dropdown({ margin, label_width, options_width, label, value, opt
                 <Options w={options_w}>
                     {options.map((opt) => (
                         <Option value={opt.value} key={opt.label}>
-                            {({ active }) => (
-                                <span style={{ background: active ? null : inactive_color }}>
-                                    {opt.label}
-                                </span>
-                            )}
+                            {({ active }) => {
+                                return (
+                                    <span style={{ background: active ? dark_pink: base_pink }}>
+                                        {opt.label}
+                                    </span>);
+                            }}
                         </Option>
                     ))}
                 </Options>
@@ -59,7 +59,7 @@ const Option = styled(Listbox.Option)`
     text-align: center;
     background: inherit;
     box-sizing: border-box;
-    border: 1px solid #1400a3;
+    border: 1px solid ${dark_blue};
     border-top: none;
     z-index: 4;
     position: relative;
@@ -69,7 +69,7 @@ const Option = styled(Listbox.Option)`
         box-sizing: border-box;
         line-height: normal;
         width: 100%;
-        background:#FFD6FF;
+        background:${base_pink};
     }
 `;
 const Label = styled(Listbox.Label)`
@@ -82,7 +82,7 @@ const Button = styled(Listbox.Button)`
     font-family: inherit;
     background: inherit;
     box-sizing: border-box;
-    border: 1px solid #1400a3;
+    border: 1px solid ${dark_blue};
     cursor: pointer;
     padding: 10px 0;
     position: relative;
@@ -99,7 +99,7 @@ const Button = styled(Listbox.Button)`
         border-style: solid;
         position: absolute;
         border-width: ${({ is_open }) => is_open ? "0 3px 5.2px 3px" : "5.2px 3px 0 3px"};
-        border-color: ${({ is_open }) => is_open ? "transparent transparent #1400a3 transparent" : "#1400a3 transparent transparent transparent"};
+        border-color: ${({ is_open }) => is_open ? `transparent transparent ${dark_blue} transparent` : `${dark_blue} transparent transparent transparent`};
     }
 `;
 
@@ -112,7 +112,6 @@ const Container = styled.div`
     position: relative;
     overflow: visible;
     margin-left: ${({ margin_left }) => margin_left}px;
-    background: #FFD6FF;
-    color: #1400a3;
+    color: ${dark_blue};
     margin-bottom: 10px;
 `;
