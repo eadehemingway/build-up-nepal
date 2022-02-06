@@ -22,23 +22,19 @@ export function Dropdown({ margin, label_width, options_width, label, value, opt
     return (
         <Container w={dropdown_w} margin_left={margin_left}>
             <Listbox value={value} onChange={onSelect}>
-                {({ open }) => (
-                    <>
-                        <Label w={label_w}>{label}:</Label>
-                        <Button w={options_w} is_open={open}>{buttonLabel}</Button>
-                        <Options w={options_w}>
-                            {options.map((opt) => (
-                                <Option value={opt.value} key={opt.label}>
-                                    {({ active }) => (
-                                        <span style={{ background: active ? null : inactive_color }}>
-                                            {opt.label}
-                                        </span>
-                                    )}
-                                </Option>
-                            ))}
-                        </Options>
-                    </>
-                )}
+                <Label w={label_w}>{label}:</Label>
+                <Button w={options_w}>{buttonLabel}</Button>
+                <Options w={options_w}>
+                    {options.map((opt) => (
+                        <Option value={opt.value} key={opt.label}>
+                            {({ active }) => (
+                                <span style={{ background: active ? null : inactive_color }}>
+                                    {opt.label}
+                                </span>
+                            )}
+                        </Option>
+                    ))}
+                </Options>
             </Listbox>
         </Container>
     );

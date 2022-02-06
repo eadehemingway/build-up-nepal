@@ -8,7 +8,6 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
     const [panel_open, setPanelOpen] = useState(false);
 
     function clickOut(){
-        console.log("CLICKOUT");
         setPanelOpen(false);
         setHighlightId(null);
         setHighlightLocked(null);
