@@ -102,6 +102,11 @@ export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLo
                     margin: `0px ${margin}px`,
                     padding: "0px",
                 }}
+                initialViewState={{
+                    latitude:center_lat,
+                    longitude: center_lng,
+                    zoom:  width < 350 ? 4.5 : 4.9
+                }}
             >
                 <ZoomedProvinceFill zoomed_province={zoomed_province}/>
                 <UnzoomedProvFill zoomed_province={zoomed_province}/>
@@ -138,10 +143,6 @@ const map_attributes = {
         overflow: "hidden",
         cursor: "pointer"
     },
-    initialViewState:{
-        latitude:center_lat,
-        longitude: center_lng,
-        zoom: 4.9
-    }
+
 };
 
