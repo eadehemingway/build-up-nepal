@@ -14,6 +14,11 @@ export function MobileTextBox( { setHighlightLocked, highlight_locked, highlight
         setPanelOpen(false);
     }
 
+    useEffect(()=>{
+        if (highlight_locked === false){
+            setPanelOpen(false);
+        }
+    }, [highlight_locked]);
 
     function onClick(e){
         setPanelOpen(true);
