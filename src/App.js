@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from "react";
 import MapGL, { Source, Layer, Marker } from "react-map-gl";
 import { Mobile } from "./AppMobile.js";
 import { Desktop } from "./AppDesktop.js";
-import { Helmet } from "react-helmet";
 import meta_img from "./assets/red-flag.png";
 
 var font = new FontFace("code-saver", "url(https://use.typekit.net/af/58ae6c/00000000000000007735b602/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3)");
