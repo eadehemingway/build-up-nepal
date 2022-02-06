@@ -2,7 +2,7 @@ import React, { useEffect, useState , useRef } from "react";
 import MapGL, { Source, Layer, Marker, LinearInterpolator } from "react-map-gl";
 import styled from "styled-components";
 import { InsetLabelLayer } from "./Layer-labels-inset";
-import zoom_out from "./../../assets/zoom-out.png";
+import zoom_out from "./../../assets/icon_zoom_out.svg";
 import { insetMapStyle } from "./style-inset";
 import bbox from "@turf/bbox";
 import { red } from "../../shared/colors";

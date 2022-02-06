@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 import { data } from "../data/data";
-import icon_arrow from "../assets/icon_close.svg";
+import icon_arrow from "../assets/icon_arrow.svg";
 import { PanelContent } from "./PanelContent";
 import { dark_blue, turquoise } from "../shared/colors";
 
@@ -17,9 +17,10 @@ export function MobileTextBox( { panel_height, highlight_locked, highlight_id, s
         setPanelOpen(false);
         e.stopPropagation();
     }
+
     return (
         <Container panel_height={panel_height} onClick={onClick} open={panel_open} bit_open={highlight_locked}>
-            <Arrow onClick={collapse} background_image={icon_arrow}></Arrow>
+            <Arrow onClick={collapse} no_mouse={panel_open} background_image={icon_arrow}></Arrow>
             {highlightObj && <PanelContent highlightObj={highlightObj}/>}
         </Container>
     );
@@ -60,6 +61,8 @@ const Arrow = styled.button`
     background-color: transparent;
     border: none;
     cursor: pointer;
+    pointer-events:${({ no_mouse }) => no_mouse ? "auto" : "none"};
+    transform: scale(1, ${({ no_mouse }) => no_mouse ? "-1" : "1"});
 
     z-index: 3;
     :focus {
