@@ -106,7 +106,7 @@ export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLo
                 style={{
                     width: `${width}px`,
                     height: `${height}px`,
-                    margin: `0px ${margin}px`,
+                    margin: `40px ${margin}px`,
                     padding: "0px",
                     position: "absolute",
                     top: "95px",

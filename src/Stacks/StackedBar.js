@@ -25,7 +25,7 @@ export function StackedBar({
 
     const offset_left = window_width - width;
     const chart_width = width - (chart_margin.left + chart_margin.right);
-    const bar_height = chart_height - (chart_margin.top + chart_margin.bottom);
+    const bar_height = Math.min(chart_height - (chart_margin.top + chart_margin.bottom), 50);
 
     const getBarId =  useCallback((x) => {
         let filtered = data.data.filter(function(d) {

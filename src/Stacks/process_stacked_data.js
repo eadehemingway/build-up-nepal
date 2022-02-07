@@ -39,7 +39,7 @@ function stack(metric, sortings, chart_height, chart_margin) {
         let mapped = {
             value: values,
             id: d.id,
-            height: height,
+            height: Math.min(height, 50),
             x: {},
             width: {},
             y: 0,
