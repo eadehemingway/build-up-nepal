@@ -133,7 +133,7 @@ export function DesktopMap({ highlight_id, setHighlightId, setHighlightLocked, w
             >
                 <ZoomedProvinceFill zoomed_province={zoomed_province}/>
                 <UnzoomedProvFill zoomed_province={zoomed_province}/>
-                <ContourLayer contour_visible={contour_visible}/>
+                {/* <ContourLayer contour_visible={contour_visible}/> */}
                 <PopulationLayer population_visible={population_visible}/>
                 <CountryOutlineLayer country_outline_visible={country_outline_visible}/>
                 <ProvincesLayer province_outline_visible={province_outline_visible}/>

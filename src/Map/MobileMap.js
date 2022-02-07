@@ -119,7 +119,7 @@ export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLo
             >
                 <ZoomedProvinceFill zoomed_province={zoomed_province}/>
                 <UnzoomedProvFill zoomed_province={zoomed_province}/>
-                <ContourLayer contour_visible={true}/>
+                {/* <ContourLayer contour_visible={true}/> */}
                 <PopulationLayer population_visible={true}/>
                 <CountryOutlineLayer country_outline_visible={true}/>
                 <ProvincesLayer province_outline_visible={true}/>
