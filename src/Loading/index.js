@@ -9,7 +9,7 @@ import { base_pink, dark_blue, red } from "../shared/colors";
 export function LoadingScreen({ loaded }) {
 
     const [load_delay, setLoadDelay] = useState(false);
-    let delay_seconds = 5;
+    let delay_seconds = 50;
     if (loaded) setTimeout(function(){ setLoadDelay(true); }, delay_seconds * 1000);
 
     return (
@@ -51,6 +51,7 @@ const Standfirst = styled.div`
     color: ${({ enterprise }) => enterprise ? red : dark_blue};
     @media only screen and (max-width: 600px) {
         width: calc(100% - 40px);
+        margin-top: 0;
     }
 `;
 
