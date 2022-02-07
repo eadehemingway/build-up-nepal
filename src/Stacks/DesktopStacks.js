@@ -7,7 +7,7 @@ import { base_pink } from "../shared/colors";
 
 export function DesktopStacks({ width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }) {
     const chart_height = (height - 40) / 3;
-    const chart_margin = { left: 2, right: 220, top: 20, bottom: 40 };
+    const chart_margin = { left: 2, right: 220, top: 30, bottom: 30 };
 
     const [sort_by, setSortBy] = useState("year");
     const [window_width, setWindowWidth] = useState(document.body.clientWidth);
@@ -46,6 +46,7 @@ const StackedBarContainer = styled.div`
     width: ${({ width }) => width }px;
     height: ${({ height }) => height }px;
     position: absolute;
+    margin-bottom: 40px;
     bottom: 0px;
     right: 0;
     vertical-align: top;

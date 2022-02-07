@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { MobileMap } from "./Map/MobileMap.js";
 import { MobileStacks } from "./Stacks/MobileStacks";
 import { MobileTextBox } from "./Panel/MobilePanel";
+import page_title from "./assets/page_title.svg";
 
 export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highlight_locked, windowH, windowW }) {
     const [panel_open, setPanelOpen] = useState(false);
@@ -15,17 +16,18 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
 
     let margin = 20;
     let padded_width = windowW - (margin * 2);
-    let padded_height = windowH - (margin * 2);
     let dropdown_height = 49;
+    console.log("windowH - (padded_width + 95 + 20):", windowH - (padded_width + 95 + 20));
 
     return (
         <Container margin={margin} onClick={clickOut}>
+            <PageTitle w={200} l={120} src={`${page_title}`}/>
             <MobileMap
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
                 width={padded_width}
-                height={(padded_width) + dropdown_height}
+                height={padded_width - 20}
                 margin={margin}
                 highlight_locked={highlight_locked}
             />
@@ -36,16 +38,15 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
                 highlight_locked={highlight_locked}
                 margin={margin}
                 width={windowW}
-                height={padded_height - (padded_width + dropdown_height + 50)}
+                height={windowH - ((padded_width - 20) + 95 + 60)}
             />
             <MobileTextBox
-                style={{ marginLeft: `-${margin}px` }}
                 highlight_locked={highlight_locked}
                 highlight_id={highlight_id}
                 panel_open={panel_open}
                 setPanelOpen={setPanelOpen}
                 setHighlightLocked={setHighlightLocked}
-                panel_height={padded_height + margin}
+                panel_height={windowH}
             />
         </Container>
     );
@@ -53,7 +54,15 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
 
 const Container = styled.div`
     width: 100%;
-    height: calc(100vh - ${({ margin }) => margin * 2}px);
-    margin: ${({ margin }) => margin}px 0px;
+    height: calc(100vh);
+    margin: 0px 0px;
     position: relative;
+`;
+
+const PageTitle = styled.img`
+    width: ${({ w }) => w}px;
+    position: absolute;
+    z-index: 4;
+    top: ${({ t }) => t || 0}px;
+    left: ${({ l }) => l || 0}px;
 `;

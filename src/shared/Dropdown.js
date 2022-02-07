@@ -3,7 +3,7 @@ import { Listbox } from "@headlessui/react";
 import styled from "styled-components";
 import { base_pink, dark_blue, dark_pink } from "./colors";
 
-export function Dropdown({ margin, label_width, options_width, label, value, options, onSelect, is_mobile }) {
+export function Dropdown({ dropdown_position, dropdown_top, margin, label_width, options_width, label, value, options, onSelect, is_mobile }) {
     const [buttonLabel, setButtonLabel] = useState(options[0].label);
     function getLabelFromValue(){
         const l = options.find(o => o.value === value );
@@ -13,13 +13,15 @@ export function Dropdown({ margin, label_width, options_width, label, value, opt
         getLabelFromValue();
     }, [value]);
 
-    const label_w = label_width || 100;
-    const options_w = options_width || 100;
+    const label_w = isNaN(label_width) ? 100 : label_width;
+    const options_w = isNaN(options_width) ? 100 : options_width;
     const dropdown_w = label_w + options_w;
     const margin_left = margin || 0;
+    const dropdown_pos = dropdown_position || "relative";
+    const dropdown_t = dropdown_top || 0;
 
     return (
-        <Container w={dropdown_w} margin_left={margin_left}>
+        <Container t={dropdown_t} pos={dropdown_pos} w={dropdown_w} margin_left={margin_left}>
             <Listbox value={value} onChange={onSelect}>
                 <Label w={label_w}>{label}:</Label>
                 <Button w={options_w}>{buttonLabel}</Button>
@@ -109,7 +111,8 @@ const Container = styled.div`
     width: ${({ w }) => w}px;
     text-align: left;
     cursor: pointer;
-    position: relative;
+    position: ${({ pos }) => pos};
+    top: ${({ t }) => t}px;
     overflow: visible;
     margin-left: ${({ margin_left }) => margin_left}px;
     color: ${dark_blue};

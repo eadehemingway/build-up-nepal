@@ -13,7 +13,7 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
     const icon_chart_width = 450;
     return (
         <div onClick={onClick}>
-            <PageTitle w={icon_chart_width - 80} src={`${page_title}`}/>
+            <PageTitle l={40} w={icon_chart_width - 80} src={`${page_title}`}/>
             <IconChart
                 highlight_id={highlight_id}
                 setHighlightId={setHighlightId}
@@ -27,7 +27,7 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
                 width={windowW - icon_chart_width}
-                height={windowH - 300}
+                height={windowH - 340}
                 highlight_locked={highlight_locked}
             />
 
@@ -51,6 +51,6 @@ export function Desktop({ highlight_id, setHighlightId, setHighlightLocked, high
 const PageTitle = styled.img`
     width: ${({ w }) => w}px;
     position: absolute;
-    top: 0px;
-    left: 40px;
+    top: ${({ t }) => t || 0}px;
+    left: ${({ l }) => l || 0}px;
 `;

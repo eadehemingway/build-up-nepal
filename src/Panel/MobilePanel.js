@@ -28,16 +28,14 @@ export function MobileTextBox( { panel_height, highlight_locked, highlight_id, s
 
 const Container = styled.div`
     position: absolute;
-    left: 0;
-    right:0;
+    right: 0;
     top: ${({ open, bit_open, panel_height }) =>{
-        if (open) return "0px";
+        if (open) return "20px";
         if (bit_open) return `${panel_height - 50}px`;
         return `${panel_height}px`;
     }};
     transition: top 1s ease;
-    margin-right: -20px;
-    max-width: 100vw;
+    width: calc(100% - 70px);
     padding: 0px 20px 0px 30px;
     height: ${({ panel_height }) => panel_height}px;
     background: ${turquoise};
