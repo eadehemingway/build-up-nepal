@@ -7,15 +7,18 @@ import build_up_nepal_logo from "./../assets/build_up_nepal_logo.svg";
 import { base_pink, dark_blue, red } from "../shared/colors";
 
 export function LoadingScreen({ loaded }) {
-
+    const [vid_opacity, setVidOpacity] = useState(0);
     const [load_delay, setLoadDelay] = useState(false);
-    let delay_seconds = 50;
+    let delay_seconds = 5;
     if (loaded) setTimeout(function(){ setLoadDelay(true); }, delay_seconds * 1000);
 
+    useEffect(()=>{
+        setVidOpacity(1);
+    }, []);
     return (
         <Overlay loaded={load_delay}>
             <Standfirst>
-                <GifWrapper width="100%" autoPlay muted>
+                <GifWrapper width="100%" autoPlay muted vid_opacity={vid_opacity}>
                     <source src={brick_machine_video} type="video/mp4"></source>
                 </GifWrapper>
                 <FirstCharacter>O</FirstCharacter>
@@ -49,6 +52,8 @@ const Standfirst = styled.div`
     justify-content: center;
     align-items: center;
     color: ${({ enterprise }) => enterprise ? red : dark_blue};
+
+
     @media only screen and (max-width: 600px) {
         width: calc(100% - 40px);
         margin-top: 0;
@@ -76,6 +81,9 @@ const GifWrapper = styled.video`
   display: block;
   width: 100%;
   min-height: 350px;
+  opacity: ${({ vid_opacity }) => vid_opacity };
+  transition: opacity 1s;
+  transition-delay: 0.5s;
 `;
 
 const Overlay = styled.div`
