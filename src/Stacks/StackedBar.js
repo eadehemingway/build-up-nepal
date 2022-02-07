@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { dark_pink , red, dark_blue } from "../shared/colors";
+import { dark_pink, base_pink, red, dark_blue } from "../shared/colors";
 
 export function StackedBar({
     width,
@@ -20,7 +20,7 @@ export function StackedBar({
     const [ctx_bottom, setCtxBottom] = useState(null);
     const $canvas_bottom = useRef(null);
 
-    const regular_stroke_width = 0.1;
+    const regular_stroke_width = 0.25;
     const highlight_stroke_width = 2;
 
     const offset_left = window_width - width;
@@ -142,8 +142,8 @@ export function StackedBar({
             let x = v.x[sort_by] * chart_width;
             let bar_width = v.width[sort_by] * chart_width;
             ctx.save();
-            ctx.fillStyle = v.filtered ? "pink" : dark_pink;
-            ctx.strokeStyle = red;
+            ctx.fillStyle = dark_pink;
+            ctx.strokeStyle = base_pink;
             ctx.lineWidth = regular_stroke_width;
             ctx.fillRect(x, v.y, bar_width, v.height);
             ctx.strokeRect(x, v.y, bar_width, v.height);

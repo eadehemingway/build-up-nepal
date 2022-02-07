@@ -25,9 +25,8 @@ const Container = styled.div`
     position: absolute;
     top: 0;
     right: ${({ open }) =>{
-        return open ? "0px" : "-300px";}};
+        return open ? "0px" : "-302px";}};
     transition: right 1s ease;
-    margin-right: -20px;
     width: calc(300px - 50px);
     padding: 0px 20px 0px 30px;
     height: 100vh;
@@ -44,7 +43,7 @@ const Close = styled.button`
     width: 30px;
     height: 30px;
     position: absolute;
-    right: 30px;
+    right: 20px;
     top: 10px;
     background-image: ${({ background_image }) => `url("${background_image}")`};
     background_size: cover;

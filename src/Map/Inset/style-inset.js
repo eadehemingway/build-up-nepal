@@ -1,7 +1,7 @@
 
 import MAP_STYLE from "../style-common.json";
 import provinces from "../../data/provinces.json";
-import { dark_pink, red } from "../../shared/colors";
+import { base_pink, dark_pink, dark_blue } from "../../shared/colors";
 
 
 const fillLayer = {
@@ -9,19 +9,15 @@ const fillLayer = {
     source: "provinces",
     type: "fill",
     paint: {
-        "fill-outline-color": red,
+        "fill-outline-color": dark_blue,
         "fill-color": [
             "case",
             ["boolean", ["feature-state", "click"], false],
-            red,
-            dark_pink
-        ],
-        "fill-opacity": [
-            "case",
+            dark_pink,
             ["boolean", ["feature-state", "hover"], false],
-            1,
-            0.5
-        ]
+            dark_pink,
+            base_pink,
+        ],
     },
 };
 

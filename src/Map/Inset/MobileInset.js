@@ -31,12 +31,14 @@ export function Inset({ margin, zoomMapTo, zoomed_province, setZoomedProvince })
 
     return (
         <Dropdown
-            label={"Projects in"}
             value={zoomed_province || options[0].value}
             options={options}
             onSelect={onSelect}
-            options_width={200}
+            options_width={135}
+            label_width={0}
             margin={margin}
+            dropdown_position={"absolute"}
+            dropdown_top={47}
         />
     );
 }

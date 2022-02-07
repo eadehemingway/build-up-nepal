@@ -105,9 +105,11 @@ export function MobileMap({ margin, highlight_id, setHighlightId, setHighlightLo
                 onClick={handleOnClick}
                 style={{
                     width: `${width}px`,
-                    height: `${height - 49}px`,
+                    height: `${height}px`,
                     margin: `0px ${margin}px`,
                     padding: "0px",
+                    position: "absolute",
+                    top: "95px",
                 }}
                 initialViewState={{
                     latitude:center_lat,

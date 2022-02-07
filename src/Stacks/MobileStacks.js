@@ -8,7 +8,7 @@ import { base_pink } from "../shared/colors";
 
 export function MobileStacks({ margin, width, height, setHighlightLocked, highlight_id, setHighlightId, highlight_locked }) {
     const chart_height = (height - (49 * 2));
-    const chart_margin = { left: 20, right: 100, top: 40, bottom: 25 };
+    const chart_margin = { left: 20, right: 100, top: 20, bottom: 55 };
 
     const [sort_by, setSortBy] = useState("year");
     const [window_width, setWindowWidth] = useState(document.body.clientWidth);
@@ -71,7 +71,7 @@ export function MobileStacks({ margin, width, height, setHighlightLocked, highli
 const StackedBarContainer = styled.div`
     height: ${({ height }) => height }px;
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     vertical-align: top;
     line-height: 0px;
     background: ${base_pink};
