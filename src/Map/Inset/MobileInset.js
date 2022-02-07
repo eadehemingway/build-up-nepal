@@ -28,7 +28,6 @@ export function Inset({ margin, zoomMapTo, zoomed_province, setZoomedProvince })
         }
         setZoomedProvince(val);
     }
-
     return (
         <Dropdown
             value={zoomed_province || options[0].value}
@@ -36,9 +35,9 @@ export function Inset({ margin, zoomMapTo, zoomed_province, setZoomedProvince })
             onSelect={onSelect}
             options_width={135}
             label_width={0}
-            margin={margin}
+            margin={182}
             dropdown_position={"absolute"}
-            dropdown_top={47}
+            dropdown_top={95}
         />
     );
 }

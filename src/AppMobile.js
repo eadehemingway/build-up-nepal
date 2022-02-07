@@ -16,8 +16,6 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
 
     let margin = 20;
     let padded_width = windowW - (margin * 2);
-    let dropdown_height = 49;
-    console.log("windowH - (padded_width + 95 + 20):", windowH - (padded_width + 95 + 20));
 
     return (
         <Container margin={margin} onClick={clickOut}>
@@ -64,5 +62,5 @@ const PageTitle = styled.img`
     position: absolute;
     z-index: 4;
     top: ${({ t }) => t || 0}px;
-    left: ${({ l }) => l || 0}px;
+    left: 20px;
 `;
