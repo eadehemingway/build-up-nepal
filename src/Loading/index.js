@@ -4,10 +4,11 @@ import styled, { keyframes } from "styled-components";
 import brick_machine from "./../assets/brick_machine.gif";
 import brick_machine_video from "./../assets/nepal_bricks.mp4";
 import build_up_nepal_logo from "./../assets/build_up_nepal_logo.svg";
-import { base_pink, dark_blue, red } from "../shared/colors";
+import { base_pink, dark_blue, dark_pink, red } from "../shared/colors";
 
 export function LoadingScreen({ loaded }) {
     const [vid_opacity, setVidOpacity] = useState(0);
+    const [overlay_opacity, setOverlayOpacity] = useState(1);
     const [load_delay, setLoadDelay] = useState(false);
     let delay_seconds = 5;
     if (loaded) setTimeout(function(){ setLoadDelay(true); }, delay_seconds * 1000);
@@ -15,17 +16,23 @@ export function LoadingScreen({ loaded }) {
     useEffect(()=>{
         setVidOpacity(1);
     }, []);
+
+    function hideOverlay() {
+        setOverlayOpacity(0);
+    }
+
     return (
-        <Overlay loaded={load_delay}>
+        <Overlay overlay_opacity={overlay_opacity}>
             <Standfirst>
-                <GifWrapper width="100%" autoPlay muted vid_opacity={vid_opacity}>
+                <GifWrapper width="100%" autoPlay muted loop vid_opacity={vid_opacity}>
                     <source src={brick_machine_video} type="video/mp4"></source>
                 </GifWrapper>
                 <FirstCharacter>O</FirstCharacter>
                 <P>
-                ur machines are made of quality steel and developed for maximum efficiency. Since 2015 we have been improving and refining our machines to increase durability and output. Our uniquely effective manual machines makes it possible to produce at high capacity even in remote areas. The machines come with 12 months warranty.
+                ur Interlocking Brick CSEB machines are made of quality steel and developed for maximum efficiency. These, along with training and support, empowering entrepreneurs to produce high-quality bricks, using local materials ideally suited to rural communities.
                 </P>
             </Standfirst>
+            <EnterButton onClick={hideOverlay} loaded={load_delay} >Enter</EnterButton>
             <Logo background_image={build_up_nepal_logo}></Logo>
         </Overlay>
     );
@@ -39,7 +46,7 @@ const Logo = styled.div`
     background-size: contain;
     background-position: center;
     display: block;
-    margin: 40px auto 0 auto;
+    margin: 20px auto 0 auto;
 `;
 
 const Standfirst = styled.div`
@@ -96,8 +103,32 @@ const Overlay = styled.div`
     bottom: 0;
     background: ${base_pink};
     z-index: 9;
-    opacity: ${({ loaded })=> loaded ? 0 : 1};
     transition: opacity 1s;
-    pointer-events: ${({ loaded })=> loaded ? "none" : "auto"};
+    opacity: ${({ overlay_opacity }) => overlay_opacity};
+    pointer-events: ${({ overlay_opacity }) => overlay_opacity ? "auto" : "none"};
+`;
+
+const EnterButton = styled.button`
+    border: 1px solid ${dark_blue};
+    color: ${dark_blue};
+    opacity: ${({ loaded }) => loaded ? "1" : "0"};
+    pointer-events: ${({ loaded }) => loaded ? "auto" : "none"};
+    padding: 10px;
+    width: 100px;
+    line-height: normal;
+    font-family: code-saver, sans-serif;
+    font-size: 12px;
+    background: ${base_pink};
+    outline: none;
+    transition: opacity 1s;
+    cursor: pointer;
+    margin: 10px auto 0 auto;
+    display: block;
+    :hover {
+        background: ${dark_pink};
+    }
+    :focus {
+        outline: none;
+    }
 `;
 
