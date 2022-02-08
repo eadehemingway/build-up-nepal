@@ -19,3 +19,8 @@ body {
 .mapboxgl-ctrl{
   display: none;
 }
+
+.mapboxgl-canvas:focus {
+  outline: none;
+
+}

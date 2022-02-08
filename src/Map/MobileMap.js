@@ -150,7 +150,8 @@ const map_attributes = {
         left: 0,
         height: "900px",
         overflow: "hidden",
-        cursor: "pointer"
+        cursor: "pointer",
+        "outline": "none"
     },
 
 };

@@ -11,7 +11,7 @@ function App() {
     const [font_loaded, setFontLoaded] = useState(null);
     const [highlight_locked, setHighlightLocked] = useState(false);
     const windowW = window.innerWidth;
-    const windowH = window.innerHeight;
+    const windowH = document.body.clientHeight;
 
     const is_mobile = windowW < 500;
     useEffect (() => {

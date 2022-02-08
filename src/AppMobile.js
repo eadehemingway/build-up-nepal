@@ -52,7 +52,7 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
 
 const Container = styled.div`
     width: 100%;
-    height: calc(100vh);
+    height: 100%;
     margin: 0px 0px;
     position: relative;
 `;
