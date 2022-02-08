@@ -13,10 +13,10 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
         setHighlightId(null);
         setHighlightLocked(null);
     }
-
+    const header_height = 95;
     let margin = 20;
     let padded_width = windowW - (margin * 2);
-
+    const map_height = padded_width - margin;
     return (
         <Container margin={margin} onClick={clickOut}>
             <PageTitle w={200} l={120} src={`${page_title}`}/>
@@ -25,7 +25,7 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
                 setHighlightId={setHighlightId}
                 setHighlightLocked={setHighlightLocked}
                 width={padded_width}
-                height={padded_width - 20}
+                height={map_height}
                 margin={margin}
                 highlight_locked={highlight_locked}
             />
@@ -36,7 +36,7 @@ export function Mobile({ highlight_id, setHighlightId, setHighlightLocked, highl
                 highlight_locked={highlight_locked}
                 margin={margin}
                 width={windowW}
-                height={windowH - ((padded_width - 20) + 95 + 60)}
+                height={windowH - (map_height + header_height + 60)}
             />
             <MobileTextBox
                 highlight_locked={highlight_locked}
