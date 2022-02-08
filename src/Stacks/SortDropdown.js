@@ -12,7 +12,7 @@ export function SortDropdown({ margin, sort_by, setSortBy, label_width }) {
     ];
     return (
         <Dropdown
-            label={"Sort by"}
+            label={"Sort by:"}
             value={sort_by}
             options={options}
             onSelect={setSortBy}

@@ -23,7 +23,7 @@ export function Dropdown({ dropdown_position, dropdown_top, margin, label_width,
     return (
         <Container t={dropdown_t} pos={dropdown_pos} w={dropdown_w} margin_left={margin_left}>
             <Listbox value={value} onChange={onSelect}>
-                <Label w={label_w}>{label}:</Label>
+                <Label w={label_w}>{label}</Label>
                 <Button w={options_w}>{buttonLabel}</Button>
                 <Options w={options_w}>
                     {options.map((opt) => (

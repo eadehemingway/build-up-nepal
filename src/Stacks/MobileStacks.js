@@ -40,7 +40,7 @@ export function MobileStacks({ margin, width, height, setHighlightLocked, highli
                     margin={margin}
                 />
                 <Dropdown
-                    label={"View metric"}
+                    label={"View metric:"}
                     value={selected_metric}
                     options={options}
                     onSelect={setSelectedMetric}
