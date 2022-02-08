@@ -87,7 +87,7 @@ const GifWrapper = styled.video`
   margin: auto;
   display: block;
   width: 100%;
-  min-height: 350px;
+  min-height: 250px;
   opacity: ${({ vid_opacity }) => vid_opacity };
   transition: opacity 1s;
   transition-delay: 0.5s;
